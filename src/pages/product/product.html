@@ -1,0 +1,288 @@
+<ion-header transparent no-border no-lines>
+  <ion-navbar color="primary" >
+      <ion-title>Product details</ion-title>
+  	<ion-buttons end>
+      <button ion-button icon-only tappable (click)="viewCart()">
+        <ion-icon name="basket"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+
+   <div *ngFor="let y of products">
+    <ng-container *ngIf="y.imgs.length!=1; else elseTemplate">
+            <ion-slides  *ngIf="products && products.length" pager = 'true'  style="max-height:200px" class="featured" loop="true" autoplay="3000" >
+        <ion-slide *ngFor="let x of products[0].imgs">
+          <div><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="width:100% ;height:200px;" imageViewer /></div>
+        </ion-slide>
+      </ion-slides>  
+ 
+  </ng-container>
+  <ng-template #elseTemplate>
+      <div *ngFor="let x of products[0].imgs"><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="width:100% ;height: 200px;" imageViewer /></div>
+    
+  </ng-template>
+  
+</div>
+      
+
+    <!-- <ion-slides  *ngIf="product && product.length"   pager = 'true'  autoplay="3000" loop="true" speed="3000" style="max-height:200px">
+      <ion-slide *ngFor="let slide of product[0].imgs">
+        <ion-img src="http://www.babyneeds.co.in/babyneeds/product_image/{{slide.img_url}}"  style="width:100% ;height: 180px;"></ion-img>
+      </ion-slide>
+    </ion-slides> -->
+
+    <!-- <ion-slides  *ngIf="slides && slides.length"  pager = 'true'  autoplay="3000" loop="true" speed="3000" style="max-height:200px">
+      <ion-slide *ngFor="let slide of slides">
+       <div> <img [src]="slide.image_path "  style="width:100% ;height: 180px;"></div>
+      </ion-slide>
+    </ion-slides> -->
+<!-- 
+    <ion-card *ngFor="let p1 of products" no padding>
+        
+       <ion-card-title  >
+          <p style="font-size:14px; text-align:left"><b> {{p1.product_name}}</b></p>
+       </ion-card-title>
+   
+       <div >
+         <p style="font-size:12px; text-align:left"><b>Product Description</b></p>
+       </div>
+   
+       
+         <p style="font-size:11px; text-align:left"> {{p1.long_desc}}</p>
+       
+   <div>    <button ion-button full color="gray">Write a review</button></div>
+   
+   <div>
+       <b>Item Detail</b><br>
+         <ng-container *ngIf="p1.per_discount!=0; else elseTemplate">
+         <p style="font-size:10px; text-align:left; "><b>Brand    :{{p1.brand_name}}</b> </p>
+         <p style="font-size:10px; text-align:left; "><b>Price    :<del>Rs.{{p1.mrp}} </del> <span> Rs.{{pricestrikt(p1.per_discount,p1.mrp)}}</span></b></p>
+        </ng-container>
+        <ng-template #elseTemplate>
+         <p style="font-size:12px; text-align:left; "><b>Brand    :{{p1.brand_name}}</b></p>  
+         <p style="font-size:12px; text-align:left; "><b>Price    :Rs.{{p1.mrp}}</b></p>
+        </ng-template>
+   
+        
+       </div><br>
+        
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+	  <div class="main-content">
+        <ion-card *ngFor="let p1 of products" no padding>
+        <div padding>
+          <ion-grid no-padding>
+              <ion-row no-padding align-items-center>
+                <ion-col col-75 no-padding>
+                  <p style="font-size:14px; text-align:left" item-start no-margin [innerHTML]="product.product_name"></p>
+                </ion-col>
+                <!-- <ion-col col-auto no-padding>
+                  <button item-end no-margin no-padding ion-button icon-only clear tappable (click)="share(product)">
+                    <ion-icon no-padding name="ios-share"></ion-icon>
+                  </button>
+                </ion-col> -->
+              </ion-row>
+          </ion-grid><br>
+
+          <div>
+              <p style="font-size:12px; text-align:left"><b>Product Description</b></p>
+            </div><br>
+
+          <div style="font-size:12px; text-align:left">{{p1.long_desc}}</div>
+        </div>
+        <div>    <button ion-button full color="gray">Write a review</button></div>
+         <ion-list mode="md" class="specs">
+            <ion-list-header mode="md" no-margin no-padding margin-left>
+              {{'Item details' | translate}}
+            </ion-list-header>
+            <ion-item>
+              <ion-grid no-padding>
+                 
+                  <ion-row no-padding>
+                      <ion-col col-4 no-padding>Brand</ion-col>
+                      <ion-col col-8 no-padding>
+                        :{{p1.brand_name}}
+                      </ion-col>
+                  </ion-row>
+                  <ion-row no-padding>
+                      <ng-container *ngIf="p1.per_discount!=0; else elseTemplate">
+                      <ion-col col-4 no-padding>Price</ion-col>
+                      <ion-col col-8 no-padding>
+                          <del>:Rs.{{p1.mrp}} </del> &nbsp;&nbsp;&nbsp; :Rs.{{pricestrikt(p1.per_discount,p1.mrp)}}
+                      </ion-col>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <ion-col col-4 no-padding>Price</ion-col>
+                        <ion-col col-8 no-padding>
+                          :Rs.{{p1.mrp}}
+                        </ion-col>
+                      </ng-template>
+                    </ion-row>
+
+                    <ng-container *ngIf="p1.stock>=1; else elseTemplate">
+                      
+                  <ion-row no-padding>
+                      <ion-col col-4 no-padding>Stock</ion-col>
+                      <ion-col col-8 no-padding>
+                       :Availabe
+                      </ion-col>
+                      </ion-row>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                      
+                  <ion-row no-padding >
+                      <ion-col col-4 no-padding>Stock</ion-col>
+                      <ion-col col-8 no-padding>
+                       :Out of stock
+                      </ion-col>
+                  </ion-row>
+                    </ng-template>
+                    
+
+                  <ion-row no-padding *ngIf="p1.weight">
+                      <ion-col col-4 no-padding>Weight</ion-col>
+                      <ion-col col-8 no-padding>
+                        :{{p1.weight}}
+                      </ion-col>
+                  </ion-row>
+                  <ion-row no-padding *ngIf="p1.size!=0">
+                      <ion-col col-4 no-padding>Size</ion-col>
+                      <ion-col col-8 no-padding>
+                        :{{p1.size}}
+                      </ion-col>
+                     </ion-row>
+              </ion-grid>
+            </ion-item>
+        </ion-list>
+
+        <!-- <ion-list-header mode="md" no-margin no-padding margin-left *ngIf="product.variations.length > 0">
+          {{'VARIATION' | translate}}
+        </ion-list-header>
+        <ion-list mode="md" radio-group (ionChange)="setVariation($event)" padding-bottom no-margin margin-horizontal margin-bottom *ngIf="product.variations.length > 0">
+          <ion-item mode="ios" *ngFor="let x of product.variations" no-padding>
+              <ion-label>
+                <span *ngFor="let y of x.attributes">
+                  {{y.name}}: {{y.option}}
+                </span>
+              </ion-label>
+              <ion-radio mode="ios" value="{{x | json}}"></ion-radio>
+          </ion-item>
+        </ion-list> -->
+
+        <!-- <ion-list mode="md" *ngIf="product.description">
+          <ion-list-header mode="md" no-margin no-padding margin-left margin-top>
+            {{'DESCRIPTION' | translate}}
+          </ion-list-header>
+          <ion-item mode="md">
+            <div [innerHTML]="product.description"></div>
+          </ion-item>
+        </ion-list>
+
+        <ion-list-header mode="md" no-margin no-padding margin-left *ngIf="product.rating_count > 0">
+          {{'REVIEW' | translate}}
+        </ion-list-header>
+        <ion-list no-margin margin-horizontal padding-bottom *ngIf="product.rating_count > 0">
+          <ion-item *ngFor="let x of product.reviews" no-padding>
+            <ion-row no-padding>
+                <ion-col col-4>
+                  <div>{{x.name}}</div>
+                  <div class="ago">{{x.date_created | moment:"ago" | lowercase}}</div>
+                  <ion-rating *ngIf="x.rating"
+                    [numStars]="5"
+                    [readOnly]="true"
+                    [value]="x.rating">
+                  </ion-rating>
+                </ion-col>
+                <ion-col col-8>
+                  {{x.review}}
+                </ion-col>
+            </ion-row>
+          </ion-item>
+        </ion-list>
+
+        <div class="product-slide">
+          <ion-list-header mode="md" no-margin no-padding margin-left margin-bottom>
+            {{'RELATED' | translate}}
+          </ion-list-header>
+
+          <ion-slides margin-bottom spaceBetween="10" slidesPerView="2.5">
+            <ion-slide *ngFor="let y of product.related">
+              <button class="fav" tappable (click)="setFav(y)"  ion-button clear icon-only>
+                <ion-icon *ngIf="y.variations.length == 0" no-padding name="heart{{!wishlist.isFav(y) ? '-outline' : ''}}"></ion-icon>
+              </button>
+              <div text-left class="product-item" tappable (click)="goTo('ProductPage', y)">
+                <div class="img" [ngStyle]="{'background-image': 'url(' + y.images[0].src +')'}">
+                  <ion-badge *ngIf="y.on_sale">{{y | discount}}</ion-badge>
+                </div>
+                <h5 [innerHTML]="y.name"></h5>
+                <div class="price">
+                    <span class="disc" *ngIf="y.on_sale">{{y.regular_price | money}}</span> 
+                    {{y.price | money}}
+                </div>
+                <ion-row no-padding class="reviews" *ngIf="y.rating_count">
+                  <ion-col col-auto no-padding>
+                    <ion-rating *ngIf="y.average_rating" item-start
+                      [numStars]="5"
+                      [readOnly]="true"
+                      [value]="y.average_rating">
+                    </ion-rating>
+                    <span *ngIf="y.rating_count">{{y.rating_count}}</span>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-slide>
+          </ion-slides>
+        </div>-->
+      </ion-card>
+	  </div> 
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar *ngFor="let p1 of products">
+    <ion-row align-items-center>
+      <ion-col class="total" align-self-center>
+        <h5>
+          <span class="disc" *ngIf="p1.per_discount">{{p1.mrp | money}}</span>
+          {{ pricestrikt(p1.per_discount,p1.mrp)| money}}
+        </h5>
+        <ion-row no-padding class="reviews" *ngIf="product.rating_count">
+          <ion-col col-auto no-padding>
+            <ion-rating *ngIf="product.average_rating" item-start
+              [numStars]="5"
+              [readOnly]="true"
+              [value]="product.average_rating">
+            </ion-rating>
+            <span *ngIf="product.rating_count">{{product.rating_count}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col align-self-center>
+        <button ion-button block tappable (click)="openModal('MiniCartPage')">{{'TO_CART' | translate}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer> 
