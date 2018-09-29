@@ -51,7 +51,7 @@ webpackJsonp([27],{
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return App; });
 var App = {
-    store: 'Ionstore 2 - Tabs',
+    store: 'Babyneeds',
     ContactEmail: 'ionicpremium@gmail.com',
     url: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
     OneSignalAppID: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',

@@ -74,7 +74,7 @@ export class ProductPage {
   }
 
   viewCart(){
-    this.modal.create('MiniCartPage', {}, { cssClass: 'inset-modal' }).present();
+    this.modal.create('CartPage', {}, { cssClass: 'inset-modal' }).present();
   }
 
   openModal(pageName) {

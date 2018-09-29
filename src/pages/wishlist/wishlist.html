@@ -1,4 +1,4 @@
-<ion-content padding-top>
+<!-- <ion-content padding-top>
 	<div class="subtitle" *ngIf="products.length > 0">
 		<h1 margin-top margin-horizontal>{{ 'WISHLIST' | translate}}</h1>		
 		<p no-margin margin-horizontal>{{ 'WISH_DESC' | translate: {value: products.length} }}</p>
@@ -42,4 +42,27 @@
 	</ion-row>
 	
 </ion-content>
-		
+		 -->
+		 <ion-header>
+			
+			  <ion-navbar color="primary">
+				<ion-title>wishlist</ion-title>
+			  </ion-navbar>
+			
+			</ion-header>
+			
+			
+			
+				<ion-content padding>
+					<ion-list>
+					  <ion-item *ngFor="let w of wlist">
+						<ion-avatar item-left>
+							<img src="http://www.babyneeds.co.in/babyneeds/product_image/{{w.imgs[0].img_url}}">
+						 </ion-avatar>
+						<h2>{{w.product_name}}</h2>
+						<p>Rs.: {{w.mrp}}</p>
+					  </ion-item>
+					</ion-list>
+				  </ion-content>
+			
+			

@@ -135,7 +135,7 @@ var ProductPage = (function () {
         });
     };
     ProductPage.prototype.viewCart = function () {
-        this.modal.create('MiniCartPage', {}, { cssClass: 'inset-modal' }).present();
+        this.modal.create('CartPage', {}, { cssClass: 'inset-modal' }).present();
     };
     ProductPage.prototype.openModal = function (pageName) {
         console.log(this.products[0]);
