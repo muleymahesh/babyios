@@ -56,8 +56,12 @@
        
 
             <ion-card>
-             <ion-label style="font-size:7px; text-align:center">{{b.per_discount}}%</ion-label>
-            <img *ngIf="b.imgs!=0"  src="http://www.babyneeds.co.in/babyneeds/product_image/{{b.imgs[0].img_url}}" style="height:80px; width:100%; margin:auto; margin-top:15px" (click)="goTo('ProductPage',b)" />                         
+              <ion-badge *ngIf="b.per_discount">{{b.per_discount}}%</ion-badge> 
+             <img *ngIf="b.imgs!=0"  src="http://www.babyneeds.co.in/babyneeds/product_image/{{b.imgs[0].img_url}}" style="height:80px; width:100%; margin:auto; margin-top:15px" (click)="goTo('ProductPage',b)"/>
+            
+            <!-- <div class="img" *ngIf="b.imgs!=0" [ngStyle]="{'background-image': 'url(http://www.babyneeds.co.in/babyneeds/product_image/' + b.imgs[0].img_ur +')'}">
+              <ion-badge *ngIf="b.per_discount">{{b.per_discount}}</ion-badge>
+            </div>                  -->
              <p style="font-size:10px; text-align:center"> {{b.product_name}}</p>  <br>
        
            <ng-container *ngIf="b.per_discount!=0; else elseTemplate">

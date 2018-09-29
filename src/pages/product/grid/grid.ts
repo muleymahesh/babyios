@@ -13,11 +13,25 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class ProductGridPage {
   private search : FormGroup;
+  product = {
+    method:'get_product_by_brand',
+    brand_id:''
+  }; 
 
+  product1 = {
+    method:'get_product_by_offer',
+    offer_id:''
+  };
+
+  product2 = {
+    method:'get_product_by_age',
+    age_id:''
+  }; 
+
+  
+  
   showCancel: boolean;
-  
   param: any = {};
-  
   WooCommerce: any;
   subcategory: any;
   products:any; 
@@ -41,17 +55,58 @@ name:'';
 
   constructor(public toast: ToastProvider, private alert: AlertController, fb: FormBuilder, private translate: TranslateService, private loader: LoadingProvider, public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private woo: WooCommerceProvider, public wishlist: WishlistProvider, public actionSheetCtrl: ActionSheetController,public http: HttpClient,public restProvider: RestProvider) {
     // this.page = 1;
-    this.param.name = this.navParams.data.params.cat_name;
-     this.product3.cat_id= this.navParams.data.params.cat_id;
-    this.param.search = this.navParams.data.params.search;
+   // this.param.name = this.navParams.data.params.cat_name;
+    // this.product3.cat_id= this.navParams.data.params.cat_id;
+   // this.param.search = this.navParams.data.params.search;
     // this.param.per_page = 10;
 
     // this.search = fb.group({
 		// 	name: this.param.name || this.param.search
     // });
-    this.loader.present();
-   this. productByCatId()
-   this.loader.dismiss();
+   
+    if(this.navParams.data.params.brand_id)
+    {
+     this.param.name = this.navParams.data.params.brand_name;
+     this.product.brand_id= this.navParams.data.params.brand_id;
+     this.productByBrandId();
+    }
+    else if(this.navParams.data.params.offer_id)
+    {
+      this.param.name = this.navParams.data.params.offer_name;
+     this.product1.offer_id= this.navParams.data.params.offer_id;
+     this.productByOfferId();
+    }
+   else if(this.navParams.data.params.age_id)
+   {
+    this.param.name = this.navParams.data.params.age_name;
+     this.product2.age_id= this.navParams.data.params.age_id;
+     this.productByAgeId();
+   }
+   else
+   {
+    this.param.name = this.navParams.data.params.cat_name;
+     this.product3.cat_id= this.navParams.data.params.cat_id;
+     this.productByCatId();
+   }
+
+   
+   
+
+
+
+
+
+
+
+
+
+  //   this.loader.present();
+  //   if(this.navParams.data.params.cat_id)
+  //   {
+  //   this.product3.cat_id= this.navParams.data.params.cat_id;
+  //  this. productByCatId()
+  //  this.loader.dismiss();
+  //  }
 
     // this.param.min = this.min;
     // this.param.max = this.max;
@@ -231,6 +286,36 @@ this.product3.cat_id=x.id;
     });
 
   }
+
+  productByBrandId() {
+    this.restProvider.getProduct(this.product)
+    .then(data => {
+      this.products = data;
+      console.log(this.products);
+    });
+
+  }
+
+  productByOfferId() {
+    this.restProvider.getProduct(this.product1)
+    .then(data => {
+      this.products = data;
+      console.log(this.products);
+    });
+
+  }
+
+  productByAgeId() {
+    this.restProvider.getProduct(this.product2)
+    .then(data => {
+      this.products = data;
+      console.log(this.products);
+      
+    });
+
+  }
+
+
 
 
   pricestrikt(discount,price)

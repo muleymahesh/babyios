@@ -369,15 +369,15 @@ var map = {
 		26
 	],
 	"../pages/account/chats/chats.module": [
-		946,
+		944,
 		25
 	],
 	"../pages/account/chats/message/message.module": [
-		944,
+		945,
 		24
 	],
 	"../pages/account/help/help.module": [
-		945,
+		946,
 		23
 	],
 	"../pages/account/notification/notification.module": [
@@ -385,59 +385,59 @@ var map = {
 		22
 	],
 	"../pages/account/profile/profile.module": [
-		969,
+		948,
 		21
 	],
 	"../pages/account/saved-address/add-address/add-address.module": [
-		948,
+		949,
 		20
 	],
 	"../pages/account/saved-address/saved-address.module": [
-		949,
+		950,
 		19
 	],
 	"../pages/account/settings/languages/languages.module": [
-		950,
+		951,
 		18
 	],
 	"../pages/account/settings/notifications/notifications.module": [
-		951,
+		952,
 		17
 	],
 	"../pages/account/settings/settings.module": [
-		952,
+		953,
 		16
 	],
 	"../pages/account/settings/tos/tos.module": [
-		953,
+		954,
 		15
 	],
 	"../pages/cart/cart.module": [
-		954,
+		955,
 		14
 	],
 	"../pages/categories/categories.module": [
-		955,
+		956,
 		13
 	],
 	"../pages/checkout/checkout.module": [
-		956,
+		957,
 		12
 	],
 	"../pages/home/home.module": [
-		964,
+		958,
 		11
 	],
 	"../pages/login/login.module": [
-		957,
+		959,
 		10
 	],
 	"../pages/orders/detail/detail.module": [
-		958,
+		960,
 		9
 	],
 	"../pages/orders/orders.module": [
-		959,
+		961,
 		8
 	],
 	"../pages/product/grid/grid.module": [
@@ -445,31 +445,31 @@ var map = {
 		7
 	],
 	"../pages/product/mini-cart/mini-cart.module": [
-		960,
+		963,
 		6
 	],
 	"../pages/product/modal-categories/modal-categories.module": [
-		961,
+		964,
 		5
 	],
 	"../pages/product/product.module": [
-		963,
+		965,
 		4
 	],
 	"../pages/search/search.module": [
-		965,
+		966,
 		3
 	],
 	"../pages/tabs/tabs.module": [
-		966,
+		967,
 		2
 	],
 	"../pages/thanks/thanks.module": [
-		967,
+		968,
 		1
 	],
 	"../pages/wishlist/wishlist.module": [
-		968,
+		969,
 		0
 	]
 };
@@ -597,10 +597,11 @@ AppModule = __decorate([
             }, {
                 links: [
                     { loadChildren: '../pages/account/account.module#AccountPageModule', name: 'AccountPage', segment: 'account', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/account/chats/chats.module#AccountChatsPageModule', name: 'AccountChatsPage', segment: 'chats', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/chats/message/message.module#AccountChatsMessagePageModule', name: 'AccountChatsMessagePage', segment: 'message', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/help/help.module#AccountHelpPageModule', name: 'AccountHelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/account/chats/chats.module#AccountChatsPageModule', name: 'AccountChatsPage', segment: 'chats', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/notification/notification.module#AccountNotificationPageModule', name: 'AccountNotificationPage', segment: 'notification', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/account/profile/profile.module#AccountProfilePageModule', name: 'AccountProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/saved-address/add-address/add-address.module#AddAddressPageModule', name: 'AddAddressPage', segment: 'add-address', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/saved-address/saved-address.module#SavedAddressPageModule', name: 'SavedAddressPage', segment: 'saved-address', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/languages/languages.module#AccountSettingsLanguagesPageModule', name: 'AccountSettingsLanguagesPage', segment: 'languages', priority: 'low', defaultHistory: [] },
@@ -610,19 +611,18 @@ AppModule = __decorate([
                     { loadChildren: '../pages/cart/cart.module#CartPageModule', name: 'CartPage', segment: 'cart', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/categories/categories.module#CategoriesPageModule', name: 'CategoriesPage', segment: 'categories', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'CheckoutPage', segment: 'checkout', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/orders/detail/detail.module#OrderDetailPageModule', name: 'OrderDetailPage', segment: 'detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/product/grid/grid.module#ProductGridPageModule', name: 'ProductGridPage', segment: 'grid', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/mini-cart/mini-cart.module#MiniCartPageModule', name: 'MiniCartPage', segment: 'mini-cart', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/modal-categories/modal-categories.module#ModalCategoriesPageModule', name: 'ModalCategoriesPage', segment: 'modal-categories', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/product/grid/grid.module#ProductGridPageModule', name: 'ProductGridPage', segment: 'grid', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/product.module#ProductPageModule', name: 'ProductPage', segment: 'product', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/thanks/thanks.module#ThanksPageModule', name: 'ThanksPage', segment: 'thanks', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/wishlist/wishlist.module#WishlistPageModule', name: 'WishlistPage', segment: 'wishlist', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/account/profile/profile.module#AccountProfilePageModule', name: 'AccountProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/wishlist/wishlist.module#WishlistPageModule', name: 'WishlistPage', segment: 'wishlist', priority: 'low', defaultHistory: [] }
                 ]
             })
         ],
@@ -1166,46 +1166,37 @@ var CartProvider = (function () {
             }
         });
     };
-    CartProvider.prototype.post = function (product, qty) {
+    CartProvider.prototype.post = function (product1, qty) {
         if (qty === void 0) { qty = 1; }
-        this.toCart(product, qty);
+        this.toCart(product1, qty);
     };
-    CartProvider.prototype.toCart = function (product, qty) {
+    CartProvider.prototype.toCart = function (product1, qty) {
         var exist = false;
         for (var i in this.cart) {
-            if (this.cart[i].variation_id) {
-                if (this.cart[i].variation_id == product.variation_id) {
-                    this.cart[i].quantity += qty;
-                    exist = true;
-                    break;
-                }
-            }
-            else {
-                if (this.cart[i].id == product.id) {
-                    this.cart[i].quantity += qty;
-                    exist = true;
-                    break;
-                }
+            if (this.cart[i].p_id == product1.p_id) {
+                this.cart[i].quantity += qty;
+                exist = true;
+                console.log(this.cart);
+                break;
             }
         }
         if (!exist) {
-            product.quantity = qty;
-            this.add(product);
+            product1.quantity = qty;
+            this.add(product1);
         }
         this.save();
     };
-    CartProvider.prototype.add = function (product) {
+    CartProvider.prototype.add = function (product1) {
         var tmp = {
-            quantity: product.quantity,
-            name: product.name,
-            images: product.images,
-            id: product.id,
-            price: product.price,
-            regular_price: product.regular_price,
-            on_sale: product.on_sale,
-            in_stock: product.in_stock,
-            attributes: product.attributes,
-            variation_id: product.variation_id
+            quantity: product1.quantity,
+            name: product1.product_name,
+            images: product1.imgs[0].img_url,
+            p_id: product1.p_id,
+            price: product1.mrp,
+            discount: product1.per_discount,
+            // regular_price: product1.regular_price,
+            on_sale: product1.offer_name,
+            in_stock: product1.status,
         };
         this.cart.push(tmp);
         return this.save();
@@ -1219,7 +1210,7 @@ var CartProvider = (function () {
                 }
             }
             else {
-                if (this.cart[i].id == product.id) {
+                if (this.cart[i].p_id == product.p_id) {
                     this.cart.splice(parseInt(i), 1);
                     break;
                 }
@@ -1244,33 +1235,40 @@ var CartProvider = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(CartProvider.prototype, "lineItems", {
-        get: function () {
-            var tmp, line_items = [];
-            for (var i in this.cart) {
-                tmp = {
-                    meta_data: [{
-                            key: 'img',
-                            value: this.cart[i].images[0].src
-                        }],
-                    product_id: this.cart[i].id,
-                    quantity: this.cart[i].quantity
-                };
-                if (this.cart[i].variation_id)
-                    tmp.variation_id = this.cart[i].variation_id;
-                line_items.push(tmp);
-            }
-            return line_items;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(CartProvider.prototype, "total", {
+        // get lineItems(){
+        //   let tmp, line_items = [];
+        //   for(let i in this.cart){
+        //     tmp = {
+        //       meta_data: [{
+        //         key: 'img',
+        //         value: this.cart[i].images[0].src
+        //       }],
+        //       product_id: this.cart[i].id,
+        //       quantity: this.cart[i].quantity
+        //     };
+        //     if(this.cart[i].variation_id)
+        //       tmp.variation_id = this.cart[i].variation_id;
+        //     line_items.push(tmp);
+        //   }
+        //   return line_items;
+        // }
         get: function () {
+            this.total1 = 0;
             var total = 0;
-            for (var i in this.cart)
-                total += parseInt(this.cart[i].price) * parseInt(this.cart[i].quantity);
-            return total;
+            for (var i in this.cart) {
+                console.log(this.cart[i].discount);
+                if (this.cart[i].discount > 0) {
+                    this.total1 = this.pricestrikt(this.cart[i].discount, this.cart[i].price);
+                    console.log(this.total1);
+                    total += parseInt(this.total1) * parseInt(this.cart[i].quantity);
+                    return total;
+                }
+                else {
+                    total += parseInt(this.cart[i].price) * parseInt(this.cart[i].quantity);
+                    return total;
+                }
+            }
         },
         enumerable: true,
         configurable: true
@@ -1289,6 +1287,16 @@ var CartProvider = (function () {
         enumerable: true,
         configurable: true
     });
+    CartProvider.prototype.pricestrikt = function (discount, price) {
+        if (discount != 0) {
+            this.result = (discount / 100) * price;
+            this.finalprice = price - this.result;
+            return parseInt(this.finalprice);
+        }
+        else {
+            return 0;
+        }
+    };
     return CartProvider;
 }());
 CartProvider = __decorate([

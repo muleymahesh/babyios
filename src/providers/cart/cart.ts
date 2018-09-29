@@ -7,12 +7,18 @@ export class CartProvider {
 
   cart: any[] = [];
   _readyPromise: Promise<any>;
+    total1:any;
+  result:any;
+ 
+
+  finalprice:any;
 
   constructor(public storage: Storage) {
     this.load();
   }
 
   load() {
+  
     return this.storage.get(this.CART_KEY).then((val) => {
       if (val && val.length > 0) {
         this.cart = val;
@@ -23,52 +29,51 @@ export class CartProvider {
     });
   }
 
-  post(product: any, qty: number = 1){
-    this.toCart(product, qty);
+  post(product1: any, qty: number = 1){
+    
+    this.toCart(product1, qty);
   }
 
-  toCart(product: any, qty: number){
+  toCart(product1: any, qty: number){
+  
     let exist = false;
     for(let i in this.cart){
-      if(this.cart[i].variation_id){
-        if(this.cart[i].variation_id == product.variation_id){
+     
+       if(this.cart[i].p_id == product1.p_id){
           this.cart[i].quantity += qty;
           exist = true;
+          console.log(this.cart);
           break;
-        }
-      }else{
-        if(this.cart[i].id == product.id){
-          this.cart[i].quantity += qty;
-          exist = true;
-          break;
-        }
       }
     }
-
+ 
     if(!exist){
-      product.quantity = qty;
-      this.add(product);
+      product1.quantity = qty;
+      this.add(product1);
     }
 
     this.save();
   }
 
-  add(product: any){
+  add(product1: any){
     let tmp = {
-      quantity: product.quantity,
-      name: product.name,
-      images: product.images,
-      id: product.id,
-      price: product.price,
-      regular_price: product.regular_price,
-      on_sale: product.on_sale,
-      in_stock: product.in_stock,
-      attributes: product.attributes,
-      variation_id: product.variation_id
+      quantity: product1.quantity,
+      name: product1.product_name,
+      images: product1.imgs[0].img_url,
+      p_id: product1.p_id,
+      price: product1.mrp,
+      discount:product1.per_discount,
+     // regular_price: product1.regular_price,
+      on_sale: product1.offer_name,
+      in_stock: product1.status,
+      // attributes: product.attributes,
+      // variation_id: product.variation_id
     }
 
     this.cart.push(tmp);
+   
     return this.save();
+    
   }
 
   remove(product: any){
@@ -79,7 +84,7 @@ export class CartProvider {
           break;
         }
       }else{
-        if(this.cart[i].id == product.id){
+        if(this.cart[i].p_id == product.p_id){
           this.cart.splice(parseInt(i), 1);
           break;
         }
@@ -99,33 +104,49 @@ export class CartProvider {
     return qty;
   }
 
-  get lineItems(){
-    let tmp, line_items = [];
-    for(let i in this.cart){
-      tmp = {
-        meta_data: [{
-          key: 'img',
-          value: this.cart[i].images[0].src
-        }],
-        product_id: this.cart[i].id,
-        quantity: this.cart[i].quantity
-      };
+  // get lineItems(){
+  //   let tmp, line_items = [];
+  //   for(let i in this.cart){
+  //     tmp = {
+  //       meta_data: [{
+  //         key: 'img',
+  //         value: this.cart[i].images[0].src
+  //       }],
+  //       product_id: this.cart[i].id,
+  //       quantity: this.cart[i].quantity
+  //     };
 
-      if(this.cart[i].variation_id)
-        tmp.variation_id = this.cart[i].variation_id;
+  //     if(this.cart[i].variation_id)
+  //       tmp.variation_id = this.cart[i].variation_id;
 
-      line_items.push(tmp);
-    }
+  //     line_items.push(tmp);
+  //   }
 
-    return line_items;
-  }
+  //   return line_items;
+  // }
 
   get total(){
+    this.total1=0;
     let total = 0;
+    
     for(let i in this.cart)
-      total += parseInt(this.cart[i].price) * parseInt(this.cart[i].quantity);
+{
+  console.log(this.cart[i].discount)
+  if(this.cart[i].discount>0)
+  {
+   this.total1=this.pricestrikt(this.cart[i].discount,this.cart[i].price);
+   console.log(this.total1);
+  total += parseInt(this.total1) * parseInt(this.cart[i].quantity);
+      return total;
+    }
+else
+{
+  total += parseInt(this.cart[i].price) * parseInt(this.cart[i].quantity);
+  return total;
+}
 
-    return total;
+}
+    
   }
 
   save(){
@@ -140,4 +161,24 @@ export class CartProvider {
   get all() {
     return this.cart;
   }
+  pricestrikt(discount,price)
+  {
+   
+      if(discount!=0)
+      {
+        this.result=(discount/100)*price;
+        this.finalprice=price-this.result;
+        return parseInt(this.finalprice);
+
+          }
+          else
+          {
+            return 0;
+          }
+ 
+  }
+
+
+
+
 }

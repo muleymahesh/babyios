@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, Platform, ModalController, NavParams } from 'ionic-angular';
-import { WishlistProvider, LoadingProvider, ToastProvider, WooCommerceProvider, HistoryProvider,RestProvider } from '../../providers/providers';
+import { WishlistProvider, LoadingProvider, ToastProvider, WooCommerceProvider, HistoryProvider,RestProvider ,CartProvider} from '../../providers/providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class ProductPage {
   result:any;
-  
+  product1:any;
   name:'';
   finalprice:any;
   product:any;
@@ -28,11 +28,11 @@ export class ProductPage {
   related: any[] = [];
  // isSetVariation: boolean = false;
   
-  constructor(private history: HistoryProvider,public http: HttpClient,public restProvider: RestProvider, private alert: AlertController, private platform: Platform, private socialSharing: SocialSharing, private translate: TranslateService, private toast: ToastProvider, private wishlist: WishlistProvider, private navCtrl: NavController, private loader: LoadingProvider, private modal: ModalController, private navParam: NavParams, private woo: WooCommerceProvider) {
+  constructor(private history: HistoryProvider,private cart: CartProvider,public http: HttpClient,public restProvider: RestProvider, private alert: AlertController, private platform: Platform, private socialSharing: SocialSharing, private translate: TranslateService, private toast: ToastProvider, private wishlist: WishlistProvider, private navCtrl: NavController, private loader: LoadingProvider, private modal: ModalController, private navParam: NavParams, private woo: WooCommerceProvider) {
     this.loader.present();
 
    this.product = this.navParam.data.params;
-   // this.history.post(this.product);
+    this.history.post(this.product);
 
     // // if(this.product.variations){
     // //   this.woo.getProductVariations(this.product.id).then( (val) => {
@@ -73,22 +73,18 @@ export class ProductPage {
     });
   }
 
-  // viewCart(){
-  //   this.modal.create('MiniCartPage', {}, { cssClass: 'inset-modal' }).present();
-  // }
+  viewCart(){
+    this.modal.create('MiniCartPage', {}, { cssClass: 'inset-modal' }).present();
+  }
 
-  // openModal(pageName) {
-  //   if(this.product.variations.length > 0 && !this.isSetVariation){
-  //     this.translate.get(['SELECT_VARIATION']).subscribe( x=> {
-  //       this.toast.show(x.SELECT_VARIATION);
-  //     });
-  //   }else{
-  //     this.modal.create(pageName, {product: this.product}, { cssClass: 'inset-modal' }).present();
-  //     this.translate.get(['ADDED_TO_CART']).subscribe( x=> {
-  //       this.toast.show(x.ADDED_TO_CART);
-  //     });
-  //   }
-  // }
+  openModal(pageName) {
+    console.log(this.products[0]);
+      this.modal.create(pageName, {product: this.products[0]}, { cssClass: 'inset-modal' }).present();
+      //  this.translate.get(['ADDED_TO_CART']).subscribe( x=> {
+      //   this.toast.show(x.ADDED_TO_CART);
+      // });
+    
+  }
 
   // setFav(product: any){
   //   this.translate.get(['REMOVE_WISH', 'ADDED_WISH']).subscribe( x=> {
@@ -145,7 +141,11 @@ export class ProductPage {
  
   }
 
-
+addTOCart()
+{this.product1=this.products[0];
+  
+  this.cart.post(this.product1);
+}
 
 
   goTo(page: string, params: any){

@@ -13,7 +13,10 @@ export class CartPage {
   products: any = [];
   app: any;
   total: number = 0;
-
+  result:any;
+  
+name:'';
+finalprice:any;
   constructor(public cart: CartProvider, public setting: SettingsProvider, private translate: TranslateService, private modal: ModalController, private user: UserProvider, private toast: ToastProvider, public nav: NavController, public alert: AlertController) {
     
   }
@@ -55,6 +58,24 @@ export class CartPage {
     });
   }
 
+
+  pricestrikt(discount,price)
+  {
+   
+      if(discount!=0)
+      {
+        this.result=(discount/100)*price;
+        this.finalprice=price-this.result;
+        return parseInt(this.finalprice);
+
+          }
+          else
+          {
+            return 0;
+          }
+ 
+  }
+
   goHome(){
     this.nav.parent.select(0);
   }
@@ -82,5 +103,8 @@ export class CartPage {
       });
     }
   }
+
+
+ 
 
 }

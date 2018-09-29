@@ -72,6 +72,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ProductGridPage = (function () {
     function ProductGridPage(toast, alert, fb, translate, loader, navCtrl, modalCtrl, navParams, woo, wishlist, actionSheetCtrl, http, restProvider) {
+        // this.page = 1;
+        // this.param.name = this.navParams.data.params.cat_name;
+        // this.product3.cat_id= this.navParams.data.params.cat_id;
+        // this.param.search = this.navParams.data.params.search;
+        // this.param.per_page = 10;
         this.toast = toast;
         this.alert = alert;
         this.translate = translate;
@@ -84,23 +89,54 @@ var ProductGridPage = (function () {
         this.actionSheetCtrl = actionSheetCtrl;
         this.http = http;
         this.restProvider = restProvider;
+        this.product = {
+            method: 'get_product_by_brand',
+            brand_id: ''
+        };
+        this.product1 = {
+            method: 'get_product_by_offer',
+            offer_id: ''
+        };
+        this.product2 = {
+            method: 'get_product_by_age',
+            age_id: ''
+        };
         this.param = {};
         this.attributes = [];
         this.product3 = {
             method: 'get_product_by_cat',
             cat_id: ''
         };
-        // this.page = 1;
-        this.param.name = this.navParams.data.params.cat_name;
-        this.product3.cat_id = this.navParams.data.params.cat_id;
-        this.param.search = this.navParams.data.params.search;
-        // this.param.per_page = 10;
         // this.search = fb.group({
         // 	name: this.param.name || this.param.search
         // });
-        this.loader.present();
-        this.productByCatId();
-        this.loader.dismiss();
+        if (this.navParams.data.params.brand_id) {
+            this.param.name = this.navParams.data.params.brand_name;
+            this.product.brand_id = this.navParams.data.params.brand_id;
+            this.productByBrandId();
+        }
+        else if (this.navParams.data.params.offer_id) {
+            this.param.name = this.navParams.data.params.offer_name;
+            this.product1.offer_id = this.navParams.data.params.offer_id;
+            this.productByOfferId();
+        }
+        else if (this.navParams.data.params.age_id) {
+            this.param.name = this.navParams.data.params.age_name;
+            this.product2.age_id = this.navParams.data.params.age_id;
+            this.productByAgeId();
+        }
+        else {
+            this.param.name = this.navParams.data.params.cat_name;
+            this.product3.cat_id = this.navParams.data.params.cat_id;
+            this.productByCatId();
+        }
+        //   this.loader.present();
+        //   if(this.navParams.data.params.cat_id)
+        //   {
+        //   this.product3.cat_id= this.navParams.data.params.cat_id;
+        //  this. productByCatId()
+        //  this.loader.dismiss();
+        //  }
         // this.param.min = this.min;
         // this.param.max = this.max;
         // this.loadProducts(this.param);
@@ -258,6 +294,30 @@ var ProductGridPage = (function () {
             console.log(_this.products);
         });
     };
+    ProductGridPage.prototype.productByBrandId = function () {
+        var _this = this;
+        this.restProvider.getProduct(this.product)
+            .then(function (data) {
+            _this.products = data;
+            console.log(_this.products);
+        });
+    };
+    ProductGridPage.prototype.productByOfferId = function () {
+        var _this = this;
+        this.restProvider.getProduct(this.product1)
+            .then(function (data) {
+            _this.products = data;
+            console.log(_this.products);
+        });
+    };
+    ProductGridPage.prototype.productByAgeId = function () {
+        var _this = this;
+        this.restProvider.getProduct(this.product2)
+            .then(function (data) {
+            _this.products = data;
+            console.log(_this.products);
+        });
+    };
     ProductGridPage.prototype.pricestrikt = function (discount, price) {
         if (discount != 0) {
             this.result = (discount / 100) * price;
@@ -272,7 +332,7 @@ var ProductGridPage = (function () {
 }());
 ProductGridPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-product-grid',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/product/grid/grid.html"*/' <ion-header>\n	<ion-navbar color="primary">\n      <ion-title>CATEGORIES details</ion-title>\n      </ion-navbar>\n      <div class="newsearch">\n          <!-- <div no-padding class="searchbar searchbar-md">\n            <div class="searchbar-input-container">\n              <button ion-button icon-left icon-only clear tappable (click)="backToRoot()"><ion-icon name="arrow-back"></ion-icon></button>\n               <form [formGroup]="search" (ngSubmit)="submit()" novalidate>\n                <ion-input formControlName="name" class="searchbar-input" placeholder="{{ \'enter search\' | translate }}" type="search"></ion-input>\n                <button type="reset" *ngIf="(search.controls[\'name\'].value)" tappable (click)="reset(currForm)" ion-button icon-right icon-only clear><ion-icon name="close"></ion-icon></button>\n              </form>\n            </div>\n          </div> -->\n        \n            <!-- <div no-padding class="searchbar searchbar-md">\n              <div class="searchbar-input-container">\n                <button ion-button icon-left clear icon-only (click)="showSearch()"><ion-icon name="search" mode="ios"></ion-icon></button>\n                 <input (click)="showSearch()" class="searchbar-input" placeholder="{{ \'SEARCH\' | translate }}" value="{{App.store}}" type="search" autocomplete="off" autocorrect="off" spellcheck="false"> -->\n                <!-- <div class="searchbar-input" (click)="showSearch()"> -->\n                    <!-- {{App.store}} -->\n                <!-- </div>\n              </div>\n            </div> -->\n          \n          <div class="filter">\n              <ion-scroll scrollX="true" class="item filter">\n                <ion-row nowrap>\n                  <ion-col col-auto no-padding>\n                    <button ion-button small round outline (click)="showCategory()">{{param.name || (\'CATEGORIES\' | translate)}}</button>\n                  </ion-col>\n                  <ion-col col-auto no-padding *ngFor="let x of attributes">\n                    <button ion-button small round outline (click)="showFilter(x)">\n                      {{x.name}} \n                      <span *ngIf="param.attribute_term && param.attribute==x.slug">&nbsp;•&nbsp;{{param.attribute_term.split(",").length}}</span>\n                    </button>\n                  </ion-col>\n                  <ion-col col-auto no-padding>\n                    <button ion-button small round outline (click)="showSort()">Sort</button>\n                  </ion-col>\n                </ion-row>\n              </ion-scroll>\n          </div>\n        </div>\n  \n\n</ion-header>\n\n <ion-content>\n\n  <ion-grid >\n    <ion-row >\n        \n     \n          <ion-col col-6 *ngFor="let b of products" no-padding>  \n       \n\n            <ion-card>\n             <ion-label style="font-size:7px; text-align:center">{{b.per_discount}}%</ion-label>\n            <img *ngIf="b.imgs!=0"  src="http://www.babyneeds.co.in/babyneeds/product_image/{{b.imgs[0].img_url}}" style="height:80px; width:100%; margin:auto; margin-top:15px" (click)="goTo(\'ProductPage\',b)" />                         \n             <p style="font-size:10px; text-align:center"> {{b.product_name}}</p>  <br>\n       \n           <ng-container *ngIf="b.per_discount!=0; else elseTemplate">\n              <p style="font-size:9px; text-align:center; color:orange" ><del >Rs.:{{b.mrp}} </del> &nbsp;&nbsp;&nbsp;  Rs.:{{pricestrikt(b.per_discount,b.mrp)}} </p>\n             </ng-container>\n             <ng-template #elseTemplate>\n                <p style="font-size:9px; text-align:center; color:orange">Rs.:{{b.mrp}}</p>\n             </ng-template>\n             \n           \n          </ion-card>\n          </ion-col>\n         </ion-row>\n  </ion-grid>\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/product/grid/grid.html"*/,
+        selector: 'page-product-grid',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/product/grid/grid.html"*/' <ion-header>\n	<ion-navbar color="primary">\n      <ion-title>CATEGORIES details</ion-title>\n      </ion-navbar>\n      <div class="newsearch">\n          <!-- <div no-padding class="searchbar searchbar-md">\n            <div class="searchbar-input-container">\n              <button ion-button icon-left icon-only clear tappable (click)="backToRoot()"><ion-icon name="arrow-back"></ion-icon></button>\n               <form [formGroup]="search" (ngSubmit)="submit()" novalidate>\n                <ion-input formControlName="name" class="searchbar-input" placeholder="{{ \'enter search\' | translate }}" type="search"></ion-input>\n                <button type="reset" *ngIf="(search.controls[\'name\'].value)" tappable (click)="reset(currForm)" ion-button icon-right icon-only clear><ion-icon name="close"></ion-icon></button>\n              </form>\n            </div>\n          </div> -->\n        \n            <!-- <div no-padding class="searchbar searchbar-md">\n              <div class="searchbar-input-container">\n                <button ion-button icon-left clear icon-only (click)="showSearch()"><ion-icon name="search" mode="ios"></ion-icon></button>\n                 <input (click)="showSearch()" class="searchbar-input" placeholder="{{ \'SEARCH\' | translate }}" value="{{App.store}}" type="search" autocomplete="off" autocorrect="off" spellcheck="false"> -->\n                <!-- <div class="searchbar-input" (click)="showSearch()"> -->\n                    <!-- {{App.store}} -->\n                <!-- </div>\n              </div>\n            </div> -->\n          \n          <div class="filter">\n              <ion-scroll scrollX="true" class="item filter">\n                <ion-row nowrap>\n                  <ion-col col-auto no-padding>\n                    <button ion-button small round outline (click)="showCategory()">{{param.name || (\'CATEGORIES\' | translate)}}</button>\n                  </ion-col>\n                  <ion-col col-auto no-padding *ngFor="let x of attributes">\n                    <button ion-button small round outline (click)="showFilter(x)">\n                      {{x.name}} \n                      <span *ngIf="param.attribute_term && param.attribute==x.slug">&nbsp;•&nbsp;{{param.attribute_term.split(",").length}}</span>\n                    </button>\n                  </ion-col>\n                  <ion-col col-auto no-padding>\n                    <button ion-button small round outline (click)="showSort()">Sort</button>\n                  </ion-col>\n                </ion-row>\n              </ion-scroll>\n          </div>\n        </div>\n  \n\n</ion-header>\n\n <ion-content>\n\n  <ion-grid >\n    <ion-row >\n        \n     \n          <ion-col col-6 *ngFor="let b of products" no-padding>  \n       \n\n            <ion-card>\n              <ion-badge *ngIf="b.per_discount">{{b.per_discount}}%</ion-badge> \n             <img *ngIf="b.imgs!=0"  src="http://www.babyneeds.co.in/babyneeds/product_image/{{b.imgs[0].img_url}}" style="height:80px; width:100%; margin:auto; margin-top:15px" (click)="goTo(\'ProductPage\',b)"/>\n            \n            <!-- <div class="img" *ngIf="b.imgs!=0" [ngStyle]="{\'background-image\': \'url(http://www.babyneeds.co.in/babyneeds/product_image/\' + b.imgs[0].img_ur +\')\'}">\n              <ion-badge *ngIf="b.per_discount">{{b.per_discount}}</ion-badge>\n            </div>                  -->\n             <p style="font-size:10px; text-align:center"> {{b.product_name}}</p>  <br>\n       \n           <ng-container *ngIf="b.per_discount!=0; else elseTemplate">\n              <p style="font-size:9px; text-align:center; color:orange" ><del >Rs.:{{b.mrp}} </del> &nbsp;&nbsp;&nbsp;  Rs.:{{pricestrikt(b.per_discount,b.mrp)}} </p>\n             </ng-container>\n             <ng-template #elseTemplate>\n                <p style="font-size:9px; text-align:center; color:orange">Rs.:{{b.mrp}}</p>\n             </ng-template>\n             \n           \n          </ion-card>\n          </ion-col>\n         </ion-row>\n  </ion-grid>\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/product/grid/grid.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["l" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* WishlistProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */]])
 ], ProductGridPage);

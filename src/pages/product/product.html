@@ -262,26 +262,26 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar *ngFor="let p1 of products">
-    <ion-row align-items-center>
-      <ion-col class="total" align-self-center>
+  <ion-toolbar>
+     <ion-row align-items-center >
+    <!--  <ion-col class="total" align-self-center>
         <h5>
           <span class="disc" *ngIf="p1.per_discount">{{p1.mrp | money}}</span>
           {{ pricestrikt(p1.per_discount,p1.mrp)| money}}
         </h5>
-        <ion-row no-padding class="reviews" *ngIf="product.rating_count">
+        <ion-row no-padding class="reviews">
           <ion-col col-auto no-padding>
-            <ion-rating *ngIf="product.average_rating" item-start
+            <ion-rating *ngIf="p1.average_rating" item-start
               [numStars]="5"
               [readOnly]="true"
-              [value]="product.average_rating">
+              [value]="p1.average_rating">
             </ion-rating>
-            <span *ngIf="product.rating_count">{{product.rating_count}}</span>
+             <span *ngIf="product.rating_count">{{product.rating_count}}</span> 
           </ion-col>
         </ion-row>
-      </ion-col>
+      </ion-col> -->
       <ion-col align-self-center>
-        <button ion-button block tappable (click)="openModal('MiniCartPage')">{{'TO_CART' | translate}}</button>
+        <button ion-button block tappable (click)="addTOCart()">{{'TO_CART' | translate}}</button>
       </ion-col>
     </ion-row>
   </ion-toolbar>

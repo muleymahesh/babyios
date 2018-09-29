@@ -1,9 +1,24 @@
-<ion-content padding-top>
+<ion-header>  
+	
+		<ion-navbar color="primary">
+			<ion-title>Cart</ion-title>
+		</ion-navbar>
+		
+	  
+	</ion-header>
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ <ion-content padding-top>
 	<div class="subtitle" *ngIf="cart.total > 0">
 		<h1 margin-top margin-horizontal>{{ 'CART' | translate}}</h1>
-		<p no-margin margin-horizontal>{{ 'CART_DESC' | translate: {value: cart.totalQtyDetail} }}</p>
+		<p no-margin margin-horizontal>{{ cart.totalQtyDetail }}</p>
 	</div>
-	<ion-list no-padding>
+	 <ion-list no-padding>
 		<ion-grid class="empty" *ngIf="cart.total == 0">
 			<ion-row align-items-center>
 				<ion-col align-self-center text-center>
@@ -13,16 +28,17 @@
 				</ion-col>
 			</ion-row>
 		</ion-grid>
-  		<ion-item-sliding *ngFor="let x of products">
+  		 <ion-item-sliding *ngFor="let x of products">
   			<ion-item>
 				<ion-thumbnail item-start>
-					<div class="img" [ngStyle]="{'background-image': 'url(' + x.images[0].src +')'}"></div>
+				<div class="img" [ngStyle]="{'background-image': 'url(http://www.babyneeds.co.in/babyneeds/product_image/' +x.images +')'}"></div>
+				 
 				</ion-thumbnail>
 				<h3 [innerHTML]="x.name"></h3>
-				<p>
-					<span class="disc" *ngIf="x.on_sale">{{x.regular_price | money}} •</span> 
-					<span class="price">{{x.price | money}}</span>
-					<ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container>
+				 <p>
+					 <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->
+					 <!-- <span class="price">{{x.price | money}}</span> -->
+					<!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->
 					<span>• {{x.quantity}}x</span>
 				</p>
 				<div item-end>
@@ -48,20 +64,20 @@
 					{{'REMOVE' | translate}}
 				</button>
 			</ion-item-options>
-  		</ion-item-sliding>
+  		</ion-item-sliding> 
   	</ion-list>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar padding-horizontal>
+   <ion-toolbar padding-horizontal>
     <ion-row align-items-center no-padding>
     	<ion-col class="total" align-self-center no-padding *ngIf="products.length > 0">
     		<span>Total ({{cart.totalQtyDetail}} items)</span>
-			<h5>{{total | money}}</h5>
+			<h5>{{total}}</h5>
     	</ion-col>
     	<ion-col col-33 align-self-center no-padding>
 			<button ion-button block tappable [disabled]="products.length <= 0" (click)="goCheckout()">{{'CHECKOUT' | translate}}</button>
   		</ion-col>
     </ion-row>
   </ion-toolbar>
-</ion-footer>
+</ion-footer> 
