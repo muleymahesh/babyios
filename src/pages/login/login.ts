@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { AlertController, App, NavParams, ViewController, Slides, IonicPage } from 'ionic-angular';
-import { UserProvider, ToastProvider, LoadingProvider } from '../../providers/providers';
+import { UserProvider, ToastProvider, LoadingProvider ,RestProvider} from '../../providers/providers';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
 
 @IonicPage()
 @Component({
@@ -15,9 +16,16 @@ export class LoginPage {
 
   private loginForm : FormGroup;
   private signupForm : FormGroup;
+
+  users: any;
+  todo = {
+    method:'login',
+    email: 'muley.mahesh@gmail.com',
+    password: 'mahesh'
+  };
   private resetForm : FormGroup;
 
-  constructor(private fb: FormBuilder, private translate: TranslateService, private navParams: NavParams, private toast: ToastProvider, public user: UserProvider, public loader: LoadingProvider, public alertCtrl: AlertController, public app: App, public viewCtrl: ViewController) { 
+  constructor(private fb: FormBuilder, private translate: TranslateService, private navParams: NavParams, private toast: ToastProvider, public user: UserProvider, public loader: LoadingProvider, public alertCtrl: AlertController, public app: App, public viewCtrl: ViewController,public http: HttpClient,public restProvider: RestProvider) { 
     this.loginForm = this.fb.group({
       user: ['', Validators.required ],
       pass: ['', Validators.required ]
@@ -106,16 +114,28 @@ export class LoginPage {
 
   submitLogin() {
     this.loader.present();
-    this.user.login(this.loginForm.value).map(res => res.json())
-      .subscribe( (res) => {
-        if(res.status == 'ok'){
-          this.user._loggedIn(res, this.navParams.data.tabIndex);
-          this.translate.get(['LOGIN_SUCCESS'], {value: this.user.name}).subscribe( x=> {
-            this.toast.show(x.LOGIN_SUCCESS);
-          });
+
+
+    // this.restProvider.login(this.todo)
+    // .then(data => {
+    //   this.users = data;
+    //   console.log(this.users);
+    // });
+
+    // this.user.login(this.loginForm.value).map(res => res.json())
+    //   .subscribe( (res) => {
+      this.restProvider.login(this.todo)
+      .then(data => {
+        this.users = data;
+        if( this.users.result == 'success'){
+          console.log(this.users);
+          this.user._loggedIn(this.users, this.navParams.data.tabIndex);
+          // this.translate.get(['LOGIN_SUCCESS'], {value: this.user.name}).subscribe( x=> {
+          //   this.toast.show(x.LOGIN_SUCCESS);
+          // });
           this.dismiss();
         }else
-          this.toast.show(res.error);
+          this.toast.show(this.users.result);
       this.loader.dismiss();
     }, err => {
       this.loader.dismiss();

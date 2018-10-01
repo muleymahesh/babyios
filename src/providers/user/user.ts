@@ -3,8 +3,8 @@ import { Storage } from '@ionic/storage';
 import { Http, Response } from '@angular/http';
 import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/map';
-
 import { App } from '../../app/app.global';
+
 
 @Injectable()
 export class UserProvider {
@@ -27,13 +27,18 @@ export class UserProvider {
   }
 
   _loggedIn(user, index){
-    this.user = user;
+    this.user.fname = user.fname;
+    this.user.user_email = user.user_email;
+    this.user.user_id = user.user_id;
+    console.log(this,user.fname);
     this.save();
+    console.log(this,user.fname);
     this.events.publish('user:login', {tabIndex: index});
     return this.user;
   }
 
   login(data: any){
+    
     let seq = this.http.get(App.url+'/user/generate_auth_cookie/?insecure=cool&username='+data.user+'&password='+data.pass);
     seq.map((res:Response) => {});
       
