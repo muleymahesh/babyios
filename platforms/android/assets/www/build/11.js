@@ -1,6 +1,6 @@
 webpackJsonp([11],{
 
-/***/ 958:
+/***/ 960:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(985);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(987);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -41,7 +41,7 @@ HomePageModule = __decorate([
 
 /***/ }),
 
-/***/ 985:
+/***/ 987:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85,7 +85,7 @@ var HomePage = (function () {
         //categories: any[] = new Array;
         this.data = new Array();
         this.slideRequest = {
-            method: 'get_all_banner'
+            method: 'getBanner'
         };
         this.cateogry = {
             method: 'get_all_category'
@@ -139,14 +139,13 @@ var HomePage = (function () {
         });
     };
     HomePage.prototype.getBanner = function () {
+        //	this.loader.present();	
         var _this = this;
-        this.loader.present();
         this.restProvider.getBanner(this.slideRequest)
             .then(function (data) {
             console.log(data);
             _this.slides = data;
             //	this.wishlist1();
-            _this.loader.dismiss();
         });
     };
     HomePage.prototype.getCategory = function () {
@@ -163,6 +162,7 @@ var HomePage = (function () {
             .then(function (data) {
             _this.offers = data;
         });
+        this.loader.dismiss();
     };
     HomePage.prototype.getBrands = function () {
         var _this = this;

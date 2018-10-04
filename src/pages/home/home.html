@@ -27,7 +27,7 @@
 
    <ion-slides  *ngIf="slides && slides.length"  pager = 'true'  autoplay="3000" loop="true" speed="3000" style="max-height:200px">
         <ion-slide *ngFor="let slide of slides">
-          <img [src]="slide.image_path "  style="width:100% ;height: 180px;">
+          <img [src]="slide.image_path"  style="width:100% ;height: 180px;">
         </ion-slide>
       </ion-slides>
 

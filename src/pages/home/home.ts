@@ -103,14 +103,14 @@ finalprice:any;
 
 	getBanner() {
 		
-		//this.loader.present();	
+		this.loader.present();	
 		
 		this.restProvider.getBanner(this.slideRequest)
 		.then(data => {
 			console.log(data);
 			this.slides = data;
 			this.wishlist1();
-		//	this.loader.dismiss();
+		
 		});
 	  }
 	  getCategory() {
@@ -128,6 +128,7 @@ finalprice:any;
 				this.offers = data;
 			 
 			});
+			this.loader.dismiss();
 		}
 	
 		getBrands() {

@@ -139,7 +139,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getBanner = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://www.makslab.com/babyneeds/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post("http://www.makslab.com/babyneeds/ws/v2/get_banner.php", JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -369,15 +369,15 @@ var map = {
 		26
 	],
 	"../pages/account/chats/chats.module": [
-		944,
+		946,
 		25
 	],
 	"../pages/account/chats/message/message.module": [
-		945,
+		944,
 		24
 	],
 	"../pages/account/help/help.module": [
-		946,
+		945,
 		23
 	],
 	"../pages/account/notification/notification.module": [
@@ -413,47 +413,47 @@ var map = {
 		15
 	],
 	"../pages/cart/cart.module": [
-		955,
+		956,
 		14
 	],
 	"../pages/categories/categories.module": [
-		956,
+		958,
 		13
 	],
 	"../pages/checkout/checkout.module": [
-		957,
+		955,
 		12
 	],
 	"../pages/home/home.module": [
-		958,
+		960,
 		11
 	],
 	"../pages/login/login.module": [
-		959,
+		962,
 		10
 	],
 	"../pages/orders/detail/detail.module": [
-		960,
+		957,
 		9
 	],
 	"../pages/orders/orders.module": [
-		961,
+		959,
 		8
 	],
 	"../pages/product/grid/grid.module": [
-		962,
+		963,
 		7
 	],
 	"../pages/product/mini-cart/mini-cart.module": [
-		963,
+		965,
 		6
 	],
 	"../pages/product/modal-categories/modal-categories.module": [
-		964,
+		961,
 		5
 	],
 	"../pages/product/product.module": [
-		965,
+		964,
 		4
 	],
 	"../pages/search/search.module": [
@@ -597,9 +597,9 @@ AppModule = __decorate([
             }, {
                 links: [
                     { loadChildren: '../pages/account/account.module#AccountPageModule', name: 'AccountPage', segment: 'account', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/account/chats/chats.module#AccountChatsPageModule', name: 'AccountChatsPage', segment: 'chats', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/chats/message/message.module#AccountChatsMessagePageModule', name: 'AccountChatsMessagePage', segment: 'message', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/help/help.module#AccountHelpPageModule', name: 'AccountHelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/account/chats/chats.module#AccountChatsPageModule', name: 'AccountChatsPage', segment: 'chats', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/notification/notification.module#AccountNotificationPageModule', name: 'AccountNotificationPage', segment: 'notification', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/profile/profile.module#AccountProfilePageModule', name: 'AccountProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/saved-address/add-address/add-address.module#AddAddressPageModule', name: 'AddAddressPage', segment: 'add-address', priority: 'low', defaultHistory: [] },
@@ -608,17 +608,17 @@ AppModule = __decorate([
                     { loadChildren: '../pages/account/settings/notifications/notifications.module#AccountSettingsNotificationsPageModule', name: 'AccountSettingsNotificationsPage', segment: 'notifications', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/settings.module#AccountSettingsPageModule', name: 'AccountSettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/tos/tos.module#AccountSettingsTosPageModule', name: 'AccountSettingsTosPage', segment: 'tos', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/cart/cart.module#CartPageModule', name: 'CartPage', segment: 'cart', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/categories/categories.module#CategoriesPageModule', name: 'CategoriesPage', segment: 'categories', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'CheckoutPage', segment: 'checkout', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/cart/cart.module#CartPageModule', name: 'CartPage', segment: 'cart', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/orders/detail/detail.module#OrderDetailPageModule', name: 'OrderDetailPage', segment: 'detail', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/categories/categories.module#CategoriesPageModule', name: 'CategoriesPage', segment: 'categories', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/product/grid/grid.module#ProductGridPageModule', name: 'ProductGridPage', segment: 'grid', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/product/mini-cart/mini-cart.module#MiniCartPageModule', name: 'MiniCartPage', segment: 'mini-cart', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/modal-categories/modal-categories.module#ModalCategoriesPageModule', name: 'ModalCategoriesPage', segment: 'modal-categories', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/product/grid/grid.module#ProductGridPageModule', name: 'ProductGridPage', segment: 'grid', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/product.module#ProductPageModule', name: 'ProductPage', segment: 'product', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/product/mini-cart/mini-cart.module#MiniCartPageModule', name: 'MiniCartPage', segment: 'mini-cart', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/thanks/thanks.module#ThanksPageModule', name: 'ThanksPage', segment: 'thanks', priority: 'low', defaultHistory: [] },
@@ -689,8 +689,12 @@ var UserProvider = (function () {
         });
     };
     UserProvider.prototype._loggedIn = function (user, index) {
-        this.user = user;
+        this.user.fname = user.fname;
+        this.user.user_email = user.user_email;
+        this.user.user_id = user.user_id;
+        console.log(this, user.fname);
         this.save();
+        console.log(this, user.fname);
         this.events.publish('user:login', { tabIndex: index });
         return this.user;
     };

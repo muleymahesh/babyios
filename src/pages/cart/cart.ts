@@ -81,6 +81,7 @@ finalprice:any;
   }
 
   goCheckout(){
+    console.log(this.user.all);
     if(this.user.all)
       this.nav.push('CheckoutPage');
     else{

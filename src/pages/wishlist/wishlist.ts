@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController } from 'ionic-angular';
-import { CartProvider, ToastProvider, WishlistProvider,RestProvider } from '../../providers/providers';
+import { CartProvider, ToastProvider, WishlistProvider,RestProvider, UserProvider } from '../../providers/providers';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -93,8 +93,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WishlistPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient,public restProvider: RestProvider) {
- this.wishlist1();
+  constructor(public user:UserProvider,public navCtrl: NavController, public navParams: NavParams,public http: HttpClient,public restProvider: RestProvider) {
+ console.log(this.user.user.user_email);
+    this.wishlist1();
   }
 
   ionViewDidLoad() {
@@ -103,6 +104,7 @@ export class WishlistPage {
   wlist: any;
   request= {
 method:'get_fav',
+
 user_id:'muley.mahesh@gmail.com'
   };
  wishlist1() {

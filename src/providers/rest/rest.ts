@@ -8,14 +8,18 @@ import { Injectable } from '@angular/core';
   and Angular DI.
 */
 @Injectable()
+
+
 export class RestProvider {
+
+  url="http://babyneeds.co.in/babyneeds/ws/v2/api1.php";
 
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
   }
   login(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+      this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -27,7 +31,7 @@ export class RestProvider {
 
   register(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+      this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -38,7 +42,7 @@ export class RestProvider {
 
   getWishlist(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+      this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -49,7 +53,7 @@ export class RestProvider {
 
   getBanner(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+      this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -61,7 +65,7 @@ export class RestProvider {
 
   getRecommendations(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+      this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -71,7 +75,7 @@ export class RestProvider {
   }
   getBrands(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+      this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -82,7 +86,7 @@ export class RestProvider {
 
   getOffers(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+      this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -94,7 +98,7 @@ export class RestProvider {
 
   getAgeGroup(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+      this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -107,7 +111,7 @@ export class RestProvider {
   
   getCategories(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+      this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -119,7 +123,7 @@ export class RestProvider {
 
   getProduct(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+      this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {

@@ -1,4 +1,4 @@
-webpackJsonp([27],{
+webpackJsonp([28],{
 
 /***/ 101:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -101,12 +101,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var RestProvider = (function () {
     function RestProvider(http) {
         this.http = http;
+        this.url = "http://babyneeds.co.in/babyneeds/ws/v2/api1.php";
         console.log('Hello RestProvider Provider');
     }
     RestProvider.prototype.login = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -117,7 +118,7 @@ var RestProvider = (function () {
     RestProvider.prototype.register = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -128,7 +129,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getWishlist = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -139,7 +140,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getBanner = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -150,7 +151,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getRecommendations = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -161,7 +162,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getBrands = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -172,7 +173,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getOffers = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -183,7 +184,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getAgeGroup = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -194,7 +195,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getCategories = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -205,7 +206,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getProduct = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -367,110 +368,114 @@ var DIRECTIVES = [
 var map = {
 	"../pages/account/account.module": [
 		943,
-		26
+		27
 	],
 	"../pages/account/chats/chats.module": [
 		944,
-		25
+		26
 	],
 	"../pages/account/chats/message/message.module": [
 		945,
-		24
+		25
 	],
 	"../pages/account/help/help.module": [
 		946,
-		23
+		24
 	],
 	"../pages/account/notification/notification.module": [
 		947,
-		22
+		23
 	],
 	"../pages/account/profile/profile.module": [
 		948,
-		21
+		22
 	],
 	"../pages/account/saved-address/add-address/add-address.module": [
 		949,
-		20
+		21
 	],
 	"../pages/account/saved-address/saved-address.module": [
 		950,
-		19
+		20
 	],
 	"../pages/account/settings/languages/languages.module": [
 		951,
-		18
+		19
 	],
 	"../pages/account/settings/notifications/notifications.module": [
 		952,
-		17
+		18
 	],
 	"../pages/account/settings/settings.module": [
 		953,
-		16
+		17
 	],
 	"../pages/account/settings/tos/tos.module": [
 		954,
-		15
+		16
 	],
 	"../pages/cart/cart.module": [
-		958,
-		14
+		955,
+		15
 	],
 	"../pages/categories/categories.module": [
-		959,
-		13
+		956,
+		14
 	],
 	"../pages/checkout/checkout.module": [
-		955,
-		12
+		957,
+		13
 	],
 	"../pages/home/home.module": [
-		956,
-		11
+		958,
+		12
 	],
 	"../pages/login/login.module": [
-		963,
-		10
+		959,
+		11
 	],
 	"../pages/orders/detail/detail.module": [
-		957,
-		9
+		960,
+		10
 	],
 	"../pages/orders/orders.module": [
-		960,
-		8
+		961,
+		9
 	],
 	"../pages/product/grid/grid.module": [
 		962,
-		7
+		8
 	],
 	"../pages/product/mini-cart/mini-cart.module": [
-		965,
-		6
+		963,
+		7
 	],
 	"../pages/product/modal-categories/modal-categories.module": [
-		961,
-		5
+		964,
+		6
 	],
 	"../pages/product/product.module": [
-		964,
+		965,
+		5
+	],
+	"../pages/register/register.module": [
+		966,
 		4
 	],
 	"../pages/search/search.module": [
-		966,
+		967,
 		3
 	],
 	"../pages/tabs/tabs.module": [
-		967,
+		968,
 		2
 	],
 	"../pages/thanks/thanks.module": [
-		968,
+		969,
 		1
 	],
 	"../pages/wishlist/wishlist.module": [
-		969,
+		970,
 		0
 	]
 };
@@ -609,17 +614,18 @@ AppModule = __decorate([
                     { loadChildren: '../pages/account/settings/notifications/notifications.module#AccountSettingsNotificationsPageModule', name: 'AccountSettingsNotificationsPage', segment: 'notifications', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/settings.module#AccountSettingsPageModule', name: 'AccountSettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/tos/tos.module#AccountSettingsTosPageModule', name: 'AccountSettingsTosPage', segment: 'tos', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'CheckoutPage', segment: 'checkout', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/orders/detail/detail.module#OrderDetailPageModule', name: 'OrderDetailPage', segment: 'detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/cart/cart.module#CartPageModule', name: 'CartPage', segment: 'cart', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/categories/categories.module#CategoriesPageModule', name: 'CategoriesPage', segment: 'categories', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/product/modal-categories/modal-categories.module#ModalCategoriesPageModule', name: 'ModalCategoriesPage', segment: 'modal-categories', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/product/grid/grid.module#ProductGridPageModule', name: 'ProductGridPage', segment: 'grid', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'CheckoutPage', segment: 'checkout', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/product/product.module#ProductPageModule', name: 'ProductPage', segment: 'product', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/orders/detail/detail.module#OrderDetailPageModule', name: 'OrderDetailPage', segment: 'detail', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/product/grid/grid.module#ProductGridPageModule', name: 'ProductGridPage', segment: 'grid', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/mini-cart/mini-cart.module#MiniCartPageModule', name: 'MiniCartPage', segment: 'mini-cart', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/product/modal-categories/modal-categories.module#ModalCategoriesPageModule', name: 'ModalCategoriesPage', segment: 'modal-categories', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/product/product.module#ProductPageModule', name: 'ProductPage', segment: 'product', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/thanks/thanks.module#ThanksPageModule', name: 'ThanksPage', segment: 'thanks', priority: 'low', defaultHistory: [] },
@@ -816,8 +822,9 @@ var UserProvider = (function () {
     });
     Object.defineProperty(UserProvider.prototype, "all", {
         get: function () {
+            console.log(this.user);
             if (this.user)
-                return this.user.user;
+                return this.user.all;
         },
         enumerable: true,
         configurable: true
@@ -829,10 +836,9 @@ var UserProvider = (function () {
 }());
 UserProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* Events */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]])
 ], UserProvider);
 
-var _a, _b, _c;
 //# sourceMappingURL=user.js.map
 
 /***/ }),
