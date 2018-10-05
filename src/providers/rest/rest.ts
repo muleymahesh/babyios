@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/toPromise';
 
 /*
   Generated class for the RestProvider provider.
@@ -13,7 +14,7 @@ import { Injectable } from '@angular/core';
 export class RestProvider {
 
   url="http://babyneeds.co.in/babyneeds/ws/v2/api1.php";
-
+mydata:any;
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
   }
@@ -73,6 +74,21 @@ export class RestProvider {
         });
     });
   }
+
+  // getNewArrivalList(data) {
+  //   return new Promise((resolve, reject) => {
+  //     this.http.post(this.url, JSON.stringify(data))
+  //       .subscribe(res => {
+  //        resolve(res);
+  //       }, (err) => {
+  //         reject(err);
+  //       });
+  //   });
+  // }
+
+
+
+
   getBrands(data) {
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
@@ -122,15 +138,31 @@ export class RestProvider {
  
 
   getProduct(data) {
-    return new Promise((resolve, reject) => {
-      this.http.post(this.url, JSON.stringify(data))
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
+    return this.http.post(this.url, JSON.stringify(data))
+    .toPromise()
+    .then((data: any) => {
+       console.log('Success', data.data);
+       return data.data;
+    })
+    .catch(err => {
+       console.log('Error', err);
+       return err;
+    })
   }
+
+
+  getNewArrivalList(data) {
+    return this.http.post(this.url, JSON.stringify(data))
+     .toPromise()
+     .then((data: any) => {
+        console.log('Success', data.data);
+        return data.data;
+     })
+     .catch(err => {
+        console.log('Error', err);
+        return err;
+     })
+   }
 
 }
 

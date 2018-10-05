@@ -81,6 +81,8 @@ var App = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__ = __webpack_require__(999);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -90,6 +92,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 /*
@@ -159,6 +162,16 @@ var RestProvider = (function () {
             });
         });
     };
+    // getNewArrivalList(data) {
+    //   return new Promise((resolve, reject) => {
+    //     this.http.post(this.url, JSON.stringify(data))
+    //       .subscribe(res => {
+    //        resolve(res);
+    //       }, (err) => {
+    //         reject(err);
+    //       });
+    //   });
+    // }
     RestProvider.prototype.getBrands = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -204,14 +217,27 @@ var RestProvider = (function () {
         });
     };
     RestProvider.prototype.getProduct = function (data) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.post(_this.url, JSON.stringify(data))
-                .subscribe(function (res) {
-                resolve(res);
-            }, function (err) {
-                reject(err);
-            });
+        return this.http.post(this.url, JSON.stringify(data))
+            .toPromise()
+            .then(function (data) {
+            console.log('Success', data.data);
+            return data.data;
+        })
+            .catch(function (err) {
+            console.log('Error', err);
+            return err;
+        });
+    };
+    RestProvider.prototype.getNewArrivalList = function (data) {
+        return this.http.post(this.url, JSON.stringify(data))
+            .toPromise()
+            .then(function (data) {
+            console.log('Success', data.data);
+            return data.data;
+        })
+            .catch(function (err) {
+            console.log('Error', err);
+            return err;
         });
     };
     return RestProvider;

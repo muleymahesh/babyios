@@ -65,7 +65,7 @@ export class ProductPage {
   
   getproductdetail() {
    this.getproduct.p_id =this.product.p_id;
-   console.log(this.getproduct.p_id);
+  
     this.restProvider.getProduct(this.getproduct)
     .then(data => {
       this.products = data;

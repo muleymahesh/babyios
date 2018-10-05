@@ -127,7 +127,6 @@ var ProductPage = (function () {
     ProductPage.prototype.getproductdetail = function () {
         var _this = this;
         this.getproduct.p_id = this.product.p_id;
-        console.log(this.getproduct.p_id);
         this.restProvider.getProduct(this.getproduct)
             .then(function (data) {
             _this.products = data;

@@ -56,6 +56,13 @@ finalprice:any;
 			request= {
 		method:'get_recommended',
 			};
+
+			nlist: any;
+			newarrivalrequest= {
+		method:'get_new_arrivals',
+			};
+
+
 			
 		constructor(public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
 		this.App = App;
@@ -96,6 +103,16 @@ finalprice:any;
     this.restProvider.getRecommendations(this.request)
     .then(data => {
       this.rlist = data;
+			this.newArrival();
+    });
+
+	}
+	
+	newArrival() {
+    this.restProvider.getNewArrivalList(this.newarrivalrequest)
+    .then(data => {
+		console.log(data);
+			      this.nlist = data;
 			this.getCategory(); 
     });
 
@@ -107,7 +124,7 @@ finalprice:any;
 		
 		this.restProvider.getBanner(this.slideRequest)
 		.then(data => {
-			console.log(data);
+		
 			this.slides = data;
 			this.wishlist1();
 		
