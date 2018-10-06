@@ -31,25 +31,31 @@ mydata:any;
 
 
   register(data) {
-    return new Promise((resolve, reject) => {
-      this.http.post(this.url, JSON.stringify(data))
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
+    return this.http.post(this.url, JSON.stringify(data))
+    .toPromise()
+    .then((data: any) => {
+       console.log('Success', data.data);
+       return data.data;
+    })
+    .catch(err => {
+       console.log('Error', err);
+       return err;
+    })
   }
 
   getWishlist(data) {
-    return new Promise((resolve, reject) => {
-      this.http.post(this.url, JSON.stringify(data))
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
+    return this.http.post(this.url, JSON.stringify(data))
+    .toPromise()
+    .then((data: any) => {
+       console.log('Success', data.data);
+       return data.data;
+    })
+    .catch(err => {
+       console.log('Error', err);
+       return err;
+    })
+  
+   
   }
 
   getBanner(data) {

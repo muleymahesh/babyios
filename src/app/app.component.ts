@@ -1,12 +1,14 @@
 
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { OneSignal } from '@ionic-native/onesignal';
 import { TranslateService } from '@ngx-translate/core';
-import { Platform /*,Config*/ } from 'ionic-angular';
+import { Platform /*,Config*/,Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { WooCommerceProvider, NotifProvider, SettingsProvider } from '../providers/providers';
 import { App } from './app.global';
+import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,6 +16,14 @@ import { App } from './app.global';
 
 export class MyApp {
   rootPage: any = 'TabsPage';
+
+@ViewChild(Nav) nav: Nav;
+
+pages : Array<{
+title: string,
+Component:any}>;
+
+
   app: any = {};
 
   constructor(private oneSignal: OneSignal, private notif: NotifProvider, private platform: Platform, /*private config: Config,*/ public settings: SettingsProvider, private translate: TranslateService, private woo: WooCommerceProvider, private statusBar: StatusBar, private splashScreen: SplashScreen) {
@@ -41,6 +51,12 @@ export class MyApp {
     //     this.oneSignal.endInit();
     //   }
     // });
+    this.pages=[
+                 {title: 'home',
+                  Component:HomePage},
+                  {title: 'Login',
+                  Component:LoginPage}
+               ];
   }
 
   ionViewDidLoad() {

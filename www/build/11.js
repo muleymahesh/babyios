@@ -1,15 +1,15 @@
 webpackJsonp([11],{
 
-/***/ 959:
+/***/ 965:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(987);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderDetailPageModule", function() { return OrderDetailPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__detail__ = __webpack_require__(994);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,38 +20,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = (function () {
-    function LoginPageModule() {
+var OrderDetailPageModule = (function () {
+    function OrderDetailPageModule() {
     }
-    return LoginPageModule;
+    return OrderDetailPageModule;
 }());
-LoginPageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+OrderDetailPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+            __WEBPACK_IMPORTED_MODULE_3__detail__["a" /* OrderDetailPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
-            __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__detail__["a" /* OrderDetailPage */]),
+            __WEBPACK_IMPORTED_MODULE_0__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], LoginPageModule);
+], OrderDetailPageModule);
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=detail.module.js.map
 
 /***/ }),
 
-/***/ 987:
+/***/ 994:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,157 +59,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-
-
-var LoginPage = (function () {
-    function LoginPage(fb, translate, navParams, toast, user, loader, alertCtrl, app, viewCtrl, http, restProvider) {
-        this.fb = fb;
-        this.translate = translate;
-        this.navParams = navParams;
-        this.toast = toast;
-        this.user = user;
-        this.loader = loader;
-        this.alertCtrl = alertCtrl;
-        this.app = app;
-        this.viewCtrl = viewCtrl;
-        this.http = http;
-        this.restProvider = restProvider;
-        this.todo = {
-            method: 'login',
-            email: 'muley.mahesh@gmail.com',
-            password: 'mahesh'
-        };
-        this.loginForm = this.fb.group({
-            user: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required],
-            pass: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required]
-        });
-        this.signupForm = this.fb.group({
-            name: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required],
-            user: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required],
-            email: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].email],
-            pass: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required],
-            pass2: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required]
-        });
-        this.resetForm = this.fb.group({
-            email: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].email]
-        });
+var OrderDetailPage = (function () {
+    function OrderDetailPage(nav, params) {
+        this.nav = nav;
+        this.params = params;
+        this.order = "detail";
+        this.data = this.params.data.params;
+        console.log(this.params.data.params);
     }
-    LoginPage.prototype.goToLogin = function () {
-        this.slider.slideTo(1);
+    OrderDetailPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad OrderDetailPage');
     };
-    LoginPage.prototype.goToSignup = function () {
-        this.slider.slideTo(2);
-    };
-    LoginPage.prototype.slideNext = function () {
-        this.innerSlider.slideNext();
-    };
-    LoginPage.prototype.slidePrevious = function () {
-        this.innerSlider.slidePrev();
-    };
-    LoginPage.prototype.submitSignup = function () {
-        var _this = this;
-        this.loader.present();
-        this.user.nonce('user', 'register').map(function (x) { return x.json(); }).subscribe(function (x) {
-            _this.signupForm.value.nonce = x.nonce;
-            _this.user.signup(_this.signupForm.value).map(function (y) { return y.json(); })
-                .subscribe(function (y) {
-                var tmp = {
-                    user: _this.signupForm.value.user,
-                    pass: _this.signupForm.value.pass
-                };
-                _this.user.login(tmp).map(function (res) { return res.json(); })
-                    .subscribe(function (res) {
-                    if (res.status == 'ok') {
-                        _this.user._loggedIn(res, _this.navParams.data.tabIndex);
-                        _this.translate.get(['REGIST_SUCCESS'], { value: _this.signupForm.value.name }).subscribe(function (x) {
-                            _this.toast.show(x.REGIST_SUCCESS);
-                        });
-                        _this.dismiss();
-                        _this.loader.dismiss();
-                    }
-                    else {
-                        _this.toast.show(res.error);
-                    }
-                }, function (err) {
-                    _this.loader.dismiss();
-                    _this.toast.show(err.json().error);
-                });
-            }, function (err) {
-                _this.loader.dismiss();
-                _this.toast.show(err.json().error);
-            });
-        }, function (err) {
-            _this.loader.dismiss();
-            _this.toast.show(err.json().error);
-        });
-    };
-    LoginPage.prototype.submitReset = function () {
-        var _this = this;
-        this.loader.present();
-        this.user.reset(this.resetForm.value).map(function (res) { return res.json(); })
-            .subscribe(function (res) {
-            if (res.status == 'ok')
-                _this.toast.show(res.msg);
-            else
-                _this.toast.show(res.error);
-            _this.loader.dismiss();
-        }, function (err) {
-            _this.loader.dismiss();
-            _this.toast.show(err.json().error);
-        });
-    };
-    LoginPage.prototype.submitLogin = function () {
-        var _this = this;
-        this.loader.present();
-        // this.restProvider.login(this.todo)
-        // .then(data => {
-        //   this.users = data;
-        //   console.log(this.users);
-        // });
-        // this.user.login(this.loginForm.value).map(res => res.json())
-        //   .subscribe( (res) => {
-        this.restProvider.login(this.todo)
-            .then(function (data) {
-            _this.users = data;
-            if (_this.users.result == 'success') {
-                console.log(_this.users);
-                _this.user._loggedIn(_this.users, _this.navParams.data.tabIndex);
-                // this.translate.get(['LOGIN_SUCCESS'], {value: this.user.name}).subscribe( x=> {
-                //   this.toast.show(x.LOGIN_SUCCESS);
-                // });
-                _this.dismiss();
-            }
-            else
-                _this.toast.show(_this.users.result);
-            _this.loader.dismiss();
-        }, function (err) {
-            _this.loader.dismiss();
-            _this.toast.show(err.json().error);
-        });
-    };
-    LoginPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    return LoginPage;
+    return OrderDetailPage;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ViewChild */])('slider'),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Slides */])
-], LoginPage.prototype, "slider", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ViewChild */])('innerSlider'),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Slides */])
-], LoginPage.prototype, "innerSlider", void 0);
-LoginPage = __decorate([
+OrderDetailPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-login',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/login/login.html"*/'\n    <ion-header transparent no-border no-lines >\n        <ion-navbar color="primary" >\n           <ion-buttons>\n            <button ion-button icon-only tappable (click)="dismiss()">\n              <ion-icon name="close"></ion-icon>\n            </button>\n          </ion-buttons> \n        </ion-navbar>\n      </ion-header>\n   \n          \n         \n            \n              <ion-content>\n                  <img class="logo" src="assets/img/logo/logo.jpg" width="100"/>\n                 \n                  <ion-list>\n                   \n                    <ion-item>\n                        <ion-label floating>Email</ion-label>\n                       <ion-input  [(ngModel)]="todo.email" ngControl="title"></ion-input>\n                    </ion-item>\n                      <ion-item>\n                          <ion-label floating>Password</ion-label>\n                          <ion-input type="password"  [(ngModel)]="todo.password" ngControl="description"></ion-input>\n                      </ion-item>\n                  </ion-list>\n\n                  <ion-row align-items-center >\n                     \n                        <ion-col align-self-center>\n                            <button ion-button block  type="button" padding="5" color="app_primary"  tappable (click)="submitLogin()" >LOG IN</button>\n                        </ion-col>\n                   </ion-row>\n                      <ion-list> \n                    <ion-item> \n                 \n                    <ion-label (click)="getSignup()">No account yet Create one</ion-label>\n                    </ion-item>\n                    </ion-list>\n\n              </ion-content>\n         \n  '/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/login/login.html"*/,
+        selector: 'page-order-detail',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/orders/detail/detail.html"*/'<ion-header>\n    <ion-navbar>\n      <ion-title>{{ \'ORDER\' | translate }} #{{data.id}}</ion-title>\n   </ion-navbar>\n   <ion-toolbar no-padding>\n        <ion-segment [(ngModel)]="order">\n          <ion-segment-button value="detail">\n            {{ \'DETAIL\' | translate }}\n          </ion-segment-button>\n          <ion-segment-button value="billing">\n            {{ \'BILLING\' | translate }}\n          </ion-segment-button>\n          <ion-segment-button value="shipping">\n            {{ \'SHIPPING\' | translate }}\n          </ion-segment-button>\n        </ion-segment>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div [ngSwitch]="order">\n    <div *ngSwitchCase="\'detail\'">\n      <ion-list>\n        <ion-list-header no-margin no-lines>\n          {{ \'PRODUCTS\' | translate }}\n        </ion-list-header>\n        <ion-item *ngFor="let x of data.line_items">\n          <ion-thumbnail item-start>\n            <div class="img" [ngStyle]="{\'background-image\': \'url(\' + x.img +\')\'}"></div>\n          </ion-thumbnail>\n          <h3 [innerHTML]="x.name"></h3>\n          <p><span class="price">{{x.price | currency:\'USD\':true:\'1.2-2\'}}</span> • {{x.quantity}}x</p>\n        </ion-item>\n        <ion-list-header no-margin margin-top no-lines>\n          {{ \'PAYMENT\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.payment_method_title}}\n        </ion-item>\n        <ion-list-header no-margin no-lines *ngIf="data.shipping_lines[0]">\n          {{ \'SHIPPING\' | translate }}\n        </ion-list-header>\n        <ion-item *ngIf="data.shipping_lines[0]">\n          {{data.shipping_lines[0].method_title}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          <b>Total</b>\n        </ion-list-header>\n        <ion-item *ngIf="data.shipping_lines[0]">\n          {{ \'SHIPPING\' | translate }} ({{data.shipping_lines[0].method_title}}) <span item-end>{{data.shipping_lines[0].total | money}}</span>\n        </ion-item>\n        <ion-item *ngIf="data.coupon_lines[0]">\n          {{ \'COUPON\' | translate }} <span item-end>{{data.coupon_lines[0].discount}}</span>\n        </ion-item>\n        <ion-item>\n          Total <span item-end>{{data.total | money}}</span>\n        </ion-item>\n      </ion-list>\n    </div>\n\n    <div *ngSwitchCase="\'billing\'">\n      <ion-list>\n        <ion-list-header no-margin no-lines>\n          {{ \'NAME\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.first_name}} {{data.billing.last_name}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'PHONE\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.phone}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          Email\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.email}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'CITY\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.city}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'STATE\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.state}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'COUNTRY\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.country}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'ADDRESS\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.address_1}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'POSTCODE\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.postcode}}\n        </ion-item>\n      </ion-list>\n    </div>\n\n    <div *ngSwitchCase="\'shipping\'">\n      <ion-list>\n        <ion-list-header no-margin no-lines>\n          {{ \'NAME\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.shipping.first_name}} {{data.shipping.last_name}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'CITY\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.shipping.city}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'STATE\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.shipping.state}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'COUNTRY\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.shipping.country}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'ADDRESS\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.shipping.address_1}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'POSTCODE\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.shipping.postcode}}\n        </ion-item>\n      </ion-list>\n    </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/orders/detail/detail.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["A" /* ViewController */], __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */]])
-], LoginPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
+], OrderDetailPage);
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=detail.js.map
 
 /***/ })
 

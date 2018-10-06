@@ -6,6 +6,7 @@ import { IonicPage, AlertController, ModalController, Platform, NavController, N
 import { UserProvider, NotifProvider, AddressProvider } from '../../providers/providers';
 import { App } from '../../app/app.global';
 import { TranslateService } from '@ngx-translate/core';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -20,7 +21,7 @@ export class AccountPage {
 	constructor(private emailComposer: EmailComposer, private appVersion: AppVersion, private appRate: AppRate, private translate: TranslateService, private alert: AlertController, private platform: Platform, private _notif: NotifProvider, public navCtrl: NavController, private _address: AddressProvider, private modal: ModalController, private _user: UserProvider, public navParams: NavParams) {
 		this.notif = this._notif;
 		this.address = this._address;
-		this.user = this._user;
+		this.user = this._user.user;
 	}
 
 	ionViewDidLoad() {
@@ -98,6 +99,13 @@ export class AccountPage {
 
 	login(){
 		this.modal.create('LoginPage', {}).present();
+	}
+
+	logout()
+	{
+		this.user={};
+		this._user.logout();
+		this.ionViewDidLoad();
 	}
 
 }

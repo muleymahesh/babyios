@@ -105,10 +105,11 @@ export class WishlistPage {
   request= {
 method:'get_fav',
 
-user_id:'muley.mahesh@gmail.com'
+user_id:this.user.user.user_email
   };
+
  wishlist1() {
-    this.restProvider.login(this.request)
+    this.restProvider.getWishlist(this.request)
     .then(data => {
       this.wlist = data;
       console.log(this.wlist);

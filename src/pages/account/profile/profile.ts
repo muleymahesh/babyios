@@ -14,12 +14,12 @@ export class AccountProfilePage {
   user: any;
 
   constructor(public view: ViewController, private translate: TranslateService, private loader: LoadingProvider, private toast: ToastProvider, private _user: UserProvider, private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
-    this.user = this._user.all;
+    this.user = this._user.user;
 
     this.form = this.fb.group({
-      first: [this.user.firstname, Validators.required ],
-      last: this.user.lastname,
-      bio: this.user.description
+      first: [this.user.fname, Validators.required ],
+     // last: this.user.lastname,
+      email: this.user.user_email
     });
   }
 

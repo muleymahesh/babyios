@@ -1,4 +1,4 @@
-webpackJsonp([27],{
+webpackJsonp([28],{
 
 /***/ 101:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -81,6 +81,8 @@ var App = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__ = __webpack_require__(822);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -92,6 +94,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /*
   Generated class for the RestProvider provider.
 
@@ -101,12 +104,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var RestProvider = (function () {
     function RestProvider(http) {
         this.http = http;
+        this.url = "http://babyneeds.co.in/babyneeds/ws/v2/api1.php";
         console.log('Hello RestProvider Provider');
     }
     RestProvider.prototype.login = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -117,7 +121,7 @@ var RestProvider = (function () {
     RestProvider.prototype.register = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -128,7 +132,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getWishlist = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -139,7 +143,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getBanner = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://www.makslab.com/babyneeds/ws/v2/get_banner.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -150,7 +154,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getRecommendations = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -158,10 +162,20 @@ var RestProvider = (function () {
             });
         });
     };
+    // getNewArrivalList(data) {
+    //   return new Promise((resolve, reject) => {
+    //     this.http.post(this.url, JSON.stringify(data))
+    //       .subscribe(res => {
+    //        resolve(res);
+    //       }, (err) => {
+    //         reject(err);
+    //       });
+    //   });
+    // }
     RestProvider.prototype.getBrands = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -172,7 +186,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getOffers = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -183,7 +197,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getAgeGroup = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -194,7 +208,7 @@ var RestProvider = (function () {
     RestProvider.prototype.getCategories = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
+            _this.http.post(_this.url, JSON.stringify(data))
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
@@ -203,14 +217,27 @@ var RestProvider = (function () {
         });
     };
     RestProvider.prototype.getProduct = function (data) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.post("http://localhost/baby/ws/v2/api1.php", JSON.stringify(data))
-                .subscribe(function (res) {
-                resolve(res);
-            }, function (err) {
-                reject(err);
-            });
+        return this.http.post(this.url, JSON.stringify(data))
+            .toPromise()
+            .then(function (data) {
+            console.log('Success', data.data);
+            return data.data;
+        })
+            .catch(function (err) {
+            console.log('Error', err);
+            return err;
+        });
+    };
+    RestProvider.prototype.getNewArrivalList = function (data) {
+        return this.http.post(this.url, JSON.stringify(data))
+            .toPromise()
+            .then(function (data) {
+            console.log('Success', data.data);
+            return data.data;
+        })
+            .catch(function (err) {
+            console.log('Error', err);
+            return err;
         });
     };
     return RestProvider;
@@ -267,9 +294,9 @@ webpackEmptyAsyncContext.id = 242;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ngx_translate_core__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ngx_translate_http_loader__ = __webpack_require__(583);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ionic_img_viewer__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_parallax_header_parallax_header__ = __webpack_require__(933);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_components__ = __webpack_require__(934);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pipes_pipes__ = __webpack_require__(937);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_parallax_header_parallax_header__ = __webpack_require__(934);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_components__ = __webpack_require__(935);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pipes_pipes__ = __webpack_require__(938);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_providers__ = __webpack_require__(101);
 // Ionic native providers
 
@@ -365,111 +392,115 @@ var DIRECTIVES = [
 
 var map = {
 	"../pages/account/account.module": [
-		943,
-		26
+		944,
+		27
 	],
 	"../pages/account/chats/chats.module": [
+		945,
+		26
+	],
+	"../pages/account/chats/message/message.module": [
 		946,
 		25
 	],
-	"../pages/account/chats/message/message.module": [
-		944,
+	"../pages/account/help/help.module": [
+		947,
 		24
 	],
-	"../pages/account/help/help.module": [
-		945,
+	"../pages/account/notification/notification.module": [
+		948,
 		23
 	],
-	"../pages/account/notification/notification.module": [
-		947,
+	"../pages/account/profile/profile.module": [
+		949,
 		22
 	],
-	"../pages/account/profile/profile.module": [
-		948,
+	"../pages/account/saved-address/add-address/add-address.module": [
+		950,
 		21
 	],
-	"../pages/account/saved-address/add-address/add-address.module": [
-		949,
+	"../pages/account/saved-address/saved-address.module": [
+		951,
 		20
 	],
-	"../pages/account/saved-address/saved-address.module": [
-		950,
+	"../pages/account/settings/languages/languages.module": [
+		952,
 		19
 	],
-	"../pages/account/settings/languages/languages.module": [
-		951,
+	"../pages/account/settings/notifications/notifications.module": [
+		953,
 		18
 	],
-	"../pages/account/settings/notifications/notifications.module": [
-		952,
+	"../pages/account/settings/settings.module": [
+		954,
 		17
 	],
-	"../pages/account/settings/settings.module": [
-		953,
-		16
-	],
 	"../pages/account/settings/tos/tos.module": [
-		954,
-		15
+		955,
+		16
 	],
 	"../pages/cart/cart.module": [
 		956,
-		14
+		15
 	],
 	"../pages/categories/categories.module": [
+		957,
+		14
+	],
+	"../pages/checkout/checkout.module": [
 		958,
 		13
 	],
-	"../pages/checkout/checkout.module": [
-		955,
+	"../pages/home/home.module": [
+		959,
 		12
 	],
-	"../pages/home/home.module": [
+	"../pages/login/login.module": [
 		960,
 		11
 	],
-	"../pages/login/login.module": [
-		962,
+	"../pages/orders/detail/detail.module": [
+		961,
 		10
 	],
-	"../pages/orders/detail/detail.module": [
-		957,
-		9
-	],
 	"../pages/orders/orders.module": [
-		959,
-		8
+		962,
+		9
 	],
 	"../pages/product/grid/grid.module": [
 		963,
-		7
+		8
 	],
 	"../pages/product/mini-cart/mini-cart.module": [
+		964,
+		7
+	],
+	"../pages/product/modal-categories/modal-categories.module": [
 		965,
 		6
 	],
-	"../pages/product/modal-categories/modal-categories.module": [
-		961,
+	"../pages/product/product.module": [
+		966,
 		5
 	],
-	"../pages/product/product.module": [
-		964,
+	"../pages/register/register.module": [
+		967,
 		4
 	],
 	"../pages/search/search.module": [
-		966,
+		968,
 		3
 	],
 	"../pages/tabs/tabs.module": [
-		967,
+		969,
 		2
 	],
 	"../pages/thanks/thanks.module": [
-		968,
+		970,
 		1
 	],
 	"../pages/wishlist/wishlist.module": [
-		969,
+		971,
 		0
 	]
 };
@@ -563,7 +594,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_module__ = __webpack_require__(542);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(942);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(943);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_imports__ = __webpack_require__(243);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_rest_rest__ = __webpack_require__(231);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -597,9 +628,9 @@ AppModule = __decorate([
             }, {
                 links: [
                     { loadChildren: '../pages/account/account.module#AccountPageModule', name: 'AccountPage', segment: 'account', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/account/chats/chats.module#AccountChatsPageModule', name: 'AccountChatsPage', segment: 'chats', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/chats/message/message.module#AccountChatsMessagePageModule', name: 'AccountChatsMessagePage', segment: 'message', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/help/help.module#AccountHelpPageModule', name: 'AccountHelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/account/chats/chats.module#AccountChatsPageModule', name: 'AccountChatsPage', segment: 'chats', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/notification/notification.module#AccountNotificationPageModule', name: 'AccountNotificationPage', segment: 'notification', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/profile/profile.module#AccountProfilePageModule', name: 'AccountProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/saved-address/add-address/add-address.module#AddAddressPageModule', name: 'AddAddressPage', segment: 'add-address', priority: 'low', defaultHistory: [] },
@@ -608,17 +639,18 @@ AppModule = __decorate([
                     { loadChildren: '../pages/account/settings/notifications/notifications.module#AccountSettingsNotificationsPageModule', name: 'AccountSettingsNotificationsPage', segment: 'notifications', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/settings.module#AccountSettingsPageModule', name: 'AccountSettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/tos/tos.module#AccountSettingsTosPageModule', name: 'AccountSettingsTosPage', segment: 'tos', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'CheckoutPage', segment: 'checkout', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/cart/cart.module#CartPageModule', name: 'CartPage', segment: 'cart', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/orders/detail/detail.module#OrderDetailPageModule', name: 'OrderDetailPage', segment: 'detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/categories/categories.module#CategoriesPageModule', name: 'CategoriesPage', segment: 'categories', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'CheckoutPage', segment: 'checkout', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/product/modal-categories/modal-categories.module#ModalCategoriesPageModule', name: 'ModalCategoriesPage', segment: 'modal-categories', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/orders/detail/detail.module#OrderDetailPageModule', name: 'OrderDetailPage', segment: 'detail', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/grid/grid.module#ProductGridPageModule', name: 'ProductGridPage', segment: 'grid', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/product/product.module#ProductPageModule', name: 'ProductPage', segment: 'product', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/mini-cart/mini-cart.module#MiniCartPageModule', name: 'MiniCartPage', segment: 'mini-cart', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/product/modal-categories/modal-categories.module#ModalCategoriesPageModule', name: 'ModalCategoriesPage', segment: 'modal-categories', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/product/product.module#ProductPageModule', name: 'ProductPage', segment: 'product', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/thanks/thanks.module#ThanksPageModule', name: 'ThanksPage', segment: 'thanks', priority: 'low', defaultHistory: [] },
@@ -815,8 +847,9 @@ var UserProvider = (function () {
     });
     Object.defineProperty(UserProvider.prototype, "all", {
         get: function () {
+            console.log(this.user);
             if (this.user)
-                return this.user.user;
+                return this.user.all;
         },
         enumerable: true,
         configurable: true
@@ -2045,7 +2078,7 @@ WooCommerceProvider = __decorate([
 
 /***/ }),
 
-/***/ 933:
+/***/ 934:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2115,12 +2148,12 @@ ParallaxHeader = __decorate([
 
 /***/ }),
 
-/***/ 934:
+/***/ 935:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fa_icon_fa_icon__ = __webpack_require__(935);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ion_rating_ion_rating__ = __webpack_require__(936);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fa_icon_fa_icon__ = __webpack_require__(936);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ion_rating_ion_rating__ = __webpack_require__(937);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__fa_icon_fa_icon__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__ion_rating_ion_rating__["a"]; });
 
@@ -2130,7 +2163,7 @@ ParallaxHeader = __decorate([
 
 /***/ }),
 
-/***/ 935:
+/***/ 936:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2217,7 +2250,7 @@ FaIconComponent = __decorate([
 
 /***/ }),
 
-/***/ 936:
+/***/ 937:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2291,13 +2324,13 @@ IonRating = __decorate([
 
 /***/ }),
 
-/***/ 937:
+/***/ 938:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__discount_discount__ = __webpack_require__(938);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__moment_moment__ = __webpack_require__(939);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__money_money__ = __webpack_require__(941);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__discount_discount__ = __webpack_require__(939);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__moment_moment__ = __webpack_require__(940);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__money_money__ = __webpack_require__(942);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__discount_discount__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__moment_moment__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__money_money__["a"]; });
@@ -2309,7 +2342,7 @@ IonRating = __decorate([
 
 /***/ }),
 
-/***/ 938:
+/***/ 939:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2340,7 +2373,7 @@ DiscountPipe = __decorate([
 
 /***/ }),
 
-/***/ 939:
+/***/ 940:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2375,7 +2408,7 @@ MomentPipe = __decorate([
 
 /***/ }),
 
-/***/ 940:
+/***/ 941:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -2640,11 +2673,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 940;
+webpackContext.id = 941;
 
 /***/ }),
 
-/***/ 941:
+/***/ 942:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2693,7 +2726,7 @@ MoneyPipe = __decorate([
 
 /***/ }),
 
-/***/ 942:
+/***/ 943:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -131,11 +131,11 @@ export class CartProvider {
     
     for(let i in this.cart)
 {
-  console.log(this.cart[i].discount)
+  //console.log(this.cart[i].discount)
   if(this.cart[i].discount>0)
   {
    this.total1=this.pricestrikt(this.cart[i].discount,this.cart[i].price);
-   console.log(this.total1);
+  // console.log(this.total1);
   total += parseInt(this.total1) * parseInt(this.cart[i].quantity);
       return total;
     }

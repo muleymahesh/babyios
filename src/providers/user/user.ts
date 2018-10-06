@@ -147,7 +147,7 @@ export class UserProvider {
   get all(){
     console.log(this.user);
     if(this.user)
-      return this.user.all;
+      return this.user;
   }
 
   save(){

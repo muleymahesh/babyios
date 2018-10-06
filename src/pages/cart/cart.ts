@@ -81,27 +81,29 @@ finalprice:any;
   }
 
   goCheckout(){
-    console.log(this.user.all);
-    if(this.user.all)
+//  this.user.logout();
+    console.log(this.user.user);
+    if(this.user.user.user_email)
       this.nav.push('CheckoutPage');
     else{
-      this.translate.get(['CHECKOUT_GUEST', 'CHECKOUT_GUEST_MSG', 'NO', 'YES']).subscribe( x=> {
-        this.alert.create({
-          title: x.CHECKOUT_GUEST,
-          message: x.CHECKOUT_GUEST_MSG,
-          buttons: [{
-              text: x.NO,
-              handler: () => {
-                this.nav.push('CheckoutPage', {guest: true});
-              }
-            },{
-              text: x.YES,
-              handler: () => {
-                this.modal.create('LoginPage').present();
-              }
-            }]
-        }).present();
-      });
+      this.nav.push('LoginPage');
+      // this.translate.get(['CHECKOUT_GUEST', 'CHECKOUT_GUEST_MSG', 'NO', 'YES']).subscribe( x=> {
+      //   this.alert.create({
+      //     title: x.CHECKOUT_GUEST,
+      //     message: x.CHECKOUT_GUEST_MSG,
+      //     buttons: [{
+      //         text: x.NO,
+      //         handler: () => {
+      //           this.nav.push('CheckoutPage', {guest: true});
+      //         }
+      //       },{
+      //         text: x.YES,
+      //         handler: () => {
+      //           this.modal.create('LoginPage').present();
+      //         }
+      //       }]
+      //   }).present();
+      // });
     }
   }
 
