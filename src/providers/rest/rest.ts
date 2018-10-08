@@ -147,8 +147,16 @@ mydata:any;
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
+      if(data.data)
+      {
        console.log('Success', data.data);
        return data.data;
+      }
+      else
+      {
+        // console.log('Success', data.data);
+        return data;
+      }
     })
     .catch(err => {
        console.log('Error', err);
@@ -169,6 +177,23 @@ mydata:any;
         return err;
      })
    }
+
+   getMyOrder(data) {
+    return this.http.post(this.url, JSON.stringify(data))
+    .toPromise()
+    .then((data: any) => {
+       console.log('Success', data.data);
+       return data.data;
+    })
+    .catch(err => {
+       console.log('Error', err);
+       return err;
+    })
+  
+   
+  }
+
+
 
 }
 

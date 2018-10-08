@@ -76,19 +76,19 @@ name:'';
      this.product1.offer_id= this.navParams.data.params.offer_id;
      this.productByOfferId();
     }
-   else if(this.navParams.data.params.age_id)
+   else if(this.navParams.data.params.cat_id)
    {
-    this.param.name = this.navParams.data.params.age_name;
-     this.product2.age_id= this.navParams.data.params.age_id;
-     this.productByAgeId();
+    this.param.name = this.navParams.data.params.cat_name;
+    this.product3.cat_id= this.navParams.data.params.cat_id;
+    this.productByCatId();
    }
    else
    {
-    this.param.name = this.navParams.data.params.cat_name;
-     this.product3.cat_id= this.navParams.data.params.cat_id;
-     this.productByCatId();
+    this.param.name = this.navParams.data.params.age_name;
+    this.product2.age_id= this.navParams.data.params.age_id;
+    this.productByAgeId();
    }
-
+  
    
    
 

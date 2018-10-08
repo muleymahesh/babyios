@@ -97,23 +97,35 @@ export class WishlistPage {
  console.log(this.user.user.user_email);
     this.wishlist1();
   }
-
-  ionViewDidLoad() {
+  ionViewDidEnter(){
     console.log('ionViewDidLoad WishlistPage');
+    console.log(this.user.user.user_email);
+    this.request.user_id=this.user.user.user_email;
+    this.wishlist1();
   }
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad WishlistPage');
+  // }
   wlist: any;
   request= {
 method:'get_fav',
 
-user_id:this.user.user.user_email
+user_id:''
   };
 
  wishlist1() {
+   if(this.user.user.user_email)
+  {
     this.restProvider.getWishlist(this.request)
     .then(data => {
       this.wlist = data;
       console.log(this.wlist);
     });
+  }
+  else
+  {
+    console.log("You are not Loged in")
+  }
   }
 }
 

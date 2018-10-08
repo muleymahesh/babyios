@@ -24,8 +24,16 @@ export class AccountPage {
 		this.user = this._user.user;
 	}
 
-	ionViewDidLoad() {
+	// ionViewDidLoad() {
 				
+	// }
+	ionViewDidEnter(){
+		if(this._user.user.fname)
+		{
+		this.notif = this._notif;
+		this.address = this._address;
+		this.user = this._user.user;
+		}
 	}
 
 	rateUs(){
@@ -105,7 +113,7 @@ export class AccountPage {
 	{
 		this.user={};
 		this._user.logout();
-		this.ionViewDidLoad();
+		this.ionViewDidEnter();
 	}
 
 }

@@ -15,4 +15,42 @@
 
 <ion-content padding>
 
+  <div class="">
+    <ion-list no-lines no-margin margin-left>
+      <ion-item no-padding no-lines>
+        {{ ' Your recommendations' | translate }}
+    </ion-item>
+    </ion-list>
+    
+         
+  <ion-item *ngFor="let o of myOrder;  let i=index " >
+      <ion-avatar item-start>
+        <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{w.imgs[0].img_url}}">
+      </ion-avatar>
+      <h3>{{w.product_name}}</h3>
+      
+      <ng-container *ngIf="w.per_discount!=0; else elseTemplate">
+        <p style="font-size:9px; text-align:left; color:orange"><del>Rs.:{{w.mrp}} </del> <span> Rs.:{{pricestrikt(w.per_discount,w.mrp)}}</span> </p>
+       </ng-container>
+       <ng-template #elseTemplate>
+          <p style="font-size:9px; text-align:left; color:orange">Rs.:{{w.mrp}}</p>
+       </ng-template>
+    
+   </ion-item>
+    
+<!--        
+  <ion-row>
+      <ion-col text-left>
+        <button item-end ion-button clear icon-end tappable (click)="goTo('CategoriesPage')">
+          {{ 'SEE_ALL' | translate }}
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+          </ion-col>
+        </ion-row> -->
+    
+ 
+
+
+</div> 
+
 </ion-content>

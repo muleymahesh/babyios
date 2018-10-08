@@ -1,15 +1,15 @@
 webpackJsonp([17],{
 
-/***/ 954:
+/***/ 958:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountSettingsPageModule", function() { return AccountSettingsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountSettingsTosPageModule", function() { return AccountSettingsTosPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings__ = __webpack_require__(982);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tos__ = __webpack_require__(988);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(545);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,38 +20,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AccountSettingsPageModule = (function () {
-    function AccountSettingsPageModule() {
+var AccountSettingsTosPageModule = (function () {
+    function AccountSettingsTosPageModule() {
     }
-    return AccountSettingsPageModule;
+    return AccountSettingsTosPageModule;
 }());
-AccountSettingsPageModule = __decorate([
+AccountSettingsTosPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__settings__["a" /* AccountSettingsPage */],
+            __WEBPACK_IMPORTED_MODULE_2__tos__["a" /* AccountSettingsTosPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__settings__["a" /* AccountSettingsPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tos__["a" /* AccountSettingsTosPage */]),
             __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], AccountSettingsPageModule);
+], AccountSettingsTosPageModule);
 
-//# sourceMappingURL=settings.module.js.map
+//# sourceMappingURL=tos.module.js.map
 
 /***/ }),
 
-/***/ 982:
+/***/ 988:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountSettingsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountSettingsTosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_app_version__ = __webpack_require__(543);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_providers__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_global__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,64 +59,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-
-
-var AccountSettingsPage = (function () {
-    function AccountSettingsPage(navCtrl, platform, appVersion, translate, alert, user) {
-        var _this = this;
+/**
+ * Generated class for the AccountSettingTosPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+var AccountSettingsTosPage = (function () {
+    function AccountSettingsTosPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
-        this.platform = platform;
-        this.appVersion = appVersion;
-        this.translate = translate;
-        this.alert = alert;
-        this.user = user;
-        this.app = __WEBPACK_IMPORTED_MODULE_5__app_app_global__["a" /* App */];
-        if (this.platform.is('cordova')) {
-            this.appVersion.getVersionNumber().then(function (res) {
-                _this.app.version = res;
-            });
-        }
+        this.navParams = navParams;
     }
-    AccountSettingsPage.prototype.logout = function () {
-        var _this = this;
-        this.translate.get(['LOGOUT', 'LOGOUT_MSG', 'YES', 'CANCEL']).subscribe(function (x) {
-            var confirm = _this.alert.create({
-                title: x.LOGOUT,
-                message: x.LOGOUT_MSG,
-                buttons: [{
-                        text: x.CANCEL
-                    }, {
-                        text: x.YES,
-                        handler: function () {
-                            _this.confirmLogout();
-                        }
-                    }]
-            });
-            confirm.present();
-        });
+    AccountSettingsTosPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AccountSettingsTosPage');
     };
-    AccountSettingsPage.prototype.confirmLogout = function () {
-        var _this = this;
-        this.user.logout().then(function () {
-            _this.navCtrl.popToRoot();
-            _this.navCtrl.parent.select(0);
-        });
-    };
-    AccountSettingsPage.prototype.goTo = function (page, params) {
-        this.navCtrl.push(page, { params: params });
-    };
-    return AccountSettingsPage;
+    return AccountSettingsTosPage;
 }());
-AccountSettingsPage = __decorate([
+AccountSettingsTosPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-account-settings',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/settings.html"*/'\n<ion-header no-border no-lines>\n	<ion-navbar></ion-navbar>\n</ion-header>\n<ion-content fullscreen no-padding>\n	<ion-list class="account-list" no-padding>\n		<h1 margin-left margin-bottom>{{ \'SETTINGS\' | translate}}</h1>\n		<!-- <button ion-item mode="ios" (click)="goTo(\'AccountSettingsNotificationsPage\')">\n			Notifications\n		</button> -->\n		<button ion-item mode="ios" (click)="goTo(\'AccountSettingsLanguagesPage\')">\n			{{ \'LANGUAGES\' | translate}}\n		</button>\n		<ion-item mode="ios" (click)="goTo(\'AccountSettingsTosPage\')">\n			{{ \'TOS\' | translate}}\n		</ion-item>\n		<ion-item *ngIf="app.version">\n			Version {{app.version}}\n		</ion-item>\n		<ion-item ion-item *ngIf="user.all" (click)="logout()">\n			{{ \'LOGOUT\' | translate}}\n		</ion-item>\n	</ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/settings.html"*/,
+        selector: 'page-account-settings-tos',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/tos/tos.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>{{ \'TOS\' | translate}}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <p no-margin margin-bottom>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et est ante. In quis lorem eu felis sagittis consequat ultrices ac ex. Nulla vel lectus dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin feugiat elementum urna et dignissim. Quisque at lacinia magna. Aliquam a convallis lorem, interdum suscipit orci. Aliquam quis lacus lectus. Proin commodo faucibus diam consectetur commodo. In malesuada, mauris eu porta viverra, neque mauris bibendum nunc, quis auctor metus mi eu ligula. Nam at augue id mauris mattis venenatis eget eu tellus. Mauris justo ipsum, aliquam a commodo ut, cursus sit amet purus.</p>\n  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et est ante. In quis lorem eu felis sagittis consequat ultrices ac ex. Nulla vel lectus dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin feugiat elementum urna et dignissim. Quisque at lacinia magna. Aliquam a convallis lorem, interdum suscipit orci. Aliquam quis lacus lectus. Proin commodo faucibus diam consectetur commodo. In malesuada, mauris eu porta viverra, neque mauris bibendum nunc, quis auctor metus mi eu ligula. Nam at augue id mauris mattis venenatis eget eu tellus. Mauris justo ipsum, aliquam a commodo ut, cursus sit amet purus.</p>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/tos/tos.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["t" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["w" /* Platform */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_app_version__["a" /* AppVersion */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["j" /* UserProvider */]])
-], AccountSettingsPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
+], AccountSettingsTosPage);
 
-//# sourceMappingURL=settings.js.map
+//# sourceMappingURL=tos.js.map
 
 /***/ })
 

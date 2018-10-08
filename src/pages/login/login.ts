@@ -4,6 +4,7 @@ import { UserProvider, ToastProvider, LoadingProvider ,RestProvider} from '../..
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
+import { AccountPage } from '../account/account';
 
 @IonicPage()
 @Component({
@@ -130,8 +131,9 @@ export class LoginPage {
           this.user._loggedIn(this.users, this.navParams.data.tabIndex);
            this.translate.get(['LOGIN_SUCCESS'], {value: this.user.user.fname}).subscribe( x=> {
              this.toast.show(x.LOGIN_SUCCESS);
+             
            });
-          this.dismiss();
+           this.navCtrl.push(AccountPage);
         }else
           this.toast.show(this.users.result);
       this.loader.dismiss();

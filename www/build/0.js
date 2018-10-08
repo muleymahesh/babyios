@@ -6,8 +6,8 @@ webpackJsonp([0],{
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WishlistPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(104);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -97,21 +97,29 @@ var WishlistPage = (function () {
         this.restProvider = restProvider;
         this.request = {
             method: 'get_fav',
-            user_id: this.user.user.user_email
+            user_id: ''
         };
         console.log(this.user.user.user_email);
         this.wishlist1();
     }
-    WishlistPage.prototype.ionViewDidLoad = function () {
+    WishlistPage.prototype.ionViewDidEnter = function () {
         console.log('ionViewDidLoad WishlistPage');
+        console.log(this.user.user.user_email);
+        this.request.user_id = this.user.user.user_email;
+        this.wishlist1();
     };
     WishlistPage.prototype.wishlist1 = function () {
         var _this = this;
-        this.restProvider.getWishlist(this.request)
-            .then(function (data) {
-            _this.wlist = data;
-            console.log(_this.wlist);
-        });
+        if (this.user.user.user_email) {
+            this.restProvider.getWishlist(this.request)
+                .then(function (data) {
+                _this.wlist = data;
+                console.log(_this.wlist);
+            });
+        }
+        else {
+            console.log("You are not Loged in");
+        }
     };
     return WishlistPage;
 }());
@@ -126,15 +134,15 @@ WishlistPage = __decorate([
 
 /***/ }),
 
-/***/ 976:
+/***/ 977:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WishlistPageModule", function() { return WishlistPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(545);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__wishlist__ = __webpack_require__(1005);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
