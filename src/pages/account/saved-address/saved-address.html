@@ -1,6 +1,6 @@
-<ion-header no-border no-lines>
-  <ion-navbar>
-      <ion-buttons start *ngIf="action==3 || action==4">
+<ion-header >
+  
+      <!-- <ion-buttons start *ngIf="action==3 || action==4">
         <button color="primary" start icon-only ion-button (click)="dismiss()">
           <ion-icon name="close"></ion-icon>
         </button>
@@ -9,19 +9,24 @@
         <button color="primary" small ion-button (click)="addNew()">
             {{ 'ADD' | translate}}
         </button>
-      </ion-buttons>
-  </ion-navbar>
+      </ion-buttons> -->
+
+      <ion-navbar color="primary">
+          <ion-title>Saved Address</ion-title>
+        </ion-navbar>
+
+
+  
 </ion-header>
 
 <ion-content>
     <ion-list>
-      <h1 margin-left margin-bottom>{{title}}</h1>
-      <ion-grid class="empty" *ngIf="address.length == 0">
+        <ion-grid class="empty" *ngIf="address.length == 0">
         <ion-row align-items-center>
           <ion-col align-self-center text-center>
-            <ion-icon name="list" color="secondary"></ion-icon>
+            <ion-icon name="list" color="primary"></ion-icon>
             <h4 margin-bottom>{{ 'NO_ADDRESS' | translate}}</h4>
-            <button color="secondary" ion-button outline (click)="addNew()">{{ 'ADD' | translate}} {{ 'NEW_ADDRESS' | translate}}</button>
+            <button color="primary" ion-button outline (click)="addNew()">{{ 'ADD' | translate}} {{ 'NEW_ADDRESS' | translate}}</button>
           </ion-col>
         </ion-row>
       </ion-grid>

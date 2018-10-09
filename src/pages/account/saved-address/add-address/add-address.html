@@ -21,7 +21,7 @@
           <ion-input formControlName="last_name" type="text" placeholder="{{ 'LAST_NAME' | translate}}"></ion-input>
         </ion-item>
 
-        <ion-item *ngIf="!user.all">
+        <ion-item *ngIf="!user.user.all">
           <ion-input formControlName="email" type="email" placeholder="{{ 'EMAIL' | translate}}"></ion-input>
         </ion-item>
     

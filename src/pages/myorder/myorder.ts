@@ -28,7 +28,7 @@ export class MyorderPage {
    myOrders:any;
   orderrequest={
     method:'get_order',
-    user_id:this. user.user.user_id,
+    user_id:this. user.user.user_email,
    
 
   }
@@ -37,7 +37,7 @@ export class MyorderPage {
   constructor(private translate: TranslateService, private navParams: NavParams, private toast: ToastProvider, public user: UserProvider, public loader: LoadingProvider, public alertCtrl: AlertController, public app: App, public viewCtrl: ViewController,public http: HttpClient,public restProvider: RestProvider, public navCtrl: NavController) {
 if(this.user.user.user_id)
 {
-    this.myOrders();
+   this.myOrder();
 }
 else{
   console.log("You are not login..")
@@ -47,7 +47,7 @@ else{
   ionViewDidEnter(){
 		if(this.user.user.user_id)
 		{
-      this.myOrders();
+     this.myOrder();
     }
     else{
       console.log("You are not login..")
@@ -55,7 +55,7 @@ else{
 	}
 
   myOrder() {
-    this.restProvider.getNewArrivalList(this.orderrequest)
+    this.restProvider.getMyOrder(this.orderrequest)
     .then(data => {
 		console.log(data);
 	 this.myOrders = data;

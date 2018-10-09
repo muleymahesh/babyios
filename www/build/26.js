@@ -1,15 +1,15 @@
 webpackJsonp([26],{
 
-/***/ 949:
+/***/ 948:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountChatsMessagePageModule", function() { return AccountChatsMessagePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountChatsPageModule", function() { return AccountChatsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__message__ = __webpack_require__(979);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(545);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chats__ = __webpack_require__(979);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,24 +20,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AccountChatsMessagePageModule = (function () {
-    function AccountChatsMessagePageModule() {
+var AccountChatsPageModule = (function () {
+    function AccountChatsPageModule() {
     }
-    return AccountChatsMessagePageModule;
+    return AccountChatsPageModule;
 }());
-AccountChatsMessagePageModule = __decorate([
+AccountChatsPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__message__["a" /* AccountChatsMessagePage */],
+            __WEBPACK_IMPORTED_MODULE_2__chats__["a" /* AccountChatsPage */]
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__message__["a" /* AccountChatsMessagePage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__chats__["a" /* AccountChatsPage */]),
             __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], AccountChatsMessagePageModule);
+], AccountChatsPageModule);
 
-//# sourceMappingURL=message.module.js.map
+//# sourceMappingURL=chats.module.js.map
 
 /***/ }),
 
@@ -45,10 +45,9 @@ AccountChatsMessagePageModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountChatsMessagePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_forms__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountChatsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,136 +59,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-var AccountChatsMessagePage = (function () {
-    function AccountChatsMessagePage(navCtrl, formBuilder) {
+var AccountChatsPage = (function () {
+    function AccountChatsPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
-        this.formBuilder = formBuilder;
-        this.toUser = {
-            _id: '534b8e5aaa5e7afc1b23e69b',
-            pic: 'assets/img/miscellaneous/user.png',
-            username: 'CS',
-        };
-        this.user = {
-            _id: '534b8fb2aa5e7afc1b23e69c',
-            pic: 'assets/img/miscellaneous/user.png',
-            username: 'Me',
-        };
-        this.doneLoading = false;
-        this.messages = [
-            {
-                _id: 1,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.user.username,
-                pic: this.user.pic,
-                text: 'Hello ....'
+        this.navParams = navParams;
+        this.chats = [{
+                id: 1,
+                imageUrl: 'assets/img/miscellaneous/user.png',
+                title: 'Customer Service',
+                lastMessage: 'Hello ....?',
+                timestamp: new Date()
             },
             {
-                _id: 2,
-                date: new Date(),
-                userId: this.toUser._id,
-                username: this.toUser.username,
-                pic: this.toUser.pic,
-                text: 'Hi, anything we can help?'
+                id: 2,
+                imageUrl: 'assets/img/miscellaneous/user.png',
+                title: 'Team Support',
+                lastMessage: 'Sorry',
+                timestamp: new Date()
             },
             {
-                _id: 3,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.user.username,
-                pic: this.user.pic,
-                text: 'Yes, do you accept credit card?'
-            },
-            {
-                _id: 4,
-                date: new Date(),
-                userId: this.toUser._id,
-                username: this.toUser.username,
-                pic: this.toUser.pic,
-                text: 'Yes we do.'
-            },
-            {
-                _id: 5,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.user.username,
-                pic: this.user.pic,
-                text: 'Oh great, thank you.'
-            },
-            {
-                _id: 6,
-                date: new Date(),
-                userId: this.toUser._id,
-                username: this.toUser.username,
-                pic: this.toUser.pic,
-                text: 'You are very welcome'
-            },
-            {
-                _id: 7,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.user.username,
-                pic: this.user.pic,
-                text: ':)'
-            }
-        ];
-        this.messageForm = formBuilder.group({
-            message: new __WEBPACK_IMPORTED_MODULE_0__angular_forms__["b" /* FormControl */]('')
-        });
-        this.chatBox = '';
+                id: 3,
+                imageUrl: 'assets/img/miscellaneous/user.png',
+                title: 'Admin',
+                lastMessage: 'Good luck',
+                timestamp: new Date()
+            }];
     }
-    AccountChatsMessagePage.prototype.send = function (message) {
-        var _this = this;
-        if (message && message !== '') {
-            // this.messageService.sendMessage(chatId, message);
-            var messageData = {
-                toId: this.toUser._id,
-                _id: 6,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.toUser.username,
-                pic: this.toUser.pic,
-                text: message
-            };
-            this.messages.push(messageData);
-            this.scrollToBottom();
-            setTimeout(function () {
-                var replyData = {
-                    toId: _this.toUser._id,
-                    _id: 6,
-                    date: new Date(),
-                    userId: _this.toUser._id,
-                    username: _this.toUser.username,
-                    pic: _this.toUser.pic,
-                    text: 'Just a quick reply'
-                };
-                _this.messages.push(replyData);
-                _this.scrollToBottom();
-            }, 1000);
-        }
-        this.chatBox = '';
+    AccountChatsPage.prototype.goTo = function (chat) {
+        this.navCtrl.push('AccountChatsMessagePage', { id: chat.id });
     };
-    AccountChatsMessagePage.prototype.scrollToBottom = function () {
-        var _this = this;
-        setTimeout(function () {
-            _this.content.scrollToBottom();
-        }, 100);
-    };
-    return AccountChatsMessagePage;
+    return AccountChatsPage;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_14" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* Content */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* Content */])
-], AccountChatsMessagePage.prototype, "content", void 0);
-AccountChatsMessagePage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
-        selector: 'page-account-chats-message',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/message/message.html"*/'<ion-header>\n	<ion-navbar>\n    <ion-title>Customer Service</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div *ngFor="let message of messages" class="message-wrapper" on-hold="onMessageHold($event, $index, message)">\n      <div *ngIf="user._id !== message.userId">\n        <img (click)="viewProfile(message)" class="profile-pic left" [src]="toUser.pic" onerror="onProfilePicError(this)" />\n        <!--  wave-->\n        <div class="chat-bubble left slide-left">\n  \n          <div class="message" [innerHTML]="message.text" autolinker>\n          </div>\n  \n          <div class="message-detail">\n            <span (click)="viewProfile(message)" class="bold">{{toUser.username}}</span>,\n            <span>{{message.date | moment:"ago" | lowercase}}</span>\n          </div>\n  \n        </div>\n      </div>\n  \n      <div *ngIf="user._id === message.userId">\n  \n        <img (click)="viewProfile(message)" class="profile-pic right" [src]="user.pic" onerror="onProfilePicError(this)" />\n  \n        <div class="chat-bubble right slide-right">\n  \n          <div class="message" [innerHTML]="message.text" autolinker>\n          </div>\n  \n          <div class="message-detail">\n            <span (click)="viewProfile(message)" class="bold">{{user.username}}</span>,\n            <span>{{message.date | moment:"ago" | lowercase}}</span>\n          </div>\n  \n        </div>\n  \n      </div>\n  \n      <div class="cf"></div>\n  \n    </div>\n  </ion-content>\n  <ion-footer>\n    <form [formGroup]="messageForm" (submit)="send(chatBox)" novalidate>\n      <ion-item>\n        <ion-input formControlName="message" [(ngModel)]="chatBox" placeholder="Send {{toUser.username}} a message..."></ion-input>\n        <button ion-button clear (click)="send(chatBox)" item-end><ion-icon class="footer-btn" name="send"></ion-icon></button>\n      </ion-item>\n    </form>\n  </ion-footer>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/message/message.html"*/
+AccountChatsPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-account-chats',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/chats.html"*/'<ion-header no-border no-lines>\n	<ion-navbar></ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <h1 margin-left margin-bottom>Chats</h1>\n    <ion-list-header margin-left no-padding>Today</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-list-header margin-left no-padding>Yesterday</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-list-header margin-left no-padding>Las Week</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/chats.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_0__angular_forms__["a" /* FormBuilder */]])
-], AccountChatsMessagePage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
+], AccountChatsPage);
 
-//# sourceMappingURL=message.js.map
+//# sourceMappingURL=chats.js.map
 
 /***/ })
 

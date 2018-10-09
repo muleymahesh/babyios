@@ -55,8 +55,8 @@
         <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
         <param name="onload" value="true" />
     </feature>
-    <name>Ionstore 2 - Tabs</name>
-    <description>An awesome WooCommerce app</description>
+    <name>Baby Needs</name>
+    <description />
     <author email="info@ionicpremium.com" href="http://ionicpremium.com/">Ionic Premium Team</author>
     <content src="index.html" />
     <access allows-arbitrary-loads-for-media="true" allows-arbitrary-loads-in-web-content="true" allows-local-networking="true" origin="*" />

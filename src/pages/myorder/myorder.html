@@ -18,24 +18,24 @@
   <div class="">
     <ion-list no-lines no-margin margin-left>
       <ion-item no-padding no-lines>
-        {{ ' Your recommendations' | translate }}
+        My Orders
     </ion-item>
     </ion-list>
     
          
-  <ion-item *ngFor="let o of myOrder;  let i=index " >
+  <ion-item *ngFor="let o of myOrders;  let i=index " >
+      <p style="font-size:9px; text-align:left; color:orange">{{o.o_id}}</p>
       <ion-avatar item-start>
-        <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{w.imgs[0].img_url}}">
+        <img *ngIf= src="http://www.babyneeds.co.in/babyneeds/product_image/{{o.details[0].img_url}}">
       </ion-avatar>
-      <h3>{{w.product_name}}</h3>
-      
-      <ng-container *ngIf="w.per_discount!=0; else elseTemplate">
-        <p style="font-size:9px; text-align:left; color:orange"><del>Rs.:{{w.mrp}} </del> <span> Rs.:{{pricestrikt(w.per_discount,w.mrp)}}</span> </p>
-       </ng-container>
-       <ng-template #elseTemplate>
-          <p style="font-size:9px; text-align:left; color:orange">Rs.:{{w.mrp}}</p>
-       </ng-template>
+      <h3>{{o.details[0].product_name}}</h3>
+        
+      <p style="font-size:9px; text-align:left; color:orange">Rs:{{o.amount}}  </p>
     
+   
+      <p style="font-size:9px; text-align:left; color:orange">{{o.shipping_type}}   <span> {{o.date}}</span>  </p>
+    
+      <p style="font-size:9px; text-align:left; color:orange">{{o.order_status}}  </p>
    </ion-item>
     
 <!--        

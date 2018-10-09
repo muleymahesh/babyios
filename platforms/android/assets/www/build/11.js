@@ -1,15 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 966:
+/***/ 965:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderDetailPageModule", function() { return OrderDetailPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(545);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__detail__ = __webpack_require__(994);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyorderPageModule", function() { return MyorderPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__myorder__ = __webpack_require__(994);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,25 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var OrderDetailPageModule = (function () {
-    function OrderDetailPageModule() {
+var MyorderPageModule = (function () {
+    function MyorderPageModule() {
     }
-    return OrderDetailPageModule;
+    return MyorderPageModule;
 }());
-OrderDetailPageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
+MyorderPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__detail__["a" /* OrderDetailPage */],
+            __WEBPACK_IMPORTED_MODULE_2__myorder__["a" /* MyorderPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__detail__["a" /* OrderDetailPage */]),
-            __WEBPACK_IMPORTED_MODULE_0__app_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__myorder__["a" /* MyorderPage */]),
         ],
     })
-], OrderDetailPageModule);
+], MyorderPageModule);
 
-//# sourceMappingURL=detail.module.js.map
+//# sourceMappingURL=myorder.module.js.map
 
 /***/ }),
 
@@ -45,9 +42,12 @@ OrderDetailPageModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderDetailPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyorderPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(104);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,27 +59,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var OrderDetailPage = (function () {
-    function OrderDetailPage(nav, params) {
-        this.nav = nav;
-        this.params = params;
-        this.order = "detail";
-        this.data = this.params.data.params;
-        console.log(this.params.data.params);
-    }
-    OrderDetailPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad OrderDetailPage');
-    };
-    return OrderDetailPage;
-}());
-OrderDetailPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-order-detail',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/orders/detail/detail.html"*/'<ion-header>\n    <ion-navbar>\n      <ion-title>{{ \'ORDER\' | translate }} #{{data.id}}</ion-title>\n   </ion-navbar>\n   <ion-toolbar no-padding>\n        <ion-segment [(ngModel)]="order">\n          <ion-segment-button value="detail">\n            {{ \'DETAIL\' | translate }}\n          </ion-segment-button>\n          <ion-segment-button value="billing">\n            {{ \'BILLING\' | translate }}\n          </ion-segment-button>\n          <ion-segment-button value="shipping">\n            {{ \'SHIPPING\' | translate }}\n          </ion-segment-button>\n        </ion-segment>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div [ngSwitch]="order">\n    <div *ngSwitchCase="\'detail\'">\n      <ion-list>\n        <ion-list-header no-margin no-lines>\n          {{ \'PRODUCTS\' | translate }}\n        </ion-list-header>\n        <ion-item *ngFor="let x of data.line_items">\n          <ion-thumbnail item-start>\n            <div class="img" [ngStyle]="{\'background-image\': \'url(\' + x.img +\')\'}"></div>\n          </ion-thumbnail>\n          <h3 [innerHTML]="x.name"></h3>\n          <p><span class="price">{{x.price | currency:\'USD\':true:\'1.2-2\'}}</span> • {{x.quantity}}x</p>\n        </ion-item>\n        <ion-list-header no-margin margin-top no-lines>\n          {{ \'PAYMENT\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.payment_method_title}}\n        </ion-item>\n        <ion-list-header no-margin no-lines *ngIf="data.shipping_lines[0]">\n          {{ \'SHIPPING\' | translate }}\n        </ion-list-header>\n        <ion-item *ngIf="data.shipping_lines[0]">\n          {{data.shipping_lines[0].method_title}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          <b>Total</b>\n        </ion-list-header>\n        <ion-item *ngIf="data.shipping_lines[0]">\n          {{ \'SHIPPING\' | translate }} ({{data.shipping_lines[0].method_title}}) <span item-end>{{data.shipping_lines[0].total | money}}</span>\n        </ion-item>\n        <ion-item *ngIf="data.coupon_lines[0]">\n          {{ \'COUPON\' | translate }} <span item-end>{{data.coupon_lines[0].discount}}</span>\n        </ion-item>\n        <ion-item>\n          Total <span item-end>{{data.total | money}}</span>\n        </ion-item>\n      </ion-list>\n    </div>\n\n    <div *ngSwitchCase="\'billing\'">\n      <ion-list>\n        <ion-list-header no-margin no-lines>\n          {{ \'NAME\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.first_name}} {{data.billing.last_name}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'PHONE\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.phone}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          Email\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.email}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'CITY\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.city}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'STATE\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.state}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'COUNTRY\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.country}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'ADDRESS\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.address_1}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'POSTCODE\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.billing.postcode}}\n        </ion-item>\n      </ion-list>\n    </div>\n\n    <div *ngSwitchCase="\'shipping\'">\n      <ion-list>\n        <ion-list-header no-margin no-lines>\n          {{ \'NAME\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.shipping.first_name}} {{data.shipping.last_name}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'CITY\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.shipping.city}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'STATE\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.shipping.state}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'COUNTRY\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.shipping.country}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'ADDRESS\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.shipping.address_1}}\n        </ion-item>\n        <ion-list-header no-margin no-lines>\n          {{ \'POSTCODE\' | translate }}\n        </ion-list-header>\n        <ion-item>\n          {{data.shipping.postcode}}\n        </ion-item>\n      </ion-list>\n    </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/orders/detail/detail.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
-], OrderDetailPage);
 
-//# sourceMappingURL=detail.js.map
+
+
+/**
+ * Generated class for the MyorderPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var MyorderPage = (function () {
+    function MyorderPage(translate, navParams, toast, user, loader, alertCtrl, app, viewCtrl, http, restProvider, navCtrl) {
+        this.translate = translate;
+        this.navParams = navParams;
+        this.toast = toast;
+        this.user = user;
+        this.loader = loader;
+        this.alertCtrl = alertCtrl;
+        this.app = app;
+        this.viewCtrl = viewCtrl;
+        this.http = http;
+        this.restProvider = restProvider;
+        this.navCtrl = navCtrl;
+        this.orderrequest = {
+            method: 'get_order',
+            user_id: this.user.user.user_id,
+        };
+        if (this.user.user.user_id) {
+            this.myOrders();
+        }
+        else {
+            console.log("You are not login..");
+        }
+    }
+    MyorderPage.prototype.ionViewDidEnter = function () {
+        if (this.user.user.user_id) {
+            this.myOrders();
+        }
+        else {
+            console.log("You are not login..");
+        }
+    };
+    MyorderPage.prototype.myOrder = function () {
+        var _this = this;
+        this.restProvider.getNewArrivalList(this.orderrequest)
+            .then(function (data) {
+            console.log(data);
+            _this.myOrders = data;
+        });
+    };
+    return MyorderPage;
+}());
+MyorderPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-myorder',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/myorder/myorder.html"*/'<!--\n  Generated template for the MyorderPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>myorder</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <div class="">\n    <ion-list no-lines no-margin margin-left>\n      <ion-item no-padding no-lines>\n        {{ \' Your recommendations\' | translate }}\n    </ion-item>\n    </ion-list>\n    \n         \n  <ion-item *ngFor="let o of myOrder;  let i=index " >\n      <ion-avatar item-start>\n        <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{w.imgs[0].img_url}}">\n      </ion-avatar>\n      <h3>{{w.product_name}}</h3>\n      \n      <ng-container *ngIf="w.per_discount!=0; else elseTemplate">\n        <p style="font-size:9px; text-align:left; color:orange"><del>Rs.:{{w.mrp}} </del> <span> Rs.:{{pricestrikt(w.per_discount,w.mrp)}}</span> </p>\n       </ng-container>\n       <ng-template #elseTemplate>\n          <p style="font-size:9px; text-align:left; color:orange">Rs.:{{w.mrp}}</p>\n       </ng-template>\n    \n   </ion-item>\n    \n<!--        \n  <ion-row>\n      <ion-col text-left>\n        <button item-end ion-button clear icon-end tappable (click)="goTo(\'CategoriesPage\')">\n          {{ \'SEE_ALL\' | translate }}\n          <ion-icon name="arrow-forward"></ion-icon>\n        </button>\n          </ion-col>\n        </ion-row> -->\n    \n \n\n\n</div> \n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/myorder/myorder.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */]])
+], MyorderPage);
+
+//# sourceMappingURL=myorder.js.map
 
 /***/ })
 

@@ -1,7 +1,7 @@
 export const App: any = {
   store           : 'Babyneeds',  // change this with your app name
-  ContactEmail    : 'ionicpremium@gmail.com', // change this with your email contact
-  url             : 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // change this with your URL (please use https, recommended)
+  ContactEmail    : '', // change this with your email contact
+  url             : 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // change this with your URL (please use https, recommended)
   OneSignalAppID  : 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // change this with your onesignal api key
   GCM             : 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Google Project Number for Google Cloud Messaging
   consumerKey     : 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // change this with your Consumer Key from WooCommerce

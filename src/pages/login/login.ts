@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { AccountPage } from '../account/account';
+import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -133,7 +134,7 @@ export class LoginPage {
              this.toast.show(x.LOGIN_SUCCESS);
              
            });
-           this.navCtrl.push(AccountPage);
+           this.navCtrl.push(TabsPage);
         }else
           this.toast.show(this.users.result);
       this.loader.dismiss();

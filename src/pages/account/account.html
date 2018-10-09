@@ -41,29 +41,32 @@
 			<ion-badge item-end *ngIf="_notif.all.length > 0">{{_notif.all.length}}</ion-badge>
 		</button> -->
 <div align="center">
-		<br><button  ion-button medium round  color="app_primary" tappable (click)="goTo('SavedAddressPage')">
-			{{ 'Saved Address' | translate}}
-			<ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge>
-		</button><br>
+	
+		
 
-		<button  ion-button medium round  color="app_primary" tappable (click)="goTo('SavedAddressPage')">
-				{{ 'My Orders' | translate}}
-				<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
-			</button><br>
-
-
-
-			<button  ion-button medium round  color="app_primary" tappable (click)="goTo('SavedAddressPage')">
+		<br>	<button  ion-button medium round  color="app_primary" tappable (click)="goTo('SavedAddressPage')">
 					{{ 'Change Password' | translate}}
 					<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
-				</button><br>
+				</button><br><br>
+
+				<button  ion-button medium round  color="app_primary" tappable (click)="goTo('SavedAddressPage')">
+					{{ 'Saved Address' | translate}}
+					<ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge>
+				</button><br><br>
+		
 			
+				<button  ion-button medium round  color="app_primary" tappable (click)="goTo('MyorderPage')">
+					{{ 'My Orders' | translate}}
+					<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
+				</button><br><br>
+	
+	
 
 
 			<button  ion-button medium round  color="app_primary" tappable (click)="logout()">
 					{{ 'Logout' | translate}}
 					<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
-				</button><br>
+				</button><br><br>
 
 		<!-- <button ion-item tappable (click)="goTo('AccountSettingsPage')">
 			{{ 'SETTINGS' | translate}}
@@ -88,18 +91,21 @@
 	<ion-list  *ngIf="!_user.user.fname">
 		<div align="center">
 
-		<br>	<button  ion-button  round medium color="app_primary" tappable (click)="goTo('LoginPage')">
-					{{ 'Log In' | translate}}
-					<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
-				</button> <br>
-		
-				<button  ion-button  round medium color="app_primary" tappable (click)="goTo('RegisterPage')">
+
+			<br>	<button  ion-button  round medium color="app_primary" tappable (click)="goTo('RegisterPage')">
 						{{ 'Register' | translate}}
 						<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
-					</button> <br>
+					</button> <br><br>
 		
-				</div>
+				
 
+
+		<br>	<button  ion-button  round medium color="app_primary" tappable (click)="login()">
+					{{ 'Log In' | translate}}
+					<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
+				</button> <br><br>
+		
+			</div>
 
 	</ion-list>
 </ion-content>

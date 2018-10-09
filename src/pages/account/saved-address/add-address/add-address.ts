@@ -36,9 +36,9 @@ export class AddAddressPage {
   this.loadCountry();
 
   this.form = this.fb.group({
-      first_name: [this.data.first_name || (this.user.all ? this.user.firstname : ''), Validators.required ],
-      last_name: this.data.last_name || (this.user.all ? this.user.lastname : ''),
-      email: [this.user.all ? this.user.email : '', Validators.required],
+      first_name: [this.data.first_name || (this.user.all ? this.user.user.fname : ''), Validators.required ],
+      last_name: this.data.last_name || (this.user.all ? this.user.user.lname : ''),
+      email: [this.user.all ? this.user.user.user_email : '', Validators.required],
       phone: [this.data.phone, Validators.required ],
       city: [this.data.city, Validators.required ],
       state: [this.data.state, Validators.required ],
