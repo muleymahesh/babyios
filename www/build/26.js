@@ -1,14 +1,14 @@
 webpackJsonp([26],{
 
-/***/ 948:
+/***/ 950:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountChatsPageModule", function() { return AccountChatsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountHelpPageModule", function() { return AccountHelpPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chats__ = __webpack_require__(979);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__help__ = __webpack_require__(983);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20,34 +20,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AccountChatsPageModule = (function () {
-    function AccountChatsPageModule() {
+var AccountHelpPageModule = (function () {
+    function AccountHelpPageModule() {
     }
-    return AccountChatsPageModule;
+    return AccountHelpPageModule;
 }());
-AccountChatsPageModule = __decorate([
+AccountHelpPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__chats__["a" /* AccountChatsPage */]
+            __WEBPACK_IMPORTED_MODULE_2__help__["a" /* AccountHelpPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__chats__["a" /* AccountChatsPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__help__["a" /* AccountHelpPage */]),
             __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], AccountChatsPageModule);
+], AccountHelpPageModule);
 
-//# sourceMappingURL=chats.module.js.map
+//# sourceMappingURL=help.module.js.map
 
 /***/ }),
 
-/***/ 979:
+/***/ 983:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountChatsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountHelpPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,46 +57,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
-var AccountChatsPage = (function () {
-    function AccountChatsPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.chats = [{
-                id: 1,
-                imageUrl: 'assets/img/miscellaneous/user.png',
-                title: 'Customer Service',
-                lastMessage: 'Hello ....?',
-                timestamp: new Date()
-            },
-            {
-                id: 2,
-                imageUrl: 'assets/img/miscellaneous/user.png',
-                title: 'Team Support',
-                lastMessage: 'Sorry',
-                timestamp: new Date()
-            },
-            {
-                id: 3,
-                imageUrl: 'assets/img/miscellaneous/user.png',
-                title: 'Admin',
-                lastMessage: 'Good luck',
-                timestamp: new Date()
-            }];
+var AccountHelpPage = (function () {
+    function AccountHelpPage() {
+        this.faqs = [
+            { id: 1, title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?', answer: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga' },
+            { id: 2, title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?', answer: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga' },
+            { id: 3, title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?', answer: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga' },
+            { id: 4, title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?', answer: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga' }
+        ];
     }
-    AccountChatsPage.prototype.goTo = function (chat) {
-        this.navCtrl.push('AccountChatsMessagePage', { id: chat.id });
+    AccountHelpPage.prototype.toggleSection = function (i) {
+        this.faqs[i].open = !this.faqs[i].open;
     };
-    return AccountChatsPage;
+    AccountHelpPage.prototype.toggleItem = function (i, j) {
+        this.faqs[i].child[j].open = !this.faqs[i].child[j].open;
+    };
+    return AccountHelpPage;
 }());
-AccountChatsPage = __decorate([
+AccountHelpPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-account-chats',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/chats.html"*/'<ion-header no-border no-lines>\n	<ion-navbar></ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <h1 margin-left margin-bottom>Chats</h1>\n    <ion-list-header margin-left no-padding>Today</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-list-header margin-left no-padding>Yesterday</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-list-header margin-left no-padding>Las Week</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/chats.html"*/,
+        selector: 'page-account-help',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/help/help.html"*/'<ion-header no-border no-lines>\n    <ion-navbar></ion-navbar>\n</ion-header>\n\n<ion-content>\n    <h1 margin-left margin-bottom>{{ \'FAQ\' | translate}}</h1>\n    <ion-list no-padding class="accordion-list">\n        <div *ngFor="let item of faqs; let i = index">\n          <ion-item mode="ios" (click)="toggleSection(i)" [ngClass]="{\'active\':item.open, \'section\': item.open}">\n              {{ item.title }}\n              <ion-icon name="add" item-end></ion-icon>\n          </ion-item>\n          <div padding margin-left class="sub-accordion" *ngIf="item.answer && item.open">\n            {{item.answer}}\n          </div>\n        </div>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/help/help.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
-], AccountChatsPage);
+    __metadata("design:paramtypes", [])
+], AccountHelpPage);
 
-//# sourceMappingURL=chats.js.map
+//# sourceMappingURL=help.js.map
 
 /***/ })
 

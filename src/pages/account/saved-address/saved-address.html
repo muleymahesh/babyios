@@ -1,17 +1,17 @@
-<ion-header >
-  
-      <!-- <ion-buttons start *ngIf="action==3 || action==4">
-        <button color="primary" start icon-only ion-button (click)="dismiss()">
+<ion-header  >
+  <ion-navbar color="primary"> 
+      <ion-buttons start *ngIf="action==3 || action==4">
+        <button color="white" start icon-only ion-button (click)="dismiss()">
           <ion-icon name="close"></ion-icon>
         </button>
-      </ion-buttons>
+      </ion-buttons> 
       <ion-buttons end>
-        <button color="primary" small ion-button (click)="addNew()">
+        <button color="white" small ion-button (click)="addNew()">
             {{ 'ADD' | translate}}
         </button>
-      </ion-buttons> -->
+      </ion-buttons>
 
-      <ion-navbar color="primary">
+     
           <ion-title>Saved Address</ion-title>
         </ion-navbar>
 
@@ -33,9 +33,9 @@
       <ion-item-sliding *ngFor="let x of address.all; let i = index" #item>
         <ion-item (click)="editAddress(x, i, action)">
           <h3>{{x.first_name}} • {{x.phone}}</h3>
-          <p>{{x.city}} - {{x.state}}</p>
+          <p>{{x.pincode}} - {{x.area}}</p>
+          <p>{{x.landmark}}</p>
           <p>{{x.address_1}}</p>
-          <p>{{x.country}}</p>
           <ion-badge item-end *ngIf="x.primary">{{ 'PRIMARY' | translate}}</ion-badge>
         </ion-item>
         <ion-item-options side="right" *ngIf="!x.primary">

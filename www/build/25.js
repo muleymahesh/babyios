@@ -1,15 +1,15 @@
 webpackJsonp([25],{
 
-/***/ 949:
+/***/ 951:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountChatsMessagePageModule", function() { return AccountChatsMessagePageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__message__ = __webpack_require__(980);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountNotificationPageModule", function() { return AccountNotificationPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__notification__ = __webpack_require__(984);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,35 +20,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AccountChatsMessagePageModule = (function () {
-    function AccountChatsMessagePageModule() {
+var AccountNotificationPageModule = (function () {
+    function AccountNotificationPageModule() {
     }
-    return AccountChatsMessagePageModule;
+    return AccountNotificationPageModule;
 }());
-AccountChatsMessagePageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+AccountNotificationPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__message__["a" /* AccountChatsMessagePage */],
+            __WEBPACK_IMPORTED_MODULE_3__notification__["a" /* AccountNotificationPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__message__["a" /* AccountChatsMessagePage */]),
-            __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__notification__["a" /* AccountNotificationPage */]),
+            __WEBPACK_IMPORTED_MODULE_0__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], AccountChatsMessagePageModule);
+], AccountNotificationPageModule);
 
-//# sourceMappingURL=message.module.js.map
+//# sourceMappingURL=notification.module.js.map
 
 /***/ }),
 
-/***/ 980:
+/***/ 984:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountChatsMessagePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_forms__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountNotificationPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(66);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,135 +61,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var AccountChatsMessagePage = (function () {
-    function AccountChatsMessagePage(navCtrl, formBuilder) {
-        this.navCtrl = navCtrl;
-        this.formBuilder = formBuilder;
-        this.toUser = {
-            _id: '534b8e5aaa5e7afc1b23e69b',
-            pic: 'assets/img/miscellaneous/user.png',
-            username: 'CS',
-        };
-        this.user = {
-            _id: '534b8fb2aa5e7afc1b23e69c',
-            pic: 'assets/img/miscellaneous/user.png',
-            username: 'Me',
-        };
-        this.doneLoading = false;
-        this.messages = [
-            {
-                _id: 1,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.user.username,
-                pic: this.user.pic,
-                text: 'Hello ....'
-            },
-            {
-                _id: 2,
-                date: new Date(),
-                userId: this.toUser._id,
-                username: this.toUser.username,
-                pic: this.toUser.pic,
-                text: 'Hi, anything we can help?'
-            },
-            {
-                _id: 3,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.user.username,
-                pic: this.user.pic,
-                text: 'Yes, do you accept credit card?'
-            },
-            {
-                _id: 4,
-                date: new Date(),
-                userId: this.toUser._id,
-                username: this.toUser.username,
-                pic: this.toUser.pic,
-                text: 'Yes we do.'
-            },
-            {
-                _id: 5,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.user.username,
-                pic: this.user.pic,
-                text: 'Oh great, thank you.'
-            },
-            {
-                _id: 6,
-                date: new Date(),
-                userId: this.toUser._id,
-                username: this.toUser.username,
-                pic: this.toUser.pic,
-                text: 'You are very welcome'
-            },
-            {
-                _id: 7,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.user.username,
-                pic: this.user.pic,
-                text: ':)'
-            }
-        ];
-        this.messageForm = formBuilder.group({
-            message: new __WEBPACK_IMPORTED_MODULE_0__angular_forms__["b" /* FormControl */]('')
-        });
-        this.chatBox = '';
+var AccountNotificationPage = (function () {
+    function AccountNotificationPage(_notif, alert) {
+        this._notif = _notif;
+        this.alert = alert;
+        this.notif = [];
+        console.log(_notif.all);
     }
-    AccountChatsMessagePage.prototype.send = function (message) {
-        var _this = this;
-        if (message && message !== '') {
-            // this.messageService.sendMessage(chatId, message);
-            var messageData = {
-                toId: this.toUser._id,
-                _id: 6,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.toUser.username,
-                pic: this.toUser.pic,
-                text: message
-            };
-            this.messages.push(messageData);
-            this.scrollToBottom();
-            setTimeout(function () {
-                var replyData = {
-                    toId: _this.toUser._id,
-                    _id: 6,
-                    date: new Date(),
-                    userId: _this.toUser._id,
-                    username: _this.toUser.username,
-                    pic: _this.toUser.pic,
-                    text: 'Just a quick reply'
-                };
-                _this.messages.push(replyData);
-                _this.scrollToBottom();
-            }, 1000);
-        }
-        this.chatBox = '';
+    AccountNotificationPage.prototype.showAlert = function (x) {
+        this.alert.create({
+            title: x.title,
+            subTitle: x.body,
+            buttons: ['OK']
+        }).present();
     };
-    AccountChatsMessagePage.prototype.scrollToBottom = function () {
-        var _this = this;
-        setTimeout(function () {
-            _this.content.scrollToBottom();
-        }, 100);
+    AccountNotificationPage.prototype.remove = function (x) {
+        this._notif.remove(x.id);
     };
-    return AccountChatsMessagePage;
+    AccountNotificationPage.prototype.ionViewDidLoad = function () {
+        this.notif = this._notif.all;
+        console.log('ionViewDidLoad AccountNotificationPage');
+    };
+    return AccountNotificationPage;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_14" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* Content */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* Content */])
-], AccountChatsMessagePage.prototype, "content", void 0);
-AccountChatsMessagePage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
-        selector: 'page-account-chats-message',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/message/message.html"*/'<ion-header>\n	<ion-navbar>\n    <ion-title>Customer Service</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div *ngFor="let message of messages" class="message-wrapper" on-hold="onMessageHold($event, $index, message)">\n      <div *ngIf="user._id !== message.userId">\n        <img (click)="viewProfile(message)" class="profile-pic left" [src]="toUser.pic" onerror="onProfilePicError(this)" />\n        <!--  wave-->\n        <div class="chat-bubble left slide-left">\n  \n          <div class="message" [innerHTML]="message.text" autolinker>\n          </div>\n  \n          <div class="message-detail">\n            <span (click)="viewProfile(message)" class="bold">{{toUser.username}}</span>,\n            <span>{{message.date | moment:"ago" | lowercase}}</span>\n          </div>\n  \n        </div>\n      </div>\n  \n      <div *ngIf="user._id === message.userId">\n  \n        <img (click)="viewProfile(message)" class="profile-pic right" [src]="user.pic" onerror="onProfilePicError(this)" />\n  \n        <div class="chat-bubble right slide-right">\n  \n          <div class="message" [innerHTML]="message.text" autolinker>\n          </div>\n  \n          <div class="message-detail">\n            <span (click)="viewProfile(message)" class="bold">{{user.username}}</span>,\n            <span>{{message.date | moment:"ago" | lowercase}}</span>\n          </div>\n  \n        </div>\n  \n      </div>\n  \n      <div class="cf"></div>\n  \n    </div>\n  </ion-content>\n  <ion-footer>\n    <form [formGroup]="messageForm" (submit)="send(chatBox)" novalidate>\n      <ion-item>\n        <ion-input formControlName="message" [(ngModel)]="chatBox" placeholder="Send {{toUser.username}} a message..."></ion-input>\n        <button ion-button clear (click)="send(chatBox)" item-end><ion-icon class="footer-btn" name="send"></ion-icon></button>\n      </ion-item>\n    </form>\n  </ion-footer>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/message/message.html"*/
+AccountNotificationPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-account-notification',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/notification/notification.html"*/'<ion-header no-border no-lines>\n	<ion-navbar></ion-navbar>\n</ion-header>\n \n <ion-content> \n   <ion-list>\n    <h1 margin-left margin-bottom>{{ \'NOTIF\' | translate}}</h1>\n    <ion-grid class="empty" *ngIf="notif.length == 0">\n			<ion-row align-items-center>\n				<ion-col align-self-center text-center>\n					<ion-icon name="notifications-off" color="secondary"></ion-icon>\n					<h4 margin-bottom>{{ \'EMPTY_NOTIF\' | translate}}</h4>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n    <ion-item-sliding *ngFor="let x of notif">\n      <ion-item (click)="showAlert(x)">\n        <ion-avatar item-start *ngIf="x.img">\n          <img [src]="x.img" />\n        </ion-avatar>\n        <h3>{{x.title}}</h3>\n        <p>{{x.body}}</p>\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button small color="assertive" tappable (click)="remove(x)">\n					<ion-icon name="trash"></ion-icon>\n					{{\'REMOVE\' | translate}}\n				</button>\n      </ion-item-options>\n    </ion-item-sliding>\n   </ion-list>\n </ion-content>\n '/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/notification/notification.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_0__angular_forms__["a" /* FormBuilder */]])
-], AccountChatsMessagePage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["e" /* NotifProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
+], AccountNotificationPage);
 
-//# sourceMappingURL=message.js.map
+//# sourceMappingURL=notification.js.map
 
 /***/ })
 

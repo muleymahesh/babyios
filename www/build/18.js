@@ -1,14 +1,15 @@
 webpackJsonp([18],{
 
-/***/ 956:
+/***/ 958:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountSettingsNotificationsPageModule", function() { return AccountSettingsNotificationsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountSettingsTosPageModule", function() { return AccountSettingsTosPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notifications__ = __webpack_require__(987);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tos__ = __webpack_require__(991);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +19,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AccountSettingsNotificationsPageModule = (function () {
-    function AccountSettingsNotificationsPageModule() {
+
+var AccountSettingsTosPageModule = (function () {
+    function AccountSettingsTosPageModule() {
     }
-    return AccountSettingsNotificationsPageModule;
+    return AccountSettingsTosPageModule;
 }());
-AccountSettingsNotificationsPageModule = __decorate([
+AccountSettingsTosPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* AccountSettingsNotificationsPage */],
+            __WEBPACK_IMPORTED_MODULE_2__tos__["a" /* AccountSettingsTosPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* AccountSettingsNotificationsPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tos__["a" /* AccountSettingsTosPage */]),
+            __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], AccountSettingsNotificationsPageModule);
+], AccountSettingsTosPageModule);
 
-//# sourceMappingURL=notifications.module.js.map
+//# sourceMappingURL=tos.module.js.map
 
 /***/ }),
 
-/***/ 987:
+/***/ 991:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountSettingsNotificationsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountSettingsTosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57,29 +60,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the AccountSettingNotificationPage page.
+ * Generated class for the AccountSettingTosPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-var AccountSettingsNotificationsPage = (function () {
-    function AccountSettingsNotificationsPage(navCtrl, navParams) {
+var AccountSettingsTosPage = (function () {
+    function AccountSettingsTosPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
-    AccountSettingsNotificationsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad AccountSettingsNotificationsPage');
+    AccountSettingsTosPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AccountSettingsTosPage');
     };
-    return AccountSettingsNotificationsPage;
+    return AccountSettingsTosPage;
 }());
-AccountSettingsNotificationsPage = __decorate([
+AccountSettingsTosPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-account-settings-notifications',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/notifications/notifications.html"*/'\n<ion-header no-border no-lines>\n  <ion-navbar></ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-list>\n        <h1 margin-left margin-bottom>Notifications</h1>\n        <div padding-left padding-top>\n          <h4>Messages</h4>\n          <p>Receive messages from our store.</p>\n        </div>\n        <ion-item>\n          <ion-label> Email</ion-label>\n          <ion-toggle checked="true"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Push notifications</ion-label>\n          <ion-toggle checked="true"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Text messages</ion-label>\n          <ion-toggle checked="true"></ion-toggle>\n        </ion-item>\n    </ion-list>\n    <ion-list>\n      <div padding-left padding-top>\n        <h4>Promotion and tips</h4>\n        <p>Receive coupons, promotions, surveys, product updates and inspirations.</p>\n      </div>\n      <ion-item>\n        <ion-label>Email</ion-label>\n        <ion-toggle checked="true"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Push notifications</ion-label>\n        <ion-toggle checked="true"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Text messages</ion-label>\n        <ion-toggle checked="true"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Phone calls</ion-label>\n        <ion-toggle checked="false"></ion-toggle>\n      </ion-item>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/notifications/notifications.html"*/,
+        selector: 'page-account-settings-tos',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/tos/tos.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>{{ \'TOS\' | translate}}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <p no-margin margin-bottom>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et est ante. In quis lorem eu felis sagittis consequat ultrices ac ex. Nulla vel lectus dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin feugiat elementum urna et dignissim. Quisque at lacinia magna. Aliquam a convallis lorem, interdum suscipit orci. Aliquam quis lacus lectus. Proin commodo faucibus diam consectetur commodo. In malesuada, mauris eu porta viverra, neque mauris bibendum nunc, quis auctor metus mi eu ligula. Nam at augue id mauris mattis venenatis eget eu tellus. Mauris justo ipsum, aliquam a commodo ut, cursus sit amet purus.</p>\n  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et est ante. In quis lorem eu felis sagittis consequat ultrices ac ex. Nulla vel lectus dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin feugiat elementum urna et dignissim. Quisque at lacinia magna. Aliquam a convallis lorem, interdum suscipit orci. Aliquam quis lacus lectus. Proin commodo faucibus diam consectetur commodo. In malesuada, mauris eu porta viverra, neque mauris bibendum nunc, quis auctor metus mi eu ligula. Nam at augue id mauris mattis venenatis eget eu tellus. Mauris justo ipsum, aliquam a commodo ut, cursus sit amet purus.</p>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/tos/tos.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
-], AccountSettingsNotificationsPage);
+], AccountSettingsTosPage);
 
-//# sourceMappingURL=notifications.js.map
+//# sourceMappingURL=tos.js.map
 
 /***/ })
 

@@ -78,6 +78,7 @@ name:'';
     }
    else if(this.navParams.data.params.cat_id)
    {
+
     this.param.name = this.navParams.data.params.cat_name;
     this.product3.cat_id= this.navParams.data.params.cat_id;
     this.productByCatId();
@@ -85,7 +86,8 @@ name:'';
    else
    {
     this.param.name = this.navParams.data.params.age_name;
-    this.product2.age_id= this.navParams.data.params.age_id;
+    this.product2.age_id= this.navParams.data.params.id;
+    
     this.productByAgeId();
    }
   

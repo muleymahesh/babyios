@@ -1,7 +1,7 @@
 <ion-header no-border no-lines>
-    <ion-navbar start>
+    <ion-navbar color="primary">
       <ion-buttons start>
-        <button start color="primary" start icon-only ion-button (click)="dismiss()">
+        <button start color="white" start icon-only ion-button (click)="dismiss()">
             <ion-icon name="close"></ion-icon>
         </button>
       </ion-buttons>
@@ -30,30 +30,33 @@
         </ion-item>
         
         <ion-item>
-            <ion-label>{{ 'COUNTRY' | translate}}</ion-label>
+            <!-- <ion-label>{{ 'COUNTRY' | translate}}</ion-label>
             <ion-select formControlName="country" [selectOptions]="countryOpts" placeholder="{{ 'SELECT' | translate}} {{ 'COUNTRY' | translate}}" cancelText="{{ 'CANCEL' | translate}}" okText="{{ 'SELECT' | translate}}" required (ionChange)="getStates()">
               <ion-option *ngFor="let x of countries" [value]="x.id" [innerHTML]="x.name"></ion-option>
-            </ion-select>
-        </ion-item>
+            </ion-select> -->
 
-        <ion-item *ngIf="states.length > 0 || this.data.state">
+            <ion-input formControlName="pincode" type="text" placeholder="{{ 'pincode' | translate}}"></ion-input>
+        </ion-item>
+      <ion-item>
+        <!-- <ion-item *ngIf="states.length > 0 || this.data.state">
             <ion-label>{{ 'STATE' | translate}}</ion-label>
             <ion-select formControlName="state" [selectOptions]="stateOpts" placeholder="{{ 'SELECT' | translate}} {{ 'STATE' | translate}}" cancelText="{{ 'CANCEL' | translate}}" okText="{{ 'SELECT' | translate}}" required>
               <ion-option *ngFor="let x of states" [value]="x.id" [innerHTML]="x.name"></ion-option>
-            </ion-select>
+            </ion-select> -->
+            <ion-input formControlName="area" type="text" placeholder="{{ 'area' | translate}}"></ion-input>
         </ion-item>
         
-        <ion-item *ngIf="states.length == 0">
+        <!-- <ion-item *ngIf="states.length == 0">
           <ion-input formControlName="state" type="text" placeholder="{{ 'STATE' | translate}}" required></ion-input>
-        </ion-item>
+        </ion-item> -->
 
         <ion-item>
-          <ion-input formControlName="city" type="text" placeholder="{{ 'CITY' | translate}}" required></ion-input>
+          <ion-input formControlName="landmark" type="text" placeholder="{{ 'landmark' | translate}}" required></ion-input>
         </ion-item>
     
-        <ion-item>
+        <!-- <ion-item>
           <ion-input formControlName="postcode" type="number" inputmode="numeric" pattern="[0-9]*" placeholder="{{ 'POSTCODE' | translate}}" required></ion-input>
-        </ion-item>
+        </ion-item> -->
     
         <ion-item>
           <ion-textarea formControlName="address_1" name="description" placeholder="{{ 'ADDRESS' | translate}}" required></ion-textarea>

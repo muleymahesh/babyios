@@ -190,7 +190,22 @@ mydata:any;
        return err;
     })
   
+    
    
+  }
+  changePassword(data)
+  {
+    return this.http.post(this.url, JSON.stringify(data))
+    .toPromise()
+    .then((data: any) => {
+       console.log('Success', data.result);
+       return data.result;
+    })
+    .catch(err => {
+       console.log('Error', err);
+       return err;
+    })
+  
   }
 
 

@@ -1,15 +1,15 @@
 webpackJsonp([24],{
 
-/***/ 950:
+/***/ 952:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountHelpPageModule", function() { return AccountHelpPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__help__ = __webpack_require__(981);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountProfilePageModule", function() { return AccountProfilePageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile__ = __webpack_require__(985);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,33 +20,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AccountHelpPageModule = (function () {
-    function AccountHelpPageModule() {
+var AccountProfilePageModule = (function () {
+    function AccountProfilePageModule() {
     }
-    return AccountHelpPageModule;
+    return AccountProfilePageModule;
 }());
-AccountHelpPageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+AccountProfilePageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__help__["a" /* AccountHelpPage */],
+            __WEBPACK_IMPORTED_MODULE_3__profile__["a" /* AccountProfilePage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__help__["a" /* AccountHelpPage */]),
-            __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__profile__["a" /* AccountProfilePage */]),
+            __WEBPACK_IMPORTED_MODULE_0__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], AccountHelpPageModule);
+], AccountProfilePageModule);
 
-//# sourceMappingURL=help.module.js.map
+//# sourceMappingURL=profile.module.js.map
 
 /***/ }),
 
-/***/ 981:
+/***/ 985:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountHelpPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_providers__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(74);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,31 +61,52 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var AccountHelpPage = (function () {
-    function AccountHelpPage() {
-        this.faqs = [
-            { id: 1, title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?', answer: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga' },
-            { id: 2, title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?', answer: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga' },
-            { id: 3, title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?', answer: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga' },
-            { id: 4, title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?', answer: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga' }
-        ];
-    }
-    AccountHelpPage.prototype.toggleSection = function (i) {
-        this.faqs[i].open = !this.faqs[i].open;
-    };
-    AccountHelpPage.prototype.toggleItem = function (i, j) {
-        this.faqs[i].child[j].open = !this.faqs[i].child[j].open;
-    };
-    return AccountHelpPage;
-}());
-AccountHelpPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-account-help',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/help/help.html"*/'<ion-header no-border no-lines>\n    <ion-navbar></ion-navbar>\n</ion-header>\n\n<ion-content>\n    <h1 margin-left margin-bottom>{{ \'FAQ\' | translate}}</h1>\n    <ion-list no-padding class="accordion-list">\n        <div *ngFor="let item of faqs; let i = index">\n          <ion-item mode="ios" (click)="toggleSection(i)" [ngClass]="{\'active\':item.open, \'section\': item.open}">\n              {{ item.title }}\n              <ion-icon name="add" item-end></ion-icon>\n          </ion-item>\n          <div padding margin-left class="sub-accordion" *ngIf="item.answer && item.open">\n            {{item.answer}}\n          </div>\n        </div>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/help/help.html"*/,
-    }),
-    __metadata("design:paramtypes", [])
-], AccountHelpPage);
 
-//# sourceMappingURL=help.js.map
+
+
+
+var AccountProfilePage = (function () {
+    function AccountProfilePage(view, translate, loader, toast, _user, fb, navCtrl, navParams) {
+        this.view = view;
+        this.translate = translate;
+        this.loader = loader;
+        this.toast = toast;
+        this._user = _user;
+        this.fb = fb;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.user = this._user.user;
+        this.form = this.fb.group({
+            first: [this.user.fname, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required],
+            // last: this.user.lastname,
+            email: this.user.user_email
+        });
+    }
+    AccountProfilePage.prototype.submit = function () {
+        var _this = this;
+        this.loader.present();
+        this._user.update(this.form.value).map(function (x) { return x.json(); }).subscribe(function (x) {
+            _this._user.setUserUpdate(_this.form.value);
+            _this.translate.get(['PROFILE_UPDATED']).subscribe(function (x) {
+                _this.toast.show(x.PROFILE_UPDATED);
+            });
+            _this.loader.dismiss();
+            _this.dismiss();
+        });
+    };
+    AccountProfilePage.prototype.dismiss = function () {
+        this.view.dismiss();
+    };
+    return AccountProfilePage;
+}());
+AccountProfilePage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-account-profile',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/profile/profile.html"*/'\n\n<ion-header no-border no-lines>\n  <ion-navbar color="primary">\n      <ion-buttons start>\n        <button start icon-only ion-button (click)="dismiss()">\n          <ion-icon name="close"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>  \n    <ion-list>\n      <h1 margin-left margin-bottom>{{ \'EDIT_PROFILE\' | translate}}</h1>\n      <ion-item>\n        <ion-label floating>{{ \'FIRST_NAME\' | translate}}</ion-label>\n        <ion-input formControlName="first" type="text"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>{{ \'LAST_NAME\' | translate}}</ion-label>\n        <ion-input formControlName="last" type="text"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>{{ \'BIO\' | translate}}</ion-label>\n        <ion-textarea formControlName="bio"></ion-textarea>\n      </ion-item>\n\n      <div padding>\n        <button ion-button block [disabled]="!form.valid">{{ \'SAVE\' | translate}}</button>\n      </div>\n\n    </ion-list>\n  </form>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/profile/profile.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
+], AccountProfilePage);
+
+//# sourceMappingURL=profile.js.map
 
 /***/ })
 

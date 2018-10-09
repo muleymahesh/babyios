@@ -20,70 +20,70 @@ export class AddAddressPage {
 
   constructor(private setting: SettingsProvider, public viewCtrl: ViewController, private loader: LoadingProvider, private toast: ToastProvider, private translate: TranslateService, private user: UserProvider, private order: OrderProvider, private navParams: NavParams, private address: AddressProvider, private fb: FormBuilder, private woo: WooCommerceProvider) {
 
-  this.translate.get(['SELECT', 'COUNTRY', 'SELECT_YOUR_COUNTRY', 'STATE', 'SELECT_YOUR_STATE']).subscribe( x=> {
-    this.countryOpts = {
-      title: x.SELECT + ' ' + x.COUNTRY,
-      subTitle: x.SELECT_YOUR_COUNTRY
-    }
+  // this.translate.get(['SELECT', 'COUNTRY', 'SELECT_YOUR_COUNTRY', 'STATE', 'SELECT_YOUR_STATE']).subscribe( x=> {
+  //   this.countryOpts = {
+  //     title: x.SELECT + ' ' + x.COUNTRY,
+  //     subTitle: x.SELECT_YOUR_COUNTRY
+  //   }
 
-    this.stateOpts = {
-      title: x.SELECT + ' ' + x.STATE,
-      subTitle: x.SELECT_YOUR_STATE
-    }
-  });
+  //   this.stateOpts = {
+  //     title: x.SELECT + ' ' + x.STATE,
+  //     subTitle: x.SELECT_YOUR_STATE
+  //   }
+  // });
 
   this.data = navParams.data.params;
-  this.loadCountry();
+ // this.loadCountry();
 
   this.form = this.fb.group({
       first_name: [this.data.first_name || (this.user.all ? this.user.user.fname : ''), Validators.required ],
       last_name: this.data.last_name || (this.user.all ? this.user.user.lname : ''),
       email: [this.user.all ? this.user.user.user_email : '', Validators.required],
       phone: [this.data.phone, Validators.required ],
-      city: [this.data.city, Validators.required ],
-      state: [this.data.state, Validators.required ],
-      postcode: [this.data.postcode, Validators.required ],
+      landmark: [this.data.landmark, Validators.required ],
+      area: [this.data.area, Validators.required ],
+      // postcode: [this.data.postcode, Validators.required ],
       address_1: [this.data.address_1, Validators.required ],
-      country: [this.data.country, Validators.required ]
+      pincode: [this.data.pincode, Validators.required ]
     });
   }
 
-  loadCountry(){
-    if(this.setting.all.countries){
-      this.countries = this.setting.getCountries();
-    }else{
-      this.loader.present();
-      this.woo.saveCountries().then( val=> {
-        if(val) {
-          if(val.value.length == 0){
-            for(let i in val.options)
-              this.countries.push({id: i, name: val.options[i]});
-          }else{
-            for(let i in val.value)
-              this.countries.push({id: i, name: val.value[i]});
-          }
-        }
-        this.loader.dismiss();
-      }, err=> {
-        this.loader.dismiss();
-        console.log(err);
-      })
-    }
+  // loadCountry(){
+  //   if(this.setting.all.countries){
+  //     this.countries = this.setting.getCountries();
+  //   }else{
+  //     this.loader.present();
+  //     this.woo.saveCountries().then( val=> {
+  //       if(val) {
+  //         if(val.value.length == 0){
+  //           for(let i in val.options)
+  //             this.countries.push({id: i, name: val.options[i]});
+  //         }else{
+  //           for(let i in val.value)
+  //             this.countries.push({id: i, name: val.value[i]});
+  //         }
+  //       }
+  //       this.loader.dismiss();
+  //     }, err=> {
+  //       this.loader.dismiss();
+  //       console.log(err);
+  //     })
+  //   }
 
-    if(this.data.action == 2)
-      this.getStates();
-  }
+  //   if(this.data.action == 2)
+  //     this.getStates();
+  // }
 
-  getStates(){
-    let id = this.data.country || this.form.value.country;
-    this.woo.getStates(id).map(res => res.json()).subscribe( res => {
-      for(let i in res)
-        this.states.push({id: i, name: res[i]});
-    }, err=> {
-      console.error("Error : "+err);
-      this.states = [];
-    });
-  }
+  // getStates(){
+  //   let id = this.data.country || this.form.value.country;
+  //   this.woo.getStates(id).map(res => res.json()).subscribe( res => {
+  //     for(let i in res)
+  //       this.states.push({id: i, name: res[i]});
+  //   }, err=> {
+  //     console.error("Error : "+err);
+  //     this.states = [];
+  //   });
+  // }
 
   submit(){
     if(this.address.all.length == 0)
