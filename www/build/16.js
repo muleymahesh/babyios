@@ -1,6 +1,6 @@
 webpackJsonp([16],{
 
-/***/ 961:
+/***/ 960:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoriesPageModule", function() { return CategoriesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__categories__ = __webpack_require__(994);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__categories__ = __webpack_require__(993);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -41,7 +41,7 @@ CategoriesPageModule = __decorate([
 
 /***/ }),
 
-/***/ 994:
+/***/ 993:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,7 +98,7 @@ var CategoriesPage = (function () {
 }());
 CategoriesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-categories',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/categories/categories.html"*/'<ion-header>\n  <ion-navbar color="primary">\n        <ion-title>Brands</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <!-- <ion-list class="accordion-list">\n        <h1 margin-left margin-bottom>{{ \'CATEGORIES\' | translate}}</h1>\n        <div *ngFor="let item of categories; let i = index">\n          <ion-item tappable (click)="toggleSection(i)" [ngClass]="{\'active\':item.open, \'section\': item.open}">\n              <h2>{{ item.name }}</h2>\n              <ion-icon name="add" item-end></ion-icon>\n          </ion-item>\n\n          <ion-list [class.active]="item.open" class="sub-accordion" no-margin no-padding padding-left no-lines *ngIf="item.child && item.open">\n              <button ion-item no-lines *ngFor="let child of item.child; let j = index" tappable (click)="goTo(\'ProductGridPage\', child)"> \n                <h3>{{child.name}}</h3>\n                <ion-badge item-end color="secondary">{{child.count}}</ion-badge>\n              </button>\n          </ion-list>\n        </div>\n    </ion-list> -->\n\n    <ion-grid>\n        <ion-row >\n        <ion-col col-6  *ngFor="let b of Brands;let i=index" >  \n           <ion-card  style=" width:130px; min-height: calc(100% - 5px);" tappable (click)="goTo(\'ProductGridPage\', Brands[i])" >\n           <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{b.brand_img}}"  style="width:100% ;height: 180px;"  />  \n           </ion-card>\n        </ion-col>\n        </ion-row>\n    </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/categories/categories.html"*/,
+        selector: 'page-categories',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/categories/categories.html"*/'<ion-header>\n  <ion-navbar color="primary">\n        <ion-title>Brands</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <!-- <ion-list class="accordion-list">\n        <h1 margin-left margin-bottom>{{ \'CATEGORIES\' | translate}}</h1>\n        <div *ngFor="let item of categories; let i = index">\n          <ion-item tappable (click)="toggleSection(i)" [ngClass]="{\'active\':item.open, \'section\': item.open}">\n              <h2>{{ item.name }}</h2>\n              <ion-icon name="add" item-end></ion-icon>\n          </ion-item>\n\n          <ion-list [class.active]="item.open" class="sub-accordion" no-margin no-padding padding-left no-lines *ngIf="item.child && item.open">\n              <button ion-item no-lines *ngFor="let child of item.child; let j = index" tappable (click)="goTo(\'ProductGridPage\', child)"> \n                <h3>{{child.name}}</h3>\n                <ion-badge item-end color="secondary">{{child.count}}</ion-badge>\n              </button>\n          </ion-list>\n        </div>\n    </ion-list> -->\n\n    <ion-grid>\n        <ion-row >\n        <ion-col col-6  *ngFor="let b of Brands;let i=index" >  \n           <ion-card  style=" width:150px; min-height: calc(100% - 25px);" tappable (click)="goTo(\'ProductGridPage\', Brands[i])" >\n           <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{b.brand_img}}"  style="width:100% ;height: 180px;"  />  \n           </ion-card>\n        </ion-col>\n        </ion-row>\n    </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/categories/categories.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["l" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]])
 ], CategoriesPage);

@@ -27,14 +27,14 @@
               <ion-scroll scrollX="true" class="item filter">
                 <ion-row nowrap>
                   <ion-col col-auto no-padding>
-                    <button ion-button small round outline (click)="showCategory()">{{param.name || ('CATEGORIES' | translate)}}</button>
+                    <button ion-button small round outline >{{param.name || ('CATEGORIES' | translate)}}</button>
                   </ion-col>
-                  <ion-col col-auto no-padding *ngFor="let x of attributes">
+                  <!-- <ion-col col-auto no-padding *ngFor="let x of attributes">
                     <button ion-button small round outline (click)="showFilter(x)">
                       {{x.name}} 
                       <span *ngIf="param.attribute_term && param.attribute==x.slug">&nbsp;•&nbsp;{{param.attribute_term.split(",").length}}</span>
                     </button>
-                  </ion-col>
+                  </ion-col> -->
                   <ion-col col-auto no-padding>
                     <button ion-button small round outline (click)="showSort()">Sort</button>
                   </ion-col>

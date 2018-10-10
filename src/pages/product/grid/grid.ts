@@ -50,6 +50,15 @@ name:'';
     cat_id:''
   }; 
   
+  request= {
+    method:'get_recommended',
+      };
+    
+      
+      newarrivalrequest= {
+    method:'get_new_arrivals',
+      };
+    
   page: number;
   more: boolean;
 
@@ -66,13 +75,13 @@ name:'';
    
     if(this.navParams.data.params.brand_id)
     {
-     this.param.name = this.navParams.data.params.brand_name;
+     this.param.name = this.navParams.data.params.name;
      this.product.brand_id= this.navParams.data.params.brand_id;
      this.productByBrandId();
     }
     else if(this.navParams.data.params.offer_id)
     {
-      this.param.name = this.navParams.data.params.offer_name;
+      this.param.name = this.navParams.data.params.name;
      this.product1.offer_id= this.navParams.data.params.offer_id;
      this.productByOfferId();
     }
@@ -83,9 +92,22 @@ name:'';
     this.product3.cat_id= this.navParams.data.params.cat_id;
     this.productByCatId();
    }
+   else if(this.navParams.data.params=='New Arrival')
+   {
+
+    this.param.name = this.navParams.data.params;
+    this.newArrival();
+   }
+   else if(this.navParams.data.params=='recommendations')
+   {
+
+    this.param.name = this.navParams.data.params;
+    this.wishlist1();
+   }
+
    else
    {
-    this.param.name = this.navParams.data.params.age_name;
+    this.param.name = this.navParams.data.params.name;
     this.product2.age_id= this.navParams.data.params.id;
     
     this.productByAgeId();
@@ -283,7 +305,13 @@ this.product3.cat_id=x.id;
   productByCatId() {
     this.restProvider.getProduct(this.product3)
     .then(data => {
-      this.products = data;
+      if(data=='failed')
+      {
+        this.toast.show("Product not available"); 
+      }
+      else{
+        this.products = data;
+      }
       console.log(this.products);
     });
 
@@ -292,7 +320,13 @@ this.product3.cat_id=x.id;
   productByBrandId() {
     this.restProvider.getProduct(this.product)
     .then(data => {
-      this.products = data;
+      if(data=='failed')
+      {
+        this.toast.show("Product not available"); 
+      }
+      else{
+        this.products = data;
+      }
       console.log(this.products);
     });
 
@@ -301,7 +335,14 @@ this.product3.cat_id=x.id;
   productByOfferId() {
     this.restProvider.getProduct(this.product1)
     .then(data => {
-      this.products = data;
+      if(data=='failed')
+      {
+        this.toast.show("Product not available"); 
+      }
+      else{
+        this.products = data;
+      }
+     
       console.log(this.products);
     });
 
@@ -337,8 +378,23 @@ this.product3.cat_id=x.id;
  
   }
 
+	wishlist1() {
+    this.restProvider.getRecommendations(this.request)
+    .then(data => {
+      this.products = data;
+		
+    });
 
-
+	}
+	
+	newArrival() {
+    this.restProvider.getNewArrivalList(this.newarrivalrequest)
+    .then(data => {
+		console.log(data);
+			      this.products = data;
+		
+    });
+  }
 
 
 

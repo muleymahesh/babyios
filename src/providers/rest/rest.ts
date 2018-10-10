@@ -152,9 +152,13 @@ mydata:any;
        console.log('Success', data.data);
        return data.data;
       }
-      else
+      else if(data.result=='failed')
       {
         // console.log('Success', data.data);
+        return data.result;
+      }
+      else
+      {
         return data;
       }
     })

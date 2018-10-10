@@ -11,7 +11,82 @@
 
 <ion-content >
 
-   <div *ngFor="let y of products">
+
+
+
+
+
+
+   
+    <ion-card>
+    
+    
+      <!-- <img src="img/advance-card-bttf.png"> -->
+
+      <div *ngFor="let y of products">
+          <ng-container *ngIf="y.imgs.length!=1; else elseTemplate">
+                  <ion-slides  *ngIf="products && products.length" pager = 'true'  style="max-height:200px" class="featured" loop="true" autoplay="3000" >
+              <ion-slide *ngFor="let x of products[0].imgs">
+                <div><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="width:100% ;height:200px;" imageViewer /></div>
+              </ion-slide>
+            </ion-slides>  
+       
+        </ng-container>
+        <ng-template #elseTemplate>
+            <div *ngFor="let x of products[0].imgs"><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="width:100% ;height: 200px;" imageViewer /></div>
+          
+        </ng-template>
+        
+      </div>
+    
+      <!-- <ion-card-content>
+        <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+      </ion-card-content> -->
+    
+      <ion-row *ngFor="let y of products">
+       <ng-container *ngIf="y.avg_rating=='null'; else elseTemplate">
+          <ion-col align="center">
+              <ion-rating color=primary
+              [numStars]="5"
+              [readOnly]="true"
+              [value]="0">
+            </ion-rating>
+          </ion-col>
+       </ng-container>
+       <ng-template #elseTemplate>
+          <ion-col>
+              <ion-rating color=primary
+              [numStars]="5"
+              [readOnly]="true"
+              [value]="y.avg_rating">
+            </ion-rating>
+          </ion-col>
+       </ng-template>
+       
+       
+          <!-- <button ion-button icon-start clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>12 Likes</div>
+          </button> -->
+        
+        <ion-col>
+        
+          
+            <div>Review({{y.reviews}})</div>
+         
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note>
+              <ion-icon class="fav" name="heart{{!y.is_fav ? '-outline' : ''}}" ></ion-icon>
+          </ion-note>
+        </ion-col>
+      </ion-row>
+    
+    </ion-card>
+    
+    
+
+   <!-- <div *ngFor="let y of products">
     <ng-container *ngIf="y.imgs.length!=1; else elseTemplate">
             <ion-slides  *ngIf="products && products.length" pager = 'true'  style="max-height:200px" class="featured" loop="true" autoplay="3000" >
         <ion-slide *ngFor="let x of products[0].imgs">
@@ -25,7 +100,7 @@
     
   </ng-template>
   
-</div>
+</div> -->
       
 
     <!-- <ion-slides  *ngIf="product && product.length"   pager = 'true'  autoplay="3000" loop="true" speed="3000" style="max-height:200px">
