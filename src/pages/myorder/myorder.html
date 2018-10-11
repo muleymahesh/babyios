@@ -26,9 +26,9 @@
   <ion-item *ngFor="let o of myOrders;  let i=index " >
       <p style="font-size:9px; text-align:left; color:orange">{{o.o_id}}</p>
       <ion-avatar item-start>
-        <img *ngIf= src="http://www.babyneeds.co.in/babyneeds/product_image/{{o.details[0].img_url}}">
+        <img *ngIf="o.details.length>0" src="http://www.babyneeds.co.in/babyneeds/product_image/{{o.details[0].img_url}}">
       </ion-avatar>
-      <h3>{{o.details[0].product_name}}</h3>
+      <h3  *ngIf="o.details.length>0" >{{o.details[0].product_name}}</h3>
         
       <p style="font-size:9px; text-align:left; color:orange">Rs:{{o.amount}}  </p>
     

@@ -47,8 +47,14 @@ mydata:any;
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
+      if(data.result=="failed")
+      {
+       return data.resutl;
+      }
+      else{
        console.log('Success', data.data);
        return data.data;
+      }
     })
     .catch(err => {
        console.log('Error', err);

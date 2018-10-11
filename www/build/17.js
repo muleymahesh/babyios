@@ -89,10 +89,10 @@ var CartPage = (function () {
     };
     CartPage.prototype.remove = function (product) {
         var _this = this;
-        this.translate.get(['REMOVE_TTL', 'REMOVE_MSG', 'CANCEL', 'YES']).subscribe(function (x) {
+        this.translate.get(['Remove product', 'Do you want to remove from cart', 'CANCEL', 'YES']).subscribe(function (x) {
             _this.alert.create({
-                title: x.REMOVE_TTL,
-                message: x.REMOVE_MSG,
+                title: "Remove product",
+                message: "Do you want to remove from cart?",
                 buttons: [{
                         text: x.CANCEL
                     }, {
@@ -108,7 +108,7 @@ var CartPage = (function () {
         var _this = this;
         this.cart.remove(product);
         this.translate.get('REMOVE_FROM_CART').subscribe(function (x) {
-            _this.toast.show(x);
+            _this.toast.show("Product removed from cart");
         });
     };
     CartPage.prototype.pricestrikt = function (discount, price) {

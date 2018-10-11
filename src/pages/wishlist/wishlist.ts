@@ -93,15 +93,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WishlistPage {
 
-  constructor(public user:UserProvider,public navCtrl: NavController, public navParams: NavParams,public http: HttpClient,public restProvider: RestProvider) {
+  constructor(public user:UserProvider,public navCtrl: NavController, private toast: ToastProvider ,public navParams: NavParams,public http: HttpClient,public restProvider: RestProvider) {
  console.log(this.user.user.user_email);
     this.wishlist1();
   }
   ionViewDidEnter(){
     console.log('ionViewDidLoad WishlistPage');
     console.log(this.user.user.user_email);
+    if(this.user.user.user_email)
+    {
     this.request.user_id=this.user.user.user_email;
     this.wishlist1();
+    }
+    else{
+      this.toast.show("You are not logged in....");
+    }
   }
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad WishlistPage');
@@ -118,8 +124,15 @@ user_id:''
   {
     this.restProvider.getWishlist(this.request)
     .then(data => {
+      if(data="failed")
+      {
+        this.toast.show("no products in wishlist");
+      }
+      else
+      {
       this.wlist = data;
       console.log(this.wlist);
+      }
     });
   }
   else

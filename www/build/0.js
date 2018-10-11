@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 1009:
+/***/ 1008:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -89,9 +89,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var WishlistPage = (function () {
-    function WishlistPage(user, navCtrl, navParams, http, restProvider) {
+    function WishlistPage(user, navCtrl, toast, navParams, http, restProvider) {
         this.user = user;
         this.navCtrl = navCtrl;
+        this.toast = toast;
         this.navParams = navParams;
         this.http = http;
         this.restProvider = restProvider;
@@ -105,16 +106,26 @@ var WishlistPage = (function () {
     WishlistPage.prototype.ionViewDidEnter = function () {
         console.log('ionViewDidLoad WishlistPage');
         console.log(this.user.user.user_email);
-        this.request.user_id = this.user.user.user_email;
-        this.wishlist1();
+        if (this.user.user.user_email) {
+            this.request.user_id = this.user.user.user_email;
+            this.wishlist1();
+        }
+        else {
+            this.toast.show("You are not logged in....");
+        }
     };
     WishlistPage.prototype.wishlist1 = function () {
         var _this = this;
         if (this.user.user.user_email) {
             this.restProvider.getWishlist(this.request)
                 .then(function (data) {
-                _this.wlist = data;
-                console.log(_this.wlist);
+                if (data = "failed") {
+                    _this.toast.show("no products in wishlist");
+                }
+                else {
+                    _this.wlist = data;
+                    console.log(_this.wlist);
+                }
             });
         }
         else {
@@ -127,14 +138,14 @@ WishlistPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-wishlist',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/wishlist/wishlist.html"*/'<!-- <ion-content padding-top>\n	<div class="subtitle" *ngIf="products.length > 0">\n		<h1 margin-top margin-horizontal>{{ \'WISHLIST\' | translate}}</h1>		\n		<p no-margin margin-horizontal>{{ \'WISH_DESC\' | translate: {value: products.length} }}</p>\n	</div>\n	<ion-grid class="empty" *ngIf="products.length == 0">\n		<ion-row align-items-center>\n			<ion-col align-self-center text-center>\n				<ion-icon name="heart-outline" color="secondary"></ion-icon>\n				<h4 margin-bottom>{{ \'EMPTY\' | translate}}</h4>\n				<button color="secondary" ion-button outline tappable (click)="goHome()">{{ \'START_SHOPPING\' | translate}}</button>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n	<ion-row padding-left padding-right class="product-grid">\n		<ion-col col-6 class="product-item" *ngFor="let x of products">\n			<div tappable (click)="goTo(\'ProductPage\', x)">\n				<div class="img" [ngStyle]="{\'background-image\': \'url(\' + x.images[0].src +\')\'}">\n					<ion-badge *ngIf="x.on_sale">{{x | discount}}</ion-badge>\n				</div>\n				<h5 [innerHTML]="x.name"></h5>\n				<div class="price">\n					<span class="disc" *ngIf="x.on_sale">{{x.regular_price | money}}</span> \n					{{x.price | money}}\n				</div>\n				<ion-row no-padding class="reviews" *ngIf="x.rating_count">\n					<ion-col col-auto no-padding>\n						<ion-rating item-start *ngIf="x.average_rating"\n							[numStars]="5"\n							[readOnly]="true"\n							[value]="x.average_rating">\n						</ion-rating>\n						<span *ngIf="x.rating_count">{{x.rating_count}}</span>\n					</ion-col>\n				</ion-row>\n			</div>\n			<ion-row class="remove">\n				<ion-col col-9><button tappable (click)="addToCart(x)" ion-button small block outline>{{ \'TO_CART\' | translate}}</button></ion-col>\n				<ion-col col-3 text-center><button tappable (click)="removeFromWish(x)" no-padding ion-button icon-only clear><ion-icon no-padding name="trash"></ion-icon></button></ion-col>\n			</ion-row>\n		</ion-col>\n	</ion-row>\n	\n</ion-content>\n		 -->\n		 <ion-header>\n			\n			  <ion-navbar color="primary">\n				<ion-title>wishlist</ion-title>\n			  </ion-navbar>\n			\n			</ion-header>\n			\n			\n			\n				<ion-content padding>\n					<ion-list>\n					  <ion-item *ngFor="let w of wlist">\n						<ion-avatar item-left>\n							<img src="http://www.babyneeds.co.in/babyneeds/product_image/{{w.imgs[0].img_url}}">\n						 </ion-avatar>\n						<h2>{{w.product_name}}</h2>\n						<p>Rs.: {{w.mrp}}</p>\n					  </ion-item>\n					</ion-list>\n				  </ion-content>\n			\n			'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/wishlist/wishlist.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */]])
 ], WishlistPage);
 
 //# sourceMappingURL=wishlist.js.map
 
 /***/ }),
 
-/***/ 979:
+/***/ 978:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -143,7 +154,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(542);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__wishlist__ = __webpack_require__(1009);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__wishlist__ = __webpack_require__(1008);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

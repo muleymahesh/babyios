@@ -35,10 +35,10 @@ finalprice:any;
   }
 
   remove(product) {
-    this.translate.get(['REMOVE_TTL', 'REMOVE_MSG', 'CANCEL', 'YES']).subscribe( x=> {
+    this.translate.get(['Remove product', 'Do you want to remove from cart', 'CANCEL', 'YES']).subscribe( x=> {
       this.alert.create({
-        title: x.REMOVE_TTL,
-        message: x.REMOVE_MSG,
+        title: "Remove product",
+        message: "Do you want to remove from cart?",
         buttons: [{
             text: x.CANCEL
           },{
@@ -54,7 +54,7 @@ finalprice:any;
   confirmRemove(product: any){
     this.cart.remove(product);
     this.translate.get('REMOVE_FROM_CART').subscribe( x=> {
-      this.toast.show(x);
+      this.toast.show("Product removed from cart");
     });
   }
 

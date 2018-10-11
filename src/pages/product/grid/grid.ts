@@ -303,6 +303,7 @@ this.product3.cat_id=x.id;
 
 
   productByCatId() {
+    this.loader.present();	
     this.restProvider.getProduct(this.product3)
     .then(data => {
       if(data=='failed')
@@ -314,10 +315,11 @@ this.product3.cat_id=x.id;
       }
       console.log(this.products);
     });
-
+    this.loader.dismiss();
   }
 
   productByBrandId() {
+    this.loader.present();	
     this.restProvider.getProduct(this.product)
     .then(data => {
       if(data=='failed')
@@ -329,10 +331,11 @@ this.product3.cat_id=x.id;
       }
       console.log(this.products);
     });
-
+    this.loader.dismiss();
   }
 
   productByOfferId() {
+    this.loader.present();	
     this.restProvider.getProduct(this.product1)
     .then(data => {
       if(data=='failed')
@@ -345,17 +348,18 @@ this.product3.cat_id=x.id;
      
       console.log(this.products);
     });
-
+    this.loader.dismiss();
   }
 
   productByAgeId() {
+    this.loader.present();	
     this.restProvider.getProduct(this.product2)
     .then(data => {
       this.products = data;
       console.log(this.products);
       
     });
-
+    this.loader.dismiss();
   }
 
 
@@ -379,21 +383,24 @@ this.product3.cat_id=x.id;
   }
 
 	wishlist1() {
+    this.loader.present();	
     this.restProvider.getRecommendations(this.request)
     .then(data => {
       this.products = data;
 		
     });
-
+    this.loader.dismiss();
 	}
 	
 	newArrival() {
+    this.loader.present();	
     this.restProvider.getNewArrivalList(this.newarrivalrequest)
     .then(data => {
 		console.log(data);
 			      this.products = data;
 		
     });
+    this.loader.dismiss();
   }
 
 

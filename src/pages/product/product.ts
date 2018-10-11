@@ -145,6 +145,7 @@ addTOCart()
 {this.product1=this.products[0];
   
   this.cart.post(this.product1);
+  this.toast.show("Product added to cart");
 }
 
 
