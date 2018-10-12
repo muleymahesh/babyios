@@ -1,15 +1,15 @@
 webpackJsonp([26],{
 
-/***/ 948:
+/***/ 951:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountChatsPageModule", function() { return AccountChatsPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chats__ = __webpack_require__(979);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountNotificationPageModule", function() { return AccountNotificationPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__notification__ = __webpack_require__(985);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,34 +20,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AccountChatsPageModule = (function () {
-    function AccountChatsPageModule() {
+var AccountNotificationPageModule = (function () {
+    function AccountNotificationPageModule() {
     }
-    return AccountChatsPageModule;
+    return AccountNotificationPageModule;
 }());
-AccountChatsPageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+AccountNotificationPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__chats__["a" /* AccountChatsPage */]
+            __WEBPACK_IMPORTED_MODULE_3__notification__["a" /* AccountNotificationPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__chats__["a" /* AccountChatsPage */]),
-            __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__notification__["a" /* AccountNotificationPage */]),
+            __WEBPACK_IMPORTED_MODULE_0__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], AccountChatsPageModule);
+], AccountNotificationPageModule);
 
-//# sourceMappingURL=chats.module.js.map
+//# sourceMappingURL=notification.module.js.map
 
 /***/ }),
 
-/***/ 979:
+/***/ 985:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountChatsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountNotificationPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(66);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,45 +60,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var AccountChatsPage = (function () {
-    function AccountChatsPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.chats = [{
-                id: 1,
-                imageUrl: 'assets/img/miscellaneous/user.png',
-                title: 'Customer Service',
-                lastMessage: 'Hello ....?',
-                timestamp: new Date()
-            },
-            {
-                id: 2,
-                imageUrl: 'assets/img/miscellaneous/user.png',
-                title: 'Team Support',
-                lastMessage: 'Sorry',
-                timestamp: new Date()
-            },
-            {
-                id: 3,
-                imageUrl: 'assets/img/miscellaneous/user.png',
-                title: 'Admin',
-                lastMessage: 'Good luck',
-                timestamp: new Date()
-            }];
-    }
-    AccountChatsPage.prototype.goTo = function (chat) {
-        this.navCtrl.push('AccountChatsMessagePage', { id: chat.id });
-    };
-    return AccountChatsPage;
-}());
-AccountChatsPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-account-chats',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/chats.html"*/'<ion-header no-border no-lines>\n	<ion-navbar></ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <h1 margin-left margin-bottom>Chats</h1>\n    <ion-list-header margin-left no-padding>Today</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-list-header margin-left no-padding>Yesterday</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-list-header margin-left no-padding>Las Week</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/chats.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
-], AccountChatsPage);
 
-//# sourceMappingURL=chats.js.map
+var AccountNotificationPage = (function () {
+    function AccountNotificationPage(_notif, alert) {
+        this._notif = _notif;
+        this.alert = alert;
+        this.notif = [];
+        console.log(_notif.all);
+    }
+    AccountNotificationPage.prototype.showAlert = function (x) {
+        this.alert.create({
+            title: x.title,
+            subTitle: x.body,
+            buttons: ['OK']
+        }).present();
+    };
+    AccountNotificationPage.prototype.remove = function (x) {
+        this._notif.remove(x.id);
+    };
+    AccountNotificationPage.prototype.ionViewDidLoad = function () {
+        this.notif = this._notif.all;
+        console.log('ionViewDidLoad AccountNotificationPage');
+    };
+    return AccountNotificationPage;
+}());
+AccountNotificationPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-account-notification',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/notification/notification.html"*/'<ion-header no-border no-lines>\n	<ion-navbar></ion-navbar>\n</ion-header>\n \n <ion-content> \n   <ion-list>\n    <h1 margin-left margin-bottom>{{ \'NOTIF\' | translate}}</h1>\n    <ion-grid class="empty" *ngIf="notif.length == 0">\n			<ion-row align-items-center>\n				<ion-col align-self-center text-center>\n					<ion-icon name="notifications-off" color="secondary"></ion-icon>\n					<h4 margin-bottom>{{ \'EMPTY_NOTIF\' | translate}}</h4>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n    <ion-item-sliding *ngFor="let x of notif">\n      <ion-item (click)="showAlert(x)">\n        <ion-avatar item-start *ngIf="x.img">\n          <img [src]="x.img" />\n        </ion-avatar>\n        <h3>{{x.title}}</h3>\n        <p>{{x.body}}</p>\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button small color="assertive" tappable (click)="remove(x)">\n					<ion-icon name="trash"></ion-icon>\n					{{\'REMOVE\' | translate}}\n				</button>\n      </ion-item-options>\n    </ion-item-sliding>\n   </ion-list>\n </ion-content>\n '/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/notification/notification.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["e" /* NotifProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
+], AccountNotificationPage);
+
+//# sourceMappingURL=notification.js.map
 
 /***/ })
 

@@ -1,10 +1,10 @@
 webpackJsonp([2],{
 
-/***/ 1003:
+/***/ 1009:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ServicesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ThanksPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -18,42 +18,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/**
- * Generated class for the ServicesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ServicesPage = (function () {
-    function ServicesPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
+var ThanksPage = (function () {
+    function ThanksPage(nav, navParams) {
+        this.nav = nav;
         this.navParams = navParams;
+        this.data = this.navParams.data.params;
     }
-    ServicesPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ServicesPage');
+    ThanksPage.prototype.goHome = function () {
+        this.nav.popToRoot();
+        this.nav.parent.select(0);
     };
-    return ServicesPage;
+    return ThanksPage;
 }());
-ServicesPage = __decorate([
+ThanksPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-services',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/services/services.html"*/'<!--\n  Generated template for the ServicesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>services</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/services/services.html"*/,
+        selector: 'page-thanks',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/thanks/thanks.html"*/'<ion-content padding fullscreen text-center style="padding: 15% 0;">\n    <h1>{{\'THANKS\' | translate}}</h1>\n    <h6>{{\'FOR_THE_ORDER\' | translate}}</h6>\n    <p>{{\'YOUR_ID\' | translate}}: #{{data.id}}</p>\n    <div padding-vertical>\n        <img class="img" src="assets/img/miscellaneous/truck.jpg">\n        <!-- <ion-icon name="fa-truck"></ion-icon> -->\n    </div>\n    <p>{{\'PROCESS_ORDER\' | translate}}</p>\n    <button margin-top ion-button block tappable (click)="goHome()">{{\'CONTINUE\' | translate}}</button>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/thanks/thanks.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
-], ServicesPage);
+], ThanksPage);
 
-//# sourceMappingURL=services.js.map
+//# sourceMappingURL=thanks.js.map
 
 /***/ }),
 
-/***/ 974:
+/***/ 978:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ServicesPageModule", function() { return ServicesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThanksPageModule", function() { return ThanksPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services__ = __webpack_require__(1003);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__thanks__ = __webpack_require__(1009);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,23 +60,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ServicesPageModule = (function () {
-    function ServicesPageModule() {
+
+var ThanksPageModule = (function () {
+    function ThanksPageModule() {
     }
-    return ServicesPageModule;
+    return ThanksPageModule;
 }());
-ServicesPageModule = __decorate([
+ThanksPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__services__["a" /* ServicesPage */],
+            __WEBPACK_IMPORTED_MODULE_2__thanks__["a" /* ThanksPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__services__["a" /* ServicesPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__thanks__["a" /* ThanksPage */]),
+            __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], ServicesPageModule);
+], ThanksPageModule);
 
-//# sourceMappingURL=services.module.js.map
+//# sourceMappingURL=thanks.module.js.map
 
 /***/ })
 

@@ -95,7 +95,7 @@ export class WishlistPage {
 
   constructor(public user:UserProvider,public navCtrl: NavController, private toast: ToastProvider ,public navParams: NavParams,public http: HttpClient,public restProvider: RestProvider) {
  console.log(this.user.user.user_email);
-    this.wishlist1();
+   // this.wishlist1();
   }
   ionViewDidEnter(){
     console.log('ionViewDidLoad WishlistPage');
@@ -124,13 +124,15 @@ user_id:''
   {
     this.restProvider.getWishlist(this.request)
     .then(data => {
-      if(data="failed")
+      console.log(data);
+      if(data.result=="failed")
       {
+        console.log(data.result);
         this.toast.show("no products in wishlist");
       }
-      else
+      else if(data.result=="success")
       {
-      this.wlist = data;
+      this.wlist = data.data;
       console.log(this.wlist);
       }
     });

@@ -1,14 +1,14 @@
 webpackJsonp([17],{
 
-/***/ 957:
+/***/ 960:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountSettingsPageModule", function() { return AccountSettingsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoriesPageModule", function() { return CategoriesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings__ = __webpack_require__(988);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__categories__ = __webpack_require__(994);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20,38 +20,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AccountSettingsPageModule = (function () {
-    function AccountSettingsPageModule() {
+var CategoriesPageModule = (function () {
+    function CategoriesPageModule() {
     }
-    return AccountSettingsPageModule;
+    return CategoriesPageModule;
 }());
-AccountSettingsPageModule = __decorate([
+CategoriesPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__settings__["a" /* AccountSettingsPage */],
+            __WEBPACK_IMPORTED_MODULE_2__categories__["a" /* CategoriesPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__settings__["a" /* AccountSettingsPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__categories__["a" /* CategoriesPage */]),
             __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], AccountSettingsPageModule);
+], CategoriesPageModule);
 
-//# sourceMappingURL=settings.module.js.map
+//# sourceMappingURL=categories.module.js.map
 
 /***/ }),
 
-/***/ 988:
+/***/ 994:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountSettingsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoriesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_app_version__ = __webpack_require__(544);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_providers__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_global__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(104);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,62 +63,47 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-var AccountSettingsPage = (function () {
-    function AccountSettingsPage(navCtrl, platform, appVersion, translate, alert, user) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.platform = platform;
-        this.appVersion = appVersion;
-        this.translate = translate;
-        this.alert = alert;
-        this.user = user;
-        this.app = __WEBPACK_IMPORTED_MODULE_5__app_app_global__["a" /* App */];
-        if (this.platform.is('cordova')) {
-            this.appVersion.getVersionNumber().then(function (res) {
-                _this.app.version = res;
-            });
-        }
+var CategoriesPage = (function () {
+    function CategoriesPage(nav, loader, woo, restProvider, http) {
+        // this.woo.getSubCategories().then( (val) => {
+        // 	this.categories = val;
+        this.nav = nav;
+        this.loader = loader;
+        this.woo = woo;
+        this.restProvider = restProvider;
+        this.http = http;
+        this.myBraands = {
+            method: 'get_all_brand'
+        };
+        //	});
+        this.getBrands();
     }
-    AccountSettingsPage.prototype.logout = function () {
+    CategoriesPage.prototype.toggleSection = function (i) {
+        this.categories[i].open = !this.categories[i].open;
+    };
+    CategoriesPage.prototype.toggleItem = function (i, j) {
+        this.categories[i].child[j].open = !this.categories[i].child[j].open;
+    };
+    CategoriesPage.prototype.getBrands = function () {
         var _this = this;
-        this.translate.get(['LOGOUT', 'LOGOUT_MSG', 'YES', 'CANCEL']).subscribe(function (x) {
-            var confirm = _this.alert.create({
-                title: x.LOGOUT,
-                message: x.LOGOUT_MSG,
-                buttons: [{
-                        text: x.CANCEL
-                    }, {
-                        text: x.YES,
-                        handler: function () {
-                            _this.confirmLogout();
-                        }
-                    }]
-            });
-            confirm.present();
+        this.restProvider.getAgeGroup(this.myBraands)
+            .then(function (data) {
+            _this.Brands = data;
         });
     };
-    AccountSettingsPage.prototype.confirmLogout = function () {
-        var _this = this;
-        this.user.logout().then(function () {
-            _this.navCtrl.popToRoot();
-            _this.navCtrl.parent.select(0);
-        });
+    CategoriesPage.prototype.goTo = function (page, params) {
+        this.nav.push(page, { params: params });
     };
-    AccountSettingsPage.prototype.goTo = function (page, params) {
-        this.navCtrl.push(page, { params: params });
-    };
-    return AccountSettingsPage;
+    return CategoriesPage;
 }());
-AccountSettingsPage = __decorate([
+CategoriesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-account-settings',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/settings.html"*/'\n<ion-header no-border no-lines>\n	<ion-navbar></ion-navbar>\n</ion-header>\n<ion-content fullscreen no-padding>\n	<ion-list class="account-list" no-padding>\n		<h1 margin-left margin-bottom>{{ \'SETTINGS\' | translate}}</h1>\n		<!-- <button ion-item mode="ios" (click)="goTo(\'AccountSettingsNotificationsPage\')">\n			Notifications\n		</button> -->\n		<button ion-item mode="ios" (click)="goTo(\'AccountSettingsLanguagesPage\')">\n			{{ \'LANGUAGES\' | translate}}\n		</button>\n		<ion-item mode="ios" (click)="goTo(\'AccountSettingsTosPage\')">\n			{{ \'TOS\' | translate}}\n		</ion-item>\n		<ion-item *ngIf="app.version">\n			Version {{app.version}}\n		</ion-item>\n		<ion-item ion-item *ngIf="user.all" (click)="logout()">\n			{{ \'LOGOUT\' | translate}}\n		</ion-item>\n	</ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/settings.html"*/,
+        selector: 'page-categories',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/categories/categories.html"*/'<ion-header>\n  <ion-navbar color="primary">\n        <ion-title>Brands</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <!-- <ion-list class="accordion-list">\n        <h1 margin-left margin-bottom>{{ \'CATEGORIES\' | translate}}</h1>\n        <div *ngFor="let item of categories; let i = index">\n          <ion-item tappable (click)="toggleSection(i)" [ngClass]="{\'active\':item.open, \'section\': item.open}">\n              <h2>{{ item.name }}</h2>\n              <ion-icon name="add" item-end></ion-icon>\n          </ion-item>\n\n          <ion-list [class.active]="item.open" class="sub-accordion" no-margin no-padding padding-left no-lines *ngIf="item.child && item.open">\n              <button ion-item no-lines *ngFor="let child of item.child; let j = index" tappable (click)="goTo(\'ProductGridPage\', child)"> \n                <h3>{{child.name}}</h3>\n                <ion-badge item-end color="secondary">{{child.count}}</ion-badge>\n              </button>\n          </ion-list>\n        </div>\n    </ion-list> -->\n\n    <ion-grid>\n        <ion-row >\n        <ion-col col-6  *ngFor="let b of Brands;let i=index" >  \n           <ion-card  style=" width:150px; min-height: calc(100% - 60px);" tappable (click)="goTo(\'ProductGridPage\', Brands[i])" >\n           <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{b.brand_img}}"  style="width:100% ;height: 150px;"  />  \n           </ion-card>\n        </ion-col>\n        </ion-row>\n    </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/categories/categories.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_app_version__["a" /* AppVersion */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["j" /* UserProvider */]])
-], AccountSettingsPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["l" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]])
+], CategoriesPage);
 
-//# sourceMappingURL=settings.js.map
+//# sourceMappingURL=categories.js.map
 
 /***/ })
 

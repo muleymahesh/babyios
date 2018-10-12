@@ -24,7 +24,8 @@
       <!-- <img src="img/advance-card-bttf.png"> -->
 
       <div *ngFor="let y of products">
-          <ng-container *ngIf="y.imgs.length!=1; else elseTemplate">
+          <ion-badge color="primary" *ngIf="y.per_discount>0">{{y.per_discount}}%</ion-badge> 
+                    <ng-container *ngIf="y.imgs.length!=1; else elseTemplate">
                   <ion-slides  *ngIf="products && products.length" pager = 'true'  style="max-height:200px" class="featured" loop="true" autoplay="3000" >
               <ion-slide *ngFor="let x of products[0].imgs">
                 <div><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="width:100% ;height:200px;" imageViewer /></div>
@@ -195,7 +196,7 @@
 
           <div style="font-size:12px; text-align:left">{{p1.long_desc}}</div>
         </div>
-        <div>    <button ion-button full color="gray">Write a review</button></div>
+        <div>    <button ion-button full (click)="goTo('WritereviewPage',p1)" >Write a review</button></div>
          <ion-list mode="md" class="specs">
             <ion-list-header mode="md" no-margin no-padding margin-left>
               {{'Item details' | translate}}
@@ -224,8 +225,8 @@
                       </ng-template>
                     </ion-row>
 
-                    <ng-container *ngIf="p1.stock>=1; else elseTemplate">
-                      
+                    <ng-container *ngIf="p1.stock!=0; else elseTemplate">
+                        
                   <ion-row no-padding>
                       <ion-col col-4 no-padding>Stock</ion-col>
                       <ion-col col-8 no-padding>
@@ -234,8 +235,7 @@
                       </ion-row>
                     </ng-container>
                     <ng-template #elseTemplate>
-                      
-                  <ion-row no-padding >
+                      <ion-row no-padding >
                       <ion-col col-4 no-padding>Stock</ion-col>
                       <ion-col col-8 no-padding>
                        :Out of stock
@@ -244,18 +244,30 @@
                     </ng-template>
                     
 
-                  <ion-row no-padding *ngIf="p1.weight">
+                  <ion-row no-padding *ngIf="p1.weight!='NA'">
                       <ion-col col-4 no-padding>Weight</ion-col>
                       <ion-col col-8 no-padding>
                         :{{p1.weight}}
                       </ion-col>
                   </ion-row>
-                  <ion-row no-padding *ngIf="p1.size!=0">
+                  <ion-row no-padding *ngIf="p1.size!='NA'">
                       <ion-col col-4 no-padding>Size</ion-col>
                       <ion-col col-8 no-padding>
                         :{{p1.size}}
                       </ion-col>
                      </ion-row>
+
+
+                     
+
+                     <ion-row no-padding *ngIf="p1.expiry_date!='Na'">
+                       <div *ngIf="p1.expiry_date!='NA'">
+                        <ion-col col-4 no-padding>Expiry date</ion-col>
+                        <ion-col col-8 no-padding>
+                          :{{p1.expiry_date}}
+                        </ion-col>
+                      </div>
+                       </ion-row>
               </ion-grid>
             </ion-item>
         </ion-list>

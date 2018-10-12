@@ -1,15 +1,15 @@
 webpackJsonp([25],{
 
-/***/ 949:
+/***/ 952:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountChatsMessagePageModule", function() { return AccountChatsMessagePageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__message__ = __webpack_require__(980);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountProfilePageModule", function() { return AccountProfilePageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile__ = __webpack_require__(986);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,35 +20,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AccountChatsMessagePageModule = (function () {
-    function AccountChatsMessagePageModule() {
+var AccountProfilePageModule = (function () {
+    function AccountProfilePageModule() {
     }
-    return AccountChatsMessagePageModule;
+    return AccountProfilePageModule;
 }());
-AccountChatsMessagePageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+AccountProfilePageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__message__["a" /* AccountChatsMessagePage */],
+            __WEBPACK_IMPORTED_MODULE_3__profile__["a" /* AccountProfilePage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__message__["a" /* AccountChatsMessagePage */]),
-            __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__profile__["a" /* AccountProfilePage */]),
+            __WEBPACK_IMPORTED_MODULE_0__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], AccountChatsMessagePageModule);
+], AccountProfilePageModule);
 
-//# sourceMappingURL=message.module.js.map
+//# sourceMappingURL=profile.module.js.map
 
 /***/ }),
 
-/***/ 980:
+/***/ 986:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountChatsMessagePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_forms__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountProfilePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_providers__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(74);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,135 +63,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var AccountChatsMessagePage = (function () {
-    function AccountChatsMessagePage(navCtrl, formBuilder) {
-        this.navCtrl = navCtrl;
-        this.formBuilder = formBuilder;
-        this.toUser = {
-            _id: '534b8e5aaa5e7afc1b23e69b',
-            pic: 'assets/img/miscellaneous/user.png',
-            username: 'CS',
-        };
-        this.user = {
-            _id: '534b8fb2aa5e7afc1b23e69c',
-            pic: 'assets/img/miscellaneous/user.png',
-            username: 'Me',
-        };
-        this.doneLoading = false;
-        this.messages = [
-            {
-                _id: 1,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.user.username,
-                pic: this.user.pic,
-                text: 'Hello ....'
-            },
-            {
-                _id: 2,
-                date: new Date(),
-                userId: this.toUser._id,
-                username: this.toUser.username,
-                pic: this.toUser.pic,
-                text: 'Hi, anything we can help?'
-            },
-            {
-                _id: 3,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.user.username,
-                pic: this.user.pic,
-                text: 'Yes, do you accept credit card?'
-            },
-            {
-                _id: 4,
-                date: new Date(),
-                userId: this.toUser._id,
-                username: this.toUser.username,
-                pic: this.toUser.pic,
-                text: 'Yes we do.'
-            },
-            {
-                _id: 5,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.user.username,
-                pic: this.user.pic,
-                text: 'Oh great, thank you.'
-            },
-            {
-                _id: 6,
-                date: new Date(),
-                userId: this.toUser._id,
-                username: this.toUser.username,
-                pic: this.toUser.pic,
-                text: 'You are very welcome'
-            },
-            {
-                _id: 7,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.user.username,
-                pic: this.user.pic,
-                text: ':)'
-            }
-        ];
-        this.messageForm = formBuilder.group({
-            message: new __WEBPACK_IMPORTED_MODULE_0__angular_forms__["b" /* FormControl */]('')
-        });
-        this.chatBox = '';
-    }
-    AccountChatsMessagePage.prototype.send = function (message) {
-        var _this = this;
-        if (message && message !== '') {
-            // this.messageService.sendMessage(chatId, message);
-            var messageData = {
-                toId: this.toUser._id,
-                _id: 6,
-                date: new Date(),
-                userId: this.user._id,
-                username: this.toUser.username,
-                pic: this.toUser.pic,
-                text: message
-            };
-            this.messages.push(messageData);
-            this.scrollToBottom();
-            setTimeout(function () {
-                var replyData = {
-                    toId: _this.toUser._id,
-                    _id: 6,
-                    date: new Date(),
-                    userId: _this.toUser._id,
-                    username: _this.toUser.username,
-                    pic: _this.toUser.pic,
-                    text: 'Just a quick reply'
-                };
-                _this.messages.push(replyData);
-                _this.scrollToBottom();
-            }, 1000);
-        }
-        this.chatBox = '';
-    };
-    AccountChatsMessagePage.prototype.scrollToBottom = function () {
-        var _this = this;
-        setTimeout(function () {
-            _this.content.scrollToBottom();
-        }, 100);
-    };
-    return AccountChatsMessagePage;
-}());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_14" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* Content */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* Content */])
-], AccountChatsMessagePage.prototype, "content", void 0);
-AccountChatsMessagePage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
-        selector: 'page-account-chats-message',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/message/message.html"*/'<ion-header>\n	<ion-navbar>\n    <ion-title>Customer Service</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div *ngFor="let message of messages" class="message-wrapper" on-hold="onMessageHold($event, $index, message)">\n      <div *ngIf="user._id !== message.userId">\n        <img (click)="viewProfile(message)" class="profile-pic left" [src]="toUser.pic" onerror="onProfilePicError(this)" />\n        <!--  wave-->\n        <div class="chat-bubble left slide-left">\n  \n          <div class="message" [innerHTML]="message.text" autolinker>\n          </div>\n  \n          <div class="message-detail">\n            <span (click)="viewProfile(message)" class="bold">{{toUser.username}}</span>,\n            <span>{{message.date | moment:"ago" | lowercase}}</span>\n          </div>\n  \n        </div>\n      </div>\n  \n      <div *ngIf="user._id === message.userId">\n  \n        <img (click)="viewProfile(message)" class="profile-pic right" [src]="user.pic" onerror="onProfilePicError(this)" />\n  \n        <div class="chat-bubble right slide-right">\n  \n          <div class="message" [innerHTML]="message.text" autolinker>\n          </div>\n  \n          <div class="message-detail">\n            <span (click)="viewProfile(message)" class="bold">{{user.username}}</span>,\n            <span>{{message.date | moment:"ago" | lowercase}}</span>\n          </div>\n  \n        </div>\n  \n      </div>\n  \n      <div class="cf"></div>\n  \n    </div>\n  </ion-content>\n  <ion-footer>\n    <form [formGroup]="messageForm" (submit)="send(chatBox)" novalidate>\n      <ion-item>\n        <ion-input formControlName="message" [(ngModel)]="chatBox" placeholder="Send {{toUser.username}} a message..."></ion-input>\n        <button ion-button clear (click)="send(chatBox)" item-end><ion-icon class="footer-btn" name="send"></ion-icon></button>\n      </ion-item>\n    </form>\n  </ion-footer>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/message/message.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_0__angular_forms__["a" /* FormBuilder */]])
-], AccountChatsMessagePage);
 
-//# sourceMappingURL=message.js.map
+
+var AccountProfilePage = (function () {
+    function AccountProfilePage(view, translate, loader, toast, _user, fb, navCtrl, navParams) {
+        this.view = view;
+        this.translate = translate;
+        this.loader = loader;
+        this.toast = toast;
+        this._user = _user;
+        this.fb = fb;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.user = this._user.user;
+        this.form = this.fb.group({
+            first: [this.user.fname, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required],
+            // last: this.user.lastname,
+            email: this.user.user_email
+        });
+    }
+    AccountProfilePage.prototype.submit = function () {
+        var _this = this;
+        this.loader.present();
+        this._user.update(this.form.value).map(function (x) { return x.json(); }).subscribe(function (x) {
+            _this._user.setUserUpdate(_this.form.value);
+            _this.translate.get(['PROFILE_UPDATED']).subscribe(function (x) {
+                _this.toast.show(x.PROFILE_UPDATED);
+            });
+            _this.loader.dismiss();
+            _this.dismiss();
+        });
+    };
+    AccountProfilePage.prototype.dismiss = function () {
+        this.view.dismiss();
+    };
+    return AccountProfilePage;
+}());
+AccountProfilePage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-account-profile',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/profile/profile.html"*/'\n\n<ion-header no-border no-lines>\n  <ion-navbar color="primary">\n      <ion-buttons start>\n        <button start icon-only ion-button (click)="dismiss()">\n          <ion-icon name="close"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>  \n    <ion-list>\n      <h1 margin-left margin-bottom>{{ \'EDIT_PROFILE\' | translate}}</h1>\n      <ion-item>\n        <ion-label floating>{{ \'FIRST_NAME\' | translate}}</ion-label>\n        <ion-input formControlName="first" type="text"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>{{ \'LAST_NAME\' | translate}}</ion-label>\n        <ion-input formControlName="last" type="text"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>{{ \'BIO\' | translate}}</ion-label>\n        <ion-textarea formControlName="bio"></ion-textarea>\n      </ion-item>\n\n      <div padding>\n        <button ion-button block [disabled]="!form.valid">{{ \'SAVE\' | translate}}</button>\n      </div>\n\n    </ion-list>\n  </form>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/profile/profile.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
+], AccountProfilePage);
+
+//# sourceMappingURL=profile.js.map
 
 /***/ })
 

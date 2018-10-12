@@ -143,9 +143,14 @@ export class ProductPage {
 
 addTOCart()
 {this.product1=this.products[0];
-  
+  if(this.product1.stock==0)
+  {
+    this.toast.show("Currently this product is out of stock");
+  }else
+  {
   this.cart.post(this.product1);
   this.toast.show("Product added to cart");
+}
 }
 
 

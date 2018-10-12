@@ -1,16 +1,15 @@
 webpackJsonp([4],{
 
-/***/ 1001:
+/***/ 1007:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__ = __webpack_require__(543);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(40);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -25,73 +24,101 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var RegisterPage = (function () {
-    function RegisterPage(history, cart, http, restProvider, alert, platform, socialSharing, translate, toast, wishlist, navCtrl, loader, modal, navParam, woo) {
-        this.history = history;
-        this.cart = cart;
-        this.http = http;
-        this.restProvider = restProvider;
-        this.alert = alert;
-        this.platform = platform;
-        this.socialSharing = socialSharing;
-        this.translate = translate;
-        this.toast = toast;
-        this.wishlist = wishlist;
-        this.navCtrl = navCtrl;
-        this.loader = loader;
-        this.modal = modal;
-        this.navParam = navParam;
-        this.woo = woo;
-        this.todo = {
-            method: 'signup',
-            fname: '',
-            lname: '',
-            email: '',
-            divice_token: '',
-            password: '',
-            mobile: ''
-        };
-    }
-    RegisterPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad RegisterPage');
-    };
-    RegisterPage.prototype.getReegister = function () {
+var SearchPage = (function () {
+    function SearchPage(translate, keyboard, fb, history, toast, loader, appCtrl, alertCtrl, viewCtrl, navCtrl, woo) {
         var _this = this;
-        this.restProvider.register(this.todo)
-            .then(function (data) {
-            _this.cust = data;
-            console.log(_this.cust);
+        this.translate = translate;
+        this.history = history;
+        this.toast = toast;
+        this.loader = loader;
+        this.appCtrl = appCtrl;
+        this.alertCtrl = alertCtrl;
+        this.viewCtrl = viewCtrl;
+        this.navCtrl = navCtrl;
+        this.woo = woo;
+        this.categories = [];
+        this.loader.present();
+        this.search = fb.group({
+            search: ''
+        });
+        this.woo.getSubCategories().then(function (val) {
+            _this.categories = val;
+            _this.loader.dismiss();
+            keyboard.hasFocusedTextInput();
+        });
+    }
+    SearchPage.prototype.submit = function () {
+        this.goTo('ProductGridPage', this.search.value);
+    };
+    SearchPage.prototype.toggleSection = function (i) {
+        this.categories[i].open = !this.categories[i].open;
+    };
+    SearchPage.prototype.toggleItem = function (i, j) {
+        this.categories[i].children[j].open = !this.categories[i].children[j].open;
+    };
+    SearchPage.prototype.ionViewWillEnter = function () {
+        this.loadHistory();
+    };
+    SearchPage.prototype.loadHistory = function () {
+        this.history.load().then(function () { });
+    };
+    SearchPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    SearchPage.prototype.reset = function (e) {
+        this.search.reset();
+    };
+    SearchPage.prototype.confirmRemove = function () {
+        var _this = this;
+        this.history.clear;
+        this.translate.get(['HISTORY_CLEAR']).subscribe(function (x) {
+            _this.toast.show(x.HISTORY_CLEAR);
         });
     };
-    return RegisterPage;
+    SearchPage.prototype.resetHistory = function (product) {
+        var _this = this;
+        this.translate.get(['HISTORY_TITLE', 'HISTORY_DESC', 'CANCEL', 'YES']).subscribe(function (x) {
+            _this.alertCtrl.create({
+                title: x.HISTORY_TITLE,
+                message: x.HISTORY_DESC,
+                buttons: [{
+                        text: x.CANCEL
+                    }, {
+                        text: x.YES,
+                        handler: function () {
+                            _this.confirmRemove();
+                        }
+                    }]
+            }).present();
+        });
+    };
+    SearchPage.prototype.goTo = function (page, params) {
+        this.dismiss();
+        this.appCtrl.getRootNav().push(page, { params: params });
+    };
+    return SearchPage;
 }());
-RegisterPage = __decorate([
+SearchPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-register',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/register/register.html"*/'<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    \n      <ion-navbar color="primary">\n          <ion-title>Register</ion-title>\n      </ion-navbar>\n    \n    </ion-header>\n    \n    \n    <ion-content padding>\n    \n        <ion-list>\n           \n            <ion-item>\n                <ion-label floating>First Name</ion-label>\n                <ion-input type="text"  [(ngModel)]="todo.fname" ngControl="description"></ion-input>\n            \n            </ion-item>\n            <ion-item>\n                <ion-label floating>Last Name</ion-label>\n                <ion-input type="text"  [(ngModel)]="todo.lname" ngControl="description"></ion-input>\n                \n            </ion-item>\n            <ion-item>\n                <ion-label floating>Email</ion-label>\n                <ion-input type="email" [(ngModel)]="todo.email" ngControl="title"></ion-input>\n                \n              </ion-item>\n            <ion-item>\n                <ion-label floating>Password</ion-label>\n                <ion-input type="password"  [(ngModel)]="todo.password" ngControl="description"></ion-input>\n                \n            </ion-item>\n            <ion-item>\n                <ion-label floating>Confirm Password</ion-label>\n                <ion-input type="password"   ngControl="description"></ion-input>\n                \n            </ion-item>\n            \n              <ion-item>\n                  <ion-label floating>Mobile no</ion-label>\n                  <ion-input type="tel"  [(ngModel)]="todo.mobile" ngControl="description"></ion-input>\n                  \n              </ion-item>\n    \n          </ion-list>\n             \n              <button ion-button full round  color="app_primary" (click)="getReegister()" >Register</button>\n    \n    </ion-content>\n    '/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/register/register.html"*/,
+        selector: 'page-search',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/search/search.html"*/'<ion-header>\n  <ion-navbar >\n			<div class="newsearch">\n				<div no-padding class="searchbar searchbar-md">\n					<div class="searchbar-input-container">\n						<button ion-button icon-left icon-only clear tappable (click)="dismiss()"><ion-icon name="arrow-back"></ion-icon></button>\n						<form [formGroup]="search" (ngSubmit)="submit()" novalidate>      \n							<ion-input formControlName="search" class="searchbar-input" placeholder="{{ \'SEARCH\' | translate }}" type="search"></ion-input>\n							<button type="reset" *ngIf="(search.controls[\'search\'].value)" tappable (click)="reset(currForm)" ion-button icon-right icon-only clear><ion-icon name="close"></ion-icon></button>\n						</form>\n					</div>\n				</div>\n			</div>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n	<!-- <ion-list no-lines>\n	  <ion-list-header no-margin>\n	    Search History\n		<button item-end ion-button clear icon-start>\n			<ion-icon name="trash"></ion-icon>\n			CLEAR\n		</button>\n	  </ion-list-header>\n	  <ion-item><h5>White x Black</h5></ion-item>\n	  <ion-item><h5>New Look Faux</h5></ion-item>\n	  <ion-item><h5>Maiami Lather Bag</h5></ion-item>\n	</ion-list> -->\n	<ion-list no-lines>\n			<ion-list-header no-margin>\n				{{ \'CATEGORIES\' | translate }}\n			</ion-list-header>\n			<ion-list no-padding class="accordion-list">\n					<div *ngFor="let item of categories; let i = index">\n						<ion-item tappable (click)="toggleSection(i)" [ngClass]="{\'active\':item.open, \'section\': item.open}">\n								<h2>{{ item.name }}</h2>\n								<ion-icon name="add" item-end></ion-icon>\n						</ion-item>\n						<ion-list [class.active]="item.open" class="sub-accordion" no-margin no-padding padding-left no-lines *ngIf="item.child && item.open">\n								<button ion-item no-lines *ngFor="let child of item.child; let j = index" tappable (click)="goTo(\'ProductGridPage\', child)"> \n									<h3>{{child.name}}</h3>\n									<ion-badge item-end color="secondary">{{child.count}}</ion-badge>\n								</button>\n						</ion-list>\n					</div>\n			</ion-list>\n	</ion-list>\n	<ion-list no-lines *ngIf="history.all.length > 0">\n	  <ion-list-header no-margin>\n	    {{ \'HISTORY\' | translate }}\n	    <button item-end ion-button clear icon-start tappable (click)="resetHistory()">\n				<ion-icon name="trash"></ion-icon>\n				{{ \'CLEAR\' | translate }}\n			</button>\n		</ion-list-header>\n		<ion-item *ngFor="let x of history.all" tappable (click)="goTo(\'ProductPage\', x)">\n			<ion-thumbnail item-start>\n				<div class="img" [ngStyle]="{\'background-image\': \'url(\' + x.images[0].src +\')\'}"></div>\n			</ion-thumbnail>\n			<h3>{{x.name}}</h3>\n			<p><span class="price">{{x.price | money}}</span></p>\n		</ion-item>\n	</ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/search/search.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["c" /* HistoryProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__["a" /* SocialSharing */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* WishlistProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["l" /* WooCommerceProvider */]])
-], RegisterPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* Keyboard */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["c" /* HistoryProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["l" /* WooCommerceProvider */]])
+], SearchPage);
 
-//# sourceMappingURL=register.js.map
+//# sourceMappingURL=search.js.map
 
 /***/ }),
 
-/***/ 972:
+/***/ 975:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register__ = __webpack_require__(1001);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchPageModule", function() { return SearchPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__search__ = __webpack_require__(1007);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -101,23 +128,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var RegisterPageModule = (function () {
-    function RegisterPageModule() {
+
+var SearchPageModule = (function () {
+    function SearchPageModule() {
     }
-    return RegisterPageModule;
+    return SearchPageModule;
 }());
-RegisterPageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+SearchPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */],
+            __WEBPACK_IMPORTED_MODULE_3__search__["a" /* SearchPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */]),
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__search__["a" /* SearchPage */]),
+            __WEBPACK_IMPORTED_MODULE_0__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], RegisterPageModule);
+], SearchPageModule);
 
-//# sourceMappingURL=register.module.js.map
+//# sourceMappingURL=search.module.js.map
 
 /***/ })
 

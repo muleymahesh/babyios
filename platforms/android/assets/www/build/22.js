@@ -1,15 +1,15 @@
 webpackJsonp([22],{
 
-/***/ 952:
+/***/ 955:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountProfilePageModule", function() { return AccountProfilePageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(542);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile__ = __webpack_require__(983);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountSettingsLanguagesPageModule", function() { return AccountSettingsLanguagesPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__languages__ = __webpack_require__(989);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,37 +20,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AccountProfilePageModule = (function () {
-    function AccountProfilePageModule() {
+var AccountSettingsLanguagesPageModule = (function () {
+    function AccountSettingsLanguagesPageModule() {
     }
-    return AccountProfilePageModule;
+    return AccountSettingsLanguagesPageModule;
 }());
-AccountProfilePageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
+AccountSettingsLanguagesPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__profile__["a" /* AccountProfilePage */],
+            __WEBPACK_IMPORTED_MODULE_2__languages__["a" /* AccountSettingsLanguagesPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__profile__["a" /* AccountProfilePage */]),
-            __WEBPACK_IMPORTED_MODULE_0__app_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__languages__["a" /* AccountSettingsLanguagesPage */]),
+            __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], AccountProfilePageModule);
+], AccountSettingsLanguagesPageModule);
 
-//# sourceMappingURL=profile.module.js.map
+//# sourceMappingURL=languages.module.js.map
 
 /***/ }),
 
-/***/ 983:
+/***/ 989:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountProfilePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountSettingsLanguagesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_providers__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_global__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_providers__ = __webpack_require__(66);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,48 +66,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var AccountProfilePage = (function () {
-    function AccountProfilePage(view, translate, loader, toast, _user, fb, navCtrl, navParams) {
-        this.view = view;
-        this.translate = translate;
-        this.loader = loader;
-        this.toast = toast;
-        this._user = _user;
-        this.fb = fb;
+
+var AccountSettingsLanguagesPage = (function () {
+    function AccountSettingsLanguagesPage(navCtrl, settings, toast, fb, navParams, translate) {
         this.navCtrl = navCtrl;
+        this.settings = settings;
+        this.toast = toast;
+        this.fb = fb;
         this.navParams = navParams;
-        this.user = this._user.user;
+        this.translate = translate;
+        this.languages = __WEBPACK_IMPORTED_MODULE_4__app_app_global__["a" /* App */].languages;
         this.form = this.fb.group({
-            first: [this.user.fname, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required],
-            // last: this.user.lastname,
-            email: this.user.user_email
+            lang: [this.settings.all.language || this.translate.currentLang, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required]
         });
     }
-    AccountProfilePage.prototype.submit = function () {
+    AccountSettingsLanguagesPage.prototype.doSubmit = function () {
         var _this = this;
-        this.loader.present();
-        this._user.update(this.form.value).map(function (x) { return x.json(); }).subscribe(function (x) {
-            _this._user.setUserUpdate(_this.form.value);
-            _this.translate.get(['PROFILE_UPDATED']).subscribe(function (x) {
-                _this.toast.show(x.PROFILE_UPDATED);
-            });
-            _this.loader.dismiss();
-            _this.dismiss();
+        this.settings.setSettings(this.form.value.lang, 'language');
+        this.translate.use(this.form.value.lang);
+        this.translate.get('LANGUAGE_SAVED').subscribe(function (x) {
+            _this.toast.show(x);
         });
     };
-    AccountProfilePage.prototype.dismiss = function () {
-        this.view.dismiss();
-    };
-    return AccountProfilePage;
+    return AccountSettingsLanguagesPage;
 }());
-AccountProfilePage = __decorate([
+AccountSettingsLanguagesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-account-profile',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/profile/profile.html"*/'\n\n<ion-header no-border no-lines>\n  <ion-navbar color="primary">\n      <ion-buttons start>\n        <button start icon-only ion-button (click)="dismiss()">\n          <ion-icon name="close"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>  \n    <ion-list>\n      <h1 margin-left margin-bottom>{{ \'EDIT_PROFILE\' | translate}}</h1>\n      <ion-item>\n        <ion-label floating>{{ \'FIRST_NAME\' | translate}}</ion-label>\n        <ion-input formControlName="first" type="text"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>{{ \'LAST_NAME\' | translate}}</ion-label>\n        <ion-input formControlName="last" type="text"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>{{ \'BIO\' | translate}}</ion-label>\n        <ion-textarea formControlName="bio"></ion-textarea>\n      </ion-item>\n\n      <div padding>\n        <button ion-button block [disabled]="!form.valid">{{ \'SAVE\' | translate}}</button>\n      </div>\n\n    </ion-list>\n  </form>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/profile/profile.html"*/,
+        selector: 'page-account-settings-languages',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/languages/languages.html"*/'<ion-header no-border no-lines>\n  <ion-navbar></ion-navbar>\n</ion-header>\n\n<ion-content>\n    <form (submit)="doSubmit()" [formGroup]="form" novalidate>\n      <ion-list radio-group formControlName="lang">\n        <h1 margin-left margin-bottom>{{ \'LANGUAGES\' | translate}}</h1>\n        <ion-item mode="ios" *ngFor="let x of languages">\n          <ion-label>{{x.title}}</ion-label>\n          <ion-radio mode="ios" [value]="x.id" required></ion-radio>\n        </ion-item>\n        <div padding>\n          <button ion-button block [disabled]="!form.valid">{{ \'SAVE\' | translate}}</button>\n        </div>\n      </ion-list>\n    </form>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/languages/languages.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
-], AccountProfilePage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__providers_providers__["h" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_5__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]])
+], AccountSettingsLanguagesPage);
 
-//# sourceMappingURL=profile.js.map
+//# sourceMappingURL=languages.js.map
 
 /***/ })
 

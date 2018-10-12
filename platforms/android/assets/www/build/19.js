@@ -1,14 +1,14 @@
 webpackJsonp([19],{
 
-/***/ 955:
+/***/ 958:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountSettingsLanguagesPageModule", function() { return AccountSettingsLanguagesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountSettingsTosPageModule", function() { return AccountSettingsTosPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__languages__ = __webpack_require__(986);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tos__ = __webpack_require__(992);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20,38 +20,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AccountSettingsLanguagesPageModule = (function () {
-    function AccountSettingsLanguagesPageModule() {
+var AccountSettingsTosPageModule = (function () {
+    function AccountSettingsTosPageModule() {
     }
-    return AccountSettingsLanguagesPageModule;
+    return AccountSettingsTosPageModule;
 }());
-AccountSettingsLanguagesPageModule = __decorate([
+AccountSettingsTosPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__languages__["a" /* AccountSettingsLanguagesPage */],
+            __WEBPACK_IMPORTED_MODULE_2__tos__["a" /* AccountSettingsTosPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__languages__["a" /* AccountSettingsLanguagesPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tos__["a" /* AccountSettingsTosPage */]),
             __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], AccountSettingsLanguagesPageModule);
+], AccountSettingsTosPageModule);
 
-//# sourceMappingURL=languages.module.js.map
+//# sourceMappingURL=tos.module.js.map
 
 /***/ }),
 
-/***/ 986:
+/***/ 992:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountSettingsLanguagesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountSettingsTosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_global__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_providers__ = __webpack_require__(66);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,41 +59,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-
-
-var AccountSettingsLanguagesPage = (function () {
-    function AccountSettingsLanguagesPage(navCtrl, settings, toast, fb, navParams, translate) {
+/**
+ * Generated class for the AccountSettingTosPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+var AccountSettingsTosPage = (function () {
+    function AccountSettingsTosPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
-        this.settings = settings;
-        this.toast = toast;
-        this.fb = fb;
         this.navParams = navParams;
-        this.translate = translate;
-        this.languages = __WEBPACK_IMPORTED_MODULE_4__app_app_global__["a" /* App */].languages;
-        this.form = this.fb.group({
-            lang: [this.settings.all.language || this.translate.currentLang, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required]
-        });
     }
-    AccountSettingsLanguagesPage.prototype.doSubmit = function () {
-        var _this = this;
-        this.settings.setSettings(this.form.value.lang, 'language');
-        this.translate.use(this.form.value.lang);
-        this.translate.get('LANGUAGE_SAVED').subscribe(function (x) {
-            _this.toast.show(x);
-        });
+    AccountSettingsTosPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AccountSettingsTosPage');
     };
-    return AccountSettingsLanguagesPage;
+    return AccountSettingsTosPage;
 }());
-AccountSettingsLanguagesPage = __decorate([
+AccountSettingsTosPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-account-settings-languages',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/languages/languages.html"*/'<ion-header no-border no-lines>\n  <ion-navbar></ion-navbar>\n</ion-header>\n\n<ion-content>\n    <form (submit)="doSubmit()" [formGroup]="form" novalidate>\n      <ion-list radio-group formControlName="lang">\n        <h1 margin-left margin-bottom>{{ \'LANGUAGES\' | translate}}</h1>\n        <ion-item mode="ios" *ngFor="let x of languages">\n          <ion-label>{{x.title}}</ion-label>\n          <ion-radio mode="ios" [value]="x.id" required></ion-radio>\n        </ion-item>\n        <div padding>\n          <button ion-button block [disabled]="!form.valid">{{ \'SAVE\' | translate}}</button>\n        </div>\n      </ion-list>\n    </form>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/languages/languages.html"*/,
+        selector: 'page-account-settings-tos',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/tos/tos.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>{{ \'TOS\' | translate}}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <p no-margin margin-bottom>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et est ante. In quis lorem eu felis sagittis consequat ultrices ac ex. Nulla vel lectus dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin feugiat elementum urna et dignissim. Quisque at lacinia magna. Aliquam a convallis lorem, interdum suscipit orci. Aliquam quis lacus lectus. Proin commodo faucibus diam consectetur commodo. In malesuada, mauris eu porta viverra, neque mauris bibendum nunc, quis auctor metus mi eu ligula. Nam at augue id mauris mattis venenatis eget eu tellus. Mauris justo ipsum, aliquam a commodo ut, cursus sit amet purus.</p>\n  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et est ante. In quis lorem eu felis sagittis consequat ultrices ac ex. Nulla vel lectus dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin feugiat elementum urna et dignissim. Quisque at lacinia magna. Aliquam a convallis lorem, interdum suscipit orci. Aliquam quis lacus lectus. Proin commodo faucibus diam consectetur commodo. In malesuada, mauris eu porta viverra, neque mauris bibendum nunc, quis auctor metus mi eu ligula. Nam at augue id mauris mattis venenatis eget eu tellus. Mauris justo ipsum, aliquam a commodo ut, cursus sit amet purus.</p>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/settings/tos/tos.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__providers_providers__["h" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_5__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]])
-], AccountSettingsLanguagesPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
+], AccountSettingsTosPage);
 
-//# sourceMappingURL=languages.js.map
+//# sourceMappingURL=tos.js.map
 
 /***/ })
 

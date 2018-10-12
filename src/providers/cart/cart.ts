@@ -12,7 +12,7 @@ export class CartProvider {
  
 
   finalprice:any;
-
+  j:any;
   constructor(public storage: Storage) {
     this.load();
   }
@@ -128,10 +128,14 @@ export class CartProvider {
   get total(){
     this.total1=0;
     let total = 0;
+
+    
     
     for(let i in this.cart)
 {
-  //console.log(this.cart[i].discount)
+  console.log(this.cart);
+  console.log(i);
+  
   if(this.cart[i].discount>0)
   {
    this.total1=this.pricestrikt(this.cart[i].discount,this.cart[i].price);

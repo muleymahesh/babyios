@@ -1,14 +1,16 @@
 webpackJsonp([0],{
 
-/***/ 1008:
+/***/ 1011:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WishlistPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WritereviewPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__ = __webpack_require__(543);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(104);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,109 +24,61 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// @IonicPage()
-// @Component({
-//   selector: 'page-wishlist',
-//template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/wishlist/wishlist.html"*/'<!-- <ion-content padding-top>\n	<div class="subtitle" *ngIf="products.length > 0">\n		<h1 margin-top margin-horizontal>{{ \'WISHLIST\' | translate}}</h1>		\n		<p no-margin margin-horizontal>{{ \'WISH_DESC\' | translate: {value: products.length} }}</p>\n	</div>\n	<ion-grid class="empty" *ngIf="products.length == 0">\n		<ion-row align-items-center>\n			<ion-col align-self-center text-center>\n				<ion-icon name="heart-outline" color="secondary"></ion-icon>\n				<h4 margin-bottom>{{ \'EMPTY\' | translate}}</h4>\n				<button color="secondary" ion-button outline tappable (click)="goHome()">{{ \'START_SHOPPING\' | translate}}</button>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n	<ion-row padding-left padding-right class="product-grid">\n		<ion-col col-6 class="product-item" *ngFor="let x of products">\n			<div tappable (click)="goTo(\'ProductPage\', x)">\n				<div class="img" [ngStyle]="{\'background-image\': \'url(\' + x.images[0].src +\')\'}">\n					<ion-badge *ngIf="x.on_sale">{{x | discount}}</ion-badge>\n				</div>\n				<h5 [innerHTML]="x.name"></h5>\n				<div class="price">\n					<span class="disc" *ngIf="x.on_sale">{{x.regular_price | money}}</span> \n					{{x.price | money}}\n				</div>\n				<ion-row no-padding class="reviews" *ngIf="x.rating_count">\n					<ion-col col-auto no-padding>\n						<ion-rating item-start *ngIf="x.average_rating"\n							[numStars]="5"\n							[readOnly]="true"\n							[value]="x.average_rating">\n						</ion-rating>\n						<span *ngIf="x.rating_count">{{x.rating_count}}</span>\n					</ion-col>\n				</ion-row>\n			</div>\n			<ion-row class="remove">\n				<ion-col col-9><button tappable (click)="addToCart(x)" ion-button small block outline>{{ \'TO_CART\' | translate}}</button></ion-col>\n				<ion-col col-3 text-center><button tappable (click)="removeFromWish(x)" no-padding ion-button icon-only clear><ion-icon no-padding name="trash"></ion-icon></button></ion-col>\n			</ion-row>\n		</ion-col>\n	</ion-row>\n	\n</ion-content>\n		 -->\n		 <ion-header>\n			\n			  <ion-navbar color="primary">\n				<ion-title>wishlist</ion-title>\n			  </ion-navbar>\n			\n			</ion-header>\n			\n			\n			\n				<ion-content padding>\n					<ion-list>\n					  <ion-item *ngFor="let w of wlist">\n						<ion-avatar item-left>\n							<img src="http://www.babyneeds.co.in/babyneeds/product_image/{{w.imgs[0].img_url}}">\n						 </ion-avatar>\n						<h2>{{w.product_name}}</h2>\n						<p>Rs.: {{w.mrp}}</p>\n					  </ion-item>\n					</ion-list>\n				  </ion-content>\n			\n			'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/wishlist/wishlist.html"*/
-// })
-// export class WishlistPage {
-//   products: any[] = [];
-//   constructor(public wishlist: WishlistProvider,public http: HttpClient,public restProvider: RestProvider, private translate: TranslateService, public cart: CartProvider, public toast: ToastProvider, public alertCtrl: AlertController, public navCtrl: NavController) {
-//   }
-//   ionViewWillEnter(){
-//     this.wishlist.load().then(() => {
-//       this.products = this.wishlist.all;
-//     });
-//   }
-//   removeFromWish(product) {
-//     this.translate.get(['REMOVE_TTL', 'REMOVE_MSG', 'CANCEL', 'YES']).subscribe( x=> {
-//       let confirm = this.alertCtrl.create({
-//         title: x.REMOVE_TTL,
-//         message: x.REMOVE_MSG,
-//         buttons: [{
-//             text: x.CANCEL
-//           },{
-//             text: x.YES,
-//             handler: () => {
-//               this.confirmRemove(product);
-//             }
-//           }]
-//       });
-//       confirm.present();
-//     });
-//   }
-//   reloadWish(product){
-//     product.isFav = true;
-//     this.wishlist.post(product);
-//     this.products = this.wishlist.all;
-//   }
-//   addToCart(product){
-//     this.cart.post(product, 1);
-//     this.reloadWish(product);
-//     this.translate.get('ADDED_TO_CART').subscribe( x=> {
-//       this.toast.show(x);
-//     });
-//   }
-//   confirmRemove(product: any){
-//     this.reloadWish(product);
-//     this.translate.get('REMOVE_FROM_WISH').subscribe( x=> {
-//       this.toast.show(x);
-//     });
-//   }
-//   goHome(){
-//     this.navCtrl.parent.select(0);
-//   }
-//   goTo(page, params){
-//     this.navCtrl.push(page, {params: params});
-//   }
-// }
-// import { Component } from '@angular/core';
 
-// import { RestProvider } from '../../providers/rest/rest';
-// import { HttpClient } from '@angular/common/http';
+
 /**
- * Generated class for the WishlistPage page.
+ * Generated class for the WritereviewPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var WishlistPage = (function () {
-    function WishlistPage(user, navCtrl, toast, navParams, http, restProvider) {
+var WritereviewPage = (function () {
+    function WritereviewPage(user, history, cart, http, restProvider, alert, platform, socialSharing, translate, toast, wishlist, navCtrl, loader, modal, navParam, woo) {
         this.user = user;
-        this.navCtrl = navCtrl;
-        this.toast = toast;
-        this.navParams = navParams;
+        this.history = history;
+        this.cart = cart;
         this.http = http;
         this.restProvider = restProvider;
-        this.request = {
-            method: 'get_fav',
-            user_id: ''
+        this.alert = alert;
+        this.platform = platform;
+        this.socialSharing = socialSharing;
+        this.translate = translate;
+        this.toast = toast;
+        this.wishlist = wishlist;
+        this.navCtrl = navCtrl;
+        this.loader = loader;
+        this.modal = modal;
+        this.navParam = navParam;
+        this.woo = woo;
+        this.reviewreq = {
+            method: 'rate_product',
+            p_id: '',
+            review: '',
+            rating: '',
+            user_id: '',
+            name: '',
+            title: ''
         };
-        console.log(this.user.user.user_email);
-        this.wishlist1();
+        this.product = this.navParam.data.params;
+        console.log(this.product);
     }
-    WishlistPage.prototype.ionViewDidEnter = function () {
-        console.log('ionViewDidLoad WishlistPage');
-        console.log(this.user.user.user_email);
-        if (this.user.user.user_email) {
-            this.request.user_id = this.user.user.user_email;
-            this.wishlist1();
-        }
-        else {
-            this.toast.show("You are not logged in....");
-        }
+    WritereviewPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad WritereviewPage');
     };
-    WishlistPage.prototype.wishlist1 = function () {
+    WritereviewPage.prototype.submitReview = function () {
         var _this = this;
         if (this.user.user.user_email) {
-            this.restProvider.getWishlist(this.request)
+            this.reviewreq.p_id = this.product[0].p_id;
+            this.reviewreq.user_id = this.user.user.user_email;
+            this.reviewreq.name = this.user.user.fname;
+            this.restProvider.getWishlist(this.reviewreq)
                 .then(function (data) {
-                if (data = "failed") {
-                    _this.toast.show("no products in wishlist");
+                console.log(data);
+                if (data.result == "failed") {
+                    _this.toast.show("Review not submited");
                 }
-                else {
-                    _this.wlist = data;
-                    console.log(_this.wlist);
+                else if (data.result == "success") {
+                    _this.toast.show("Review submited");
                 }
             });
         }
@@ -132,29 +86,28 @@ var WishlistPage = (function () {
             console.log("You are not Loged in");
         }
     };
-    return WishlistPage;
+    return WritereviewPage;
 }());
-WishlistPage = __decorate([
+WritereviewPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-wishlist',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/wishlist/wishlist.html"*/'<!-- <ion-content padding-top>\n	<div class="subtitle" *ngIf="products.length > 0">\n		<h1 margin-top margin-horizontal>{{ \'WISHLIST\' | translate}}</h1>		\n		<p no-margin margin-horizontal>{{ \'WISH_DESC\' | translate: {value: products.length} }}</p>\n	</div>\n	<ion-grid class="empty" *ngIf="products.length == 0">\n		<ion-row align-items-center>\n			<ion-col align-self-center text-center>\n				<ion-icon name="heart-outline" color="secondary"></ion-icon>\n				<h4 margin-bottom>{{ \'EMPTY\' | translate}}</h4>\n				<button color="secondary" ion-button outline tappable (click)="goHome()">{{ \'START_SHOPPING\' | translate}}</button>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n	<ion-row padding-left padding-right class="product-grid">\n		<ion-col col-6 class="product-item" *ngFor="let x of products">\n			<div tappable (click)="goTo(\'ProductPage\', x)">\n				<div class="img" [ngStyle]="{\'background-image\': \'url(\' + x.images[0].src +\')\'}">\n					<ion-badge *ngIf="x.on_sale">{{x | discount}}</ion-badge>\n				</div>\n				<h5 [innerHTML]="x.name"></h5>\n				<div class="price">\n					<span class="disc" *ngIf="x.on_sale">{{x.regular_price | money}}</span> \n					{{x.price | money}}\n				</div>\n				<ion-row no-padding class="reviews" *ngIf="x.rating_count">\n					<ion-col col-auto no-padding>\n						<ion-rating item-start *ngIf="x.average_rating"\n							[numStars]="5"\n							[readOnly]="true"\n							[value]="x.average_rating">\n						</ion-rating>\n						<span *ngIf="x.rating_count">{{x.rating_count}}</span>\n					</ion-col>\n				</ion-row>\n			</div>\n			<ion-row class="remove">\n				<ion-col col-9><button tappable (click)="addToCart(x)" ion-button small block outline>{{ \'TO_CART\' | translate}}</button></ion-col>\n				<ion-col col-3 text-center><button tappable (click)="removeFromWish(x)" no-padding ion-button icon-only clear><ion-icon no-padding name="trash"></ion-icon></button></ion-col>\n			</ion-row>\n		</ion-col>\n	</ion-row>\n	\n</ion-content>\n		 -->\n		 <ion-header>\n			\n			  <ion-navbar color="primary">\n				<ion-title>wishlist</ion-title>\n			  </ion-navbar>\n			\n			</ion-header>\n			\n			\n			\n				<ion-content padding>\n					<ion-list>\n					  <ion-item *ngFor="let w of wlist">\n						<ion-avatar item-left>\n							<img src="http://www.babyneeds.co.in/babyneeds/product_image/{{w.imgs[0].img_url}}">\n						 </ion-avatar>\n						<h2>{{w.product_name}}</h2>\n						<p>Rs.: {{w.mrp}}</p>\n					  </ion-item>\n					</ion-list>\n				  </ion-content>\n			\n			'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/wishlist/wishlist.html"*/
+        selector: 'page-writereview',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/writereview/writereview.html"*/'<!--\n  Generated template for the WritereviewPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Write Review</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n    <ion-content padding>\n        \n            <ion-list>\n               \n                <ion-item>\n                    <ion-label floating>Title</ion-label>\n                    <ion-input type="text"  [(ngModel)]="reviewreq.tile" ngControl="description"></ion-input>\n                \n                </ion-item>\n                <ion-item>\n                    <ion-label floating>Review</ion-label>\n                    <ion-input type="text"  [(ngModel)]="reviewreq.review" ngControl="description"></ion-input>\n                    \n                </ion-item>\n                <ion-item>\n                    <ion-label floating>Rating</ion-label>\n                    <ion-input type="number" [(ngModel)]="reviewreq.rating" ngControl="title"></ion-input>\n                    \n                  </ion-item>\n              \n        \n              </ion-list>\n                 \n                  <button ion-button full round  color="app_primary" (click)="submitReview()" >Submit</button>\n        \n      \n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/writereview/writereview.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */]])
-], WishlistPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["c" /* HistoryProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__["a" /* SocialSharing */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* WishlistProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["l" /* WooCommerceProvider */]])
+], WritereviewPage);
 
-//# sourceMappingURL=wishlist.js.map
+//# sourceMappingURL=writereview.js.map
 
 /***/ }),
 
-/***/ 978:
+/***/ 980:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WishlistPageModule", function() { return WishlistPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(542);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__wishlist__ = __webpack_require__(1008);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WritereviewPageModule", function() { return WritereviewPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__writereview__ = __webpack_require__(1011);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -164,25 +117,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var WishlistPageModule = (function () {
-    function WishlistPageModule() {
+var WritereviewPageModule = (function () {
+    function WritereviewPageModule() {
     }
-    return WishlistPageModule;
+    return WritereviewPageModule;
 }());
-WishlistPageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
+WritereviewPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__wishlist__["a" /* WishlistPage */],
+            __WEBPACK_IMPORTED_MODULE_2__writereview__["a" /* WritereviewPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__wishlist__["a" /* WishlistPage */]),
-            __WEBPACK_IMPORTED_MODULE_0__app_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__writereview__["a" /* WritereviewPage */]),
         ],
     })
-], WishlistPageModule);
+], WritereviewPageModule);
 
-//# sourceMappingURL=wishlist.module.js.map
+//# sourceMappingURL=writereview.module.js.map
 
 /***/ })
 

@@ -50,33 +50,33 @@ export class CheckoutPage {
   };
 
   constructor(private setting: SettingsProvider, private alert: AlertController, private platform: Platform, private nav: NavController, private translate: TranslateService, private toast: ToastProvider, private user: UserProvider, private loader: LoadingProvider, private woo: WooCommerceProvider, private _cart: CartProvider, private events: Events, private _order: OrderProvider, private address: AddressProvider, public navParams: NavParams, public modal: ModalController) {
-    this.woo.loadPayments().then( x=> {
-      this.payments = x;
+    // this.woo.loadPayments().then( x=> {
+    //   this.payments = x;
 
-    });
+    // });
 
     this.cart = this._cart;
 
-    if(this.setting.all.zones.length <= 0){
-      this.loader.present();
-      this.woo.loadZones();  
-      this.setting.load().then(x=>{
-        this.zones = x.zones;
-        this.loader.dismiss();
-      })
-    }else
-      this.zones = this.setting.all.zones;
+    // if(this.setting.all.zones.length <= 0){
+    //   this.loader.present();
+    //   this.woo.loadZones();  
+    //   this.setting.load().then(x=>{
+    //     this.zones = x.zones;
+    //     this.loader.dismiss();
+    //   })
+    // }else
+    //   this.zones = this.setting.all.zones;
 
-    // this.woo.getTaxes().then( x=> {
-    //   this.tax = x;
-    //   console.log(x);
-    // })
+    // // this.woo.getTaxes().then( x=> {
+    // //   this.tax = x;
+    // //   console.log(x);
+    // // })
 
-    this.listenOrder();
+    // this.listenOrder();
   }
 
   ionViewDidEnter(){
-    this.setOrder();
+   // this.setOrder();
   }
 
   setOrder(){

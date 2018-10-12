@@ -29710,6 +29710,13 @@ page-cart .total h5 {
   font-weight: 600;
 }
 
+page-change .logo {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding-bottom: 10%;
+}
+
 page-checkout h3 {
   color: #484848;
 }
