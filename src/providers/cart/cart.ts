@@ -128,9 +128,8 @@ export class CartProvider {
   get total(){
     this.total1=0;
     let total = 0;
-
-    
-    
+ 
+  
     for(let i in this.cart)
 {
   console.log(this.cart);
@@ -141,16 +140,16 @@ export class CartProvider {
    this.total1=this.pricestrikt(this.cart[i].discount,this.cart[i].price);
   // console.log(this.total1);
   total += parseInt(this.total1) * parseInt(this.cart[i].quantity);
-      return total;
+     // return total;
     }
 else
 {
   total += parseInt(this.cart[i].price) * parseInt(this.cart[i].quantity);
-  return total;
+ 
 }
 
 }
-    
+return total;
   }
 
   save(){

@@ -20,17 +20,17 @@ export class SearchPage {
 	app: any;
 
 	constructor(private translate: TranslateService, keyboard: Keyboard, fb: FormBuilder, public history: HistoryProvider, private toast: ToastProvider, private loader: LoadingProvider, public appCtrl: App, public alertCtrl: AlertController, public viewCtrl: ViewController, public navCtrl: NavController, private woo: WooCommerceProvider) {
-		this.loader.present();
+		// this.loader.present();
 		
 		this.search = fb.group({
 			search: ''
 		});
 
-		this.woo.getSubCategories().then( (val) => {
-			this.categories = val;
-			this.loader.dismiss();
-			keyboard.hasFocusedTextInput();
-		});
+		// this.woo.getSubCategories().then( (val) => {
+		// 	this.categories = val;
+		// 	this.loader.dismiss();
+		// 	keyboard.hasFocusedTextInput();
+		// });
 	}
 
 	submit(){

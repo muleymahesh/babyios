@@ -225,23 +225,23 @@
                       </ng-template>
                     </ion-row>
 
-                    <ng-container *ngIf="p1.stock!=0; else elseTemplate">
+                    <!-- <ng-container *ngIf="p1.stock!=0; else elseTemplate"> -->
                         
                   <ion-row no-padding>
                       <ion-col col-4 no-padding>Stock</ion-col>
                       <ion-col col-8 no-padding>
-                       :Availabe
+                       :{{p1.stock==='0'?'out of stock':'Available'}} 
                       </ion-col>
                       </ion-row>
-                    </ng-container>
-                    <ng-template #elseTemplate>
+                    <!-- </ng-container> -->
+                    <!-- <ng-template #elseTemplate>
                       <ion-row no-padding >
                       <ion-col col-4 no-padding>Stock</ion-col>
                       <ion-col col-8 no-padding>
                        :Out of stock
                       </ion-col>
                   </ion-row>
-                    </ng-template>
+                    </ng-template> -->
                     
 
                   <ion-row no-padding *ngIf="p1.weight!='NA'">

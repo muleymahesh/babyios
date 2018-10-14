@@ -18,7 +18,7 @@ export class LoginPage {
 
   private loginForm : FormGroup;
   private signupForm : FormGroup;
-
+  rootPage: any;
   users: any;
   todo = {
     method:'login',
@@ -27,7 +27,7 @@ export class LoginPage {
   };
   private resetForm : FormGroup;
 
-  constructor(private fb: FormBuilder, private translate: TranslateService, private navParams: NavParams, private toast: ToastProvider, public user: UserProvider, public loader: LoadingProvider, public alertCtrl: AlertController, public app: App, public viewCtrl: ViewController,public http: HttpClient,public restProvider: RestProvider, public navCtrl: NavController) { 
+  constructor(private nav: NavController,private fb: FormBuilder, private translate: TranslateService, private navParams: NavParams, private toast: ToastProvider, public user: UserProvider, public loader: LoadingProvider, public alertCtrl: AlertController, public app: App, public viewCtrl: ViewController,public http: HttpClient,public restProvider: RestProvider, public navCtrl: NavController) { 
     this.loginForm = this.fb.group({
       user: ['', Validators.required ],
       pass: ['', Validators.required ]
@@ -131,10 +131,10 @@ export class LoginPage {
           console.log(this.users);
           this.user._loggedIn(this.users, this.navParams.data.tabIndex);
            this.translate.get(['LOGIN_SUCCESS'], {value: this.user.user.fname}).subscribe( x=> {
-             this.toast.show(x.LOGIN_SUCCESS);
-             
+             this.toast.show("login successfull");
            });
-           this.navCtrl.push(TabsPage);
+
+           this.goHome();
         }else
           this.toast.show(this.users.result);
       this.loader.dismiss();
@@ -148,6 +148,10 @@ export class LoginPage {
 		this.viewCtrl.dismiss();
   }
   
+  goHome(){
+    this.nav.popToRoot();
+   // this.nav.parent.select(0);
+  }
 
   goTo(page, params){
     this.navCtrl.push(page, {params: params});

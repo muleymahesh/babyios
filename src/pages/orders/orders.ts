@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, Refresher, Events, ModalController, NavController } from 'ionic-angular';
+import { IonicPage, Refresher, Events, ModalController, NavController,NavParams } from 'ionic-angular';
 import { UserProvider, LoadingProvider, WooCommerceProvider } from '../../providers/providers';
 
 @IonicPage()
@@ -11,12 +11,13 @@ export class OrdersPage {
   status: string = "paid";
   orders: any = [];
 
-  constructor(public nav: NavController, private events: Events, private modal: ModalController, private loader: LoadingProvider, private user: UserProvider, private woo: WooCommerceProvider) {
-    this.setRootForGuest();
-    this.listenIsLoggedIn();
-    this.listenIsLoggedOut();
-    
-    this.setForUser();
+  constructor(public navParams: NavParams,public nav: NavController, private events: Events, private modal: ModalController, private loader: LoadingProvider, private user: UserProvider, private woo: WooCommerceProvider) {
+    // this.setRootForGuest();
+    // this.listenIsLoggedIn();
+    // this.listenIsLoggedOut();
+    this.orders = this.navParams.data.params;
+    console.log(this.orders);
+    // this.setForUser();
   }
 
   listenIsLoggedIn(){

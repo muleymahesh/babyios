@@ -1,0 +1,71 @@
+<!--
+  Generated template for the Checkout1Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>checkout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+  <ion-list margin-top padding-top > 
+    <div>
+      <h3>{{ 'SHIPPING ADDRESS' }}</h3>
+      
+    </div>
+    <ion-item no-lines *ngIf="billing">
+      <p>{{billing.first_name}} • {{billing.phone}}</p>
+      <p>{{billing.address_1}}</p>
+      <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>
+      <p>{{billing.pincode}}</p>
+  </ion-item>
+    <div padding-horizontal>
+      <button ion-button outline block icon-start tappable (click)="addAddress(4)">
+          {{ 'ADD'}} {{ 'NEW_ADDRESS'}}
+      </button>
+      <button ion-button outline block icon-start  tappable (click)="selectAddress(4)">
+          {{ 'SELECT' }} {{ 'OTHER_ADDRESS'}}
+      </button>
+    </div>
+  </ion-list>
+</ion-card>
+<ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate">
+    </ion-datetime>
+  </ion-item>
+  <ion-item>
+      <ion-label>Time Slot</ion-label>
+      <ion-select [(ngModel)]="toppings">
+        <ion-option>9-11 AM</ion-option>
+        <ion-option>11-1 PM</ion-option>
+        <ion-option>1-3 PM</ion-option>
+        <ion-option>5-7 PM</ion-option>
+            </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Mode of Payment</ion-label>
+        <ion-select [(ngModel)]="payment">
+          <ion-option> Cash On Delivery</ion-option>
+          <ion-option>COD by Paytm</ion-option>
+          <ion-option>COD by BHIM</ion-option>
+       
+         </ion-select>
+      </ion-item>
+    
+  
+      <div padding>
+        <button ion-button block icon-start tappable (click)="placeorder()">
+           Place Order
+        </button>
+      </div>
+  
+</ion-content>

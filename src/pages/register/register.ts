@@ -25,7 +25,7 @@ export class RegisterPage {
     fname: '',
     lname:'',
     email:'',
-    divice_token:'',
+    divice_token:'12aacc',
     password: '',
     mobile:''
     };

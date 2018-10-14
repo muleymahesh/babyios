@@ -1,12 +1,13 @@
 webpackJsonp([3],{
 
-/***/ 1008:
+/***/ 1010:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ServicesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(73);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,42 +19,61 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/**
- * Generated class for the ServicesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ServicesPage = (function () {
-    function ServicesPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-    }
-    ServicesPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ServicesPage');
-    };
-    return ServicesPage;
-}());
-ServicesPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-services',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/services/services.html"*/'<!--\n  Generated template for the ServicesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>services</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/services/services.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
-], ServicesPage);
 
-//# sourceMappingURL=services.js.map
+var TabsPage = (function () {
+    function TabsPage(user, wish, cart, modal, navParams) {
+        this.user = user;
+        this.wish = wish;
+        this.cart = cart;
+        this.modal = modal;
+        this.navParams = navParams;
+        this.tab1Root = 'HomePage';
+        this.tab2Root = 'CartPage';
+        this.tab3Root = 'WishlistPage';
+        this.tab5Root = 'AccountPage';
+        this.mySelectedIndex = 0;
+        this.mySelectedIndex = this.navParams.data.tabIndex || this.mySelectedIndex;
+    }
+    TabsPage.prototype.isLogin = function (page, id) {
+        var _this = this;
+        this.user.load().then(function (x) {
+            if (x) {
+                console.log(x);
+                _this.user.isLoggedIn().map(function (x) { return x.json(); }).subscribe(function (x) {
+                    if (!x.valid) {
+                        _this.modal.create('LoginPage', { tabIndex: id }).present();
+                        _this.mySelectedIndex = id;
+                    }
+                });
+            }
+            else {
+                _this.modal.create('LoginPage', { tabIndex: id }).present();
+                _this.mySelectedIndex = id;
+            }
+        });
+    };
+    return TabsPage;
+}());
+TabsPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/tabs/tabs.html"*/'<ion-tabs [selectedIndex]="mySelectedIndex">\n  <ion-tab [root]="tab1Root" tabTitle="{{ \'HOME\' | translate }}" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="{{ \'WISHLIST\' | translate }}" tabIcon="heart" [tabBadge]="wish.total"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="{{ \'CART\' | translate }}" tabIcon="basket" [tabBadge]="cart.totalQty"></ion-tab>\n  <ion-tab [root]="tab5Root" tabTitle="{{ \'ACCOUNT\' | translate }}" tabIcon="contact"></ion-tab>\n</ion-tabs>'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/tabs/tabs.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* WishlistProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
+], TabsPage);
+
+//# sourceMappingURL=tabs.js.map
 
 /***/ }),
 
-/***/ 976:
+/***/ 977:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ServicesPageModule", function() { return ServicesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsPageModule", function() { return TabsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services__ = __webpack_require__(1008);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs__ = __webpack_require__(1010);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(542);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,23 +83,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ServicesPageModule = (function () {
-    function ServicesPageModule() {
+
+var TabsPageModule = (function () {
+    function TabsPageModule() {
     }
-    return ServicesPageModule;
+    return TabsPageModule;
 }());
-ServicesPageModule = __decorate([
+TabsPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__services__["a" /* ServicesPage */],
+            __WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__services__["a" /* ServicesPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */]),
+            __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], ServicesPageModule);
+], TabsPageModule);
 
-//# sourceMappingURL=services.module.js.map
+//# sourceMappingURL=tabs.module.js.map
 
 /***/ })
 

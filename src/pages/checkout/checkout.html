@@ -1,6 +1,6 @@
 <ion-header>
-    <ion-navbar no-border-bottom>
-        <ion-segment [(ngModel)]="checkout" padding-left padding-right>
+    <ion-navbar color="primary" no-border-bottom>
+        <!-- <ion-segment [(ngModel)]="checkout" padding-left padding-right>
           <ion-segment-button value="shipping">
             {{ 'SHIPPING' | translate}}
           </ion-segment-button>
@@ -12,14 +12,14 @@
           <button ion-button icon-only tappable (click)="viewCart()">
             <ion-icon name="basket"></ion-icon>
           </button>
-        </ion-buttons>
+        </ion-buttons> -->
    </ion-navbar>
  </ion-header>
 
 <ion-content padding-top>
-  <div [ngSwitch]="checkout">
-    <div *ngSwitchCase="'shipping'">
-      <ion-list margin-bottom>
+ <div>
+     <div>
+      <!-- <ion-list margin-bottom>
         <div padding-horizontal>
           <h3>{{ 'BILLING_ADDRESS' | translate}}</h3>
           <ion-note padding-bottom>{{ 'BILLING_DESC' | translate}}</ion-note>
@@ -27,8 +27,8 @@
         <ion-item no-lines *ngIf="billing">
             <p>{{billing.first_name}} • {{billing.phone}}</p>
             <p>{{billing.address_1}}</p>
-            <p>{{billing.city}}, {{billing.state}}, {{billing.postcode}}</p>
-            <p>{{billing.country}}</p>
+            <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>
+            <p>{{billing.pincode}}</p>
         </ion-item>
         <div padding-horizontal>
           <button ion-button outline block icon-start *ngIf="!billing" tappable (click)="addAddress(3)">
@@ -38,19 +38,19 @@
               {{ 'SELECT' | translate}} {{ 'OTHER_ADDRESS' | translate}}
           </button>
         </div>
-      </ion-list>
+      </ion-list> -->
 
-      <ion-list margin-top padding-top >
-        <div padding-horizontal>
-          <h3>{{ 'SHIPPING_ADDRESS' | translate}}</h3>
+      <ion-list margin-top padding-top > 
+        <div>
+          <h3>{{ 'SHIPPING ADDRESS' | translate}}</h3>
           <ion-note padding-bottom>{{ 'SHIPPING_DESC' | translate}}</ion-note>
         </div>
-        <ion-item no-lines *ngIf="shipping">
-            <p>{{shipping.first_name}} • {{shipping.phone}}</p>
-            <p>{{shipping.address_1}}</p>
-            <p>{{shipping.city}}, {{shipping.state}}, {{shipping.postcode}}</p>
-            <p>{{shipping.country}}</p>
-        </ion-item>
+        <ion-item no-lines *ngIf="billing">
+          <p>{{billing.first_name}} • {{billing.phone}}</p>
+          <p>{{billing.address_1}}</p>
+          <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>
+          <p>{{billing.pincode}}</p>
+      </ion-item>
         <div padding-horizontal>
           <button ion-button outline block icon-start *ngIf="!shipping" tappable (click)="addAddress(4)">
               {{ 'ADD' | translate}} {{ 'NEW_ADDRESS' | translate}}
@@ -82,7 +82,7 @@
         </button>
       </div>
     </div>
-
+<!-- 
     <div *ngSwitchCase="'payment'">
       <ion-list margin-bottom>
         <div padding-horizontal>
@@ -179,7 +179,7 @@
             {{ 'BUY_NOW' | translate}} {{total | money}}
         </button>
       </div>
-    </div>
+    </div> -->
 
   </div>
 

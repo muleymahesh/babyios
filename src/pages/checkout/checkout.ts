@@ -76,7 +76,7 @@ export class CheckoutPage {
   }
 
   ionViewDidEnter(){
-   // this.setOrder();
+   this.setOrder();
   }
 
   setOrder(){
@@ -94,27 +94,27 @@ export class CheckoutPage {
 
     //let tmp = (this.settings.value == 'shipping') ? this.shipping : this.billing;
 
-    if(this.shipping){
-      let id = this.woo.getSingleZone(this.setting.all.zones, this.shipping);
-      if(id){
-        this.loader.present();
-        this.woo.getShippingZoneMethod(id).then( x=> {
-          this.shipping_method = x;
-          this.loader.dismiss();
-        }, e=> {
-          console.log(e);
-        });
-      }else{
-        this.shipping_method = [];
-        this.translate.get(['NO_SHIPPING']).subscribe( x=> {
-          this.toast.showWithClose(x.NO_SHIPPING);
-        });
-      }
-    }else{
-      this.translate.get(['SELECT_SHIPPING']).subscribe( x=> {
-        this.toast.showWithClose(x.SELECT_SHIPPING);
-      });
-    }
+    // if(this.shipping){
+    //   let id = this.woo.getSingleZone(this.setting.all.zones, this.shipping);
+    //   if(id){
+    //     this.loader.present();
+    //     this.woo.getShippingZoneMethod(id).then( x=> {
+    //       this.shipping_method = x;
+    //       this.loader.dismiss();
+    //     }, e=> {
+    //       console.log(e);
+    //     });
+    //   }else{
+    //     this.shipping_method = [];
+    //     this.translate.get(['NO_SHIPPING']).subscribe( x=> {
+    //       this.toast.showWithClose(x.NO_SHIPPING);
+    //     });
+    //   }
+    // }else{
+    //   this.translate.get(['SELECT_SHIPPING']).subscribe( x=> {
+    //     this.toast.showWithClose(x.SELECT_SHIPPING);
+    //   });
+    // }
   }
 
   viewCart(){

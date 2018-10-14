@@ -1,19 +1,34 @@
 <ion-header>
     
-   <ion-toolbar no-padding>
-      <ion-segment [(ngModel)]="status">
-        <ion-segment-button value="paid">
-          {{ 'PAID' | translate}}
-        </ion-segment-button>
-        <ion-segment-button value="unpaid">
-          {{ 'UNPAID' | translate}}
-        </ion-segment-button>
-      </ion-segment>
-   </ion-toolbar>
-</ion-header>
+      <ion-navbar color="primary">
+        <ion-title>Order Detail</ion-title>
+      </ion-navbar>
+    
+    </ion-header>
 
-<ion-content padding-top>
-  <ion-refresher (ionRefresh)="doRefresh('', $event)" (ionPull)="doPulling($event)">
+<ion-content>
+  
+    <button ion-button block >Total :RS. {{orders.amount}}</button>
+    <div *ngIf="orders.details.length>0">
+    <ion-card *ngFor="let o of orders.details" > 
+      <ion-item>
+        
+            <!-- <p style="font-size:9px; text-align:left; color:orange">order id-  {{o.o_id}}</p> -->
+            <ion-avatar item-start>
+              <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{o.img_url}}">
+            </ion-avatar>
+            <h3   >{{o.product_name}}</h3>
+              
+            <p style="font-size:9px; text-align:left">Quantity :{{o.qty}}  </p>
+          
+         
+            <p style="font-size:9px; text-align:left; color:orange">Rs.{{o.mrp}} </p>
+          
+            <!-- <p style="font-size:9px; text-align:left; color:orange">Status-{{o.order_status}}  </p>  -->
+          
+        
+          </ion-item>
+     <!-- <ion-refresher (ionRefresh)="doRefresh('', $event)" (ionPull)="doPulling($event)">
     <ion-refresher-content
     pullingIcon="refresh-circle"
     refreshingSpinner="circles"
@@ -63,5 +78,16 @@
         <ion-badge item-end>{{x.status}}</ion-badge>
       </button>
     </ion-list>
-  </div>
+  </div> -->
+</ion-card>
+</div>
+
+
+<ng-container *ngIf="orders.status==delivered; else elseTemplate">
+<button ion-button medium block >Return</button>
+<button ion-button medium block >Inovice</button>
+</ng-container>
+<ng-template #elseTemplate>
+<button ion-button medium  block >Cancle</button>
+</ng-template>
 </ion-content>

@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { AccountPage } from '../account/account';
-
+// import { IonicPage, NavController, ModalController } from 'ionic-angular';
 
 /**
  * Generated class for the MyorderPage page.
@@ -34,7 +34,7 @@ export class MyorderPage {
   }
 
   
-  constructor(private translate: TranslateService, private navParams: NavParams, private toast: ToastProvider, public user: UserProvider, public loader: LoadingProvider, public alertCtrl: AlertController, public app: App, public viewCtrl: ViewController,public http: HttpClient,public restProvider: RestProvider, public navCtrl: NavController) {
+  constructor(public nav: NavController,private translate: TranslateService, private navParams: NavParams, private toast: ToastProvider, public user: UserProvider, public loader: LoadingProvider, public alertCtrl: AlertController, public app: App, public viewCtrl: ViewController,public http: HttpClient,public restProvider: RestProvider, public navCtrl: NavController) {
 if(this.user.user.user_id)
 {
    this.myOrder();
@@ -64,6 +64,8 @@ else{
 
   }
 
-
+	goTo(page, params){
+		this.nav.push(page,{params: params});
+	}
 }
 

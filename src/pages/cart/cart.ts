@@ -23,6 +23,7 @@ finalprice:any;
 
   ionViewWillEnter(){
     this.cart.load().then(() => {
+      console.log(this.cart.all);
       this.products = this.cart.all;
       this.total = this.cart.total;
     });
@@ -84,7 +85,7 @@ finalprice:any;
 //  this.user.logout();
     console.log(this.user.user);
     if(this.user.user.user_email)
-      this.nav.push('CheckoutPage');
+      this.nav.push('Checkout1Page');
     else{
       this.nav.push('LoginPage');
       // this.translate.get(['CHECKOUT_GUEST', 'CHECKOUT_GUEST_MSG', 'NO', 'YES']).subscribe( x=> {

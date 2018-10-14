@@ -24,19 +24,21 @@
     
          
   <ion-item *ngFor="let o of myOrders;  let i=index " >
-      <p style="font-size:9px; text-align:left; color:orange">{{o.o_id}}</p>
-      <ion-avatar item-start>
+    <div tappable (click)="goTo('OrdersPage',o)">
+      <p style="font-size:9px; text-align:left; color:orange">order id-  {{o.o_id}}</p>
+      <!-- <ion-avatar item-start>
         <img *ngIf="o.details.length>0" src="http://www.babyneeds.co.in/babyneeds/product_image/{{o.details[0].img_url}}">
-      </ion-avatar>
-      <h3  *ngIf="o.details.length>0" >{{o.details[0].product_name}}</h3>
+      </ion-avatar> -->
+      <!-- <h3  *ngIf="o.details.length>0" >{{o.details[0].product_name}}</h3> -->
         
-      <p style="font-size:9px; text-align:left; color:orange">Rs:{{o.amount}}  </p>
+      <p style="font-size:9px; text-align:left; color:orange">Rs:{{o.amount}} <br>{{o.shipping_type}}  </p>
     
    
-      <p style="font-size:9px; text-align:left; color:orange">{{o.shipping_type}}   <span> {{o.date}}</span>  </p>
+      <p style="font-size:9px; text-align:left; color:orange">Delivery date-{{o.date}} </p>
     
-      <p style="font-size:9px; text-align:left; color:orange">{{o.order_status}}  </p>
-   </ion-item>
+      <p style="font-size:9px; text-align:left; color:orange">Status-{{o.order_status}}  </p>
+    </div>
+    </ion-item>
     
 <!--        
   <ion-row>
