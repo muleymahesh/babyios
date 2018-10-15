@@ -46,22 +46,22 @@
     
       <ion-row *ngFor="let y of products">
        <ng-container *ngIf="y.avg_rating=='null'; else elseTemplate">
-          <ion-col align="center">
+              <ion-col align="center">
               <ion-rating color=primary
               [numStars]="5"
               [readOnly]="true"
               [value]="0">
-            </ion-rating>
-          </ion-col>
+              </ion-rating>
+              </ion-col>
        </ng-container>
        <ng-template #elseTemplate>
-          <ion-col>
+              <ion-col>
               <ion-rating color=primary
               [numStars]="5"
               [readOnly]="true"
               [value]="y.avg_rating">
-            </ion-rating>
-          </ion-col>
+              </ion-rating>
+              </ion-col>
        </ng-template>
        
        
@@ -78,9 +78,9 @@
         </ion-col>
        
         <ion-col center text-center>
-            <ion-note>
-                <ion-icon class="fav" name="heart" ></ion-icon>
-            </ion-note>
+            <button class="fav" tappable (click)="setFav(y)"  ion-button clear icon-only>
+                <ion-icon no-padding name="heart{{y.is_fav ? '-outline' : ''}}"></ion-icon>
+              </button>
           </ion-col>
 
 

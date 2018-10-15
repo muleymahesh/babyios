@@ -11,7 +11,7 @@ import { HttpModule } from '@angular/http'
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { Ionic2RatingModule } from 'ionic2-rating';
 @NgModule({
   declarations: [
     MyApp
@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     MODULES,
     SharedModule,
+    Ionic2RatingModule,
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: true,
       backButtonText: '',

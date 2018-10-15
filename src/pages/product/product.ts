@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, Platform, ModalController, NavParams } from 'ionic-angular';
-import { WishlistProvider, LoadingProvider, ToastProvider, WooCommerceProvider, HistoryProvider,RestProvider ,CartProvider} from '../../providers/providers';
+import { WishlistProvider, LoadingProvider,UserProvider, ToastProvider, WooCommerceProvider, HistoryProvider,RestProvider ,CartProvider} from '../../providers/providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class ProductPage {
   result:any;
+  productfav:any;
   product1:any;
   name:'';
   finalprice:any;
@@ -23,12 +24,24 @@ export class ProductPage {
     p_id:'',
     email:'abc.abc@gmail.com'
   }; 
+  res:any;
+  setfav={
+    method:'add_fav',
+    user_id:'',
+    p_id:'',
+   
+  }
+  remfav={
+    method:'delete_fav',
+    user_id:'',
+    p_id:'',
+  }
   // variations: any[] = [];
   reviews: any[] = [];
   related: any[] = [];
  // isSetVariation: boolean = false;
   
-  constructor(private history: HistoryProvider,private cart: CartProvider,public http: HttpClient,public restProvider: RestProvider, private alert: AlertController, private platform: Platform, private socialSharing: SocialSharing, private translate: TranslateService, private toast: ToastProvider, private wishlist: WishlistProvider, private navCtrl: NavController, private loader: LoadingProvider, private modal: ModalController, private navParam: NavParams, private woo: WooCommerceProvider) {
+  constructor(public user: UserProvider,private history: HistoryProvider,private cart: CartProvider,public http: HttpClient,public restProvider: RestProvider, private alert: AlertController, private platform: Platform, private socialSharing: SocialSharing, private translate: TranslateService, private toast: ToastProvider, private wishlist: WishlistProvider, private navCtrl: NavController, private loader: LoadingProvider, private modal: ModalController, private navParam: NavParams, private woo: WooCommerceProvider) {
     this.loader.present();
 
    this.product = this.navParam.data.params;
@@ -64,13 +77,26 @@ export class ProductPage {
   
   
   getproductdetail() {
+    if(this.user.user.user_id)
+    {
    this.getproduct.p_id =this.product.p_id;
-  
+   this.getproduct.email=this. user.user.user_email;
     this.restProvider.getProduct(this.getproduct)
     .then(data => {
       this.products = data;
       console.log(this.products);
     });
+  }
+  else{
+    this.getproduct.p_id =this.product.p_id;
+    
+      this.restProvider.getProduct(this.getproduct)
+      .then(data => {
+        this.products = data;
+        console.log(this.products);
+      });
+    
+  }
   }
 
   viewCart(){
@@ -85,16 +111,85 @@ export class ProductPage {
       // });
     
   }
+ setFav(product: any){
+this.getproduct.p_id=product.p_id;
+this.getproduct.email=this. user.user.user_email;
 
-  // setFav(product: any){
-  //   this.translate.get(['REMOVE_WISH', 'ADDED_WISH']).subscribe( x=> {
-	// 		let msg = product.isFav ? x.REMOVE_WISH : x.ADDED_WISH;
-	// 		this.wishlist.post(product);
-	// 		product.isFav = product.isFav ? false : true;
-	// 		this.toast.show(msg);
-  //   });
-  // }
+console.log(this.product);
+console.log(this.product.is_fav);
+    if(this.product.is_fav=="true")
+    {
+      if(this.user.user.user_id)
+      {
+        this.remfav.user_id=this. user.user.user_email;
+        this.remfav.p_id=product.p_id;
+      this.restProvider.favOperation(this.remfav)
+      .then(data => {
+        this.res = data;
+        if(this.res.result=="success")
+        {
+          this.product.is_fav="false";
+         this.toast.show(this.res.responseMessage);
+        }
+        else if(this.res.result=="failed")
+        {
+         this.toast.show(this.res.responseMessage);
+       
+        }
+         else{
+           this.toast.show("Something is wrong please contact Us");
+           
+         }
+      });
+    }else
+    {
+      this.toast.show("You are not Loged in");
+    }
 
+    }
+    else
+    {
+    if(this.user.user.user_id)
+    {
+      this.setfav.user_id=this. user.user.user_email;
+      this.setfav.p_id=product.p_id;
+    this.restProvider.favOperation(this.setfav)
+    .then(data => {
+      this.res = data;
+      if(this.res.result=="success")
+      {
+       this.product.is_fav="true";
+       this.toast.show(this.res.responseMessage);
+      }
+      else if(this.res.result=="failed")
+      {
+       this.toast.show(this.res.responseMessage);
+     
+      }
+       else{
+         this.toast.show("Something is wrong please contact Us");
+         
+       }
+    });
+  }else
+  {
+    this.toast.show("You are not Loged in");
+  }
+}
+  }
+
+
+  setFav1(product:any){
+
+    if(product.is_fav=="true")
+    {
+      console.log("Remove fav");
+    }
+    else if(product.is_fav=="false"){
+    
+      console.log("add to fav");
+    }
+  }
   // share(product: any){
   //   // console.log(product);
   //   if (!this.platform.is('cordova')) {

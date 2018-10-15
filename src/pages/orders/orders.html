@@ -82,12 +82,13 @@
 </ion-card>
 </div>
 
-
+<div align="center">
 <ng-container *ngIf="orders.status==delivered; else elseTemplate">
-<button ion-button medium block >Return</button>
-<button ion-button medium block >Inovice</button>
+<button   ion-button  round   tappable (click)="returnOrder()">Return</button><br><br>
+<button   ion-button  round  tappable (click)="inovice()">Inovice</button>
 </ng-container>
 <ng-template #elseTemplate>
-<button ion-button medium  block >Cancle</button>
+<button   ion-button  round  tappable (click)="cancleOrder()" >Cancle</button>
 </ng-template>
+</div>
 </ion-content>

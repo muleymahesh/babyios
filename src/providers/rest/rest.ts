@@ -219,6 +219,37 @@ console.log(data);
   
   }
 
+  orderOperation(data)
+  {
+    return this.http.post(this.url, JSON.stringify(data))
+    .toPromise()
+    .then((data: any) => {
+       console.log('Success', data);
+       return data;
+    })
+    .catch(err => {
+       console.log('Error', err);
+       return err;
+    })
+  
+  }
+
+  
+  favOperation(data)
+  {
+    return this.http.post(this.url, JSON.stringify(data))
+    .toPromise()
+    .then((data: any) => {
+       console.log('Success', data);
+       return data;
+    })
+    .catch(err => {
+       console.log('Error', err);
+       return err;
+    })
+  
+  }
+
 
 
 }

@@ -11,7 +11,7 @@ import { AppRate } from '@ionic-native/app-rate';
 import { AppVersion } from '@ionic-native/app-version';
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { Ionic2RatingModule } from 'ionic2-rating';
 // Modules
 import { Http, HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';

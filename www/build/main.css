@@ -29065,7 +29065,7 @@ ion-scroll.item {
 
 .category-slide .img {
   width: 120px;
-  height: 80px;
+  height: 110px;
   border-radius: 3px;
   margin-bottom: 10px;
 }
@@ -29810,7 +29810,7 @@ page-home .newsearch .searchbar .searchbar-input {
 }
 
 page-home .category-slide {
-  height: 190px;
+  height: 250px;
 }
 
 page-home ion-navbar .toolbar-background, page-home .toolbar-background {
@@ -30059,4 +30059,18 @@ page-thanks h6 {
 
 page-wishlist .remove ion-col:last-child button {
   height: 28px;
+}
+
+page-writereview ul {
+  padding: 0px;
+}
+
+page-writereview ul.rating li {
+  padding: 5px 10px !important;
+  background: none;
+  color: #ffb400;
+}
+
+page-writereview ul.rating li ion-icon {
+  font-size: 30px;
 }

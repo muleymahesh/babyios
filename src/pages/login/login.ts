@@ -149,8 +149,8 @@ export class LoginPage {
   }
   
   goHome(){
-    this.nav.popToRoot();
-   // this.nav.parent.select(0);
+   // this.nav.popToRoot();
+   this.nav.parent.select(0);
   }
 
   goTo(page, params){

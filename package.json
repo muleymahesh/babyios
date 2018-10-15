@@ -56,6 +56,7 @@
     "ionic-angular": "^3.8.0",
     "ionic-img-viewer": "^2.7.3",
     "ionic-plugin-keyboard": "^2.2.1",
+    "ionic2-rating": "^1.2.2",
     "ionicons": "3.0.0",
     "moment": "^2.18.1",
     "onesignal-cordova-plugin": "^2.4.4",

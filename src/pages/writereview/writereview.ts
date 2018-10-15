@@ -4,7 +4,7 @@ import { WishlistProvider, LoadingProvider, UserProvider,ToastProvider, WooComme
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Ionic2RatingModule } from "ionic2-rating";
 /**
  * Generated class for the WritereviewPage page.
  *
@@ -19,7 +19,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WritereviewPage {
 product:any;
-
+rate : any = 0;
 reviewreq= {
   method:'rate_product',
   p_id:'',
@@ -40,11 +40,16 @@ constructor(public user:UserProvider,private history: HistoryProvider,private ca
     console.log('ionViewDidLoad WritereviewPage');
   }
 
+  onModelChange(event){
+    this.rate = event;
+    console.log(event);
+    }
+
   submitReview()
   {
     if(this.user.user.user_email)
     {
-      this.reviewreq.p_id=this.product[0].p_id;
+      this.reviewreq.p_id=this.product.p_id;
       this.reviewreq.user_id=this.user.user.user_email;
       this.reviewreq.name=this.user.user.fname;
       this.restProvider.getWishlist(this.reviewreq)
@@ -57,6 +62,15 @@ constructor(public user:UserProvider,private history: HistoryProvider,private ca
         }
         else if(data.result=="success")
         {
+        this.reviewreq= {
+            method:'rate_product',
+            p_id:'',
+            review:'',
+            rating:'',
+            user_id:'',
+            name:'',
+            title:''
+              };
           this.toast.show("Review submited");
         }
       });
