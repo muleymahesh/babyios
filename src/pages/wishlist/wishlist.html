@@ -46,6 +46,9 @@
 		 <ion-header>
 			
 			  <ion-navbar color="primary">
+						<button ion-button menuToggle>
+								<ion-icon name="menu"></ion-icon>
+							</button>
 				<ion-title>wishlist</ion-title>
 			  </ion-navbar>
 			
@@ -55,12 +58,20 @@
 			
 				<ion-content padding>
 					<ion-list>
-					  <ion-item *ngFor="let w of wlist">
+					  <ion-item *ngFor="let w of wlist" (click)="goTo('ProductPage',w)" >
 						<ion-avatar item-left>
 							<img src="http://www.babyneeds.co.in/babyneeds/product_image/{{w.imgs[0].img_url}}">
 						 </ion-avatar>
 						<h2>{{w.product_name}}</h2>
-						<p>Rs.: {{w.mrp}}</p>
+						<!-- <p>Rs.: {{w.mrp}}</p> -->
+
+						<ng-container *ngIf="w.per_discount!=0; else elseTemplate">
+								<p style="font-size:9px; text-align:left; color:orange"><del>Rs.:{{w.mrp}} </del> &nbsp;&nbsp;&nbsp; Rs.:{{pricestrikt(w.per_discount,w.mrp)}} </p>
+							 </ng-container>
+							 <ng-template #elseTemplate>
+									<p style="font-size:9px; text-align:left; color:orange">Rs.:{{w.mrp}}</p>
+							 </ng-template>
+
 					  </ion-item>
 					</ion-list>
 				  </ion-content>

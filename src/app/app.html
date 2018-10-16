@@ -2,8 +2,13 @@
 <ion-menu [content]="content">
     <ion-header>
     
-      <ion-navbar>
+      <ion-navbar color="primary" >
         <ion-title>Menu</ion-title>
+      
+            
+       
+       
+
       </ion-navbar>
     
     </ion-header>
@@ -11,12 +16,69 @@
     
     <ion-content>
 
+        <ion-item no-padding color="primary" *ngIf="_user.user.fname" >
+            
+              <div align="center">	
+            <img align-items="center" src="assets/img/logo/ic_launcher.png"></div>
+              
+            <h3 style="font-size:14px; text-align:center; color:#ffff">{{user.fname}}</h3>
+            <h3 style="font-size:14px; text-align:center ; color:#ffff" >{{user.user_email}}</h3>
+            <!-- <p style="font-size:10px; text-align:center">{{ 'EDIT PROFILE' | translate}}</p> -->
+            <!-- <ion-avatar item-end>
+              <img src="assets/img/miscellaneous/user.png">
+            </ion-avatar> -->
+          </ion-item>
+      
+      
+          <ion-item no-padding  color="primary" *ngIf="!_user.user.fname">
+            
+              <div align="center">		<img align-items="center" src="assets/img/logo/ic_launcher.png"></div>
+              
+            <h3 style="font-size:14px; text-align:center; color:#ffff">Baby</h3>
+            <h3 style="font-size:14px; text-align:center ; color:#ffff" >Babyneeds@baby.com</h3>
+          </ion-item>
+      
+      
+
     <ion-list>
-    <button ion-item menu-close *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-    </button>
+        <button ion-item (click)="OnHomeClicked()">
+        <ion-label>Home</ion-label>
+      </button>
+      <button ion-item (click)="goTo('ProductGridPage','New Arrival')">
+          
+          <ion-label>New Arrivals </ion-label>
+      </button>
+      <button ion-item  (click)="goTo('CategoriesPage','0')">
+         
+          <ion-label>Shop by Brand</ion-label>
+      </button>
+
+      <!--<button ion-item (click)="goTo()">
+          
+           <ion-label>Categories</ion-label>
+       </button>-->
+       <button ion-item  (click)="goTo('MyorderPage','0')"> 
+          
+           <ion-label>My Orders</ion-label>
+       </button>
     
     </ion-list>
+    <hr>
+    <ion-list>
+        <button ion-item (click)="goTo()">
+        <ion-label>Services</ion-label>
+      </button>
+      <button ion-item (click)="goTo()">
+          
+          <ion-label>About Us</ion-label>
+      </button>
+      <button ion-item (click)="goTo()">
+         
+          <ion-label>Feedback</ion-label>
+      </button>
+    
+    </ion-list>
+
     </ion-content>
     </ion-menu>
     <ion-nav [root]="rootPage" type="overlay"  #content swipeBackEnabled="false"></ion-nav> 

@@ -78,8 +78,8 @@
         </ion-col>
        
         <ion-col center text-center>
-            <button class="fav" tappable (click)="setFav(y)"  ion-button clear icon-only>
-                <ion-icon no-padding name="heart{{y.is_fav ? '-outline' : ''}}"></ion-icon>
+            <button class="fav" tappable (click)="setFav(products[0])"  ion-button clear icon-only>
+                <ion-icon no-padding name="heart{{y.is_fav==='true' ? '' : '-outline'}}"></ion-icon>
               </button>
           </ion-col>
 
@@ -351,7 +351,36 @@
           </ion-slides>
         </div>-->
       </ion-card>
-	  </div> 
+    </div> 
+    
+    <ion-card>
+
+        <div *ngFor="let r of reviews; let i=index ">    
+            <ion-item *ngIf="i<10" >
+              
+              <!-- <ion-avatar item-start>
+                  <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{w.imgs[0].img_url}}">
+                </ion-avatar> -->
+                <h3>{{r.title}}</h3>
+                <p text-color="primary" style="font-size:9px; text-align:left;">{{r.review_date}} &nbsp;&nbsp;&nbsp;    {{r.reviewer_name}} </p>
+                <p style="font-size:12px; text-align:left">{{r.review}}</p>
+
+                <ion-rating color=primary
+                [numStars]="5"
+                [readOnly]="true"
+                [value]="r.rating">
+                </ion-rating>
+                <!-- <ng-container *ngIf="w.per_discount!=0; else elseTemplate">
+                  <p style="font-size:9px; text-align:left; color:orange"><del>Rs.:{{w.mrp}} </del> <span> Rs.:{{pricestrikt(w.per_discount,w.mrp)}}</span> </p>
+                 </ng-container>
+                 <ng-template #elseTemplate>
+                    <p style="font-size:9px; text-align:left; color:orange">Rs.:{{w.mrp}}</p>
+                 </ng-template> -->
+               
+             </ion-item>
+            </div> 
+
+    </ion-card>
 </ion-content>
 
 <ion-footer>

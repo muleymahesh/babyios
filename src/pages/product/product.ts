@@ -19,6 +19,11 @@ export class ProductPage {
   finalprice:any;
   product:any;
   products: any;
+  reviewreq={
+    method:'get_product_rating',
+    p_id:''
+  }
+  reviews:any;
   getproduct = {
     method:'get_product_detail',
     p_id:'',
@@ -37,7 +42,7 @@ export class ProductPage {
     p_id:'',
   }
   // variations: any[] = [];
-  reviews: any[] = [];
+  
   related: any[] = [];
  // isSetVariation: boolean = false;
   
@@ -86,6 +91,7 @@ export class ProductPage {
       this.products = data;
       console.log(this.products);
     });
+   this. getReviwe();
   }
   else{
     this.getproduct.p_id =this.product.p_id;
@@ -95,7 +101,7 @@ export class ProductPage {
         this.products = data;
         console.log(this.products);
       });
-    
+     this.getReviwe();
   }
   }
 
@@ -112,11 +118,13 @@ export class ProductPage {
     
   }
  setFav(product: any){
+   console.log(this.products[0].is_fav);
 this.getproduct.p_id=product.p_id;
 this.getproduct.email=this. user.user.user_email;
-
 console.log(this.product);
+this.product.is_fav=this.products[0].is_fav;
 console.log(this.product.is_fav);
+
     if(this.product.is_fav=="true")
     {
       if(this.user.user.user_id)
@@ -128,7 +136,7 @@ console.log(this.product.is_fav);
         this.res = data;
         if(this.res.result=="success")
         {
-          this.product.is_fav="false";
+          this.products[0].is_fav="false";
          this.toast.show(this.res.responseMessage);
         }
         else if(this.res.result=="failed")
@@ -153,12 +161,14 @@ console.log(this.product.is_fav);
     {
       this.setfav.user_id=this. user.user.user_email;
       this.setfav.p_id=product.p_id;
+console.log(product);  
+      console.log(product.is_fav);
     this.restProvider.favOperation(this.setfav)
     .then(data => {
       this.res = data;
       if(this.res.result=="success")
       {
-       this.product.is_fav="true";
+       this.products[0].is_fav="true";
        this.toast.show(this.res.responseMessage);
       }
       else if(this.res.result=="failed")
@@ -248,6 +258,24 @@ addTOCart()
 }
 }
 
+getReviwe()
+{
+  this.reviewreq.p_id=this.product.p_id;
+  this.restProvider.reviweOperation(this.reviewreq)
+  .then(data => {
+    console.log(data);
+    if(data.result=="failed")
+    {
+    this.reviews=[];
+    }
+    else if(data.result=="success")
+    {
+   this.reviews=data.data;
+   console.log(this.reviews);
+    }
+  });
+
+}
 
   goTo(page: string, params: any){
 		this.navCtrl.push(page, {params: params});

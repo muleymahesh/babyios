@@ -2,10 +2,10 @@
 import { Component,ViewChild } from '@angular/core';
 import { OneSignal } from '@ionic-native/onesignal';
 import { TranslateService } from '@ngx-translate/core';
-import { Platform /*,Config*/,Nav } from 'ionic-angular';
+import { Platform /*,Config*/,Nav ,NavController, NavParams  } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { WooCommerceProvider, NotifProvider, SettingsProvider } from '../providers/providers';
+import { WooCommerceProvider, NotifProvider, SettingsProvider ,UserProvider} from '../providers/providers';
 import { App } from './app.global';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -16,23 +16,23 @@ import { LoginPage } from '../pages/login/login';
 
 export class MyApp {
   rootPage: any = 'TabsPage';
-
+  
 @ViewChild(Nav) nav: Nav;
 
 pages : Array<{
 title: string,
 Component:any}>;
-
+user:any;
 
   app: any = {};
 
-  constructor(private oneSignal: OneSignal, private notif: NotifProvider, private platform: Platform, /*private config: Config,*/ public settings: SettingsProvider, private translate: TranslateService, private woo: WooCommerceProvider, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor( private _user: UserProvider,private oneSignal: OneSignal, private notif: NotifProvider, private platform: Platform, /*private config: Config,*/ public settings: SettingsProvider, private translate: TranslateService, private woo: WooCommerceProvider, private statusBar: StatusBar, private splashScreen: SplashScreen) {
     // this.settings.load().then((x) => {
     //   this.woo.loadZones();
     //   this.app = x;
     //   this.initTranslate();
     // });
-
+    this.user = this._user.user;
     // platform.ready().then(() => {
     //   if (platform.is('cordova')) {
     //     this.oneSignal.startInit(App.OneSignalAppID, App.GCM);
@@ -86,4 +86,10 @@ Component:any}>;
     // });
   }
 
+  public OnHomeClicked(): void {
+    this.nav.setRoot(this.rootPage);
+}
+public goTo(page,params):void{
+	this.nav.setRoot(page, {params: params});
+}
 }

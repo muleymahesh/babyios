@@ -250,7 +250,20 @@ console.log(data);
   
   }
 
+reviweOperation(data)
+{
+  return this.http.post(this.url, JSON.stringify(data))
+  .toPromise()
+  .then((data: any) => {
+     console.log('Success', data);
+     return data;
+  })
+  .catch(err => {
+     console.log('Error', err);
+     return err;
+  })
 
+}
 
 }
 

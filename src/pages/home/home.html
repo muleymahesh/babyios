@@ -1,6 +1,9 @@
 <ion-header>  
 
     <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
         <ion-title>BabyNeeds</ion-title>
     </ion-navbar>
         <div class="newsearch">
@@ -47,7 +50,7 @@
           <h3>{{w.product_name}}</h3>
           
           <ng-container *ngIf="w.per_discount!=0; else elseTemplate">
-            <p style="font-size:9px; text-align:left; color:orange"><del>Rs.:{{w.mrp}} </del> <span> Rs.:{{pricestrikt(w.per_discount,w.mrp)}}</span> </p>
+            <p style="font-size:9px; text-align:left; color:orange"><del>Rs.:{{w.mrp}} </del> &nbsp;&nbsp;&nbsp; Rs.:{{pricestrikt(w.per_discount,w.mrp)}} </p>
            </ng-container>
            <ng-template #elseTemplate>
               <p style="font-size:9px; text-align:left; color:orange">Rs.:{{w.mrp}}</p>
@@ -90,7 +93,7 @@
         <h3>{{w.product_name}}</h3>
         
         <ng-container *ngIf="w.per_discount!=0; else elseTemplate">
-          <p style="font-size:9px; text-align:left; color:orange"><del>Rs.:{{w.mrp}} </del> <span> Rs.:{{pricestrikt(w.per_discount,w.mrp)}}</span> </p>
+          <p style="font-size:9px; text-align:left; color:orange"><del>Rs.:{{w.mrp}} </del> &nbsp;&nbsp;&nbsp; Rs.:{{pricestrikt(w.per_discount,w.mrp)}} </p>
          </ng-container>
          <ng-template #elseTemplate>
             <p style="font-size:9px; text-align:left; color:orange">Rs.:{{w.mrp}}</p>
@@ -119,10 +122,10 @@
         <ion-list no-lines no-margin margin-left>
           <ion-item no-padding no-lines>
             {{ 'CATEGORIES' | translate }}
-            <button item-end ion-button clear icon-end tappable (click)="goTo('CategoriesPage')">
+             <!-- <button item-end ion-button clear icon-end tappable (click)="goTo('CategoriesPage')">
                 {{ 'SEE ALL' | translate }}
-                <ion-icon name="arrow-forward"></ion-icon>
-              </button>
+                <ion-icon name="arrow-forward"></ion-icon> 
+              </button> -->
           </ion-item>
         </ion-list>
 

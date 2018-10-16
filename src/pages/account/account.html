@@ -2,6 +2,9 @@
 <ion-header>  
 	
 		<ion-navbar color="primary">
+				<button ion-button menuToggle>
+						<ion-icon name="menu"></ion-icon>
+					  </button>
 			<ion-title>Profile</ion-title>
 		</ion-navbar>
 		
@@ -9,13 +12,14 @@
 	</ion-header>
 
 <ion-content>
-			<ion-item no-padding (click)="goProfile()" color="primary" *ngIf="_user.user.fname" >
+			<ion-item no-padding color="primary" *ngIf="_user.user.fname" >
 			
-				<div align="center">		<img align-items="center" src="assets/img/logo/ic_launcher.png"></div>
+				<div align="center">	
+			<img align-items="center" src="assets/img/logo/ic_launcher.png"></div>
 				
 			<h3 style="font-size:14px; text-align:center; color:#ffff">{{user.fname}}</h3>
 			<h3 style="font-size:14px; text-align:center ; color:#ffff" >{{user.user_email}}</h3>
-			<p style="font-size:10px; text-align:center">{{ 'EDIT PROFILE' | translate}}</p>
+			<!-- <p style="font-size:10px; text-align:center">{{ 'EDIT PROFILE' | translate}}</p> -->
 			<!-- <ion-avatar item-end>
 				<img src="assets/img/miscellaneous/user.png">
 			</ion-avatar> -->
@@ -40,30 +44,30 @@
 			{{ 'NOTIFICATIONS' | translate}}
 			<ion-badge item-end *ngIf="_notif.all.length > 0">{{_notif.all.length}}</ion-badge>
 		</button> -->
-<div align="center">
+<div align="center" padding >
 	
 		
 
-		<br>	<button  ion-button medium round  color="app_primary" tappable (click)="goTo('ChangePage')">
+		<br>	<button  ion-button full round  color="app_primary" tappable (click)="goTo('ChangePage')">
 					{{ 'Change Password' | translate}}
 					<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
-				</button><br><br>
+				</button><br>
 
-				<button  ion-button medium round  color="app_primary" tappable (click)="goTo('SavedAddressPage')">
+				<button  ion-button full  round  color="app_primary" tappable (click)="goTo('SavedAddressPage')">
 					{{ 'Saved Address' | translate}}
 					<ion-badge  item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge>
-				</button><br><br>
+				</button><br>
 		
 			
-				<button  ion-button medium round  color="app_primary" tappable (click)="goTo('MyorderPage')">
+				<button  ion-button full  round  color="app_primary" tappable (click)="goTo('MyorderPage')">
 					{{ 'My Orders' | translate}}
 					<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
-				</button><br><br>
+				</button><br>
 	
 	
 
 
-			<button  ion-button medium round  color="app_primary" tappable (click)="logout()">
+			<button  ion-button full round  color="app_primary" tappable (click)="logout()">
 					{{ 'Logout' | translate}}
 					<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
 				</button><br><br>
@@ -89,10 +93,10 @@
 
 
 	<ion-list  *ngIf="!_user.user.fname">
-		<div align="center">
+		<div padding align="center">
 
 
-			<br>	<button  ion-button  round medium color="app_primary" tappable (click)="goTo('RegisterPage')">
+			<br>	<button  ion-button  round full color="app_primary" tappable (click)="goTo('RegisterPage')">
 						{{ 'Register' | translate}}
 						<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
 					</button> <br><br>
@@ -100,7 +104,7 @@
 				
 
 
-		<br>	<button  ion-button  round medium color="app_primary" tappable (click)="login()">
+		<br>	<button  ion-button  round full color="app_primary" tappable (click)="login()">
 					{{ 'Log In' | translate}}
 					<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
 				</button> <br><br>

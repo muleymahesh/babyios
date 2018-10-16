@@ -12,6 +12,8 @@ page-product {
 			padding: 0px;
 		}
 	}
+	
+
 
 	.list-header{
 		font-size: 1.6rem;
@@ -45,9 +47,9 @@ page-product {
 		margin: 0px;
 	}
 
-	.item-radio:last-child .item-inner{
-		border-bottom: none !important;
-	}
+	// .item-radio:last-child .item-inner{
+	// 	border-bottom: none !important;
+	// }
 
 	.item-radio ion-label span:after{
 		content: '|';

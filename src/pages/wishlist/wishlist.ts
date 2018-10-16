@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController } from 'ionic-angular';
-import { CartProvider, ToastProvider, WishlistProvider,RestProvider, UserProvider } from '../../providers/providers';
+import {LoadingProvider, CartProvider, ToastProvider, WishlistProvider,RestProvider, UserProvider } from '../../providers/providers';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -92,16 +92,26 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'wishlist.html'
 })
 export class WishlistPage {
+  result:any;
+  wlist: any;
+  request= {
+method:'get_fav',
 
-  constructor(public user:UserProvider,public navCtrl: NavController, private toast: ToastProvider ,public navParams: NavParams,public http: HttpClient,public restProvider: RestProvider) {
+user_id:''
+  };
+
+finalprice:any;
+  constructor(private loader: LoadingProvider,public user:UserProvider,public navCtrl: NavController, private toast: ToastProvider ,public navParams: NavParams,public http: HttpClient,public restProvider: RestProvider) {
  console.log(this.user.user.user_email);
    // this.wishlist1();
   }
   ionViewDidEnter(){
+
     console.log('ionViewDidLoad WishlistPage');
     console.log(this.user.user.user_email);
     if(this.user.user.user_email)
     {
+     
     this.request.user_id=this.user.user.user_email;
     this.wishlist1();
     }
@@ -112,16 +122,13 @@ export class WishlistPage {
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad WishlistPage');
   // }
-  wlist: any;
-  request= {
-method:'get_fav',
-
-user_id:''
-  };
+ 
 
  wishlist1() {
+  this.loader.present();
    if(this.user.user.user_email)
   {
+    	
     this.restProvider.getWishlist(this.request)
     .then(data => {
       console.log(data);
@@ -141,6 +148,31 @@ user_id:''
   {
     console.log("You are not Loged in")
   }
+  this.loader.dismiss();
   }
+
+  goTo(page, params){
+    this.navCtrl.push(page, {params: params});
+  }
+
+
+	pricestrikt(discount,price)
+  {
+   
+      if(discount!=0)
+      {
+        this.result=(discount/100)*price;
+        this.finalprice=price-this.result;
+        return parseInt(this.finalprice);
+
+          }
+          else
+          {
+            return 0;
+          }
+ 
+  }
+
+
 }
 

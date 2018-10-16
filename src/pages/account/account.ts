@@ -111,6 +111,7 @@ export class AccountPage {
 
 	logout()
 	{
+		
 		this.user={};
 		this._user.logout();
 		this.ionViewDidEnter();

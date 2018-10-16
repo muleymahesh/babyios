@@ -6,7 +6,7 @@
     
     </ion-header>
 
-<ion-content>
+<ion-content >
   
     <button ion-button block >Total :RS. {{orders.amount}}</button>
     <div *ngIf="orders.details.length>0">
@@ -82,13 +82,18 @@
 </ion-card>
 </div>
 
-<div align="center">
+<div  padding align="center">
 <ng-container *ngIf="orders.status==delivered; else elseTemplate">
-<button   ion-button  round   tappable (click)="returnOrder()">Return</button><br><br>
-<button   ion-button  round  tappable (click)="inovice()">Inovice</button>
+  
+<button  full ion-button round tappable (click)="returnOrder()">Request Return</button><br>
+
+<button   full ion-button  tappable round (click)="inovice()">Inovice</button>
+
 </ng-container>
 <ng-template #elseTemplate>
-<button   ion-button  round  tappable (click)="cancleOrder()" >Cancle</button>
+ 
+<button   full ion-button round  tappable (click)="cancleOrder()" >Cancle</button>
+
 </ng-template>
 </div>
 </ion-content>

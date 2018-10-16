@@ -1,6 +1,9 @@
 <ion-header>  
 	
 		<ion-navbar color="primary">
+				<button ion-button menuToggle>
+						<ion-icon name="menu"></ion-icon>
+					  </button>
 			<ion-title>Cart</ion-title>
 		</ion-navbar>
 		
@@ -22,9 +25,9 @@
 		<ion-grid class="empty" *ngIf="cart.total == 0">
 			<ion-row align-items-center>
 				<ion-col align-self-center text-center>
-					<ion-icon name="basket" color="secondary"></ion-icon>
+					<ion-icon name="basket" color="primary"></ion-icon>
 					<h4 margin-bottom>{{ 'EMPTY' | translate}}</h4>
-					<button color="secondary" ion-button outline tappable (click)="goHome()">{{ 'START_SHOPPING' | translate}}</button>
+					<button color="primary" ion-button outline tappable (click)="goHome()">{{ 'START SHOPPING' | translate}}</button>
 				</ion-col>
 			</ion-row>
 		</ion-grid>

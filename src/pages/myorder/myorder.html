@@ -7,36 +7,32 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>myorder</ion-title>
+    <ion-title>My order</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content >
 
   <div class="">
-    <ion-list no-lines no-margin margin-left>
-      <ion-item no-padding no-lines>
-        My Orders
-    </ion-item>
+    <!-- <ion-list no-lines no-margin margin-left>
+     
     </ion-list>
-    
-    <ion-card *ngFor="let o of myOrders;  let i=index ">  
+     -->
+    <ion-card padding *ngFor="let o of myOrders;  let i=index ">  
   
     <div tappable (click)="goTo('OrdersPage',o)">
-      <p style="font-size:9px; text-align:left; ">order id-  {{o.o_id}}</p>
-      <!-- <ion-avatar item-start>
-        <img *ngIf="o.details.length>0" src="http://www.babyneeds.co.in/babyneeds/product_image/{{o.details[0].img_url}}">
-      </ion-avatar> -->
-      <!-- <h3  *ngIf="o.details.length>0" >{{o.details[0].product_name}}</h3> -->
+      <p style="font-size:15px; text-align:left; color:#381c76;">order id-  {{o.o_id}} &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;   {{o.date}}</p>
+
+      <p style="font-size:12px; text-align:left;color:#381c76; ">Rs:{{o.amount}} <br>{{o.shipping_type}}  </p>
+   <ion-list no-padding> 
+      <ion-item no-padding *ngFor="let k of myOrders[i].details">
+         <p style="font-size:11px;text-align:left;color:#381c76; ">  {{k.product_name}}</p>
+      </ion-item>
+    </ion-list>
         
-      <p style="font-size:9px; text-align:left; ">Rs:{{o.amount}} <br>{{o.shipping_type}}  </p>
-    
-   
-      <p style="font-size:9px; text-align:left; ">Delivery date-{{o.date}} </p>
-    
-      <p style="font-size:9px; text-align:left;">Status-{{o.order_status}}  </p>
+      <p style="font-size:12px; text-align:left;">Status-{{o.order_status}}  </p>
     </div>
   
   </ion-card>

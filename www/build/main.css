@@ -29911,10 +29911,6 @@ page-product .specs ion-row:last-child {
   margin: 0px;
 }
 
-page-product .item-radio:last-child .item-inner {
-  border-bottom: none !important;
-}
-
 page-product .item-radio ion-label span:after {
   content: '|';
 }

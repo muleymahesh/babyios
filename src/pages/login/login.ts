@@ -149,7 +149,7 @@ export class LoginPage {
   }
   
   goHome(){
-   // this.nav.popToRoot();
+   this.nav.popToRoot();
    this.nav.parent.select(0);
   }
 
