@@ -19,6 +19,7 @@ export class LoginPage {
   private loginForm : FormGroup;
   private signupForm : FormGroup;
   rootPage: any;
+  
   users: any;
   todo = {
     method:'login',
@@ -133,8 +134,10 @@ export class LoginPage {
            this.translate.get(['LOGIN_SUCCESS'], {value: this.user.user.fname}).subscribe( x=> {
              this.toast.show("login successfull");
            });
-
-           this.goHome();
+           //this.nav.popToRoot();
+          //  this.nav.parent.select(0);
+          //  this.nav.setRoot(this.rootPage);
+         this.goHome();  
         }else
           this.toast.show(this.users.result);
       this.loader.dismiss();

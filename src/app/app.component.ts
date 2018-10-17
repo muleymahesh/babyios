@@ -89,7 +89,12 @@ user:any;
   public OnHomeClicked(): void {
     this.nav.setRoot(this.rootPage);
 }
-public goTo(page,params):void{
-	this.nav.setRoot(page, {params: params});
+// public goTo(page,params):void{
+// 	this.nav.setRoot(page, {params: params});
+// }
+
+
+goTo(page, params){
+  this.nav.push(page,{params: params});
 }
 }

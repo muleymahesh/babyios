@@ -263,7 +263,33 @@ reviweOperation(data)
      return err;
   })
 
+
 }
+
+serviceOperations(data) {
+  return this.http.post(this.url, JSON.stringify(data))
+   .toPromise()
+   .then((data: any) => {
+    if(data.data)
+    {
+     console.log('Success', data.data);
+     return data.data;
+    }
+    else if(data.result=='failed')
+    {
+       console.log("services not present");
+     
+    }
+    else
+    {
+      return data;
+    }
+   })
+   .catch(err => {
+      console.log('Error', err);
+      return err;
+   })
+ }
 
 }
 

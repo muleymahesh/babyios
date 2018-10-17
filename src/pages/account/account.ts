@@ -105,9 +105,9 @@ export class AccountPage {
 		}
 	}
 
-	login(){
-		this.modal.create('LoginPage', {}).present();
-	}
+	// login(){
+	// 	this.modal.create('LoginPage', {}).present();
+	// }
 
 	logout()
 	{

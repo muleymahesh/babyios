@@ -7,12 +7,17 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>services</ion-title>
+    <ion-title>Service Categories</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  
+  <ion-card padding style=" min-height:100px "  *ngFor="let s of services">
+      <p style="font-size:20px; text-align:center; color:#381c76;">{{s.category}}</p>
+      
+  </ion-card>
 
 </ion-content>
