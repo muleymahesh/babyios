@@ -354,8 +354,11 @@
     </div> 
     
     <ion-card>
-
-        <div *ngFor="let r of reviews; let i=index ">    
+   <div>
+       
+   </div>
+        <div *ngFor="let r of reviews; let i=index ">   
+            <ion-title *ngIf="i==0">Customer Review</ion-title> 
             <ion-item *ngIf="i<10" >
               
               <!-- <ion-avatar item-start>

@@ -8,9 +8,10 @@ import { UserProvider, LoadingProvider, WooCommerceProvider ,RestProvider,ToastP
   templateUrl: 'orders.html',
 })
 export class OrdersPage {
-  status: string = "paid";
-  orders: any = [];
+  // status: string = "paid";
+  orders: any ;
   res: any;
+  status:any;
   returnrequest = {
     method:'request_return',
     order_id:'' ,
@@ -29,6 +30,8 @@ export class OrdersPage {
     // this.listenIsLoggedIn();
     // this.listenIsLoggedOut();
     this.orders = this.navParams.data.params;
+     
+    
    this.returnrequest.order_id=this.navParams.data.params.o_id;
    this.canclerequest.order_id=this.navParams.data.params.o_id;
    this.returnrequest.user_email=this.user.user.user_email;
@@ -36,24 +39,19 @@ export class OrdersPage {
     // this.setForUser();
   }
 
-  listenIsLoggedIn(){
-    this.events.subscribe('user:login', (res) => {
-      this.setForUser();
-    });
-  }
+  // listenIsLoggedIn(){
+  //   this.events.subscribe('user:login', (res) => {
+  //     this.setForUser();
+  //   });
+  // }
 
-  listenIsLoggedOut(){
-    this.events.subscribe('user:logout', () => {
-      this.setRootForGuest();
-    });
-  }
+  // listenIsLoggedOut(){
+  //   this.events.subscribe('user:logout', () => {
+  //     this.setRootForGuest();
+  //   });
+  // }
 
-  setRootForGuest(){
-    this.orders = {
-      paid: [],
-      unpaid: []
-    }
-  }
+ 
 
   setForUser(status: string = ''){
     if(this.user.all){

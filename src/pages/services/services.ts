@@ -41,10 +41,14 @@ constructor(private loader: LoadingProvider,public user:UserProvider,public navC
         console.log(data);
        this.services=data;
       });
-    
-  
-    this.loader.dismiss();
+      this.loader.dismiss();
     }
+
+
+    goTo(page: string, params: any){
+      this.navCtrl.push(page, {params: params});
+    }
+    
   
 
 

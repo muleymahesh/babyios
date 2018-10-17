@@ -15,7 +15,7 @@
 
 <ion-content>
   
-  <ion-card padding style=" min-height:100px "  *ngFor="let s of services">
+  <ion-card padding style=" min-height:100px "  *ngFor="let s of services" (click)="goTo('ServicecategoryPage',s)">
       <p style="font-size:20px; text-align:center; color:#381c76;">{{s.category}}</p>
       
   </ion-card>

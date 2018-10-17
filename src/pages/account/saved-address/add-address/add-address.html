@@ -14,11 +14,11 @@
   <ion-list>
       <h1 margin-left margin-bottom>{{data.action==2 ? ('EDIT' | translate) : ('ADD' | translate)}} {{ 'ADDRESS' | translate}}</h1>
       <ion-item>
-          <ion-input formControlName="first_name" type="text" placeholder="{{ 'FIRST_NAME' | translate}}" required></ion-input>
+          <ion-input formControlName="first_name" type="text" placeholder="{{ 'FIRST NAME' | translate}}" required></ion-input>
         </ion-item>
     
         <ion-item>
-          <ion-input formControlName="last_name" type="text" placeholder="{{ 'LAST_NAME' | translate}}"></ion-input>
+          <ion-input formControlName="last_name" type="text" placeholder="{{ 'LAST NAME' | translate}}"></ion-input>
         </ion-item>
 
         <ion-item *ngIf="!user.user.all">
@@ -34,24 +34,133 @@
             <ion-select formControlName="country" [selectOptions]="countryOpts" placeholder="{{ 'SELECT' | translate}} {{ 'COUNTRY' | translate}}" cancelText="{{ 'CANCEL' | translate}}" okText="{{ 'SELECT' | translate}}" required (ionChange)="getStates()">
               <ion-option *ngFor="let x of countries" [value]="x.id" [innerHTML]="x.name"></ion-option>
             </ion-select> -->
-
-            <ion-input formControlName="pincode" type="text" placeholder="{{ 'pincode' | translate}}"></ion-input>
-        </ion-item>
+<!-- 
+            <ion-input  type="text" placeholder="{{ 'pincode' | translate}}"></ion-input> -->
+            <ion-label>PINCODE</ion-label>
+            <ion-select formControlName="pincode">
+                <ion-option>201301</ion-option>
+                <ion-option>201303</ion-option>
+                <ion-option>201304</ion-option>
+                <ion-option>201305</ion-option>
+                <ion-option>201307</ion-option>
+                <ion-option>201309</ion-option>
+                <ion-option>201310</ion-option>
+                    </ion-select> 
+        
+          </ion-item>
       <ion-item>
         <!-- <ion-item *ngIf="states.length > 0 || this.data.state">
             <ion-label>{{ 'STATE' | translate}}</ion-label>
             <ion-select formControlName="state" [selectOptions]="stateOpts" placeholder="{{ 'SELECT' | translate}} {{ 'STATE' | translate}}" cancelText="{{ 'CANCEL' | translate}}" okText="{{ 'SELECT' | translate}}" required>
               <ion-option *ngFor="let x of states" [value]="x.id" [innerHTML]="x.name"></ion-option>
             </ion-select> -->
-            <ion-input formControlName="area" type="text" placeholder="{{ 'area' | translate}}"></ion-input>
+            <ion-label>AREA</ion-label>
+            <ion-select formControlName="area">
+                <ion-option>Sector 12</ion-option>
+                <ion-option>Sector 15</ion-option>
+                <ion-option>Sector 16</ion-option>
+                <ion-option>Sector 16A</ion-option>
+                <ion-option>Sector 17</ion-option>
+                <ion-option>Sector 19</ion-option>
+                <ion-option>Sector 21</ion-option>
+                <ion-option>Sector 22</ion-option>
+                <ion-option>Sector 23</ion-option>
+                <ion-option>Sector 24</ion-option>
+                <ion-option>Sector 25</ion-option>
+                <ion-option>Sector 26</ion-option>
+                <ion-option>Sector 27</ion-option>
+                <ion-option>Sector 28</ion-option>
+                <ion-option>Sector 29</ion-option>
+                <ion-option>Sector 30</ion-option>
+                <ion-option>Sector 32</ion-option>
+                <ion-option>Sector 33</ion-option>
+                <ion-option>Sector 34</ion-option>
+                <ion-option>Sector 36</ion-option>
+                <ion-option>Sector 37</ion-option>
+                <ion-option>Sector 40</ion-option>
+                <ion-option>Sector 41</ion-option>
+                <ion-option>Sector 42</ion-option>
+                <ion-option>Sector 44</ion-option>
+                <ion-option>Sector 45</ion-option>
+                <ion-option>Sector 46</ion-option>
+                <ion-option>Sector 47</ion-option>
+                <ion-option>Sector 48</ion-option>
+                <ion-option>Sector 49</ion-option>
+                <ion-option>Sector 50</ion-option>
+                <ion-option>Sector 51</ion-option>
+                <ion-option>Sector 52</ion-option>
+                <ion-option>Sector 55</ion-option>
+                <ion-option>Sector 56</ion-option>
+                <ion-option>Sector 61</ion-option>
+                <ion-option>Sector 62</ion-option>
+                <ion-option>Sector 70</ion-option>
+                <ion-option>Sector 71</ion-option>
+                <ion-option>Sector 72</ion-option>
+                <ion-option>Sector 73</ion-option>
+                <ion-option>Sector 74</ion-option>
+                <ion-option>Sector 75</ion-option>
+                <ion-option>Sector 76</ion-option>
+                <ion-option>Sector 77</ion-option>
+                <ion-option>Sector 78</ion-option>
+                <ion-option>Sector 79</ion-option>
+                <ion-option>Sector 82</ion-option>
+                <ion-option>Sector 91</ion-option>
+                <ion-option>Sector 92</ion-option>
+                <ion-option>Sector 93A</ion-option>
+                <ion-option>Sector 93B</ion-option>
+                <ion-option>Sector 94</ion-option>              
+                <ion-option>Sector 82</ion-option>
+                <ion-option>Sector 93</ion-option>
+                <ion-option>Sector 99</ion-option>
+                <ion-option>Greater Noida West</ion-option>
+                <ion-option>Sector 100</ion-option>
+                <ion-option>Sector 104</ion-option>
+                <ion-option>Sector 105</ion-option>
+                <ion-option>Sector 107</ion-option>
+                <ion-option>Sector 108</ion-option>
+                <ion-option>Sector 110</ion-option>
+                <ion-option>Sector 117</ion-option>
+                <ion-option>Sector 118</ion-option>
+                <ion-option>Sector 119</ion-option>
+                <ion-option>Sector 120</ion-option>
+                <ion-option>Sector 121</ion-option>
+                <ion-option>Sector 124</ion-option>
+                <ion-option>Sector 125</ion-option>
+                <ion-option>Sector 126</ion-option>
+                <ion-option>Sector 127</ion-option>
+                <ion-option>Sector 128</ion-option>
+                <ion-option>Sector 129</ion-option>
+                <ion-option>Sector 131</ion-option>
+                <ion-option>Sector 133</ion-option>
+                <ion-option>Sector 134</ion-option>
+                <ion-option>Sector 135</ion-option>
+                <ion-option>Sector 137</ion-option>
+                <ion-option>Sector 140</ion-option>
+                <ion-option>Sector 141</ion-option>
+                <ion-option>Sector 143</ion-option>
+                <ion-option>Sector 143B</ion-option>
+                <ion-option>Sector 144</ion-option>
+               
+                <ion-option>Sector 150</ion-option>
+                <ion-option>Sector 151</ion-option>
+                <ion-option>Sector 15A</ion-option>
+              
+                <ion-option>Sector 168</ion-option>
+               
+                
+                
+                    </ion-select>
+
+            <!-- <ion-input formControlName="area" type="text" placeholder="{{ 'AREA' | translate}}"></ion-input> -->
         </ion-item>
+        
         
         <!-- <ion-item *ngIf="states.length == 0">
           <ion-input formControlName="state" type="text" placeholder="{{ 'STATE' | translate}}" required></ion-input>
         </ion-item> -->
 
         <ion-item>
-          <ion-input formControlName="landmark" type="text" placeholder="{{ 'landmark' | translate}}" required></ion-input>
+          <ion-input formControlName="landmark" type="text" placeholder="{{ 'LANDMARK' | translate}}" required></ion-input>
         </ion-item>
     
         <!-- <ion-item>

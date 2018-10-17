@@ -61,7 +61,7 @@ var MyorderPage = (function () {
             this.myOrder();
         }
         else {
-            console.log("You are not login..");
+            this.toast.show("You are not login..");
         }
     };
     MyorderPage.prototype.myOrder = function () {

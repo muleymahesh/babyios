@@ -83,7 +83,7 @@
 </div>
 
 <div  padding align="center">
-<ng-container *ngIf="orders.status==delivered; else elseTemplate">
+<ng-container *ngIf="orders.order_status=='delivered'; else elseTemplate">
   
 <button  full ion-button round tappable (click)="returnOrder()">Request Return</button><br>
 
@@ -91,9 +91,9 @@
 
 </ng-container>
 <ng-template #elseTemplate>
- 
-<button   full ion-button round  tappable (click)="cancleOrder()" >Cancle</button>
-
+ <div *ngIf="orders.order_status!='returned'">
+<button   full ion-button round  tppable (click)="cancleOrder()" >Cancle</button>
+</div>
 </ng-template>
 </div>
 </ion-content>

@@ -134,6 +134,12 @@ export class LoginPage {
            this.translate.get(['LOGIN_SUCCESS'], {value: this.user.user.fname}).subscribe( x=> {
              this.toast.show("login successfull");
            });
+
+          this.todo = {
+            method:'login',
+            email: '',
+            password: ''
+          };
            //this.nav.popToRoot();
           //  this.nav.parent.select(0);
           //  this.nav.setRoot(this.rootPage);

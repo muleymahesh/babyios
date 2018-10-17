@@ -1,0 +1,24 @@
+<!--
+  Generated template for the ServicecategoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary" >
+    <ion-title>Baby Needs</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-card padding  *ngFor="let s of services" (click)="goTo('ServicedetailPage',s)">
+        <p style="font-size:17px; text-align:left; color:#381c76;">{{s.name}}</p>
+        <p style="font-size:14px; text-align:left;">{{s.address}}</p>
+        <p style="font-size:14px; text-align:left;">Contact :{{s.contact}}</p>
+       
+      
+    </ion-card>
+</ion-content>
