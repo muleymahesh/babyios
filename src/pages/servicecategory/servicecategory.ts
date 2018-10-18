@@ -40,11 +40,14 @@ export class ServicecategoryPage {
         console.log(data);
         if(data.length>0)
         {
+      
           this.services=data;
-        }
-       else{
+          console.log(this.services);
+       
+      }
+      else{
         this.toast.show("Data not available");
-       }
+      }
       });
     
   

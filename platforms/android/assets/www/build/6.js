@@ -1,16 +1,14 @@
 webpackJsonp([6],{
 
-/***/ 1010:
+/***/ 1014:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ServicecategoryPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__ = __webpack_require__(544);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(104);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -24,74 +22,73 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
 /**
- * Generated class for the RegisterPage page.
+ * Generated class for the ServicecategoryPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var RegisterPage = (function () {
-    function RegisterPage(history, cart, http, restProvider, alert, platform, socialSharing, translate, toast, wishlist, navCtrl, loader, modal, navParam, woo) {
-        this.history = history;
-        this.cart = cart;
+var ServicecategoryPage = (function () {
+    function ServicecategoryPage(navParam, loader, user, navCtrl, toast, navParams, http, restProvider) {
+        this.navParam = navParam;
+        this.loader = loader;
+        this.user = user;
+        this.navCtrl = navCtrl;
+        this.toast = toast;
+        this.navParams = navParams;
         this.http = http;
         this.restProvider = restProvider;
-        this.alert = alert;
-        this.platform = platform;
-        this.socialSharing = socialSharing;
-        this.translate = translate;
-        this.toast = toast;
-        this.wishlist = wishlist;
-        this.navCtrl = navCtrl;
-        this.loader = loader;
-        this.modal = modal;
-        this.navParam = navParam;
-        this.woo = woo;
-        this.todo = {
-            method: 'signup',
-            fname: '',
-            lname: '',
-            email: '',
-            divice_token: '12aacc',
-            password: '',
-            mobile: ''
+        this.servicesreq = {
+            method: 'get_services_by_cat',
+            category: ''
         };
+        this.servicesreq.category = this.navParam.data.params.category;
+        this.getServices();
     }
-    RegisterPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad RegisterPage');
+    ServicecategoryPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ServicecategoryPage');
     };
-    RegisterPage.prototype.getReegister = function () {
+    ServicecategoryPage.prototype.getServices = function () {
         var _this = this;
-        this.restProvider.register(this.todo)
+        this.loader.present();
+        this.restProvider.serviceOperations(this.servicesreq)
             .then(function (data) {
-            _this.cust = data;
-            console.log(_this.cust);
+            console.log(data);
+            if (data.length > 0) {
+                _this.services = data;
+                console.log(_this.services);
+            }
+            else {
+                _this.toast.show("Data not available");
+            }
         });
+        this.loader.dismiss();
     };
-    return RegisterPage;
+    ServicecategoryPage.prototype.goTo = function (page, params) {
+        this.navCtrl.push(page, { params: params });
+    };
+    return ServicecategoryPage;
 }());
-RegisterPage = __decorate([
+ServicecategoryPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-register',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/register/register.html"*/'<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    \n      <ion-navbar color="primary">\n          <ion-title>Register</ion-title>\n      </ion-navbar>\n    \n    </ion-header>\n    \n    \n    <ion-content padding>\n    \n        <ion-list>\n           \n            <ion-item>\n                <ion-label floating>First Name</ion-label>\n                <ion-input type="text"  [(ngModel)]="todo.fname" ngControl="description"></ion-input>\n            \n            </ion-item>\n            <ion-item>\n                <ion-label floating>Last Name</ion-label>\n                <ion-input type="text"  [(ngModel)]="todo.lname" ngControl="description"></ion-input>\n                \n            </ion-item>\n            <ion-item>\n                <ion-label floating>Email</ion-label>\n                <ion-input type="email" [(ngModel)]="todo.email" ngControl="title"></ion-input>\n                \n              </ion-item>\n            <ion-item>\n                <ion-label floating>Password</ion-label>\n                <ion-input type="password"  [(ngModel)]="todo.password" ngControl="description"></ion-input>\n                \n            </ion-item>\n            <ion-item>\n                <ion-label floating>Confirm Password</ion-label>\n                <ion-input type="password"   ngControl="description"></ion-input>\n                \n            </ion-item>\n            \n              <ion-item>\n                  <ion-label floating>Mobile no</ion-label>\n                  <ion-input type="tel"  [(ngModel)]="todo.mobile" ngControl="description"></ion-input>\n                  \n              </ion-item>\n    \n          </ion-list>\n             \n              <button ion-button full round  color="app_primary" (click)="getReegister()" >Register</button>\n    \n    </ion-content>\n    '/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/register/register.html"*/,
+        selector: 'page-servicecategory',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/servicecategory/servicecategory.html"*/'<!--\n  Generated template for the ServicecategoryPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary" >\n    <ion-title>Baby Needs</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <ion-card padding  *ngFor="let s of services" (click)="goTo(\'ServicedetailPage\',s)">\n        <p style="font-size:17px; text-align:left; color:#381c76;">{{s.name}}</p>\n        <p style="font-size:14px; text-align:left;">{{s.address}}</p>\n        <p style="font-size:14px; text-align:left;">Contact :{{s.contact}}</p>\n       \n      \n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/servicecategory/servicecategory.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["c" /* HistoryProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__["a" /* SocialSharing */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* WishlistProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["l" /* WooCommerceProvider */]])
-], RegisterPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */]])
+], ServicecategoryPage);
 
-//# sourceMappingURL=register.js.map
+//# sourceMappingURL=servicecategory.js.map
 
 /***/ }),
 
-/***/ 977:
+/***/ 979:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ServicecategoryPageModule", function() { return ServicecategoryPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register__ = __webpack_require__(1010);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__servicecategory__ = __webpack_require__(1014);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -101,23 +98,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var RegisterPageModule = (function () {
-    function RegisterPageModule() {
+var ServicecategoryPageModule = (function () {
+    function ServicecategoryPageModule() {
     }
-    return RegisterPageModule;
+    return ServicecategoryPageModule;
 }());
-RegisterPageModule = __decorate([
+ServicecategoryPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */],
+            __WEBPACK_IMPORTED_MODULE_2__servicecategory__["a" /* ServicecategoryPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__servicecategory__["a" /* ServicecategoryPage */]),
         ],
     })
-], RegisterPageModule);
+], ServicecategoryPageModule);
 
-//# sourceMappingURL=register.module.js.map
+//# sourceMappingURL=servicecategory.module.js.map
 
 /***/ })
 

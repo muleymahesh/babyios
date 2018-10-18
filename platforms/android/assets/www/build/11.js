@@ -1,13 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 1005:
+/***/ 1009:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrdersPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MiniCartPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(75);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,142 +21,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var OrdersPage = (function () {
-    function OrdersPage(restProvider, toast, navParams, nav, events, modal, loader, user, woo) {
-        this.restProvider = restProvider;
-        this.toast = toast;
-        this.navParams = navParams;
-        this.nav = nav;
-        this.events = events;
-        this.modal = modal;
-        this.loader = loader;
-        this.user = user;
-        this.woo = woo;
-        this.status = "paid";
-        this.orders = [];
-        this.returnrequest = {
-            method: 'request_return',
-            order_id: '',
-            user_email: ''
-        };
-        this.canclerequest = {
-            method: 'cancel_order',
-            order_id: '',
-        };
-        // this.setRootForGuest();
-        // this.listenIsLoggedIn();
-        // this.listenIsLoggedOut();
-        this.orders = this.navParams.data.params;
-        this.returnrequest.order_id = this.navParams.data.params.o_id;
-        this.canclerequest.order_id = this.navParams.data.params.o_id;
-        this.returnrequest.user_email = this.user.user.user_email;
-        console.log(this.orders);
-        // this.setForUser();
-    }
-    OrdersPage.prototype.listenIsLoggedIn = function () {
-        var _this = this;
-        this.events.subscribe('user:login', function (res) {
-            _this.setForUser();
-        });
-    };
-    OrdersPage.prototype.listenIsLoggedOut = function () {
-        var _this = this;
-        this.events.subscribe('user:logout', function () {
-            _this.setRootForGuest();
-        });
-    };
-    OrdersPage.prototype.setRootForGuest = function () {
-        this.orders = {
-            paid: [],
-            unpaid: []
-        };
-    };
-    OrdersPage.prototype.setForUser = function (status) {
-        var _this = this;
-        if (status === void 0) { status = ''; }
-        if (this.user.all) {
-            this.woo.getOrders(this.user.id, null, null, status).then(function (x) {
-                _this.loader.dismiss();
-                _this.orders = x;
-            }, function (err) {
-                _this.loader.dismiss();
-            });
-        }
-    };
-    OrdersPage.prototype.doRefresh = function (status, refresher) {
-        this.setForUser(status);
-        refresher.complete();
-    };
-    OrdersPage.prototype.doPulling = function (refresher) {
-        // console.log('DOPULLING', refresher.progress);
-    };
-    OrdersPage.prototype.login = function () {
-        this.modal.create('LoginPage', {}).present();
-    };
-    OrdersPage.prototype.goHome = function () {
-        this.nav.parent.select(0);
-    };
-    OrdersPage.prototype.cancleOrder = function () {
-        var _this = this;
-        this.restProvider.orderOperation(this.canclerequest)
-            .then(function (data) {
-            console.log(data);
-            _this.res = data;
-            if (_this.res.result == "success") {
-                _this.toast.show(_this.res.responseMessage);
-            }
-            else if (_this.res.result == "failure") {
-                _this.toast.show(_this.res.responseMessage);
-            }
-            else {
-                _this.toast.show("Something is wrong please contact Us");
-            }
-        });
-    };
-    OrdersPage.prototype.inovice = function () {
-    };
-    OrdersPage.prototype.returnOrder = function () {
-        var _this = this;
-        this.restProvider.orderOperation(this.returnrequest)
-            .then(function (data) {
-            console.log(data);
-            _this.res = data;
-            if (_this.res.result == "success") {
-                _this.toast.show(_this.res.responseMessage);
-            }
-            else if (_this.res.result == "failure") {
-                _this.toast.show(_this.res.responseMessage);
-            }
-            else {
-                _this.toast.show("Something is wrong please contact Us");
-            }
-        });
-    };
-    OrdersPage.prototype.goTo = function (params) {
-        this.nav.push('OrderDetailPage', { params: params });
-    };
-    return OrdersPage;
-}());
-OrdersPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-orders',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/orders/orders.html"*/'<ion-header>\n    \n      <ion-navbar color="primary">\n        <ion-title>Order Detail</ion-title>\n      </ion-navbar>\n    \n    </ion-header>\n\n<ion-content >\n  \n    <button ion-button block >Total :RS. {{orders.amount}}</button>\n    <div *ngIf="orders.details.length>0">\n    <ion-card *ngFor="let o of orders.details" > \n      <ion-item>\n        \n            <!-- <p style="font-size:9px; text-align:left; color:orange">order id-  {{o.o_id}}</p> -->\n            <ion-avatar item-start>\n              <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{o.img_url}}">\n            </ion-avatar>\n            <h3   >{{o.product_name}}</h3>\n              \n            <p style="font-size:9px; text-align:left">Quantity :{{o.qty}}  </p>\n          \n         \n            <p style="font-size:9px; text-align:left; color:orange">Rs.{{o.mrp}} </p>\n          \n            <!-- <p style="font-size:9px; text-align:left; color:orange">Status-{{o.order_status}}  </p>  -->\n          \n        \n          </ion-item>\n     <!-- <ion-refresher (ionRefresh)="doRefresh(\'\', $event)" (ionPull)="doPulling($event)">\n    <ion-refresher-content\n    pullingIcon="refresh-circle"\n    refreshingSpinner="circles"\n    pullingText="Pull to refresh..."\n    refreshingText="Refreshing...">\n    </ion-refresher-content>\n  </ion-refresher>\n  <ion-grid class="empty" *ngIf="!user.all">\n    <ion-row align-items-center>\n      <ion-col align-self-center text-center>\n        <ion-icon name="contact" color="secondary"></ion-icon>\n        <h4 margin-bottom>{{ \'LOGIN_DESC\' | translate}}</h4>\n        <button color="secondary" ion-button outline tappable (click)="login()">{{ \'LOGIN/REGISTER\' | translate}}</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n  <div [ngSwitch]="status">\n    <ion-list *ngSwitchCase="\'paid\'">\n      <ion-grid class="empty" *ngIf="orders.paid.length == 0 && user.all">\n        <ion-row align-items-center>\n          <ion-col align-self-center text-center>\n            <ion-icon name="list" color="secondary"></ion-icon>\n            <h4 margin-bottom>{{ \'ORDER_EMPTY\' | translate}}</h4>\n            <button  color="secondary" ion-button outline tappable (click)="goHome()">{{ \'START_SHOPPING\' | translate}}</button>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n      <button *ngFor="let x of orders.paid" ion-item tappable (click)="goTo(x)">\n        <h3>{{x.date_created | date:\'short\'}}</h3>\n        <p>#{{x.id}} • {{x.total | money}}</p>\n        <ion-badge item-end>{{x.status}}</ion-badge>\n      </button>\n    </ion-list>\n    <ion-list *ngSwitchCase="\'unpaid\'">\n      <ion-grid class="empty" *ngIf="orders.unpaid.length == 0 && user.all">\n        <ion-row align-items-center>\n          <ion-col align-self-center text-center>\n            <ion-icon name="list" color="secondary"></ion-icon>\n            <h4 margin-bottom>{{ \'ORDER_EMPTY\' | translate}}</h4>\n            <button color="secondary" ion-button outline tappable (click)="goHome()">{{ \'START_SHOPPING\' | translate}}</button>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n      <button *ngFor="let x of orders.unpaid" ion-item tappable (click)="goTo(x)">\n        <h3>{{x.date_created | date:\'short\'}}</h3>\n        <p>#{{x.id}} • {{x.total | money}}</p>\n        <ion-badge item-end>{{x.status}}</ion-badge>\n      </button>\n    </ion-list>\n  </div> -->\n</ion-card>\n</div>\n\n<div  padding align="center">\n<ng-container *ngIf="orders.status==delivered; else elseTemplate">\n  \n<button  full ion-button round tappable (click)="returnOrder()">Request Return</button><br>\n\n<button   full ion-button  tappable round (click)="inovice()">Inovice</button>\n\n</ng-container>\n<ng-template #elseTemplate>\n \n<button   full ion-button round  tappable (click)="cancleOrder()" >Cancle</button>\n\n</ng-template>\n</div>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/orders/orders.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["l" /* WooCommerceProvider */]])
-], OrdersPage);
 
-//# sourceMappingURL=orders.js.map
+var MiniCartPage = (function () {
+    function MiniCartPage(translate, modal, alert, user, cart, appCtrl, loader, viewCtrl, navCtrl, navParams) {
+        this.translate = translate;
+        this.modal = modal;
+        this.alert = alert;
+        this.user = user;
+        this.cart = cart;
+        this.appCtrl = appCtrl;
+        this.loader = loader;
+        this.viewCtrl = viewCtrl;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.total = 0;
+        this.isCheckout = false;
+        // this.isCheckout = this.navParams.data.isCheckout;
+        var product = this.navParams.data.product;
+        console.log(product);
+        // if(this.navParams.data.product)
+        this.cart.post(product, 1);
+    }
+    return MiniCartPage;
+}());
+MiniCartPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-mini-cart',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/product/mini-cart/mini-cart.html"*/'<ion-header>\n    <ion-navbar color="light" no-padding no-margin>\n      <ion-list-header>\n        {{\'CART\' | translate}}\n        <!-- <ion-icon small (click)="dismiss()" name="close" item-end></ion-icon> -->\n        <button item-end no-margin margin-vertical clear ion-button small color="primary" (click)="dismiss()">{{\'CLOSE\' | translate}}</button>\n      </ion-list-header>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-list no-padding>\n      <ion-grid class="empty" *ngIf="cart.total == 0">\n        <ion-row align-items-center>\n          <ion-col align-self-center text-center>\n            <ion-icon name="basket" color="secondary"></ion-icon>\n            <h4 margin-bottom>{{ \'EMPTY\' | translate}}</h4>\n            <button color="secondary" ion-button outline tappable (click)="dismiss()">{{ \'START_SHOPPING\' | translate}}</button>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n      <ion-item *ngFor="let x of cart.all" class="product-item" no-padding>\n          <ion-thumbnail item-start>\n            <img [src]="x.images[0].src">\n          </ion-thumbnail>\n          <h5 [innerHTML]="x.name"></h5>\n          <p>\n            <span class="disc" *ngIf="x.on_sale">{{x.regular_price | money}}</span> \n            <span class="price">{{x.price | money}}</span>\n            <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span> </ng-container>\n            <span>• {{x.quantity}}x</span>\n          </p>\n      </ion-item>\n  </ion-list>\n</ion-content>\n<ion-footer no-padding padding-bottom *ngIf="cart.total > 0">\n  <ion-list no-padding no-margin>\n    <ion-item no-padding>\n      <h5><b>Total</b></h5>\n      <ion-badge item-end color="secondary">{{cart.total | money}}</ion-badge>\n    </ion-item>\n  </ion-list>\n  <button *ngIf="!isCheckout" ion-button block small (click)="goCheckout()">{{\'CHECKOUT\' | translate}}</button>\n  <ion-list no-margin>\n    <button color="secondary" ion-button small block (click)="dismiss()">{{\'CONTINUE\' | translate}}</button>\n  </ion-list>\n  </ion-footer>\n  '/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/product/mini-cart/mini-cart.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* App */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
+], MiniCartPage);
+
+//# sourceMappingURL=mini-cart.js.map
 
 /***/ }),
 
-/***/ 972:
+/***/ 974:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrdersPageModule", function() { return OrdersPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__orders__ = __webpack_require__(1005);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MiniCartPageModule", function() { return MiniCartPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mini_cart__ = __webpack_require__(1009);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(543);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -167,24 +75,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var OrdersPageModule = (function () {
-    function OrdersPageModule() {
+var MiniCartPageModule = (function () {
+    function MiniCartPageModule() {
     }
-    return OrdersPageModule;
+    return MiniCartPageModule;
 }());
-OrdersPageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+MiniCartPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__orders__["a" /* OrdersPage */],
+            __WEBPACK_IMPORTED_MODULE_0__mini_cart__["a" /* MiniCartPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__orders__["a" /* OrdersPage */]),
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_0__mini_cart__["a" /* MiniCartPage */]),
             __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
         ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_0__mini_cart__["a" /* MiniCartPage */]
+        ]
     })
-], OrdersPageModule);
+], MiniCartPageModule);
 
-//# sourceMappingURL=orders.module.js.map
+//# sourceMappingURL=mini-cart.module.js.map
 
 /***/ })
 

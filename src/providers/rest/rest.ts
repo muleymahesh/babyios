@@ -278,7 +278,7 @@ serviceOperations(data) {
     else if(data.result=='failed')
     {
        console.log("services not present");
-     
+     return data;
     }
     else
     {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicPage, NavController, ModalController } from 'ionic-angular';
-import { WooCommerceProvider, ToastProvider, LoadingProvider, WishlistProvider } from '../../providers/providers';
+import { WooCommerceProvider, ToastProvider, LoadingProvider, WishlistProvider,HistoryProvider } from '../../providers/providers';
 import { TranslateService } from '@ngx-translate/core';
 import { App } from '../../app/app.global';
 import { RestProvider } from '../../providers/rest/rest';
@@ -61,10 +61,10 @@ finalprice:any;
 			newarrivalrequest= {
 		method:'get_new_arrivals',
 			};
-
+his:any;
 
 			
-		constructor(public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
+		constructor(public history: HistoryProvider,public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
 		this.App = App;
 
 		// this.woo.getAllCategories().then( (tmp) => {
@@ -84,7 +84,8 @@ finalprice:any;
 		// 	});
 
 		// });
-		
+this.his=history.all;
+		console.log(this.his);
 		this.getBanner();
 
 	}

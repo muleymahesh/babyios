@@ -56,6 +56,7 @@ var ServicecategoryPage = (function () {
             console.log(data);
             if (data.length > 0) {
                 _this.services = data;
+                console.log(_this.services);
             }
             else {
                 _this.toast.show("Data not available");

@@ -92,7 +92,9 @@
 </ng-container>
 <ng-template #elseTemplate>
  <div *ngIf="orders.order_status!='returned'">
+   <div  *ngIf="orders.order_status!='canceled'">
 <button   full ion-button round  tppable (click)="cancleOrder()" >Cancle</button>
+</div>
 </div>
 </ng-template>
 </div>
