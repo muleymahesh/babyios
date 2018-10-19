@@ -48,6 +48,7 @@ var OrdersPage = (function () {
         this.canclerequest.order_id = this.navParams.data.params.o_id;
         this.returnrequest.user_email = this.user.user.user_email;
         console.log(this.orders);
+        this.str = this.navParams.data.params.o_id;
         // this.setForUser();
     }
     // listenIsLoggedIn(){
@@ -103,6 +104,10 @@ var OrdersPage = (function () {
         });
     };
     OrdersPage.prototype.inovice = function () {
+        console.log(this.str);
+        this.str1 = this.str.substring(2);
+        console.log(this.str1);
+        this.restProvider.Inovice(this.str1);
     };
     OrdersPage.prototype.returnOrder = function () {
         var _this = this;

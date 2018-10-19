@@ -125,8 +125,11 @@ export class LoginPage {
 
     // this.user.login(this.loginForm.value).map(res => res.json())
     //   .subscribe( (res) => {
+      if(this.todo.email!=''&&this.todo.password!='')
+      {
       this.restProvider.login(this.todo)
       .then(data => {
+        console.log(data);
         this.users = data;
         if( this.users.result == 'success'){
           console.log(this.users);
@@ -151,6 +154,17 @@ export class LoginPage {
       this.loader.dismiss();
       this.toast.show(err.json().error);        
     });
+  }
+  else
+  {
+    this.todo = {
+      method:'login',
+      email: '',
+      password: ''
+    };
+    this.toast.show("All feild are required"); 
+    this.loader.dismiss();
+  }
   }
   
   dismiss() {

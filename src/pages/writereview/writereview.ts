@@ -35,7 +35,7 @@ constructor(public user:UserProvider,private history: HistoryProvider,private ca
 
   console.log(this.product);
   }
-
+ 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WritereviewPage');
   }
@@ -47,6 +47,8 @@ constructor(public user:UserProvider,private history: HistoryProvider,private ca
 
   submitReview()
   {
+    if(this.reviewreq.rating!=''&&this.reviewreq.rating!=''&&this.reviewreq.title!='')
+    {
     if(this.user.user.user_email)
     {
       this.reviewreq.p_id=this.product.p_id;
@@ -77,8 +79,13 @@ constructor(public user:UserProvider,private history: HistoryProvider,private ca
     }
     else
     {
-      console.log("You are not Loged in")
+      this.toast.show("You are not Loged in");
     }
+  }
+else
+{
+  this.toast.show("all field required");
+}
     }
 
   

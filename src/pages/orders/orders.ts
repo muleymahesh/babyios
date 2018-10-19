@@ -22,7 +22,8 @@ export class OrdersPage {
     method:'cancel_order',
     order_id:'' ,
   };
-
+ str:any;
+ str1;any;
 
 
   constructor(public restProvider: RestProvider, private toast: ToastProvider,public navParams: NavParams,public nav: NavController, private events: Events, private modal: ModalController, private loader: LoadingProvider, private user: UserProvider, private woo: WooCommerceProvider) {
@@ -36,6 +37,7 @@ export class OrdersPage {
    this.canclerequest.order_id=this.navParams.data.params.o_id;
    this.returnrequest.user_email=this.user.user.user_email;
     console.log(this.orders);
+    this.str=this.navParams.data.params.o_id;
     // this.setForUser();
   }
 
@@ -103,6 +105,10 @@ cancleOrder(){
 }
  
 inovice(){
+  console.log(this.str);
+this.str1=this.str.substring(2);
+console.log(this.str1);
+this.restProvider.Inovice(this.str1)
 
 
 }

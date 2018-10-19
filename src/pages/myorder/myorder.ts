@@ -57,9 +57,16 @@ else{
   myOrder() {
     this.restProvider.getMyOrder(this.orderrequest)
     .then(data => {
-		console.log(data);
-	 this.myOrders = data;
-		
+    console.log(data);
+    if(data.result=='failed')
+    {
+      this.toast.show("No orders");
+	
+  }
+  else{
+    this.myOrders = data.orders;
+   
+  }
     });
 
   }

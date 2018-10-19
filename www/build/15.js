@@ -69,7 +69,12 @@ var MyorderPage = (function () {
         this.restProvider.getMyOrder(this.orderrequest)
             .then(function (data) {
             console.log(data);
-            _this.myOrders = data;
+            if (data.result == 'failed') {
+                _this.toast.show("No orders");
+            }
+            else {
+                _this.myOrders = data.orders;
+            }
         });
     };
     MyorderPage.prototype.goTo = function (page, params) {

@@ -58,26 +58,38 @@ var ChangePage = (function () {
     };
     ChangePage.prototype.changePassword = function () {
         var _this = this;
-        this.restProvider.changePassword(this.passRequest)
-            .then(function (data) {
-            _this.response = data;
-        });
-        if (this.response == "success") {
-            this.toast.show("Your password change successfully...");
+        if (this.passRequest.oldpass != '' && this.passRequest.newpass != '' && this.cfrmpass != '') {
+            if (this.passRequest.newpass == this.cfrmpass) {
+                this.restProvider.changePassword(this.passRequest)
+                    .then(function (data) {
+                    _this.response = data;
+                    if (_this.response.result == "success") {
+                        _this.toast.show("Your password change successfully...");
+                    }
+                    else {
+                        _this.toast.show(_this.response.responseMessage);
+                    }
+                });
+                console.log(this.response);
+            }
+            else {
+                this.toast.show("new password and confirm password are not same");
+            }
         }
         else {
-            this.toast.show("Something went worng...");
+            this.toast.show("All field required");
         }
     };
     return ChangePage;
 }());
 ChangePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-change',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/change/change.html"*/'<ion-header >\n    <ion-navbar color="primary" >\n        <ion-title> Reset Password</ion-title>\n    \n    </ion-navbar>\n  </ion-header>\n\n      \n     \n        \n          <ion-content>\n            <div align="center">\n              <img class="logo" src="assets/img/logo/logo.jpg" width="100" height="100"/>\n            </div>\n              <ion-list>\n               \n                <ion-item>\n                    <ion-label floating>Old Password</ion-label>\n                   <ion-input type="password" [(ngModel)]="passRequest.oldpass" ngControl="title"></ion-input>\n                </ion-item>\n                  <ion-item>\n                      <ion-label floating>Password</ion-label>\n                      <ion-input type="password" ngControl="description"></ion-input>\n                  </ion-item>\n\n                  <ion-item>\n                      <ion-label floating>Confirm Password</ion-label>\n                      <ion-input type="password"  [(ngModel)]="passRequest.password" ngControl="description"></ion-input>\n                  </ion-item>\n              </ion-list>\n\n              <ion-row align-items-center >\n                 \n                    <ion-col align-self-center>\n                        <button ion-button block  type="button" padding="5" color="primary"  tappable (click)="changePassword()" >Reset Password</button>\n                    </ion-col>\n               </ion-row>\n                 \n\n          </ion-content>\n     \n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/change/change.html"*/,
+        selector: 'page-change',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/change/change.html"*/'<ion-header >\n    <ion-navbar color="primary" >\n        <ion-title> Reset Password</ion-title>\n    \n    </ion-navbar>\n  </ion-header>\n\n      \n     \n        \n          <ion-content>\n            <div align="center">\n              <img class="logo" src="assets/img/logo/logo.jpg" width="100" height="100"/>\n            </div>\n              <ion-list>\n               \n                <ion-item>\n                    <ion-label floating>Old Password</ion-label>\n                   <ion-input type="password" [(ngModel)]="passRequest.oldpass" ngControl="title"></ion-input>\n                </ion-item>\n                  <ion-item>\n                      <ion-label floating>Password</ion-label>\n                      <ion-input type="password"  [(ngModel)]="cfrmpass"></ion-input>\n                  </ion-item>\n\n                  <ion-item>\n                      <ion-label floating>Confirm Password</ion-label>\n                      <ion-input type="password"  [(ngModel)]="passRequest.newpass" ></ion-input>\n                  </ion-item>\n              </ion-list>\n\n              <ion-row align-items-center >\n                 \n                    <ion-col align-self-center>\n                        <button ion-button block  type="button" padding="5" color="primary"  tappable (click)="changePassword()" >Reset Password</button>\n                    </ion-col>\n               </ion-row>\n                 \n\n          </ion-content>\n     \n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/change/change.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* App */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */]) === "function" && _m || Object])
 ], ChangePage);
 
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
 //# sourceMappingURL=change.js.map
 
 /***/ }),

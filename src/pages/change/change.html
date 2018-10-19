@@ -20,12 +20,12 @@
                 </ion-item>
                   <ion-item>
                       <ion-label floating>Password</ion-label>
-                      <ion-input type="password" ngControl="description"></ion-input>
+                      <ion-input type="password"  [(ngModel)]="cfrmpass"></ion-input>
                   </ion-item>
 
                   <ion-item>
                       <ion-label floating>Confirm Password</ion-label>
-                      <ion-input type="password"  [(ngModel)]="passRequest.password" ngControl="description"></ion-input>
+                      <ion-input type="password"  [(ngModel)]="passRequest.newpass" ></ion-input>
                   </ion-item>
               </ion-list>
 

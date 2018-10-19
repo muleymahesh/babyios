@@ -12,7 +12,7 @@ import 'rxjs/add/operator/toPromise';
 
 
 export class RestProvider {
-
+url1="http://babyneeds.co.in/babyneeds/send_invoice.php?o_id=";
   url="http://babyneeds.co.in/babyneeds/ws/v2/api1.php";
 mydata:any;
   constructor(public http: HttpClient) {
@@ -35,7 +35,7 @@ mydata:any;
     .toPromise()
     .then((data: any) => {
        console.log('Success', data.data);
-       return data.data;
+       return data;
     })
     .catch(err => {
        console.log('Error', err);
@@ -193,8 +193,9 @@ console.log(data);
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
-       console.log('Success', data.orders);
-       return data.orders;
+      
+       console.log('Success', data);
+       return data;
     })
     .catch(err => {
        console.log('Error', err);
@@ -209,8 +210,8 @@ console.log(data);
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
-       console.log('Success', data.result);
-       return data.result;
+       console.log('Success', data);
+       return data;
     })
     .catch(err => {
        console.log('Error', err);
@@ -290,6 +291,11 @@ serviceOperations(data) {
       return err;
    })
  }
+
+ Inovice(data) {
+ this.http.get("http://babyneeds.co.in/babyneeds/send_invoice.php?o_id="+data)
+ }
+
 
 }
 

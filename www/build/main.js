@@ -30,6 +30,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var RestProvider = (function () {
     function RestProvider(http) {
         this.http = http;
+        this.url1 = "http://babyneeds.co.in/babyneeds/send_invoice.php?o_id=";
         this.url = "http://babyneeds.co.in/babyneeds/ws/v2/api1.php";
         console.log('Hello RestProvider Provider');
     }
@@ -49,7 +50,7 @@ var RestProvider = (function () {
             .toPromise()
             .then(function (data) {
             console.log('Success', data.data);
-            return data.data;
+            return data;
         })
             .catch(function (err) {
             console.log('Error', err);
@@ -187,8 +188,8 @@ var RestProvider = (function () {
         return this.http.post(this.url, JSON.stringify(data))
             .toPromise()
             .then(function (data) {
-            console.log('Success', data.orders);
-            return data.orders;
+            console.log('Success', data);
+            return data;
         })
             .catch(function (err) {
             console.log('Error', err);
@@ -199,8 +200,8 @@ var RestProvider = (function () {
         return this.http.post(this.url, JSON.stringify(data))
             .toPromise()
             .then(function (data) {
-            console.log('Success', data.result);
-            return data.result;
+            console.log('Success', data);
+            return data;
         })
             .catch(function (err) {
             console.log('Error', err);
@@ -263,6 +264,9 @@ var RestProvider = (function () {
             console.log('Error', err);
             return err;
         });
+    };
+    RestProvider.prototype.Inovice = function (data) {
+        this.http.get("http://babyneeds.co.in/babyneeds/send_invoice.php?o_id=" + data);
     };
     return RestProvider;
 }());
@@ -946,32 +950,44 @@ var LoginPage = (function () {
         // });
         // this.user.login(this.loginForm.value).map(res => res.json())
         //   .subscribe( (res) => {
-        this.restProvider.login(this.todo)
-            .then(function (data) {
-            _this.users = data;
-            if (_this.users.result == 'success') {
-                console.log(_this.users);
-                _this.user._loggedIn(_this.users, _this.navParams.data.tabIndex);
-                _this.translate.get(['LOGIN_SUCCESS'], { value: _this.user.user.fname }).subscribe(function (x) {
-                    _this.toast.show("login successfull");
-                });
-                _this.todo = {
-                    method: 'login',
-                    email: '',
-                    password: ''
-                };
-                //this.nav.popToRoot();
-                //  this.nav.parent.select(0);
-                //  this.nav.setRoot(this.rootPage);
-                _this.goHome();
-            }
-            else
-                _this.toast.show(_this.users.result);
-            _this.loader.dismiss();
-        }, function (err) {
-            _this.loader.dismiss();
-            _this.toast.show(err.json().error);
-        });
+        if (this.todo.email != '' && this.todo.password != '') {
+            this.restProvider.login(this.todo)
+                .then(function (data) {
+                console.log(data);
+                _this.users = data;
+                if (_this.users.result == 'success') {
+                    console.log(_this.users);
+                    _this.user._loggedIn(_this.users, _this.navParams.data.tabIndex);
+                    _this.translate.get(['LOGIN_SUCCESS'], { value: _this.user.user.fname }).subscribe(function (x) {
+                        _this.toast.show("login successfull");
+                    });
+                    _this.todo = {
+                        method: 'login',
+                        email: '',
+                        password: ''
+                    };
+                    //this.nav.popToRoot();
+                    //  this.nav.parent.select(0);
+                    //  this.nav.setRoot(this.rootPage);
+                    _this.goHome();
+                }
+                else
+                    _this.toast.show(_this.users.result);
+                _this.loader.dismiss();
+            }, function (err) {
+                _this.loader.dismiss();
+                _this.toast.show(err.json().error);
+            });
+        }
+        else {
+            this.todo = {
+                method: 'login',
+                email: '',
+                password: ''
+            };
+            this.toast.show("All feild are required");
+            this.loader.dismiss();
+        }
     };
     LoginPage.prototype.dismiss = function () {
         this.viewCtrl.dismiss();
@@ -995,7 +1011,7 @@ __decorate([
 ], LoginPage.prototype, "innerSlider", void 0);
 LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-login',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/login/login.html"*/'\n    <ion-header transparent no-border no-lines >\n        <ion-navbar color="primary" >\n           <ion-buttons>\n            <button ion-button icon-only tappable (click)="dismiss()">\n              <ion-icon name="close"></ion-icon>\n            </button>\n          </ion-buttons> \n        </ion-navbar>\n      </ion-header>\n   \n          \n         \n            \n              <ion-content>\n                  <img class="logo" src="assets/img/logo/logo.jpg" width="100"/>\n                 \n                  <ion-list>\n                   \n                    <ion-item>\n                        <ion-label floating>Email</ion-label>\n                       <ion-input  [(ngModel)]="todo.email" ngControl="title"></ion-input>\n                    </ion-item>\n                      <ion-item>\n                          <ion-label floating>Password</ion-label>\n                          <ion-input type="password"  [(ngModel)]="todo.password" ngControl="description"></ion-input>\n                      </ion-item>\n                  </ion-list>\n\n                  <ion-row align-items-center >\n                     \n                        <ion-col align-self-center>\n                            <button ion-button block  type="button" padding="5" color="app_primary"  tappable (click)="submitLogin()" >LOG IN</button>\n                        </ion-col>\n                   </ion-row>\n                      <ion-list> \n                    <ion-item> \n                 \n                    <ion-label  (click)="goTo(\'RegisterPage\')">No account yet Create one</ion-label>\n                    </ion-item>\n                    </ion-list>\n\n              </ion-content>\n         \n  '/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/login/login.html"*/,
+        selector: 'page-login',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/login/login.html"*/'\n    <ion-header transparent no-border no-lines >\n        <ion-navbar color="primary" >\n           <ion-buttons>\n            <button ion-button icon-only tappable (click)="dismiss()">\n              <ion-icon name="close"></ion-icon>\n            </button>\n          </ion-buttons> \n        </ion-navbar>\n      </ion-header>\n   \n          \n         \n            \n              <ion-content>\n                  <img class="logo" src="assets/img/logo/logo.jpg" width="100"/>\n                 \n                  <ion-list>\n                   \n                    <ion-item>\n                        <ion-label floating>Email</ion-label>\n                       <ion-input  [(ngModel)]="todo.email" ngControl="title"></ion-input>\n                    </ion-item>\n                      <ion-item>\n                          <ion-label floating>Password</ion-label>\n                          <ion-input type="password" minlength="3" [(ngModel)]="todo.password" ngControl="description"></ion-input>\n                      </ion-item>\n                  </ion-list>\n\n                  <ion-row align-items-center >\n                     \n                        <ion-col align-self-center>\n                            <button ion-button block  type="button" padding="5" color="app_primary"  tappable (click)="submitLogin()" >LOG IN</button>\n                        </ion-col>\n                   </ion-row>\n                      <ion-list> \n                    <ion-item> \n                 \n                    <ion-label  (click)="goTo(\'RegisterPage\')">No account yet ? Create one</ion-label>\n                    </ion-item>\n                    </ion-list>\n\n              </ion-content>\n         \n  '/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/login/login.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */]])
 ], LoginPage);
@@ -1833,7 +1849,7 @@ var HistoryProvider = (function () {
     HistoryProvider.prototype.post = function (product) {
         var exist = false;
         for (var i in this.history) {
-            if (this.history[i].id == product.id) {
+            if (this.history[i].p_id == product.p_id) {
                 exist = true;
                 break;
             }

@@ -26,7 +26,7 @@ export class HistoryProvider {
   post(product: any){
     let exist = false;
     for(let i in this.history){
-      if(this.history[i].id == product.id){
+      if(this.history[i].p_id == product.p_id){
         exist = true;
         break;
       }

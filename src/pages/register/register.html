@@ -40,18 +40,18 @@
               </ion-item>
             <ion-item>
                 <ion-label floating>Password</ion-label>
-                <ion-input type="password"  [(ngModel)]="todo.password" ngControl="description"></ion-input>
+                <ion-input type="password"   minlength="3" [(ngModel)]="todo.password" ngControl="description"></ion-input>
                 
             </ion-item>
             <ion-item>
                 <ion-label floating>Confirm Password</ion-label>
-                <ion-input type="password"   ngControl="description"></ion-input>
+                <ion-input type="password"   minlength="3"  ngControl="description"></ion-input>
                 
             </ion-item>
             
               <ion-item>
                   <ion-label floating>Mobile no</ion-label>
-                  <ion-input type="tel"  [(ngModel)]="todo.mobile" ngControl="description"></ion-input>
+                  <ion-input type="number" maxlength="10" minlength="10" [(ngModel)]="todo.mobile" ngControl="description"></ion-input>
                   
               </ion-item>
     

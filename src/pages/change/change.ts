@@ -28,7 +28,7 @@ response:any;
     oldpass:'',
     newpass:''
     };
-
+ cfrmpass:'';
     constructor(private fb: FormBuilder, private translate: TranslateService, private navParams: NavParams, private toast: ToastProvider, public user: UserProvider, public loader: LoadingProvider, public alertCtrl: AlertController, public app: App, public viewCtrl: ViewController,public http: HttpClient,public restProvider: RestProvider, public navCtrl: NavController) { 
     }
 
@@ -39,22 +39,36 @@ response:any;
 
 
 changePassword() {
+  if(this.passRequest.oldpass!=''&&this.passRequest.newpass!=''&&this.cfrmpass!='')
+  {
+    if(this.passRequest.newpass==this.cfrmpass)
+    {
 		this.restProvider.changePassword(this.passRequest)
 		.then(data => {
 		this.response = data;
-	
-    });
-    
-    if(this.response=="success")
+    if(this.response.result=="success")
     {
       this.toast.show("Your password change successfully...");
 
     }
     else
     {
-      this.toast.show("Something went worng...");
+      this.toast.show(this.response.responseMessage);
     }
-		}
+    });
+    console.log(this.response);
+   
+  }
+  else
+  {
+    this.toast.show("new password and confirm password are not same");
+  }
+    }
+    else
+    {
+      this.toast.show("All field required");
+    }
+  }
  
 
 

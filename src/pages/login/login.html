@@ -23,7 +23,7 @@
                     </ion-item>
                       <ion-item>
                           <ion-label floating>Password</ion-label>
-                          <ion-input type="password"  [(ngModel)]="todo.password" ngControl="description"></ion-input>
+                          <ion-input type="password" minlength="3" [(ngModel)]="todo.password" ngControl="description"></ion-input>
                       </ion-item>
                   </ion-list>
 
@@ -36,7 +36,7 @@
                       <ion-list> 
                     <ion-item> 
                  
-                    <ion-label  (click)="goTo('RegisterPage')">No account yet Create one</ion-label>
+                    <ion-label  (click)="goTo('RegisterPage')">No account yet ? Create one</ion-label>
                     </ion-item>
                     </ion-list>
 
