@@ -68,7 +68,7 @@ var ProductPage = (function () {
         this.related = [];
         this.loader.present();
         this.product = this.navParam.data.params;
-        this.history.post(this.product);
+        //ss this.history.post(this.product);
         // // if(this.product.variations){
         // //   this.woo.getProductVariations(this.product.id).then( (val) => {
         // //     this.product.variations = val;

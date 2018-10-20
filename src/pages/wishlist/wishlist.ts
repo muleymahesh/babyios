@@ -135,7 +135,9 @@ finalprice:any;
       if(data.result=="failed")
       {
         console.log(data.result);
+        this.wlist=[];
         this.toast.show("no products in wishlist");
+       
       }
       else if(data.result=="success")
       {

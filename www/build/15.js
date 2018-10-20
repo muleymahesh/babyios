@@ -49,12 +49,13 @@ var MyorderPage = (function () {
             method: 'get_order',
             user_id: this.user.user.user_email,
         };
-        if (this.user.user.user_id) {
-            this.myOrder();
-        }
-        else {
-            console.log("You are not login..");
-        }
+        // if(this.user.user.user_id)
+        // {
+        //    this.myOrder();
+        // }
+        // else{
+        //   console.log("You are not login..")
+        // }
     }
     MyorderPage.prototype.ionViewDidEnter = function () {
         if (this.user.user.user_id) {

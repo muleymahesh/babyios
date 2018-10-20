@@ -1831,15 +1831,14 @@ var HistoryProvider = (function () {
     function HistoryProvider(storage) {
         this.storage = storage;
         this.HISTORY_KEY = 'history';
-        this.history = [];
         this.load();
     }
     HistoryProvider.prototype.load = function () {
         var _this = this;
         return this.storage.get(this.HISTORY_KEY).then(function (val) {
             if (val) {
-                _this.history = val;
-                return _this.history;
+                _this.history1 = val;
+                return _this.history1;
             }
             else {
                 _this.save();
@@ -1848,30 +1847,30 @@ var HistoryProvider = (function () {
     };
     HistoryProvider.prototype.post = function (product) {
         var exist = false;
-        for (var i in this.history) {
-            if (this.history[i].p_id == product.p_id) {
+        for (var i in this.history1) {
+            if (this.history1[i].p_id == product.p_id) {
                 exist = true;
                 break;
             }
         }
         if (!exist)
-            this.history.push(product);
+            this.history1.push(product);
         return this.save();
     };
     Object.defineProperty(HistoryProvider.prototype, "clear", {
         get: function () {
-            this.history = [];
+            this.history1 = [];
             return this.save();
         },
         enumerable: true,
         configurable: true
     });
     HistoryProvider.prototype.save = function () {
-        return this.storage.set(this.HISTORY_KEY, this.history);
+        return this.storage.set(this.HISTORY_KEY, this.history1);
     };
     Object.defineProperty(HistoryProvider.prototype, "all", {
         get: function () {
-            return this.history;
+            return this.history1;
         },
         enumerable: true,
         configurable: true

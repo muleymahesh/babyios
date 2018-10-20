@@ -23,7 +23,7 @@ export class HomePage {
 	
 
 finalprice:any;
-
+allproducts:any;
 
 	categories:any;
 	slides:any[25];

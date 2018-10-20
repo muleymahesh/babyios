@@ -35,13 +35,13 @@ export class MyorderPage {
 
   
   constructor(public nav: NavController,private translate: TranslateService, private navParams: NavParams, private toast: ToastProvider, public user: UserProvider, public loader: LoadingProvider, public alertCtrl: AlertController, public app: App, public viewCtrl: ViewController,public http: HttpClient,public restProvider: RestProvider, public navCtrl: NavController) {
-if(this.user.user.user_id)
-{
-   this.myOrder();
-}
-else{
-  console.log("You are not login..")
-}
+// if(this.user.user.user_id)
+// {
+//    this.myOrder();
+// }
+// else{
+//   console.log("You are not login..")
+// }
   }
 
   ionViewDidEnter(){
