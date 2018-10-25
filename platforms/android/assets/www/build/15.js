@@ -49,12 +49,13 @@ var MyorderPage = (function () {
             method: 'get_order',
             user_id: this.user.user.user_email,
         };
-        if (this.user.user.user_id) {
-            this.myOrder();
-        }
-        else {
-            console.log("You are not login..");
-        }
+        // if(this.user.user.user_id)
+        // {
+        //    this.myOrder();
+        // }
+        // else{
+        //   console.log("You are not login..")
+        // }
     }
     MyorderPage.prototype.ionViewDidEnter = function () {
         if (this.user.user.user_id) {
@@ -69,7 +70,12 @@ var MyorderPage = (function () {
         this.restProvider.getMyOrder(this.orderrequest)
             .then(function (data) {
             console.log(data);
-            _this.myOrders = data;
+            if (data.result == 'failed') {
+                _this.toast.show("No orders");
+            }
+            else {
+                _this.myOrders = data.orders;
+            }
         });
     };
     MyorderPage.prototype.goTo = function (page, params) {

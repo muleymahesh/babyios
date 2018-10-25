@@ -149,9 +149,19 @@ export class LoginPage {
          this.goHome();  
         }else
           this.toast.show(this.users.result);
+          this.todo = {
+            method:'login',
+            email: '',
+            password: ''
+          };
       this.loader.dismiss();
     }, err => {
       this.loader.dismiss();
+      this.todo = {
+        method:'login',
+        email: '',
+        password: ''
+      };
       this.toast.show(err.json().error);        
     });
   }

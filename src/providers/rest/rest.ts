@@ -19,6 +19,7 @@ mydata:any;
     console.log('Hello RestProvider Provider');
   }
   login(data) {
+    console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -31,6 +32,7 @@ mydata:any;
 
 
   register(data) {
+    console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
@@ -44,6 +46,7 @@ mydata:any;
   }
 
   getWishlist(data) {
+    console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
@@ -66,6 +69,7 @@ console.log(data);
   }
 
   getBanner(data) {
+    console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -78,6 +82,7 @@ console.log(data);
 
 
   getRecommendations(data) {
+    console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -103,6 +108,7 @@ console.log(data);
 
 
   getBrands(data) {
+    console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -114,6 +120,7 @@ console.log(data);
   }
 
   getOffers(data) {
+    console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -126,6 +133,7 @@ console.log(data);
 
 
   getAgeGroup(data) {
+    console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -139,6 +147,7 @@ console.log(data);
 
   
   getCategories(data) {
+    console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -177,6 +186,7 @@ console.log(data);
 
 
   getNewArrivalList(data) {
+    console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
      .toPromise()
      .then((data: any) => {
@@ -190,6 +200,7 @@ console.log(data);
    }
 
    getMyOrder(data) {
+    console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
@@ -207,6 +218,7 @@ console.log(data);
   }
   changePassword(data)
   {
+    console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
@@ -222,6 +234,8 @@ console.log(data);
 
   orderOperation(data)
   {
+    
+    console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
@@ -238,6 +252,7 @@ console.log(data);
   
   favOperation(data)
   {
+    console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
@@ -253,6 +268,7 @@ console.log(data);
 
 reviweOperation(data)
 {
+  console.log("request sending");
   return this.http.post(this.url, JSON.stringify(data))
   .toPromise()
   .then((data: any) => {
@@ -268,6 +284,7 @@ reviweOperation(data)
 }
 
 serviceOperations(data) {
+  console.log("request sending");
   return this.http.post(this.url, JSON.stringify(data))
    .toPromise()
    .then((data: any) => {

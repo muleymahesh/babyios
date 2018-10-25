@@ -41,6 +41,8 @@ response:any;
 changePassword() {
   if(this.passRequest.oldpass!=''&&this.passRequest.newpass!=''&&this.cfrmpass!='')
   {
+    if(this.passRequest.newpass.length>3)
+    {
     if(this.passRequest.newpass==this.cfrmpass)
     {
 		this.restProvider.changePassword(this.passRequest)
@@ -63,6 +65,12 @@ changePassword() {
   {
     this.toast.show("new password and confirm password are not same");
   }
+}
+else
+{
+  this.toast.show("Password should be more than 3 character");
+}
+
     }
     else
     {
