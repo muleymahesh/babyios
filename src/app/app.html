@@ -41,14 +41,14 @@
       
 
     <ion-list>
-        <button ion-item (click)="OnHomeClicked()">
+        <button menuClose ion-item (click)="OnHomeClicked()">
         <ion-label>Home</ion-label>
       </button>
-      <button ion-item (click)="goTo('ProductGridPage','New Arrival')">
+      <button menuClose ion-item (click)="goTo('ProductGridPage','New Arrival')">
           
           <ion-label>New Arrivals </ion-label>
       </button>
-      <button ion-item  (click)="goTo('CategoriesPage','0')">
+      <button menuClose ion-item  (click)="goTo('CategoriesPage','0')">
          
           <ion-label>Shop by Brand</ion-label>
       </button>
@@ -57,7 +57,7 @@
           
            <ion-label>Categories</ion-label>
        </button>-->
-       <button ion-item  (click)="goTo('MyorderPage','0')"> 
+       <button menuClose ion-item  (click)="goTo('MyorderPage','0')"> 
           
            <ion-label>My Orders</ion-label>
        </button>
@@ -65,14 +65,14 @@
     </ion-list>
     <hr>
     <ion-list>
-        <button ion-item (click)="goTo('ServicesPage','0')">
+        <button menuClose ion-item (click)="goTo('ServicesPage','0')">
         <ion-label>Services</ion-label>
       </button>
-      <button ion-item (click)="goTo()">
+      <button menuClose ion-item (click)="goTo()">
           
           <ion-label>About Us</ion-label>
       </button>
-      <button ion-item (click)="goTo()">
+      <button menuClose ion-item (click)="goTo()">
          
           <ion-label>Feedback</ion-label>
       </button>

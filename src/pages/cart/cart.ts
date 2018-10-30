@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ModalController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, ModalController, AlertController,ViewController } from 'ionic-angular';
 import { CartProvider, SettingsProvider, UserProvider, ToastProvider } from '../../providers/providers';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -17,7 +17,7 @@ export class CartPage {
   
 name:'';
 finalprice:any;
-  constructor(public cart: CartProvider, public setting: SettingsProvider, private translate: TranslateService, private modal: ModalController, private user: UserProvider, private toast: ToastProvider, public nav: NavController, public alert: AlertController) {
+  constructor(public viewCtrl: ViewController,public cart: CartProvider, public setting: SettingsProvider, private translate: TranslateService, private modal: ModalController, private user: UserProvider, private toast: ToastProvider, public nav: NavController, public alert: AlertController) {
     
   }
 
@@ -59,6 +59,9 @@ finalprice:any;
     });
   }
 
+  dismiss() {
+		this.viewCtrl.dismiss();
+  }
 
   pricestrikt(discount,price)
   {

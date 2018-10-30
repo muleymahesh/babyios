@@ -29,6 +29,31 @@ mydata:any;
         });
     });
   }
+  getproducts(data)
+  {
+    return this.http.post(this.url, JSON.stringify(data))
+    .toPromise()
+    .then((data: any) => {
+      if(data.data)
+      {
+       console.log('Success', data.data);
+       return data.data;
+      }
+      else if(data.result=='failed')
+      {
+        // console.log('Success', data.data);
+        return data.result;
+      }
+      else
+      {
+        return data;
+      }
+    })
+    .catch(err => {
+       console.log('Error', err);
+       return err;
+    })
+  }
 
 
   register(data) {

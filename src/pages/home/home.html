@@ -5,22 +5,31 @@
             <ion-icon name="menu"></ion-icon>
           </button>
         <ion-title>BabyNeeds</ion-title>
+        <!-- <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getItems($event)"></ion-searchbar> -->
     </ion-navbar>
-        <div class="newsearch">
+    <ion-searchbar no-padding (ionInput)="getItems($event)"></ion-searchbar>
+    <!-- <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getItems($event)"></ion-searchbar> -->
+   
+        <!-- <div class="newsearch">
           <div no-padding class="searchbar searchbar-md">
             <div class="searchbar-input-container">
               <button ion-button icon-left clear icon-only (click)="showSearch()"><ion-icon name="search" mode="ios"></ion-icon></button>
-              <!-- <input (click)="showSearch()" class="searchbar-input" placeholder="{{ 'SEARCH' | translate }}" value="{{App.store}}" type="search" autocomplete="off" autocorrect="off" spellcheck="false"> -->
-              <div class="searchbar-input" (click)="showSearch()">
+               <input (click)="showSearch()" class="searchbar-input" placeholder="{{ 'SEARCH' | translate }}" value="{{App.store}}" type="search" autocomplete="off" autocorrect="off" spellcheck="false"> -->
+              <!-- <div class="searchbar-input" (click)="showSearch()">
                 BabyNeeds 
               </div>
             </div>
           </div>
-        </div>
-  
+        </div> 
+   -->
 </ion-header>
 
  <ion-content no-padding>
+    <ion-list *ngIf="showList" padding>
+        <ion-item *ngFor="let i of item"  (click)="goTo('ProductPage',i)"><hr>
+         <p style="font-size:12px;"> {{ i.product_name }}</p>
+        </ion-item>
+      </ion-list>
 
       <!-- <ion-slides loop="true" autoplay="2000" pager>
         <ion-slide *ngFor="let number of [1,2,3,4]">
@@ -28,12 +37,21 @@
         </ion-slide>
       </ion-slides> -->
 
+      <!-- <ion-list>
+        <ion-item *ngFor="let item of aproducts ">
+          {{ aproducts }}
+        </ion-item>
+    </ion-list> -->
+
    <ion-slides  *ngIf="slides && slides.length"  pager = 'true'  autoplay="3000" loop="true" speed="3000" style="max-height:200px">
         <ion-slide *ngFor="let slide of slides">
           <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{slide.image_path}}"  style="width:100% ;height: 180px;">
         </ion-slide>
       </ion-slides>
-
+      <div *ngFor="let slide of slides; let i=index">
+        
+      <img *ngIf="i==3"src="http://www.babyneeds.co.in/babyneeds/product_image/{{slide.image_path}}"  style="width:100% ;height: 50px;">
+    </div>
       <div class="">
         <ion-list no-lines no-margin margin-left>
           <ion-item no-padding no-lines>

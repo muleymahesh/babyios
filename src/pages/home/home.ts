@@ -21,6 +21,9 @@ export class HomePage {
 	app: any;
   result:any;
 	
+	showList: boolean = false;
+	searchQuery: string = '';
+	item:any;
 
 finalprice:any;
 allproducts:any;
@@ -39,6 +42,10 @@ allproducts:any;
     agegroup = {
       method:'get_all_agegroup'
     }; 
+    aproducts:any;
+		allproduct={
+			method:'get_all_product'
+		}
 
 		offers:any;
     offer = {
@@ -84,12 +91,31 @@ his:any;
 		// 	});
 
 		// });
+		this.getAllproduct();
+
 this.his=history.all;
 		console.log(this.his);
 		this.getBanner();
 
 	}
 
+	getAllproduct()
+	{
+		this.restProvider.getproducts(this.allproduct)
+    .then(data => {
+      this.aproducts = data;
+		console.log(this.aproducts);
+		this.initializeItems();
+
+    });
+	}
+
+	ionViewDidEnter() {
+		this.showList = false;
+	console.log("hiii");
+		this.goHome();  
+	
+	}
 	setFav(product: any){
 		this.translate.get(['REMOVE_WISH', 'ADDED_WISH']).subscribe( x=> {
 			let msg = product.isFav ? x.REMOVE_WISH : x.ADDED_WISH;
@@ -165,6 +191,13 @@ this.his=history.all;
 			});
 		}
 
+		goHome(){
+			this.searchQuery='';
+			this.showList = false;
+			this.nav.popToRoot();
+			this.nav.parent.select(0);
+		
+		 }
 
 
 		pricestrikt(discount,price)
@@ -191,5 +224,34 @@ this.his=history.all;
 	goTo(page, params){
 		this.nav.push(page,{params: params});
 	}
+	initializeItems() {
+    this.item=this.aproducts; 
+  }
+
+
+	getItems(ev: any) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      
+			// Filter the items
+		//	console.log(this.aproducts[0].product_name); 
+      this.item = this.item.filter((item) => {
+        return (item.product_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
+      
+      // Show the results
+      this.showList = true;
+    } else {
+      
+      // hide the results when the query is empty
+      this.showList = false;
+    }
+  }
 
 }

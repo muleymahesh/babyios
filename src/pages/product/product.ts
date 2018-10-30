@@ -106,7 +106,8 @@ export class ProductPage {
   }
 
   viewCart(){
-    this.modal.create('CartPage', {}, { cssClass: 'inset-modal' }).present();
+    // this.modal.create('CartPage', {}, { cssClass: 'inset-modal' }).present();
+    this.navCtrl.push("CartPage");
   }
 
   openModal(pageName) {
