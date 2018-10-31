@@ -24,7 +24,7 @@
    -->
 </ion-header>
 
- <ion-content no-padding>
+ <ion-content no-padding  >
     <ion-list *ngIf="showList" padding>
         <ion-item *ngFor="let i of item"  (click)="goTo('ProductPage',i)"><hr>
          <p style="font-size:12px;"> {{ i.product_name }}</p>
@@ -45,7 +45,10 @@
 
    <ion-slides  *ngIf="slides && slides.length"  pager = 'true'  autoplay="3000" loop="true" speed="3000" style="max-height:200px">
         <ion-slide *ngFor="let slide of slides">
-          <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{slide.image_path}}"  style="width:100% ;height: 180px;">
+                     
+                  <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{slide.image_path}}" (click)="go(slide)"  style="width:100% ;height: 180px;">
+              
+                            
         </ion-slide>
       </ion-slides>
       <div *ngFor="let slide of slides; let i=index">
@@ -55,7 +58,7 @@
       <div class="">
         <ion-list no-lines no-margin margin-left>
           <ion-item no-padding no-lines>
-            {{ ' Your recommendations' | translate }}
+            {{ ' Your Recommendations' | translate }}
         </ion-item>
         </ion-list>
         <div  *ngFor="let w of rlist;  let i=index " (click)="goTo('ProductPage',w)"> 
@@ -82,7 +85,7 @@
        
        <ion-row>
           <ion-col text-left>
-            <button item-end ion-button clear icon-end tappable (click)="goTo('ProductGridPage','recommendations')">
+            <button item-end ion-button clear icon-end tappable (click)="goTo('ProductGridPage','Recommendations')">
               {{ 'SEE ALL' | translate }}
               <ion-icon name="arrow-forward"></ion-icon>
             </button>

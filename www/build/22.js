@@ -1,14 +1,16 @@
 webpackJsonp([22],{
 
-/***/ 1000:
+/***/ 1004:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoriesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChangePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(104);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,60 +24,89 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var CategoriesPage = (function () {
-    function CategoriesPage(nav, loader, woo, restProvider, http) {
-        // this.woo.getSubCategories().then( (val) => {
-        // 	this.categories = val;
-        this.nav = nav;
-        this.loader = loader;
-        this.woo = woo;
-        this.restProvider = restProvider;
-        this.http = http;
-        this.myBraands = {
-            method: 'get_all_brand'
-        };
-        //	});
-        this.getBrands();
-    }
-    CategoriesPage.prototype.toggleSection = function (i) {
-        this.categories[i].open = !this.categories[i].open;
-    };
-    CategoriesPage.prototype.toggleItem = function (i, j) {
-        this.categories[i].child[j].open = !this.categories[i].child[j].open;
-    };
-    CategoriesPage.prototype.getBrands = function () {
-        var _this = this;
-        this.restProvider.getAgeGroup(this.myBraands)
-            .then(function (data) {
-            _this.Brands = data;
-        });
-    };
-    CategoriesPage.prototype.goTo = function (page, params) {
-        this.nav.push(page, { params: params });
-    };
-    return CategoriesPage;
-}());
-CategoriesPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-categories',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/categories/categories.html"*/'<ion-header>\n  <ion-navbar color="primary">\n        <ion-title>Brands</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <!-- <ion-list class="accordion-list">\n        <h1 margin-left margin-bottom>{{ \'CATEGORIES\' | translate}}</h1>\n        <div *ngFor="let item of categories; let i = index">\n          <ion-item tappable (click)="toggleSection(i)" [ngClass]="{\'active\':item.open, \'section\': item.open}">\n              <h2>{{ item.name }}</h2>\n              <ion-icon name="add" item-end></ion-icon>\n          </ion-item>\n\n          <ion-list [class.active]="item.open" class="sub-accordion" no-margin no-padding padding-left no-lines *ngIf="item.child && item.open">\n              <button ion-item no-lines *ngFor="let child of item.child; let j = index" tappable (click)="goTo(\'ProductGridPage\', child)"> \n                <h3>{{child.name}}</h3>\n                <ion-badge item-end color="secondary">{{child.count}}</ion-badge>\n              </button>\n          </ion-list>\n        </div>\n    </ion-list> -->\n\n    <ion-grid>\n        <ion-row >\n        <ion-col col-6  *ngFor="let b of Brands;let i=index" >  \n           <ion-card  style=" width:150px; min-height: calc(100% - 60px);" tappable (click)="goTo(\'ProductGridPage\', Brands[i])" >\n           <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{b.brand_img}}"  style="width:100% ;height: 150px;"  />  \n           </ion-card>\n        </ion-col>\n        </ion-row>\n    </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/categories/categories.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["l" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]])
-], CategoriesPage);
 
-//# sourceMappingURL=categories.js.map
+
+/**
+ * Generated class for the ChangePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ChangePage = (function () {
+    function ChangePage(fb, translate, navParams, toast, user, loader, alertCtrl, app, viewCtrl, http, restProvider, navCtrl) {
+        this.fb = fb;
+        this.translate = translate;
+        this.navParams = navParams;
+        this.toast = toast;
+        this.user = user;
+        this.loader = loader;
+        this.alertCtrl = alertCtrl;
+        this.app = app;
+        this.viewCtrl = viewCtrl;
+        this.http = http;
+        this.restProvider = restProvider;
+        this.navCtrl = navCtrl;
+        this.passRequest = {
+            method: 'change_password',
+            email: this.user.user.user_email,
+            oldpass: '',
+            newpass: ''
+        };
+    }
+    ChangePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ChangePage');
+    };
+    ChangePage.prototype.changePassword = function () {
+        var _this = this;
+        if (this.passRequest.oldpass != '' && this.passRequest.newpass != '' && this.cfrmpass != '') {
+            if (this.passRequest.newpass.length > 3) {
+                if (this.passRequest.newpass == this.cfrmpass) {
+                    this.restProvider.changePassword(this.passRequest)
+                        .then(function (data) {
+                        _this.response = data;
+                        if (_this.response.result == "success") {
+                            _this.toast.show("Your password change successfully...");
+                        }
+                        else {
+                            _this.toast.show(_this.response.responseMessage);
+                        }
+                    });
+                    console.log(this.response);
+                }
+                else {
+                    this.toast.show("new password and confirm password are not same");
+                }
+            }
+            else {
+                this.toast.show("Password should be more than 3 character");
+            }
+        }
+        else {
+            this.toast.show("All field required");
+        }
+    };
+    return ChangePage;
+}());
+ChangePage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-change',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/change/change.html"*/'<ion-header >\n    <ion-navbar color="primary" >\n        <ion-title> Reset Password</ion-title>\n    \n    </ion-navbar>\n  </ion-header>\n\n      \n     \n        \n          <ion-content>\n            <div align="center">\n              <img class="logo" src="assets/img/logo/logo.jpg" width="100" height="100"/>\n            </div>\n              <ion-list>\n               \n                <ion-item>\n                    <ion-label floating>Old Password</ion-label>\n                   <ion-input min-length="3"  type="password" [(ngModel)]="passRequest.oldpass" ngControl="title" required></ion-input>\n                </ion-item>\n                  <ion-item>\n                      <ion-label floating>Password</ion-label>\n                      <ion-input type="password" min-length="3" [(ngModel)]="cfrmpass" required></ion-input>\n                  </ion-item>\n\n                  <ion-item>\n                      <ion-label floating>Confirm Password</ion-label>\n                      <ion-input min-length="3"  type="password"  [(ngModel)]="passRequest.newpass"required ></ion-input>\n                  </ion-item>\n              </ion-list>\n\n              <ion-row align-items-center >\n                 \n                    <ion-col align-self-center>\n                        <button ion-button round full type="button" padding="5" color="primary"  tappable (click)="changePassword()" >Reset Password</button>\n                    </ion-col>\n               </ion-row>\n                 \n\n          </ion-content>\n     \n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/change/change.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["g" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */]])
+], ChangePage);
+
+//# sourceMappingURL=change.js.map
 
 /***/ }),
 
-/***/ 962:
+/***/ 964:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoriesPageModule", function() { return CategoriesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangePageModule", function() { return ChangePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__categories__ = __webpack_require__(1000);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(543);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__change__ = __webpack_require__(1004);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -85,25 +116,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var CategoriesPageModule = (function () {
-    function CategoriesPageModule() {
+var ChangePageModule = (function () {
+    function ChangePageModule() {
     }
-    return CategoriesPageModule;
+    return ChangePageModule;
 }());
-CategoriesPageModule = __decorate([
+ChangePageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__categories__["a" /* CategoriesPage */],
+            __WEBPACK_IMPORTED_MODULE_2__change__["a" /* ChangePage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__categories__["a" /* CategoriesPage */]),
-            __WEBPACK_IMPORTED_MODULE_3__app_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__change__["a" /* ChangePage */]),
         ],
     })
-], CategoriesPageModule);
+], ChangePageModule);
 
-//# sourceMappingURL=categories.module.js.map
+//# sourceMappingURL=change.module.js.map
 
 /***/ })
 

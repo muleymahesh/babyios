@@ -16,16 +16,16 @@
                
                 <ion-item>
                     <ion-label floating>Old Password</ion-label>
-                   <ion-input min-length="3"  type="password" [(ngModel)]="passRequest.oldpass" ngControl="title"></ion-input>
+                   <ion-input min-length="3"  type="password" [(ngModel)]="passRequest.oldpass" ngControl="title" required></ion-input>
                 </ion-item>
                   <ion-item>
                       <ion-label floating>Password</ion-label>
-                      <ion-input type="password" min-length="3" [(ngModel)]="cfrmpass"></ion-input>
+                      <ion-input type="password" min-length="3" [(ngModel)]="cfrmpass" required></ion-input>
                   </ion-item>
 
                   <ion-item>
                       <ion-label floating>Confirm Password</ion-label>
-                      <ion-input min-length="3"  type="password"  [(ngModel)]="passRequest.newpass" ></ion-input>
+                      <ion-input min-length="3"  type="password"  [(ngModel)]="passRequest.newpass"required ></ion-input>
                   </ion-item>
               </ion-list>
 

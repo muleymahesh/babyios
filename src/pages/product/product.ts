@@ -50,6 +50,7 @@ export class ProductPage {
     this.loader.present();
 
    this.product = this.navParam.data.params;
+   
    //ss this.history.post(this.product);
 
     // // if(this.product.variations){
@@ -84,7 +85,14 @@ export class ProductPage {
   getproductdetail() {
     if(this.user.user.user_id)
     {
+      if(this.product.p_id)
+      {
    this.getproduct.p_id =this.product.p_id;
+  }
+  else
+  {
+    this.getproduct.p_id=this.product.type_id;
+  }
    this.getproduct.email=this. user.user.user_email;
     this.restProvider.getProduct(this.getproduct)
     .then(data => {
@@ -94,8 +102,15 @@ export class ProductPage {
    this. getReviwe();
   }
   else{
-    this.getproduct.p_id =this.product.p_id;
-    
+   // this.getproduct.p_id =this.product.p_id;
+   if(this.product.p_id)
+   {
+this.getproduct.p_id =this.product.p_id;
+}
+else
+{
+ this.getproduct.p_id=this.product.type_id;
+}
       this.restProvider.getProduct(this.getproduct)
       .then(data => {
         this.products = data;
@@ -277,9 +292,26 @@ getReviwe()
   });
 
 }
+writereview(product)
+{
+  if(this.user.user.user_email)
+  {
+   this.goTo('WritereviewPage',product)
+  }
+  else
+  {
+    this.toast.show("Please login to write review");
+  }
+
+
+}
+
+
 
   goTo(page: string, params: any){
 		this.navCtrl.push(page, {params: params});
   }
+
+
 
 }

@@ -338,6 +338,26 @@ serviceOperations(data) {
  this.http.get("http://babyneeds.co.in/babyneeds/send_invoice.php?o_id="+data)
  }
 
+ feedbackOperation(data)
+ {
+   console.log("request sending");
+   return this.http.post(this.url, JSON.stringify(data))
+   .toPromise()
+   .then((data: any) => {
+      console.log('Success', data);
+      return data;
+   })
+   .catch(err => {
+      console.log('Error', err);
+      return err;
+   })
+ 
+ 
+ }
+
+
+
+
 
 }
 

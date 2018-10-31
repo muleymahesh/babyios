@@ -18,13 +18,13 @@
             <ion-list>
                
                 <ion-item>
-                    <ion-label floating>Title</ion-label>
-                    <ion-input type="text" required [(ngModel)]="reviewreq.title" ngControl="description"></ion-input>
+                 
+                    <ion-input placeholder="Title"type="text"  [(ngModel)]="reviewreq.title" ngControl="description" required></ion-input>
                 
                 </ion-item>
                 <ion-item>
-                    <ion-label floating>Review</ion-label>
-                    <ion-input type="text" required [(ngModel)]="reviewreq.review" ngControl="description"></ion-input>
+                  
+                    <ion-input type="text" placeholder="Review" [(ngModel)]="reviewreq.review" ngControl="description" required ></ion-input>
                     
                 </ion-item>
                 <ion-item>
@@ -32,7 +32,7 @@
                     <!-- <ion-input type="number" [(ngModel)]="reviewreq.rating" ngControl="title"></ion-input>
                     <ion-item> -->
                             <ion-label>Rating</ion-label>
-                            <ion-select value="5" [(ngModel)]="reviewreq.rating">
+                            <ion-select value="5"  [(ngModel)]="reviewreq.rating" required>
                               <ion-option>1</ion-option>
                               <ion-option>2</ion-option>
                               <ion-option>3</ion-option>

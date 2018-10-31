@@ -73,23 +73,46 @@ name:'';
 		// 	name: this.param.name || this.param.search
     // });
    
-    if(this.navParams.data.params.brand_id)
+    if(this.navParams.data.params.brand_id||this.navParams.data.params.banner_type==3)
     {
-     this.param.name = this.navParams.data.params.name;
-     this.product.brand_id= this.navParams.data.params.brand_id;
+    
+     if(this.navParams.data.params.brand_id)
+     {
+      this.param.name = this.navParams.data.params.name;
+      this.product.brand_id= this.navParams.data.params.brand_id;
+     }
+     else
+     {
+      this.param.name = this.navParams.data.params.banner_name;
+      this.product.brand_id= this.navParams.data.params.type_id;
+     }
+    
      this.productByBrandId();
     }
-    else if(this.navParams.data.params.offer_id)
+    else if(this.navParams.data.params.offer_id||this.navParams.data.params.banner_type==2)
     {
+      if(this.navParams.data.params.offer_id){
       this.param.name = this.navParams.data.params.name;
      this.product1.offer_id= this.navParams.data.params.offer_id;
+    }
+    else
+    {
+     this.param.name = this.navParams.data.params.banner_name;
+     this.product1.offer_id= this.navParams.data.params.type_id;
+    }
      this.productByOfferId();
     }
-   else if(this.navParams.data.params.cat_id)
+   else if(this.navParams.data.params.cat_id||this.navParams.data.params.banner_type==1)
    {
-
+    if(this.navParams.data.params.cat_id)
+    {
     this.param.name = this.navParams.data.params.cat_name;
     this.product3.cat_id= this.navParams.data.params.cat_id;
+  }
+  else{
+    this.param.name = this.navParams.data.params.banner_name;
+    this.product3.cat_id= this.navParams.data.params.type_id;
+  }
     this.productByCatId();
    }
    else if(this.navParams.data.params=='New Arrival')
@@ -98,7 +121,7 @@ name:'';
     this.param.name = this.navParams.data.params;
     this.newArrival();
    }
-   else if(this.navParams.data.params=='recommendations')
+   else if(this.navParams.data.params=='Recommendations')
    {
 
     this.param.name = this.navParams.data.params;
@@ -109,11 +132,9 @@ name:'';
    {
     this.param.name = this.navParams.data.params.name;
     this.product2.age_id= this.navParams.data.params.id;
-    
     this.productByAgeId();
    }
   
-   
    
 
 
@@ -174,23 +195,44 @@ this.product3.cat_id=x.id;
     });
   }
 
+
+
   showSort() {
-    this.translate.get(['SORT', 'NEWEST', 'OLDEST', 'CANCEL']).subscribe( x=> {
+    this.translate.get(['SORT', 'ByName', 'ByPrice','ByDiscount', 'CANCEL']).subscribe( x=> {
       this.actionSheetCtrl.create({
         title: x.SORT,
         buttons: [{
-            text: x.NEWEST,
+            text: x.ByName,
             handler: () => {
-              this.param.order = 'desc';
-              this.loadProducts(this.param);
+              // this.param.order = 'desc';
+              // this.loadProducts(this.param);
+              //console.log(this.products);
+              this.products .sort(this.sortByProperty('product_name'));
+             // console.log(this.products);
             }
           },{
-            text: x.OLDEST,
+            text: x.ByPrice,
             handler: () => {
-              this.param.order = 'asc';
-              this.loadProducts(this.param);
-            }
+              // this.param.order = 'asc';
+              // this.loadProducts(this.param);
+              //this.products.sort(this.sortByProperty('mrp'));
+             this.products.sort(function(obj1, obj2) {
+             return obj1.mrp - obj2.mrp;
+              
+             });
+          }
           },{
+            text: x.ByDiscount,
+            handler: () => {
+              // this.param.order = 'asc';
+              // this.loadProducts(this.param);
+              //this.products .sort(this.sortByProperty('per_discount'));
+              this.products.sort(function(obj1, obj2) {
+                return obj1.per_discount - obj2.per_discount;
+           });
+            }
+          },
+          {
             text: x.CANCEL,
             role: 'cancel'
           }
@@ -362,6 +404,13 @@ this.product3.cat_id=x.id;
     this.loader.dismiss();
   }
 
+  public sortByKey(array, key) {
+    return array.sort(function (a, b) {
+        var x = a[key]; var y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 0 : 1));
+    });
+}
+
 
 
 
@@ -403,6 +452,15 @@ this.product3.cat_id=x.id;
     this.loader.dismiss();
   }
 
-
+  sortByProperty = function (property) {
+    
+        return function (x, y) {
+    
+            return ((x[property] === y[property]) ? 0 : ((x[property] > y[property]) ? 1 : -1));
+    
+        };
+    
+    };
+    
 
 }

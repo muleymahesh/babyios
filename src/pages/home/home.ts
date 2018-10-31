@@ -124,7 +124,17 @@ this.his=history.all;
 			this.toast.show(msg);
 		});
 	}
-
+go(data)
+{
+if(data.banner_type!=0 && data.banner_type!=4)
+{
+this.goTo('ProductGridPage',data);
+}
+else if(data.banner_type==4 )
+{
+this.	goTo('ProductPage',data);
+}
+}
 
 	wishlist1() {
     this.restProvider.getRecommendations(this.request)

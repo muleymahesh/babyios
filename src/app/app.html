@@ -14,7 +14,7 @@
     </ion-header>
     
     
-    <ion-content>
+    <ion-content >
 
         <ion-item no-padding color="primary" *ngIf="_user.user.fname" >
             
@@ -34,8 +34,8 @@
             
               <div align="center">		<img align-items="center" src="assets/img/logo/ic_launcher.png"></div>
               
-            <h3 style="font-size:14px; text-align:center; color:#ffff">Baby</h3>
-            <h3 style="font-size:14px; text-align:center ; color:#ffff" >Babyneeds@baby.com</h3>
+            <h3 style="font-size:14px; text-align:center; color:#ffff"></h3>
+            <h3 style="font-size:14px; text-align:center ; color:#ffff" >Welcome Guest</h3>
           </ion-item>
       
       
@@ -68,11 +68,11 @@
         <button menuClose ion-item (click)="goTo('ServicesPage','0')">
         <ion-label>Services</ion-label>
       </button>
-      <button menuClose ion-item (click)="goTo()">
+      <button menuClose ion-item (click)="goTo('AboutusPage','0')">
           
           <ion-label>About Us</ion-label>
       </button>
-      <button menuClose ion-item (click)="goTo()">
+      <button menuClose ion-item (click)="goTo('FeedbackPage','0')">
          
           <ion-label>Feedback</ion-label>
       </button>

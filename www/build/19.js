@@ -1,14 +1,17 @@
 webpackJsonp([19],{
 
-/***/ 1003:
+/***/ 1007:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Checkout1Page; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeedbackPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_status_bar__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_providers__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_rest_rest__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__(104);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,88 +25,78 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 /**
- * Generated class for the Checkout1Page page.
+ * Generated class for the FeedbackPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var Checkout1Page = (function () {
-    function Checkout1Page(setting, alert, platform, nav, translate, toast, user, loader, woo, _cart, events, _order, address, navParams, modal) {
-        this.setting = setting;
-        this.alert = alert;
-        this.platform = platform;
+var FeedbackPage = (function () {
+    function FeedbackPage(history, nav, statusBar, translate, toast, wishlist, loader, modalCtrl, woo, restProvider, http) {
+        this.history = history;
         this.nav = nav;
         this.translate = translate;
         this.toast = toast;
-        this.user = user;
+        this.wishlist = wishlist;
         this.loader = loader;
+        this.modalCtrl = modalCtrl;
         this.woo = woo;
-        this._cart = _cart;
-        this.events = events;
-        this._order = _order;
-        this.address = address;
-        this.navParams = navParams;
-        this.modal = modal;
-        this.checkout = "shipping";
-        this.setOrder();
-        console.log('ionViewDidLoad Checkout1Page');
+        this.restProvider = restProvider;
+        this.http = http;
+        this.todo = {
+            method: 'add_feedback',
+            name: '',
+            email: '',
+            detail: ''
+        };
     }
-    Checkout1Page.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad Checkout1Page');
+    FeedbackPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad FeedbackPage');
     };
-    Checkout1Page.prototype.setOrder = function () {
-        console.log('ionViewDidLoad Checkout1Page');
-        console.log(this.address.getPrimary);
-        if (this.address.getPrimary) {
-            this.billing = this.address.getPrimary;
-            console.log(this.billing);
+    FeedbackPage.prototype.submitFeedback = function () {
+        var _this = this;
+        if (this.todo.name != '' && this.todo.email != '' && this.todo.detail != '') {
+            this.restProvider.feedbackOperation(this.todo)
+                .then(function (data) {
+                _this.response = data;
+                if (_this.response.result == "success") {
+                    _this.toast.show(_this.response.responseMessage);
+                }
+                else {
+                    _this.toast.show(_this.response.responseMessage);
+                }
+            });
+            console.log(this.response);
         }
-        // if(this._order.shipping)
-        //   this.shipping = this._order.shipping;
+        else {
+            this.toast.show("All field required");
+        }
     };
-    Checkout1Page.prototype.selectAddress = function (action) {
-        var params = {
-            action: action
-        };
-        this.modal.create('SavedAddressPage', { params: params }).present();
-    };
-    Checkout1Page.prototype.addAddress = function (action) {
-        var params = {
-            action: action
-        };
-        this.modal.create('AddAddressPage', { params: params }).present();
-    };
-    Checkout1Page.prototype.goTo = function (page, params) {
-        this.nav.push(page, { params: params });
-    };
-    Checkout1Page.prototype.placeorder = function () {
-        this.toast.show("Order Placed Successfully");
-        this.goTo('ThanksPage', 1);
-        // this.nav.push(ThanksPage);
-    };
-    return Checkout1Page;
+    return FeedbackPage;
 }());
-Checkout1Page = __decorate([
+FeedbackPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-checkout1',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/checkout1/checkout1.html"*/'<!--\n  Generated template for the Checkout1Page page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>checkout</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-card>\n  <ion-list margin-top padding-top > \n    <div>\n      <h3>{{ \'SHIPPING ADDRESS\' }}</h3>\n      \n    </div>\n    <ion-item no-lines *ngIf="billing">\n      <p>{{billing.first_name}} • {{billing.phone}}</p>\n      <p>{{billing.address_1}}</p>\n      <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>\n      <p>{{billing.pincode}}</p>\n  </ion-item>\n    <div padding-horizontal>\n      <button ion-button outline block icon-start tappable (click)="addAddress(4)">\n          {{ \'ADD\'}} {{ \'NEW_ADDRESS\'}}\n      </button>\n      <button ion-button outline block icon-start  tappable (click)="selectAddress(4)">\n          {{ \'SELECT\' }} {{ \'OTHER_ADDRESS\'}}\n      </button>\n    </div>\n  </ion-list>\n</ion-card>\n<ion-item>\n    <ion-label>Date</ion-label>\n    <ion-datetime displayFormat="YYYY/MM/DD"    max="2020-10-31" [(ngModel)]="myDate">\n    </ion-datetime>\n  </ion-item>\n  <ion-item>\n      <ion-label>Time Slot</ion-label>\n      <ion-select [(ngModel)]="toppings">\n        <ion-option>9-11 AM</ion-option>\n        <ion-option>11-1 PM</ion-option>\n        <ion-option>1-3 PM</ion-option>\n        <ion-option>5-7 PM</ion-option>\n            </ion-select>\n    </ion-item>\n\n    <ion-item>\n        <ion-label>Mode of Payment</ion-label>\n        <ion-select [(ngModel)]="payment">\n          <ion-option> Cash On Delivery</ion-option>\n          <ion-option>COD by Paytm</ion-option>\n          <ion-option>COD by BHIM</ion-option>\n       \n         </ion-select>\n      </ion-item>\n    \n  \n      <div padding>\n        <button ion-button block icon-start tappable (click)="placeorder()">\n           Place Order\n        </button>\n      </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/checkout1/checkout1.html"*/,
+        selector: 'page-feedback',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/feedback/feedback.html"*/'<!--\n  Generated template for the FeedbackPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Feedback</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item>\n        <ion-input [(ngModel)]="todo.name" type="text" placeholder="Name" required></ion-input>\n      </ion-item>\n\n      <ion-item>\n          <ion-input [(ngModel)]="todo.email" type="text" placeholder="Email" required></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-textarea [(ngModel)]="todo.detail" name="description" placeholder="Feedback" required></ion-textarea>\n          </ion-item>\n    </ion-list>\n    <button ion-button full round  color="app_primary" (click)="submitFeedback()" >Submit</button> \n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/feedback/feedback.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["l" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
-], Checkout1Page);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__providers_providers__["c" /* HistoryProvider */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["k" /* WishlistProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["l" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_5__providers_rest_rest__["a" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["a" /* HttpClient */]])
+], FeedbackPage);
 
-//# sourceMappingURL=checkout1.js.map
+//# sourceMappingURL=feedback.js.map
 
 /***/ }),
 
-/***/ 965:
+/***/ 967:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Checkout1PageModule", function() { return Checkout1PageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FeedbackPageModule", function() { return FeedbackPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__checkout1__ = __webpack_require__(1003);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__feedback__ = __webpack_require__(1007);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -113,23 +106,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var Checkout1PageModule = (function () {
-    function Checkout1PageModule() {
+var FeedbackPageModule = (function () {
+    function FeedbackPageModule() {
     }
-    return Checkout1PageModule;
+    return FeedbackPageModule;
 }());
-Checkout1PageModule = __decorate([
+FeedbackPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__checkout1__["a" /* Checkout1Page */],
+            __WEBPACK_IMPORTED_MODULE_2__feedback__["a" /* FeedbackPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__checkout1__["a" /* Checkout1Page */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__feedback__["a" /* FeedbackPage */]),
         ],
     })
-], Checkout1PageModule);
+], FeedbackPageModule);
 
-//# sourceMappingURL=checkout1.module.js.map
+//# sourceMappingURL=feedback.module.js.map
 
 /***/ })
 

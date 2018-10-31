@@ -28,6 +28,7 @@ export class UserProvider {
 
   _loggedIn(user, index){
     this.user.fname = user.fname;
+    this.user.lname=user.lname;
     this.user.user_email = user.user_email;
     this.user.user_id = user.user_id;
     console.log(this,user.fname);

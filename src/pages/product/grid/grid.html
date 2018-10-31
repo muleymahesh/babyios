@@ -1,6 +1,6 @@
  <ion-header>
 	<ion-navbar color="primary">
-      <ion-title>CATEGORIES details</ion-title>
+      <ion-title>{{param.name}}</ion-title>
       </ion-navbar>
       <div class="newsearch">
           <!-- <div no-padding class="searchbar searchbar-md">
@@ -26,9 +26,9 @@
           <div class="filter">
               <ion-scroll scrollX="true" class="item filter">
                 <ion-row nowrap>
-                  <ion-col col-auto no-padding>
+                  <!-- <ion-col col-auto no-padding>
                     <button ion-button small round outline >{{param.name || ('CATEGORIES' | translate)}}</button>
-                  </ion-col>
+                  </ion-col> -->
                   <!-- <ion-col col-auto no-padding *ngFor="let x of attributes">
                     <button ion-button small round outline (click)="showFilter(x)">
                       {{x.name}} 
