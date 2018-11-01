@@ -28,7 +28,7 @@
                     <ng-container *ngIf="y.imgs.length!=1; else elseTemplate">
                   <ion-slides  *ngIf="products && products.length" pager = 'true'  style="max-height:200px" class="featured" loop="true" autoplay="3000" >
               <ion-slide *ngFor="let x of products[0].imgs">
-                <div><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="width:100% ;height:200px;" imageViewer /></div>
+                <div><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="height:100%;" imageViewer /></div>
               </ion-slide>
             </ion-slides>  
        
