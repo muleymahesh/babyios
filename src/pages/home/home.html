@@ -43,7 +43,7 @@
         </ion-item>
     </ion-list> -->
 
-   <ion-slides  *ngIf="slides && slides.length"  pager = 'true'  autoplay="3000" loop="true" speed="3000" style="max-height:200px">
+   <ion-slides  *ngIf="slides && slides.length"  pager = 'true'  autoplay="2000" loop="true" speed="3000" style="max-height:200px">
         <ion-slide *ngFor="let slide of slides">
                      
                   <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{slide.image_path}}" (click)="go(slide)"  style="width:100% ;height: 180px;">
@@ -51,9 +51,9 @@
                             
         </ion-slide>
       </ion-slides>
-      <div *ngFor="let slide of slides; let i=index">
+      <div *ngFor="let ad of ad_banner; let i=index">
         
-      <img *ngIf="i==3"src="http://www.babyneeds.co.in/babyneeds/product_image/{{slide.image_path}}"  style="width:100% ;height: 50px;">
+      <img *ngIf="i==0"src="http://www.babyneeds.co.in/babyneeds/product_image/{{ad.image}}"  style="width:100% ;height: 50px;">
     </div>
       <div class="">
         <ion-list no-lines no-margin margin-left>

@@ -7,51 +7,48 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
-    },
-    "ionic-plugin-keyboard": {
-      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
-    },
-    "cordova-plugin-email-composer": {
-      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
-    },
-    "onesignal-cordova-plugin": {
-      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
-    },
-    "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
-    },
     "com.paypal.cordova.mobilesdk": {
-      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
-    },
-    "cordova-plugin-stripe": {
-      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
-    },
-    "cordova-plugin-x-socialsharing": {
-      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
-    },
-    "cordova-plugin-apprate": {
       "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
     },
     "cordova-plugin-app-version": {
       "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
     },
+    "cordova-plugin-apprate": {
+      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
+    },
+    "cordova-plugin-email-composer": {
+      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
+    },
     "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
+    },
+    "cordova-plugin-stripe": {
+      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
+    },
+    "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
     }
   },
   "dependent_plugins": {
     "card.io.cordova.mobilesdk": {
-      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
-    },
-    "es6-promise-plugin": {
       "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
     },
     "cordova-plugin-dialogs": {
@@ -64,6 +61,9 @@
       "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
     },
     "cordova-plugin-nativestorage": {
+      "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
+    },
+    "es6-promise-plugin": {
       "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
     }
   }

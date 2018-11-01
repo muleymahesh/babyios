@@ -90,7 +90,7 @@ export class CartProvider {
         }
       }
     }
-    return this.save();
+        return this.save();
   }
 
   get totalQty(){

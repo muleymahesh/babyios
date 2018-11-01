@@ -26,6 +26,7 @@ finalprice:any;
       console.log(this.cart.all);
       this.products = this.cart.all;
       this.total = this.cart.total;
+      console.log(this.total);
     });
 
     this.app = this.setting.all.settings;
@@ -50,6 +51,9 @@ finalprice:any;
           }]
       }).present();
     });
+    this.viewCtrl._didEnter();
+    console.log(this.total);
+    this.updateTotal();
   }
 
   confirmRemove(product: any){
@@ -57,6 +61,8 @@ finalprice:any;
     this.translate.get('REMOVE_FROM_CART').subscribe( x=> {
       this.toast.show("Product removed from cart");
     });
+    this.updateTotal();
+    console.log(this.total);
   }
 
   dismiss() {

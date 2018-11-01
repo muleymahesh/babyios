@@ -32,7 +32,12 @@ allproducts:any;
 	slides:any[25];
 	slideRequest = {
 	  method:'get_all_banner'
-	  };
+		};
+
+		ad_banner:any;
+		adRequest = {
+			method:'get_all_ad_banner'
+			};
 
 	  cateogry = {
 		method:'get_all_category'
@@ -163,6 +168,7 @@ this.	goTo('ProductPage',data);
 		.then(data => {
 		
 			this.slides = data;
+			this.getAdBanner();
 			this.wishlist1();
 		
 		});
@@ -175,6 +181,21 @@ this.	goTo('ProductPage',data);
 		});
 		}
 		
+
+		getAdBanner() {
+			
+			//this.loader.present();	
+			
+			this.restProvider.getBanner(this.adRequest)
+			.then(data => {
+			
+				this.ad_banner = data;
+				console.log("adds")
+		console.log(this.ad_banner);
+				//	this.wishlist1();
+			
+			});
+			}
 
 		getOffer() {
 			this.restProvider.getAgeGroup(this.offer)

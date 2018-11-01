@@ -19,8 +19,8 @@
  
  <ion-content padding-top>
 	<div class="subtitle" *ngIf="cart.total > 0">
-		<h1 margin-top margin-horizontal>{{ 'CART' | translate}}</h1>
-		<p no-margin margin-horizontal>{{ cart.totalQtyDetail }}</p>
+		<!-- <h1 margin-top margin-horizontal>{{ 'CART' | translate}}</h1> -->
+		<p text-color="primary" no-margin margin-horizontal>To remove product from cart swipe product to left side</p>
 	</div>
 	 <ion-list no-padding>
 		<ion-grid class="empty" *ngIf="cart.total == 0">
