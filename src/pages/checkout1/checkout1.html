@@ -38,12 +38,12 @@
 </ion-card>
 <ion-item>
     <ion-label>Date</ion-label>
-    <ion-datetime displayFormat="YYYY/MM/DD"    max="2020-10-31" [(ngModel)]="myDate">
+    <ion-datetime displayFormat="YYYY/MM/DD"    max="2020-10-31" [(ngModel)]="details.deliverydate">
     </ion-datetime>
   </ion-item>
   <ion-item>
       <ion-label>Time Slot</ion-label>
-      <ion-select [(ngModel)]="toppings">
+      <ion-select [(ngModel)]="details.timesloat">
         <ion-option>9-11 AM</ion-option>
         <ion-option>11-1 PM</ion-option>
         <ion-option>1-3 PM</ion-option>
@@ -53,7 +53,7 @@
 
     <ion-item>
         <ion-label>Mode of Payment</ion-label>
-        <ion-select [(ngModel)]="payment">
+        <ion-select [(ngModel)]="placeorderreq.shipping_type">
           <ion-option> Cash On Delivery</ion-option>
           <ion-option>COD by Paytm</ion-option>
           <ion-option>COD by BHIM</ion-option>

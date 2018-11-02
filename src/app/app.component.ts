@@ -68,7 +68,7 @@ user:any;
     });
   }
 
-  ionViewCanEnter(){
+  ionViewDidEnter(){
     
   }
 
@@ -97,4 +97,14 @@ user:any;
 goTo(page, params){
   this.nav.push(page,{params: params});
 }
+
+logout()
+{
+  
+  this.user={};
+  this._user.logout();
+  this.ionViewDidEnter();
+}
+
+
 }

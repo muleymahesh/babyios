@@ -58,8 +58,7 @@
            <ion-label>Categories</ion-label>
        </button>-->
        <button menuClose ion-item  (click)="goTo('MyorderPage','0')"> 
-          
-           <ion-label>My Orders</ion-label>
+        <ion-label>My Orders</ion-label>
        </button>
     
     </ion-list>
@@ -69,14 +68,14 @@
         <ion-label>Services</ion-label>
       </button>
       <button menuClose ion-item (click)="goTo('AboutusPage','0')">
-          
           <ion-label>About Us</ion-label>
       </button>
       <button menuClose ion-item (click)="goTo('FeedbackPage','0')">
-         
           <ion-label>Feedback</ion-label>
       </button>
-    
+      <button  *ngIf="_user.user.fname" menuClose ion-item (click)="logout()">
+        <ion-label>Log out</ion-label>
+      </button>
     </ion-list>
 
     </ion-content>
