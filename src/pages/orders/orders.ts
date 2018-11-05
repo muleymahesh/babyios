@@ -33,8 +33,8 @@ export class OrdersPage {
     this.orders = this.navParams.data.params;
      
     
-   this.returnrequest.order_id=this.navParams.data.params.o_id;
-   this.canclerequest.order_id=this.navParams.data.params.o_id;
+  // this.returnrequest.order_id=this.navParams.data.params.o_id;
+ //  this.canclerequest.order_id=this.navParams.data.params.o_id;
    this.returnrequest.user_email=this.user.user.user_email;
     console.log(this.orders);
     this.str=this.navParams.data.params.o_id;
@@ -83,6 +83,9 @@ export class OrdersPage {
     this.nav.parent.select(0);
   }
 cancleOrder(){
+  this.canclerequest.order_id=this.str.substring(2);
+ console.log(this.canclerequest.order_id);
+ 
   this.restProvider.orderOperation(this.canclerequest)
   .then(data => {
   console.log(data);
@@ -115,6 +118,7 @@ this.restProvider.Inovice(this.str1)
 
 
 returnOrder(){
+  this.returnrequest.order_id=this.str.substring(2);
   this.restProvider.orderOperation(this.returnrequest)
   .then(data => {
   console.log(data);

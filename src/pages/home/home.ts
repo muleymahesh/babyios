@@ -172,6 +172,7 @@ this.	goTo('ProductPage',data);
 			this.wishlist1();
 		
 		});
+		this.loader.dismiss();
 	  }
 	  getCategory() {
 		this.restProvider.getAgeGroup(this.cateogry)

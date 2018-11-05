@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController, AlertController,ViewController } from 'ionic-angular';
-import { CartProvider, SettingsProvider, UserProvider, ToastProvider } from '../../providers/providers';
+import { CartProvider, SettingsProvider, UserProvider, ToastProvider,RestProvider } from '../../providers/providers';
 import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
@@ -14,23 +14,47 @@ export class CartPage {
   app: any;
   total: number = 0;
   result:any;
+  product:any;
+  p_id:any;
+  qty:any;
+flag1:any;
+  flag:any=0;
+  getproduct = {
+    method:'get_product_detail',
+    p_id:'',
+    email:'abc.abc@gmail.com'
+  };
   
 name:'';
 finalprice:any;
-  constructor(public viewCtrl: ViewController,public cart: CartProvider, public setting: SettingsProvider, private translate: TranslateService, private modal: ModalController, private user: UserProvider, private toast: ToastProvider, public nav: NavController, public alert: AlertController) {
+  constructor(public restProvider:RestProvider,public viewCtrl: ViewController,public cart: CartProvider, public setting: SettingsProvider, private translate: TranslateService, private modal: ModalController, private user: UserProvider, private toast: ToastProvider, public nav: NavController, public alert: AlertController) {
+  
+
+   
     
+
   }
 
   ionViewWillEnter(){
     this.cart.load().then(() => {
-      console.log(this.cart.all);
+    //  console.log(this.cart.all);
       this.products = this.cart.all;
       this.total = this.cart.total;
-      console.log(this.total);
+    //  console.log(this.total);
     });
 
     this.app = this.setting.all.settings;
   }
+
+  // redirect()
+  // {
+  //  this.flag1=this.goCheckout();
+  //    console.log(this.flag1);
+  
+  
+  
+  
+  // }
 
   updateTotal(){
     this.total = this.cart.total;
@@ -52,7 +76,7 @@ finalprice:any;
       }).present();
     });
     this.viewCtrl._didEnter();
-    console.log(this.total);
+   // console.log(this.total);
     this.updateTotal();
   }
 
@@ -62,7 +86,7 @@ finalprice:any;
       this.toast.show("Product removed from cart");
     });
     this.updateTotal();
-    console.log(this.total);
+   // console.log(this.total);
   }
 
   dismiss() {
@@ -90,34 +114,47 @@ finalprice:any;
     this.nav.parent.select(0);
   }
 
-  goCheckout(){
+  goCheckout():any{
 //  this.user.logout();
+   this.flag=0;
+    console.log(this.flag);
     console.log(this.user.user);
+
+    for(let i=0; i < this.products.length; i++){
+      this.getproduct.p_id=this.products[i].p_id;
+      this.restProvider.getProduct(this.getproduct)
+      .then(data => {
+        this.product = data;
+        console.log(this.product);
+
+      if(this.products[i].quantity>this.product[0].stock)
+      {
+        console.log("hiiii")
+        if(this.flag!=1)
+        this.flag=1;
+        console.log("i am in compare  "+this.flag);
+      
+       this.toast.show(this.products[i].name+" quantity is exiding the stock");
+        console.log(this.flag);
+      }
+     
+    });
+   
+}
+
     if(this.user.user.user_email)
-      this.nav.push('Checkout1Page');
-    else{
-      this.nav.push('LoginPage');
-      // this.translate.get(['CHECKOUT_GUEST', 'CHECKOUT_GUEST_MSG', 'NO', 'YES']).subscribe( x=> {
-      //   this.alert.create({
-      //     title: x.CHECKOUT_GUEST,
-      //     message: x.CHECKOUT_GUEST_MSG,
-      //     buttons: [{
-      //         text: x.NO,
-      //         handler: () => {
-      //           this.nav.push('CheckoutPage', {guest: true});
-      //         }
-      //       },{
-      //         text: x.YES,
-      //         handler: () => {
-      //           this.modal.create('LoginPage').present();
-      //         }
-      //       }]
-      //   }).present();
-      // });
-    }
+
+{
+
+  
   }
-
-
  
+  else{
+      this.nav.push('LoginPage');
+     
+    }
+   
+}
+
 
 }

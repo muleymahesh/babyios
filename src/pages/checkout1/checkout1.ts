@@ -193,29 +193,32 @@ console.log(this.qty);
 
         
         // this.nav.push(ThanksPage);
+//following is the method for order place
 
-
-        if(this.details.deliverydate!=''&&this.details.timesloat!=''&&this.placeorderreq.shipping_type!='')
-        {
-      this.restProvider.feedbackOperation(this.placeorderreq)
-      .then(data => {
-      this.response = data;
-      if(this.response.result=="success")
-      {
-        this.toast.show(this.response.responseMessage);
-       // this.toast.show("Order Placed Successfully");
-        this.goTo('ThanksPage',1);
-      }
-      else
-      {
-        this.toast.show(this.response.responseMessage);
-      }
-      });
-      console.log(this.response);
-    }
-    else
-    {
-      this.toast.show("All field required");
-    }
+    //     if(this.details.deliverydate!=''&&this.details.timesloat!=''&&this.placeorderreq.shipping_type!='')
+    //     {
+    //   this.restProvider.feedbackOperation(this.placeorderreq)
+    //   .then(data => {
+    //   this.response = data;
+    //   if(this.response.result=="success")
+    //   {
+    //     this.toast.show(this.response.responseMessage);
+    //    // this.toast.show("Order Placed Successfully");
+    //     this.goTo('ThanksPage',1);
+    //   }
+    //   else
+    //   {
+    //     this.toast.show(this.response.responseMessage);
+    //   }
+    //   });
+    //   console.log(this.response);
+    // }
+    // else
+    // {
+    //   this.toast.show("All field required");
+    // }
+  //  this.toast.show("place order is commented");
+      // }
+      this.toast.show("place order is commented");
       }
 }

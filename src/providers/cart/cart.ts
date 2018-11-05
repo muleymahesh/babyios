@@ -42,7 +42,7 @@ export class CartProvider {
        if(this.cart[i].p_id == product1.p_id){
           this.cart[i].quantity += qty;
           exist = true;
-          console.log(this.cart);
+         // console.log(this.cart);
           break;
       }
     }
@@ -132,8 +132,8 @@ export class CartProvider {
   
     for(let i in this.cart)
 {
-  console.log(this.cart);
-  console.log(i);
+ // console.log(this.cart);
+ // console.log(i);
   
   if(this.cart[i].discount>0)
   {

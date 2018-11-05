@@ -20,6 +20,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegisterPage {
   cust:any;
+  cfrmpass:any;
   todo = {
     method:'signup',
     fname: '',
@@ -37,12 +38,58 @@ export class RegisterPage {
   }
 
   getReegister() {
+
+    if(this.todo.email!=""&&this.todo.fname!=""&&this.todo.lname!=''&&this.todo.mobile!=""&&this.todo.password!='')
+    
+    {
+      if(this.todo.password.length>3)
+      {
+        if(this.todo.password==this.cfrmpass)
+        {
     this.restProvider.register(this.todo)
     .then(data => {
       this.cust = data;
+
       console.log(this.cust);
+      
+      if(this.cust.result=="success")
+      {
+       this.toast.show(this.cust.responseMessage);
+
+      this.todo = {
+        method:'signup',
+        fname: '',
+        lname:'',
+        email:'',
+        divice_token:'12aacc',
+        password: '',
+        mobile:''
+        };
+        this.navCtrl.push('LoginPage');
+      }
+      else if(this.cust.result=="failure")
+      {
+       this.toast.show(this.cust.responseMessage);
+     
+      }
+
     });
   }
+else
+{
+  this.toast.show("new password and confirm password are not same");
+}
+  
+}
+else
+{
+  this.toast.show("Password should be more than 3 character");
 }
 
-
+}
+else
+{
+  this.toast.show("All field required");
+}
+}
+}

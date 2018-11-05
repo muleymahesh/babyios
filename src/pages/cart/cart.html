@@ -41,9 +41,9 @@
 				<h3 [innerHTML]="x.name"></h3>
 				 <p>
 					 <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->
-					 <!-- <span class="price">{{x.price | money}}</span> -->
+					  <!-- <span class="price">{{x.finalprice | money}}</span> -->
 					<!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->
-					<span>• {{x.quantity}}x</span>
+					<span> x {{x.quantity}}</span>
 				</p>
 				<div item-end>
 					<ion-row no-padding>

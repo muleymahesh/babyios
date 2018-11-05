@@ -8,7 +8,7 @@ import { CartProvider, UserProvider, WishlistProvider } from '../../providers/pr
 })
 export class TabsPage {
   tab1Root = 'HomePage';
-  tab2Root = 'CartPage';
+  tab2Root = 'Cart1Page';
   tab3Root = 'WishlistPage';
   tab5Root = 'AccountPage';
   mySelectedIndex: number = 0;  

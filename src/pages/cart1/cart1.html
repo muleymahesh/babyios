@@ -1,0 +1,87 @@
+<ion-header>  
+	
+		<ion-navbar color="primary">
+				<button ion-button menuToggle>
+						<ion-icon name="menu"></ion-icon>
+					  </button>
+					  
+			<ion-title>Cart</ion-title>
+		</ion-navbar>
+		
+	  
+	</ion-header>
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ <ion-content padding-top>
+	<div class="subtitle" *ngIf="cart.total > 0">
+		<!-- <h1 margin-top margin-horizontal>{{ 'CART' | translate}}</h1> -->
+		<p text-color="primary" no-margin margin-horizontal>To remove product from cart swipe product to left side</p>
+	</div>
+	 <ion-list no-padding>
+		<ion-grid class="empty" *ngIf="cart.total == 0">
+			<ion-row align-items-center>
+				<ion-col align-self-center text-center>
+					<ion-icon name="basket" color="primary"></ion-icon>
+					<h4 margin-bottom>{{ 'EMPTY'}}</h4>
+					<button color="primary" ion-button outline tappable (click)="goHome()">{{ 'START SHOPPING'}}</button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+  		 <ion-item-sliding *ngFor="let x of products">
+  			<ion-item>
+				<ion-thumbnail item-start>
+				<div class="img" [ngStyle]="{'background-image': 'url(http://www.babyneeds.co.in/babyneeds/product_image/' +x.images +')'}"></div>
+				 
+				</ion-thumbnail>
+				<h3 [innerHTML]="x.name"></h3>
+				 <p>
+					 <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->
+					  <!-- <span class="price">{{x.finalprice | money}}</span> -->
+					<!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->
+					<span> x {{x.quantity}}</span>
+				</p>
+				<div item-end>
+					<ion-row no-padding>
+						<ion-col no-padding text-center>
+							<button clear big ion-button icon-only tappable (click)="cart.post(x, 1); updateTotal()">
+								<ion-icon color="secondary" name="add-circle"></ion-icon>
+							</button>
+						</ion-col>
+					</ion-row>
+					<ion-row no-padding *ngIf="x.quantity > 1">
+						<ion-col no-padding text-center> 
+							<button small clear ion-button icon-only tappable (click)="cart.post(x, -1); updateTotal()">
+								<ion-icon color="secondary" name="remove-circle"></ion-icon>
+							</button>
+						</ion-col>
+					</ion-row>
+				</div>
+			</ion-item>
+			<ion-item-options side="right">
+				<button ion-button small color="assertive" tappable (click)="remove(x)">
+					<ion-icon name="trash"></ion-icon>
+					{{'REMOVE'}}
+				</button>
+			</ion-item-options>
+  		</ion-item-sliding> 
+  	</ion-list>
+</ion-content>
+
+<ion-footer>
+   <ion-toolbar padding-horizontal>
+    <ion-row align-items-center no-padding>
+    	<ion-col class="total" align-self-center no-padding *ngIf="products.length > 0">
+    		<span>Total ({{cart.totalQtyDetail}} items)</span>
+			<h5>{{total}}</h5>
+    	</ion-col>
+    	<ion-col col-33 align-self-center no-padding>
+			<button ion-button block tappable [disabled]="products.length <= 0" (click)="goCheckout()">{{'CHECKOUT'}}</button>
+  		</ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer> 
