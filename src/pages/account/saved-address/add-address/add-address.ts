@@ -94,14 +94,14 @@ export class AddAddressPage {
 
     if(this.data.action == 1) {
       this.address.add(this.form.value); // FOR NEW ADDRESS
-      this.translate.get('NEW_ADDRESS_ADDED').subscribe( x=> {
+      this.translate.get('New adress added').subscribe( x=> {
         this.toast.show(x);
       });
     }
 
     if(this.data.action == 2) {
       this.address.update(this.navParams.data.index, this.form.value); // UPDATE ADDRESS
-      this.translate.get('ADDRESS_WAS_UPDATED').subscribe( x=> {
+      this.translate.get('Address was updated').subscribe( x=> {
         this.toast.show(x);
       });
     }

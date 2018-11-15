@@ -5,11 +5,11 @@ webpackJsonp([32],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountProfilePageModule", function() { return AccountProfilePageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(543);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountNotificationPageModule", function() { return AccountNotificationPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(544);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile__ = __webpack_require__(996);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__notification__ = __webpack_require__(995);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,37 +20,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AccountProfilePageModule = (function () {
-    function AccountProfilePageModule() {
+var AccountNotificationPageModule = (function () {
+    function AccountNotificationPageModule() {
     }
-    return AccountProfilePageModule;
+    return AccountNotificationPageModule;
 }());
-AccountProfilePageModule = __decorate([
+AccountNotificationPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__profile__["a" /* AccountProfilePage */],
+            __WEBPACK_IMPORTED_MODULE_3__notification__["a" /* AccountNotificationPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__profile__["a" /* AccountProfilePage */]),
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__notification__["a" /* AccountNotificationPage */]),
             __WEBPACK_IMPORTED_MODULE_0__app_shared_module__["a" /* SharedModule */]
         ],
     })
-], AccountProfilePageModule);
+], AccountNotificationPageModule);
 
-//# sourceMappingURL=profile.module.js.map
+//# sourceMappingURL=notification.module.js.map
 
 /***/ }),
 
-/***/ 996:
+/***/ 995:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountProfilePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountNotificationPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_providers__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,50 +61,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-var AccountProfilePage = (function () {
-    function AccountProfilePage(view, translate, loader, toast, _user, fb, navCtrl, navParams) {
-        this.view = view;
-        this.translate = translate;
-        this.loader = loader;
-        this.toast = toast;
-        this._user = _user;
-        this.fb = fb;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.user = this._user.user;
-        this.form = this.fb.group({
-            first: [this.user.fname, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required],
-            // last: this.user.lastname,
-            email: this.user.user_email
-        });
+var AccountNotificationPage = (function () {
+    function AccountNotificationPage(_notif, alert) {
+        this._notif = _notif;
+        this.alert = alert;
+        this.notif = [];
+        console.log(_notif.all);
     }
-    AccountProfilePage.prototype.submit = function () {
-        var _this = this;
-        this.loader.present();
-        this._user.update(this.form.value).map(function (x) { return x.json(); }).subscribe(function (x) {
-            _this._user.setUserUpdate(_this.form.value);
-            _this.translate.get(['PROFILE_UPDATED']).subscribe(function (x) {
-                _this.toast.show(x.PROFILE_UPDATED);
-            });
-            _this.loader.dismiss();
-            _this.dismiss();
-        });
+    AccountNotificationPage.prototype.showAlert = function (x) {
+        this.alert.create({
+            title: x.title,
+            subTitle: x.body,
+            buttons: ['OK']
+        }).present();
     };
-    AccountProfilePage.prototype.dismiss = function () {
-        this.view.dismiss();
+    AccountNotificationPage.prototype.remove = function (x) {
+        this._notif.remove(x.id);
     };
-    return AccountProfilePage;
+    AccountNotificationPage.prototype.ionViewDidLoad = function () {
+        this.notif = this._notif.all;
+        console.log('ionViewDidLoad AccountNotificationPage');
+    };
+    return AccountNotificationPage;
 }());
-AccountProfilePage = __decorate([
+AccountNotificationPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-account-profile',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/profile/profile.html"*/'\n\n<ion-header no-border no-lines>\n  <ion-navbar color="primary">\n      <ion-buttons start>\n        <button start icon-only ion-button (click)="dismiss()">\n          <ion-icon name="close"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>  \n    <ion-list>\n      <h1 margin-left margin-bottom>{{ \'EDIT_PROFILE\' | translate}}</h1>\n      <ion-item>\n        <ion-label floating>{{ \'FIRST_NAME\' | translate}}</ion-label>\n        <ion-input formControlName="first" type="text"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>{{ \'LAST_NAME\' | translate}}</ion-label>\n        <ion-input formControlName="last" type="text"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>{{ \'BIO\' | translate}}</ion-label>\n        <ion-textarea formControlName="bio"></ion-textarea>\n      </ion-item>\n\n      <div padding>\n        <button ion-button block [disabled]="!form.valid">{{ \'SAVE\' | translate}}</button>\n      </div>\n\n    </ion-list>\n  </form>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/profile/profile.html"*/,
+        selector: 'page-account-notification',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/notification/notification.html"*/'<ion-header no-border no-lines>\n	<ion-navbar></ion-navbar>\n</ion-header>\n \n <ion-content> \n   <ion-list>\n    <h1 margin-left margin-bottom>{{ \'NOTIF\' | translate}}</h1>\n    <ion-grid class="empty" *ngIf="notif.length == 0">\n			<ion-row align-items-center>\n				<ion-col align-self-center text-center>\n					<ion-icon name="notifications-off" color="secondary"></ion-icon>\n					<h4 margin-bottom>{{ \'EMPTY_NOTIF\' | translate}}</h4>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n    <ion-item-sliding *ngFor="let x of notif">\n      <ion-item (click)="showAlert(x)">\n        <ion-avatar item-start *ngIf="x.img">\n          <img [src]="x.img" />\n        </ion-avatar>\n        <h3>{{x.title}}</h3>\n        <p>{{x.body}}</p>\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button small color="assertive" tappable (click)="remove(x)">\n					<ion-icon name="trash"></ion-icon>\n					{{\'REMOVE\' | translate}}\n				</button>\n      </ion-item-options>\n    </ion-item-sliding>\n   </ion-list>\n </ion-content>\n '/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/notification/notification.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["i" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
-], AccountProfilePage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["e" /* NotifProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
+], AccountNotificationPage);
 
-//# sourceMappingURL=profile.js.map
+//# sourceMappingURL=notification.js.map
 
 /***/ })
 

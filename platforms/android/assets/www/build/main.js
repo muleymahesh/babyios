@@ -1,4 +1,4 @@
-webpackJsonp([40],{
+webpackJsonp([41],{
 
 /***/ 134:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -318,6 +318,19 @@ var RestProvider = (function () {
             return err;
         });
     };
+    RestProvider.prototype.placeOrderOperation = function (data) {
+        console.log("request sending");
+        return this.http.post(this.url, JSON.stringify(data))
+            .toPromise()
+            .then(function (data) {
+            console.log('Success', data);
+            return data;
+        })
+            .catch(function (err) {
+            console.log('Error', err);
+            return err;
+        });
+    };
     return RestProvider;
 }());
 RestProvider = __decorate([
@@ -470,163 +483,167 @@ var DIRECTIVES = [
 
 var map = {
 	"../pages/aboutus/aboutus.module": [
+		949,
+		38
+	],
+	"../pages/account/account.module": [
 		950,
 		37
 	],
-	"../pages/account/account.module": [
-		949,
-		36
-	],
 	"../pages/account/chats/chats.module": [
 		951,
-		35
+		36
 	],
 	"../pages/account/chats/message/message.module": [
 		952,
-		34
+		35
 	],
 	"../pages/account/help/help.module": [
 		953,
-		33
+		34
 	],
 	"../pages/account/notification/notification.module": [
 		954,
-		32
+		33
 	],
 	"../pages/account/profile/profile.module": [
 		955,
-		31
+		32
 	],
 	"../pages/account/saved-address/add-address/add-address.module": [
 		956,
-		30
+		31
 	],
 	"../pages/account/saved-address/saved-address.module": [
 		957,
-		29
+		30
 	],
 	"../pages/account/settings/languages/languages.module": [
 		958,
-		28
+		29
 	],
 	"../pages/account/settings/notifications/notifications.module": [
 		959,
-		27
+		28
 	],
 	"../pages/account/settings/settings.module": [
 		960,
-		26
+		27
 	],
 	"../pages/account/settings/tos/tos.module": [
+		961,
+		26
+	],
+	"../pages/cart/cart.module": [
 		962,
 		25
 	],
-	"../pages/cart/cart.module": [
-		961,
+	"../pages/cart1/cart1.module": [
+		963,
 		24
 	],
 	"../pages/categories/categories.module": [
-		966,
+		964,
 		23
 	],
 	"../pages/change/change.module": [
-		964,
+		965,
 		22
 	],
 	"../pages/checkout/checkout.module": [
-		963,
+		966,
 		21
 	],
 	"../pages/checkout1/checkout1.module": [
-		965,
+		967,
 		20
 	],
 	"../pages/feedback/feedback.module": [
-		967,
+		968,
 		19
 	],
 	"../pages/forgotpassword/forgotpassword.module": [
-		973,
+		969,
 		18
 	],
 	"../pages/home/home.module": [
-		969,
-		39
+		970,
+		40
 	],
 	"../pages/list/list.module": [
-		968,
+		971,
 		17
 	],
 	"../pages/login/login.module": [
-		975,
-		38
+		972,
+		39
 	],
 	"../pages/menu/menu.module": [
-		972,
+		973,
 		16
 	],
 	"../pages/myorder/myorder.module": [
-		970,
+		974,
 		15
 	],
 	"../pages/orders/detail/detail.module": [
-		971,
+		975,
 		14
 	],
 	"../pages/orders/orders.module": [
-		974,
+		976,
 		13
 	],
 	"../pages/product/grid/grid.module": [
-		978,
+		977,
 		12
 	],
 	"../pages/product/mini-cart/mini-cart.module": [
-		977,
+		978,
 		11
 	],
 	"../pages/product/modal-categories/modal-categories.module": [
-		976,
+		979,
 		10
 	],
 	"../pages/product/product.module": [
-		981,
+		980,
 		9
 	],
 	"../pages/register/register.module": [
-		979,
+		981,
 		8
 	],
 	"../pages/search/search.module": [
-		980,
+		982,
 		7
 	],
 	"../pages/servicecategory/servicecategory.module": [
-		985,
+		983,
 		6
 	],
 	"../pages/servicedetail/servicedetail.module": [
-		982,
+		984,
 		5
 	],
 	"../pages/services/services.module": [
-		986,
+		985,
 		4
 	],
 	"../pages/tabs/tabs.module": [
-		983,
+		986,
 		3
 	],
 	"../pages/thanks/thanks.module": [
-		984,
+		987,
 		2
 	],
 	"../pages/wishlist/wishlist.module": [
-		987,
+		988,
 		1
 	],
 	"../pages/writereview/writereview.module": [
-		988,
+		989,
 		0
 	]
 };
@@ -847,6 +864,7 @@ var HomePage = (function () {
             _this.getAdBanner();
             _this.wishlist1();
         });
+        this.loader.dismiss();
     };
     HomePage.prototype.getCategory = function () {
         var _this = this;
@@ -1225,8 +1243,8 @@ AppModule = __decorate([
                 backButtonText: '',
             }, {
                 links: [
-                    { loadChildren: '../pages/account/account.module#AccountPageModule', name: 'AccountPage', segment: 'account', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/aboutus/aboutus.module#AboutusPageModule', name: 'AboutusPage', segment: 'aboutus', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/account/account.module#AccountPageModule', name: 'AccountPage', segment: 'account', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/chats/chats.module#AccountChatsPageModule', name: 'AccountChatsPage', segment: 'chats', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/chats/message/message.module#AccountChatsMessagePageModule', name: 'AccountChatsMessagePage', segment: 'message', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/help/help.module#AccountHelpPageModule', name: 'AccountHelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
@@ -1237,32 +1255,33 @@ AppModule = __decorate([
                     { loadChildren: '../pages/account/settings/languages/languages.module#AccountSettingsLanguagesPageModule', name: 'AccountSettingsLanguagesPage', segment: 'languages', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/notifications/notifications.module#AccountSettingsNotificationsPageModule', name: 'AccountSettingsNotificationsPage', segment: 'notifications', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/settings.module#AccountSettingsPageModule', name: 'AccountSettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/cart/cart.module#CartPageModule', name: 'CartPage', segment: 'cart', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/tos/tos.module#AccountSettingsTosPageModule', name: 'AccountSettingsTosPage', segment: 'tos', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'CheckoutPage', segment: 'checkout', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/change/change.module#ChangePageModule', name: 'ChangePage', segment: 'change', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/checkout1/checkout1.module#Checkout1PageModule', name: 'Checkout1Page', segment: 'checkout1', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/cart/cart.module#CartPageModule', name: 'CartPage', segment: 'cart', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/cart1/cart1.module#Cart1PageModule', name: 'Cart1Page', segment: 'cart1', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/categories/categories.module#CategoriesPageModule', name: 'CategoriesPage', segment: 'categories', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/change/change.module#ChangePageModule', name: 'ChangePage', segment: 'change', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'CheckoutPage', segment: 'checkout', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/checkout1/checkout1.module#Checkout1PageModule', name: 'Checkout1Page', segment: 'checkout1', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/feedback/feedback.module#FeedbackPageModule', name: 'FeedbackPage', segment: 'feedback', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/list/list.module#ListPageModule', name: 'ListPage', segment: 'list', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/forgotpassword/forgotpassword.module#ForgotpasswordPageModule', name: 'ForgotpasswordPage', segment: 'forgotpassword', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/list/list.module#ListPageModule', name: 'ListPage', segment: 'list', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/myorder/myorder.module#MyorderPageModule', name: 'MyorderPage', segment: 'myorder', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/orders/detail/detail.module#OrderDetailPageModule', name: 'OrderDetailPage', segment: 'detail', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/forgotpassword/forgotpassword.module#ForgotpasswordPageModule', name: 'ForgotpasswordPage', segment: 'forgotpassword', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/product/modal-categories/modal-categories.module#ModalCategoriesPageModule', name: 'ModalCategoriesPage', segment: 'modal-categories', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/product/mini-cart/mini-cart.module#MiniCartPageModule', name: 'MiniCartPage', segment: 'mini-cart', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/grid/grid.module#ProductGridPageModule', name: 'ProductGridPage', segment: 'grid', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/product/mini-cart/mini-cart.module#MiniCartPageModule', name: 'MiniCartPage', segment: 'mini-cart', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/product/modal-categories/modal-categories.module#ModalCategoriesPageModule', name: 'ModalCategoriesPage', segment: 'modal-categories', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/product/product.module#ProductPageModule', name: 'ProductPage', segment: 'product', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/product/product.module#ProductPageModule', name: 'ProductPage', segment: 'product', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/servicecategory/servicecategory.module#ServicecategoryPageModule', name: 'ServicecategoryPage', segment: 'servicecategory', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/servicedetail/servicedetail.module#ServicedetailPageModule', name: 'ServicedetailPage', segment: 'servicedetail', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/services/services.module#ServicesPageModule', name: 'ServicesPage', segment: 'services', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/thanks/thanks.module#ThanksPageModule', name: 'ThanksPage', segment: 'thanks', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/servicecategory/servicecategory.module#ServicecategoryPageModule', name: 'ServicecategoryPage', segment: 'servicecategory', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/services/services.module#ServicesPageModule', name: 'ServicesPage', segment: 'services', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/wishlist/wishlist.module#WishlistPageModule', name: 'WishlistPage', segment: 'wishlist', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/writereview/writereview.module#WritereviewPageModule', name: 'WritereviewPage', segment: 'writereview', priority: 'low', defaultHistory: [] }
                 ]
@@ -1824,7 +1843,7 @@ var CartProvider = (function () {
             if (this.cart[i].p_id == product1.p_id) {
                 this.cart[i].quantity += qty;
                 exist = true;
-                console.log(this.cart);
+                // console.log(this.cart);
                 break;
             }
         }
@@ -1905,8 +1924,8 @@ var CartProvider = (function () {
             this.total1 = 0;
             var total = 0;
             for (var i in this.cart) {
-                console.log(this.cart);
-                console.log(i);
+                // console.log(this.cart);
+                // console.log(i);
                 if (this.cart[i].discount > 0) {
                     this.total1 = this.pricestrikt(this.cart[i].discount, this.cart[i].price);
                     // console.log(this.total1);
@@ -3495,7 +3514,7 @@ var MyApp = (function () {
             _this.splashScreen.hide();
         });
     };
-    MyApp.prototype.ionViewCanEnter = function () {
+    MyApp.prototype.ionViewDidEnter = function () {
     };
     MyApp.prototype.initTranslate = function () {
         // Set the default language for translation strings, and the current language.
@@ -3517,6 +3536,11 @@ var MyApp = (function () {
     MyApp.prototype.goTo = function (page, params) {
         this.nav.push(page, { params: params });
     };
+    MyApp.prototype.logout = function () {
+        this.user = {};
+        this._user.logout();
+        this.ionViewDidEnter();
+    };
     return MyApp;
 }());
 __decorate([
@@ -3524,7 +3548,7 @@ __decorate([
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["t" /* Nav */])
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/app/app.html"*/'\n<ion-menu [content]="content">\n    <ion-header>\n    \n      <ion-navbar color="primary" >\n        <ion-title>Menu</ion-title>\n      \n            \n       \n       \n\n      </ion-navbar>\n    \n    </ion-header>\n    \n    \n    <ion-content >\n\n        <ion-item no-padding color="primary" *ngIf="_user.user.fname" >\n            \n              <div align="center">	\n            <img align-items="center" src="assets/img/logo/ic_launcher.png"></div>\n              \n            <h3 style="font-size:14px; text-align:center; color:#ffff">{{user.fname}}</h3>\n            <h3 style="font-size:14px; text-align:center ; color:#ffff" >{{user.user_email}}</h3>\n            <!-- <p style="font-size:10px; text-align:center">{{ \'EDIT PROFILE\' | translate}}</p> -->\n            <!-- <ion-avatar item-end>\n              <img src="assets/img/miscellaneous/user.png">\n            </ion-avatar> -->\n          </ion-item>\n      \n      \n          <ion-item no-padding  color="primary" *ngIf="!_user.user.fname">\n            \n              <div align="center">		<img align-items="center" src="assets/img/logo/ic_launcher.png"></div>\n              \n            <h3 style="font-size:14px; text-align:center; color:#ffff"></h3>\n            <h3 style="font-size:14px; text-align:center ; color:#ffff" >Welcome Guest</h3>\n          </ion-item>\n      \n      \n\n    <ion-list>\n        <button menuClose ion-item (click)="OnHomeClicked()">\n        <ion-label>Home</ion-label>\n      </button>\n      <button menuClose ion-item (click)="goTo(\'ProductGridPage\',\'New Arrival\')">\n          \n          <ion-label>New Arrivals </ion-label>\n      </button>\n      <button menuClose ion-item  (click)="goTo(\'CategoriesPage\',\'0\')">\n         \n          <ion-label>Shop by Brand</ion-label>\n      </button>\n\n      <!--<button ion-item (click)="goTo()">\n          \n           <ion-label>Categories</ion-label>\n       </button>-->\n       <button menuClose ion-item  (click)="goTo(\'MyorderPage\',\'0\')"> \n          \n           <ion-label>My Orders</ion-label>\n       </button>\n    \n    </ion-list>\n    <hr>\n    <ion-list>\n        <button menuClose ion-item (click)="goTo(\'ServicesPage\',\'0\')">\n        <ion-label>Services</ion-label>\n      </button>\n      <button menuClose ion-item (click)="goTo(\'AboutusPage\',\'0\')">\n          \n          <ion-label>About Us</ion-label>\n      </button>\n      <button menuClose ion-item (click)="goTo(\'FeedbackPage\',\'0\')">\n         \n          <ion-label>Feedback</ion-label>\n      </button>\n    \n    </ion-list>\n\n    </ion-content>\n    </ion-menu>\n    <ion-nav [root]="rootPage" type="overlay"  #content swipeBackEnabled="false"></ion-nav> \n\n\n\n\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/app/app.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/app/app.html"*/'\n<ion-menu [content]="content">\n    <ion-header>\n    \n      <ion-navbar color="primary" >\n        <ion-title>Menu</ion-title>\n      \n            \n       \n       \n\n      </ion-navbar>\n    \n    </ion-header>\n    \n    \n    <ion-content >\n\n        <ion-item no-padding color="primary" *ngIf="_user.user.fname" >\n            \n              <div align="center">	\n            <img align-items="center" src="assets/img/logo/ic_launcher.png"></div>\n              \n            <h3 style="font-size:14px; text-align:center; color:#ffff">{{user.fname}}</h3>\n            <h3 style="font-size:14px; text-align:center ; color:#ffff" >{{user.user_email}}</h3>\n            <!-- <p style="font-size:10px; text-align:center">{{ \'EDIT PROFILE\' | translate}}</p> -->\n            <!-- <ion-avatar item-end>\n              <img src="assets/img/miscellaneous/user.png">\n            </ion-avatar> -->\n          </ion-item>\n      \n      \n          <ion-item no-padding  color="primary" *ngIf="!_user.user.fname">\n            \n              <div align="center">		<img align-items="center" src="assets/img/logo/ic_launcher.png"></div>\n              \n            <h3 style="font-size:14px; text-align:center; color:#ffff"></h3>\n            <h3 style="font-size:14px; text-align:center ; color:#ffff" >Welcome Guest</h3>\n          </ion-item>\n      \n      \n\n    <ion-list>\n        <button menuClose ion-item (click)="OnHomeClicked()">\n        <ion-label>Home</ion-label>\n      </button>\n      <button menuClose ion-item (click)="goTo(\'ProductGridPage\',\'New Arrival\')">\n          \n          <ion-label>New Arrivals </ion-label>\n      </button>\n      <button menuClose ion-item  (click)="goTo(\'CategoriesPage\',\'0\')">\n         \n          <ion-label>Shop by Brand</ion-label>\n      </button>\n\n      <!--<button ion-item (click)="goTo()">\n          \n           <ion-label>Categories</ion-label>\n       </button>-->\n       <button menuClose ion-item  (click)="goTo(\'MyorderPage\',\'0\')"> \n        <ion-label>My Orders</ion-label>\n       </button>\n    \n    </ion-list>\n    <hr>\n    <ion-list>\n        <button menuClose ion-item (click)="goTo(\'ServicesPage\',\'0\')">\n        <ion-label>Services</ion-label>\n      </button>\n      <button menuClose ion-item (click)="goTo(\'AboutusPage\',\'0\')">\n          <ion-label>About Us</ion-label>\n      </button>\n      <button menuClose ion-item (click)="goTo(\'FeedbackPage\',\'0\')">\n          <ion-label>Feedback</ion-label>\n      </button>\n      <button  *ngIf="_user.user.fname" menuClose ion-item (click)="logout()">\n        <ion-label>Log out</ion-label>\n      </button>\n    </ion-list>\n\n    </ion-content>\n    </ion-menu>\n    <ion-nav [root]="rootPage" type="overlay"  #content swipeBackEnabled="false"></ion-nav> \n\n\n\n\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/app/app.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_onesignal__["a" /* OneSignal */], __WEBPACK_IMPORTED_MODULE_6__providers_providers__["e" /* NotifProvider */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_6__providers_providers__["h" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_6__providers_providers__["l" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */]])
 ], MyApp);

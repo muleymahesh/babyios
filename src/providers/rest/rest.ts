@@ -352,8 +352,7 @@ serviceOperations(data) {
       return err;
    })
  
- 
- }
+  }
 
  placeOrderOperation(data)
  {

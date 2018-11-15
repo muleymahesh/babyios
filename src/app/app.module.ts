@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 
 import { Ionic2RatingModule } from 'ionic2-rating';
+import { RecentProvider } from '../providers/recent/recent';
 @NgModule({
   declarations: [
     MyApp
@@ -34,7 +35,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     PROVIDERS, 
     // Keep this to enable Ionic's runtime error handling during development
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider
+    RestProvider,
+    RecentProvider
     
   ]
 })

@@ -57,7 +57,7 @@ export class SavedAddressPage {
 
   confirmRemove(index: number){
     this.address.remove(index);
-    this.translate.get('REMOVE_FROM_ADDRESS').subscribe( x=> {
+    this.translate.get('Remove from address').subscribe( x=> {
       this.toast.show(x);
     });
   }
@@ -65,7 +65,7 @@ export class SavedAddressPage {
   setPrimary(index: number, item: ItemSliding) {
     this.address.setPrimary(index);
     item.close();
-    this.translate.get('PRIMARY_HAS_SET').subscribe( x=> {
+    this.translate.get('Primary has set').subscribe( x=> {
       this.toast.showWithClose(x);
     });
   }

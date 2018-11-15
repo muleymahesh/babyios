@@ -2,8 +2,12 @@
   <ion-navbar color="primary" >
       <ion-title>Product details</ion-title>
   	<ion-buttons end>
-      <button ion-button icon-only tappable (click)="viewCart()">
-        <ion-icon name="basket"></ion-icon>
+       
+      <button id="notification-button" ion-button icon-only tappable (click)="viewCart()">
+          
+        <ion-icon  name="basket">
+            <ion-badge id="cart-ion-badge" >{{cart.totalQty}}</ion-badge>
+        </ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -26,15 +30,15 @@
       <div *ngFor="let y of products">
           <ion-badge color="primary" *ngIf="y.per_discount>0">{{y.per_discount}}%</ion-badge> 
                     <ng-container *ngIf="y.imgs.length!=1; else elseTemplate">
-                  <ion-slides  *ngIf="products && products.length" pager = 'true'  style="max-height:200px" class="featured" loop="true" autoplay="3000" >
+                  <ion-slides  *ngIf="products && products.length" pager = 'true'  style="max-height:78%" class="featured" loop="true" autoplay="3000" >
               <ion-slide *ngFor="let x of products[0].imgs">
-                <div><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="width:100% ;height:200px;" imageViewer /></div>
+                <div align="center"><img    src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="max-width:100%;height:78%;" imageViewer /></div>
               </ion-slide>
             </ion-slides>  
        
         </ng-container>
         <ng-template #elseTemplate>
-            <div *ngFor="let x of products[0].imgs"><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="width:100% ;height: 200px;" imageViewer /></div>
+            <div *ngFor="let x of products[0].imgs"><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="max-width:100%;height:78%;" imageViewer /></div>
           
         </ng-template>
         
@@ -261,12 +265,12 @@
                      
 
                      <ion-row no-padding *ngIf="p1.expiry_date!='Na'">
-                       <div *ngIf="p1.expiry_date!='NA'">
-                        <ion-col col-4 no-padding>Expiry date</ion-col>
-                        <ion-col col-8 no-padding>
+                       <!-- <div *ngIf="p1.expiry_date!='NA'"> -->
+                        <ion-col *ngIf="p1.expiry_date!='NA'" style="color: rgb(235, 146, 46)"col-4 no-padding>Expiry date</ion-col>
+                        <ion-col *ngIf="p1.expiry_date!='NA'" style="color: rgb(235, 146, 46)" col-8 no-padding>
                           :{{p1.expiry_date}}
                         </ion-col>
-                      </div>
+                      <!-- </div> -->
                        </ion-row>
               </ion-grid>
             </ion-item>
@@ -358,7 +362,7 @@
        
    </div>
         <div *ngFor="let r of reviews; let i=index ">   
-            <ion-title *ngIf="i==0">Customer Review</ion-title> 
+            <ion-title *ngIf="i==0">Customer Reviews</ion-title> 
             <ion-item *ngIf="i<10" >
               
               <!-- <ion-avatar item-start>

@@ -10,7 +10,7 @@ import { ToastProvider } from './toast/toast';
 import { SettingsProvider } from './settings/settings';
 import { WooCommerceProvider } from './woocommerce/woocommerce';
 import { RestProvider } from './rest/rest';
-
+import{RecentProvider}from './recent/recent';
 export {
     UserProvider,
     OrderProvider,
@@ -23,5 +23,6 @@ export {
     LoadingProvider,
     ToastProvider,
     NotifProvider,
-    RestProvider
+    RestProvider,
+    RecentProvider
 };

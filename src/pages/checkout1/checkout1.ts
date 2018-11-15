@@ -35,7 +35,8 @@ product:any;
   last_name:'',
    gender:'male',
    email:this.user.user.user_email,
-   amount:this._cart.total,
+   amount:0,
+  // amount:this._cart.total,
    shipping_type:'',
    street:'',
    city:'Noida',
@@ -162,8 +163,14 @@ console.log(this.qty);
         this.placeorderreq.phone=this.billing.phone;
         this.placeorderreq.p_id=this.p_id;
         this.placeorderreq.qty=this.qty;
-
-
+if(this._cart.total<200)
+{
+  this.placeorderreq.amount=this._cart.total+30;
+}
+ else
+ {
+  this.placeorderreq.amount=this._cart.total;
+ }
         this.placeorderreq.order_detail="Delivery Date "+this.details.deliverydate+",between "+ this.details.timesloat;
         console.log(this.placeorderreq.order_detail);
         console.log(this.placeorderreq.shipping_type);
@@ -195,30 +202,30 @@ console.log(this.qty);
         // this.nav.push(ThanksPage);
 //following is the method for order place
 
-    //     if(this.details.deliverydate!=''&&this.details.timesloat!=''&&this.placeorderreq.shipping_type!='')
-    //     {
-    //   this.restProvider.feedbackOperation(this.placeorderreq)
-    //   .then(data => {
-    //   this.response = data;
-    //   if(this.response.result=="success")
-    //   {
-    //     this.toast.show(this.response.responseMessage);
-    //    // this.toast.show("Order Placed Successfully");
-    //     this.goTo('ThanksPage',1);
-    //   }
-    //   else
-    //   {
-    //     this.toast.show(this.response.responseMessage);
-    //   }
-    //   });
-    //   console.log(this.response);
-    // }
-    // else
-    // {
-    //   this.toast.show("All field required");
-    // }
-  //  this.toast.show("place order is commented");
-      // }
-      this.toast.show("place order is commented");
+        if(this.details.deliverydate!=''&&this.details.timesloat!=''&&this.placeorderreq.shipping_type!='')
+        {
+      this.restProvider.feedbackOperation(this.placeorderreq)
+      .then(data => {
+      this.response = data;
+      if(this.response.result=="success")
+      {
+        this.toast.show(this.response.responseMessage);
+       // this.toast.show("Order Placed Successfully");
+        this.goTo('ThanksPage',1);
       }
+      else
+      {
+        this.toast.show(this.response.responseMessage);
+      }
+      });
+      console.log(this.response);
+    }
+    else
+    {
+      this.toast.show("All field required");
+    }
+   this.toast.show("place order is commented");
+      }
+      // this.toast.show("place order is commented");
+      // }
 }

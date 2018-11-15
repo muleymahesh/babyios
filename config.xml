@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="ionstore.ionicpremium.tabs" version="2.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.maks.babyneeds" version="2.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Baby Needs</name>
     <description />
-    <author email="info@ionicpremium.com" href="http://ionicpremium.com/">Ionic Premium Team</author>
+    <author email="info@makslab.com" href="http://makslab.com/">makslab Team</author>
     <content src="index.html" />
     <access allows-arbitrary-loads-for-media="true" allows-arbitrary-loads-in-web-content="true" allows-local-networking="true" origin="*" />
     <allow-navigation href="http://localhost:8080/*" />

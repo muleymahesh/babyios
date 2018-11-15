@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, Platform, ModalController, NavParams } from 'ionic-angular';
-import { WishlistProvider, LoadingProvider,UserProvider, ToastProvider, WooCommerceProvider, HistoryProvider,RestProvider ,CartProvider} from '../../providers/providers';
+import { WishlistProvider,RecentProvider ,LoadingProvider,UserProvider, ToastProvider, WooCommerceProvider, HistoryProvider,RestProvider ,CartProvider} from '../../providers/providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
@@ -46,12 +46,13 @@ export class ProductPage {
   related: any[] = [];
  // isSetVariation: boolean = false;
   
-  constructor(public user: UserProvider,private history: HistoryProvider,private cart: CartProvider,public http: HttpClient,public restProvider: RestProvider, private alert: AlertController, private platform: Platform, private socialSharing: SocialSharing, private translate: TranslateService, private toast: ToastProvider, private wishlist: WishlistProvider, private navCtrl: NavController, private loader: LoadingProvider, private modal: ModalController, private navParam: NavParams, private woo: WooCommerceProvider) {
+  constructor(public user: UserProvider,private history: RecentProvider,private cart: CartProvider,public http: HttpClient,public restProvider: RestProvider, private alert: AlertController, private platform: Platform, private socialSharing: SocialSharing, private translate: TranslateService, private toast: ToastProvider, private wishlist: WishlistProvider, private navCtrl: NavController, private loader: LoadingProvider, private modal: ModalController, private navParam: NavParams, private woo: WooCommerceProvider) {
     this.loader.present();
 
    this.product = this.navParam.data.params;
    
-   //ss this.history.post(this.product);
+    this.history.post(this.product);
+    console.log(this.history.all);
 
     // // if(this.product.variations){
     // //   this.woo.getProductVariations(this.product.id).then( (val) => {

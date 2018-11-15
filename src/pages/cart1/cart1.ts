@@ -164,6 +164,7 @@ console.log(this.flag);
 
 if(this.flag==0)
 {
+  console.log(this.flag);
 
     if(this.user.user.user_email)
 

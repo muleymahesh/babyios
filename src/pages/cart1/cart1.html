@@ -77,7 +77,10 @@
     <ion-row align-items-center no-padding>
     	<ion-col class="total" align-self-center no-padding *ngIf="products.length > 0">
     		<span>Total ({{cart.totalQtyDetail}} items)</span>
-			<h5>{{total}}</h5>
+			<h6 >{{total}}Rs.</h6>
+			<h6  *ngIf="total<200" >+30 Rs.</h6>
+			<h6  *ngIf="total<200" >{{total+30}}Rs.</h6>
+			<p style="font-size:9px" *ngIf="total<200">*Dilivery Charges applied 30 RS.</p>
     	</ion-col>
     	<ion-col col-33 align-self-center no-padding>
 			<button ion-button block tappable [disabled]="products.length <= 0" (click)="goCheckout()">{{'CHECKOUT'}}</button>

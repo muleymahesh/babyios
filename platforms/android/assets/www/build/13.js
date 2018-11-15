@@ -1,6 +1,6 @@
 webpackJsonp([13],{
 
-/***/ 1013:
+/***/ 1015:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44,8 +44,8 @@ var OrdersPage = (function () {
         // this.listenIsLoggedIn();
         // this.listenIsLoggedOut();
         this.orders = this.navParams.data.params;
-        this.returnrequest.order_id = this.navParams.data.params.o_id;
-        this.canclerequest.order_id = this.navParams.data.params.o_id;
+        // this.returnrequest.order_id=this.navParams.data.params.o_id;
+        //  this.canclerequest.order_id=this.navParams.data.params.o_id;
         this.returnrequest.user_email = this.user.user.user_email;
         console.log(this.orders);
         this.str = this.navParams.data.params.o_id;
@@ -88,6 +88,8 @@ var OrdersPage = (function () {
     };
     OrdersPage.prototype.cancleOrder = function () {
         var _this = this;
+        this.canclerequest.order_id = this.str.substring(2);
+        console.log(this.canclerequest.order_id);
         this.restProvider.orderOperation(this.canclerequest)
             .then(function (data) {
             console.log(data);
@@ -111,6 +113,7 @@ var OrdersPage = (function () {
     };
     OrdersPage.prototype.returnOrder = function () {
         var _this = this;
+        this.returnrequest.order_id = this.str.substring(2);
         this.restProvider.orderOperation(this.returnrequest)
             .then(function (data) {
             console.log(data);
@@ -142,7 +145,7 @@ OrdersPage = __decorate([
 
 /***/ }),
 
-/***/ 974:
+/***/ 976:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -150,7 +153,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrdersPageModule", function() { return OrdersPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__orders__ = __webpack_require__(1013);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__orders__ = __webpack_require__(1015);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(543);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

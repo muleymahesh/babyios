@@ -76,10 +76,7 @@
            <ng-template #elseTemplate>
               <p style="font-size:9px; text-align:left; color:orange">Rs.:{{w.mrp}}</p>
            </ng-template>
-         
-            
-
-
+                   
        </ion-item>
       </div> 
        
@@ -91,11 +88,48 @@
             </button>
               </ion-col>
             </ion-row>
-        
-     
-
-
+    
     </div> 
+
+
+
+    <div class=""*ngFor="let w of his ;  let i=index " >
+      <ion-list no-lines no-margin margin-left>
+        <ion-item no-padding no-lines *ngIf="i==0" >
+          {{ 'Recently viewed ' | translate }}
+      </ion-item>
+      </ion-list>
+      <div   (click)="goTo('ProductPage',w)"> 
+           
+    <ion-item   *ngIf="i<4" >
+    
+      <ion-avatar item-start>
+          <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{w.images}}">
+        </ion-avatar>
+        <h3>{{w.name}}</h3>
+        
+        <ng-container *ngIf="w.per_discount!=0; else elseTemplate">
+          <p style="font-size:9px; text-align:left; color:orange"><del>Rs.:{{w.price}} </del> &nbsp;&nbsp;&nbsp; Rs.:{{pricestrikt(w.discount,w.price)}} </p>
+         </ng-container>
+         <ng-template #elseTemplate>
+            <p style="font-size:9px; text-align:left; color:orange">Rs.:{{w.price}}</p>
+         </ng-template>
+                 
+     </ion-item>
+    </div> 
+     
+     <!-- <ion-row>
+        <ion-col text-left>
+          <button item-end ion-button clear icon-end tappable (click)="goTo('ProductGridPage','Recommendations')">
+            {{ 'SEE ALL' | translate }}
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+            </ion-col>
+          </ion-row> -->
+    
+  
+  </div>
+
 
     <div class="">
       <ion-list no-lines no-margin margin-left>

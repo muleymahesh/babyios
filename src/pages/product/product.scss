@@ -46,7 +46,9 @@ page-product {
 	.specs ion-row:last-child{
 		margin: 0px;
 	}
-
+	.img {
+		max-width: 40px;
+	  }
 	// .item-radio:last-child .item-inner{
 	// 	border-bottom: none !important;
 	// }
@@ -74,6 +76,20 @@ page-product {
 
 	ion-footer .toolbar-ios:last-child{
 		padding-bottom: 5px !important;
+	}
+
+	#cart-ion-badge {
+		position: absolute;
+		top: -3px;
+		right: -3px;
+		border-radius: 100%;
+	}
+	#notification-button {            
+		position: relative;
+		width: 42px;
+		top:7px;
+		right: 1px;
+		overflow: visible!important;
 	}
 
 }
