@@ -30,15 +30,15 @@
       <div *ngFor="let y of products">
           <ion-badge color="primary" *ngIf="y.per_discount>0">{{y.per_discount}}%</ion-badge> 
                     <ng-container *ngIf="y.imgs.length!=1; else elseTemplate">
-                  <ion-slides  *ngIf="products && products.length" pager = 'true'  style="max-height:78%" class="featured" loop="true" autoplay="3000" >
+                  <ion-slides  *ngIf="products && products.length" pager = 'true'  class="featured" loop="true" autoplay="3000" >
               <ion-slide *ngFor="let x of products[0].imgs">
-                <div align="center"><img    src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="max-width:100%;height:78%;" imageViewer /></div>
+                <div align="center"><img    src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="max-width:50%;height:50%;" imageViewer /></div>
               </ion-slide>
             </ion-slides>  
        
         </ng-container>
         <ng-template #elseTemplate>
-            <div *ngFor="let x of products[0].imgs"><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="max-width:100%;height:78%;" imageViewer /></div>
+            <div *ngFor="let x of products[0].imgs" align="center"><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="max-width:50%;height:50%;" imageViewer /></div>
           
         </ng-template>
         

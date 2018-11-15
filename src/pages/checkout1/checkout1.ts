@@ -148,6 +148,11 @@ console.log(this.qty);
         this.nav.push(page, {params: params});
       }
     
+      // placeorder()
+      // {
+      //   console.log(this._cart.total);
+      // }
+        
       
       placeorder()
       {
@@ -224,7 +229,7 @@ if(this._cart.total<200)
     {
       this.toast.show("All field required");
     }
-   this.toast.show("place order is commented");
+  // this.toast.show("place order is commented");
       }
       // this.toast.show("place order is commented");
       // }

@@ -29832,11 +29832,6 @@ page-product .list-header {
   font-weight: bold;
 }
 
-page-product ion-slides.featured {
-  height: 400px;
-  height: 70vh;
-}
-
 page-product p, page-product ion-col {
   color: #484848;
   white-space: normal;
