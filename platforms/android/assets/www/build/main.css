@@ -29662,54 +29662,6 @@ page-account-settings-notifications p {
   color: #4d4d4d;
 }
 
-page-cart ion-footer .toolbar-ios:last-child {
-  padding-bottom: 0px !important;
-}
-
-page-cart h3 {
-  white-space: normal;
-}
-
-page-cart .item.item-block .item-inner {
-  border-color: #eee;
-}
-
-page-cart .item [item-end] {
-  margin: 0;
-}
-
-page-cart button[icon-only] ion-icon {
-  padding: 0 1px;
-}
-
-page-cart button[icon-only] {
-  height: auto !important;
-}
-
-page-cart i {
-  font-style: normal;
-}
-
-page-cart i:after {
-  content: ' • ';
-}
-
-page-cart i:last-child:after {
-  content: '';
-}
-
-page-cart .total span {
-  text-transform: uppercase;
-  color: #484848;
-  letter-spacing: 1px;
-  font-size: 1rem;
-}
-
-page-cart .total h5 {
-  color: #484848;
-  font-weight: 600;
-}
-
 page-change .logo {
   width: 100%;
   height: auto;
@@ -29847,10 +29799,12 @@ page-home .list .item.item-block .item-inner {
 }
 
 page-login .logo {
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-  padding-bottom: 10%;
+  width: 45%;
+  height: 20%;
+  margin-left: 90px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 10%;
 }
 
 page-order-detail .segment-ios {
@@ -29878,11 +29832,6 @@ page-product .list-header {
   font-weight: bold;
 }
 
-page-product ion-slides.featured {
-  height: 400px;
-  height: 70vh;
-}
-
 page-product p, page-product ion-col {
   color: #484848;
   white-space: normal;
@@ -29907,6 +29856,10 @@ page-product .specs ion-row {
 
 page-product .specs ion-row:last-child {
   margin: 0px;
+}
+
+page-product .img {
+  max-width: 40px;
 }
 
 page-product .item-radio ion-label span:after {
@@ -29937,6 +29890,21 @@ page-product ion-footer ion-row.reviews > ion-col:last-child {
 
 page-product ion-footer .toolbar-ios:last-child {
   padding-bottom: 5px !important;
+}
+
+page-product #cart-ion-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  border-radius: 100%;
+}
+
+page-product #notification-button {
+  position: relative;
+  width: 42px;
+  top: 7px;
+  right: 1px;
+  overflow: visible !important;
 }
 
 page-product-grid .newsearch .searchbar .searchbar-input {

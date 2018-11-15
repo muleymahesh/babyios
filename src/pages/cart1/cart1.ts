@@ -56,7 +56,24 @@ finalprice:any;
       this.total = this.cart.total;
     //  console.log(this.total);
     });
-
+    for(let i in this.products){
+      this. p_id+=this.products[i].p_id+",";
+      }
+      this.p_id+=0;
+      this.getproduct.p_id=this.p_id;
+   console.log(this.p_id);
+      this.loader.present();
+   this.restProvider.getProduct(this.getproduct)
+   .then(data => {
+    // this.loader.present();
+   this.product = data;
+// console.log(this.product.data);
+ 
+  //console.log(this.product.stock);
+  });
+  this.loader.dismiss();
+  console.log(this.product);
+  
     this.app = this.setting.all.settings;
   }
 

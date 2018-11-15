@@ -1,6 +1,6 @@
 webpackJsonp([11],{
 
-/***/ 1017:
+/***/ 1016:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48,7 +48,7 @@ MiniCartPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-mini-cart',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/product/mini-cart/mini-cart.html"*/'<ion-header>\n    <ion-navbar color="light" no-padding no-margin>\n      <ion-list-header>\n        {{\'CART\' | translate}}\n        <!-- <ion-icon small (click)="dismiss()" name="close" item-end></ion-icon> -->\n        <button item-end no-margin margin-vertical clear ion-button small color="primary" (click)="dismiss()">{{\'CLOSE\' | translate}}</button>\n      </ion-list-header>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-list no-padding>\n      <ion-grid class="empty" *ngIf="cart.total == 0">\n        <ion-row align-items-center>\n          <ion-col align-self-center text-center>\n            <ion-icon name="basket" color="secondary"></ion-icon>\n            <h4 margin-bottom>{{ \'EMPTY\' | translate}}</h4>\n            <button color="secondary" ion-button outline tappable (click)="dismiss()">{{ \'START_SHOPPING\' | translate}}</button>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n      <ion-item *ngFor="let x of cart.all" class="product-item" no-padding>\n          <ion-thumbnail item-start>\n            <img [src]="x.images[0].src">\n          </ion-thumbnail>\n          <h5 [innerHTML]="x.name"></h5>\n          <p>\n            <span class="disc" *ngIf="x.on_sale">{{x.regular_price | money}}</span> \n            <span class="price">{{x.price | money}}</span>\n            <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span> </ng-container>\n            <span>• {{x.quantity}}x</span>\n          </p>\n      </ion-item>\n  </ion-list>\n</ion-content>\n<ion-footer no-padding padding-bottom *ngIf="cart.total > 0">\n  <ion-list no-padding no-margin>\n    <ion-item no-padding>\n      <h5><b>Total</b></h5>\n      <ion-badge item-end color="secondary">{{cart.total | money}}</ion-badge>\n    </ion-item>\n  </ion-list>\n  <button *ngIf="!isCheckout" ion-button block small (click)="goCheckout()">{{\'CHECKOUT\' | translate}}</button>\n  <ion-list no-margin>\n    <button color="secondary" ion-button small block (click)="dismiss()">{{\'CONTINUE\' | translate}}</button>\n  </ion-list>\n  </ion-footer>\n  '/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/product/mini-cart/mini-cart.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* App */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* App */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
 ], MiniCartPage);
 
 //# sourceMappingURL=mini-cart.js.map
@@ -61,10 +61,10 @@ MiniCartPage = __decorate([
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MiniCartPageModule", function() { return MiniCartPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mini_cart__ = __webpack_require__(1017);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mini_cart__ = __webpack_require__(1016);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(543);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(544);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

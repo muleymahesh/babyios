@@ -123,7 +123,7 @@ else
 
   viewCart(){
     // this.modal.create('CartPage', {}, { cssClass: 'inset-modal' }).present();
-    this.navCtrl.push("CartPage");
+    this.navCtrl.push("Cart1Page");
   }
 
   openModal(pageName) {

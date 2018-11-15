@@ -92,9 +92,9 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "card.io.cordova.mobilesdk/tabs-build.gradle"
-apply from: "com.paypal.cordova.mobilesdk/tabs-build.gradle"
-apply from: "onesignal-cordova-plugin/tabs-build-extras-onesignal.gradle"
+apply from: "card.io.cordova.mobilesdk/babyneeds-build.gradle"
+apply from: "com.paypal.cordova.mobilesdk/babyneeds-build.gradle"
+apply from: "onesignal-cordova-plugin/babyneeds-build-extras-onesignal.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()

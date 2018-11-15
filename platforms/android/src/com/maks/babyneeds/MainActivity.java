@@ -17,7 +17,7 @@
        under the License.
  */
 
-package ionstore.ionicpremium.tabs;
+package com.maks.babyneeds;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

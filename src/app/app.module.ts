@@ -22,7 +22,7 @@ import { RecentProvider } from '../providers/recent/recent';
     SharedModule,
     Ionic2RatingModule,
     IonicModule.forRoot(MyApp, {
-      tabsHideOnSubPages: true,
+      tabsHideOnSubPages:false,
       backButtonText: '',
      
     })

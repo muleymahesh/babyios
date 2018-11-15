@@ -38,10 +38,11 @@
 </ion-card>
 
 <ion-item>
-    <p style="font-size:9px" color="primary" *ngIf="_cart.total<200">*Orde above 200Rs for free delivery</p>
+   
     <h6 >Amount :{{_cart.total}}Rs.</h6>
     <p style="font-size:9px" color="primary" *ngIf="_cart.total<200" >Delivery charge 30 Rs.</p>
-		<h6  *ngIf="_cart.total<200" >Total :{{_cart.total+30}}Rs.</h6>
+    <h6  *ngIf="_cart.total<200" >Total :{{_cart.total+30}}Rs.</h6>
+    <p style="font-size:9px" color="primary" *ngIf="_cart.total<200">*Orde above 200Rs for free delivery</p>
 </ion-item>
 <ion-item>
     <ion-label>Date</ion-label>

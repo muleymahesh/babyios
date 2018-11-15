@@ -79,7 +79,13 @@ response:any;
   
   shipping: any;
   constructor(public restProvider: RestProvider,private setting: SettingsProvider, private alert: AlertController, private platform: Platform, private nav: NavController, private translate: TranslateService, private toast: ToastProvider, private user: UserProvider, private loader: LoadingProvider, private woo: WooCommerceProvider, private _cart: CartProvider, private events: Events, private _order: OrderProvider, private address: AddressProvider, public navParams: NavParams, public modal: ModalController) {
-  this.setOrder();
+    if(this.address.getPrimary){
+      
+       this.billing = this.address.getPrimary;
+       console.log(this.billing);
+     }
+
+    //this.setOrder();
   this.product=this._cart.all;
   console.log(this.product);
   
@@ -120,12 +126,7 @@ console.log(this.qty);
   setOrder(){
    
     console.log(this.address.getPrimary);
-        if(this.address.getPrimary){
-         
-          this.billing = this.address.getPrimary;
-          console.log(this.billing);
-        }
-  
+       
      
         // if(this._order.shipping)
         //   this.shipping = this._order.shipping;
@@ -207,7 +208,7 @@ if(this._cart.total<200)
         // this.nav.push(ThanksPage);
 //following is the method for order place
 
-        if(this.details.deliverydate!=''&&this.details.timesloat!=''&&this.placeorderreq.shipping_type!='')
+        if(this.placeorderreq.first_name!='' && this.placeorderreq.email!=''&&this.placeorderreq.phone!='' && this.placeorderreq.zipcode!='' && this.details.deliverydate!=''&&this.details.timesloat!=''&&this.placeorderreq.shipping_type!='')
         {
       this.restProvider.feedbackOperation(this.placeorderreq)
       .then(data => {
@@ -224,6 +225,7 @@ if(this._cart.total<200)
       }
       });
       console.log(this.response);
+   //   this.toast.show("hiiiiiiii");
     }
     else
     {

@@ -93,6 +93,7 @@ cancleOrder(){
  if(this.res.result=="success")
  {
   this.toast.show(this.res.responseMessage);
+  this.pop();
  }
  else if(this.res.result=="failure")
  {
@@ -140,7 +141,9 @@ returnOrder(){
 
 }
 
-
+pop() {
+  this.nav.pop();
+}
 
 
   goTo(params){

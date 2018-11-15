@@ -32,13 +32,13 @@
                     <ng-container *ngIf="y.imgs.length!=1; else elseTemplate">
                   <ion-slides  *ngIf="products && products.length" pager = 'true'  class="featured" loop="true" autoplay="3000" >
               <ion-slide *ngFor="let x of products[0].imgs">
-                <div align="center"><img    src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="max-width:50%;height:50%;" imageViewer /></div>
+                <div align="center"><img    src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="max-width:50%;max-height:200px;" imageViewer /></div>
               </ion-slide>
             </ion-slides>  
        
         </ng-container>
         <ng-template #elseTemplate>
-            <div *ngFor="let x of products[0].imgs" align="center"><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="max-width:50%;height:50%;" imageViewer /></div>
+            <div *ngFor="let x of products[0].imgs" align="center"><img src="http://www.babyneeds.co.in/babyneeds/product_image/{{x.img_url}}" style="max-width:50%;max-height:200px;" imageViewer /></div>
           
         </ng-template>
         
