@@ -96,6 +96,7 @@ var OrdersPage = (function () {
             _this.res = data;
             if (_this.res.result == "success") {
                 _this.toast.show(_this.res.responseMessage);
+                _this.pop();
             }
             else if (_this.res.result == "failure") {
                 _this.toast.show(_this.res.responseMessage);
@@ -128,6 +129,9 @@ var OrdersPage = (function () {
                 _this.toast.show("Something is wrong please contact Us");
             }
         });
+    };
+    OrdersPage.prototype.pop = function () {
+        this.nav.pop();
     };
     OrdersPage.prototype.goTo = function (params) {
         this.nav.push('OrderDetailPage', { params: params });

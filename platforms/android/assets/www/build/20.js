@@ -74,7 +74,11 @@ var Checkout1Page = (function () {
             qty: '',
         };
         this.checkout = "shipping";
-        this.setOrder();
+        if (this.address.getPrimary) {
+            this.billing = this.address.getPrimary;
+            console.log(this.billing);
+        }
+        //this.setOrder();
         this.product = this._cart.all;
         console.log(this.product);
         //  this.placeorderreq={
@@ -108,10 +112,6 @@ var Checkout1Page = (function () {
     };
     Checkout1Page.prototype.setOrder = function () {
         console.log(this.address.getPrimary);
-        if (this.address.getPrimary) {
-            this.billing = this.address.getPrimary;
-            console.log(this.billing);
-        }
         // if(this._order.shipping)
         //   this.shipping = this._order.shipping;
     };
@@ -170,7 +170,7 @@ var Checkout1Page = (function () {
         // {"method":"add_oder","first_name":"mahesh","last_name":"muley","gender":"Male","email":"muley.mahesh@gmail.com","amount":" //148.00","shipping_type":"cod","street":" Sector 21","city":"abc //building","state":"square","country":"India","zipcode":"201307","phone":"9890473764","order_detail":"Delivery Date 10/06/2016, between 3 - //5PM","user_id":"23","p_id":"356,","qty":"1,"}
         // this.nav.push(ThanksPage);
         //following is the method for order place
-        if (this.address.getPrimary == null && this.details.deliverydate != '' && this.details.timesloat != '' && this.placeorderreq.shipping_type != '') {
+        if (this.placeorderreq.first_name != '' && this.placeorderreq.email != '' && this.placeorderreq.phone != '' && this.placeorderreq.zipcode != '' && this.details.deliverydate != '' && this.details.timesloat != '' && this.placeorderreq.shipping_type != '') {
             this.restProvider.feedbackOperation(this.placeorderreq)
                 .then(function (data) {
                 _this.response = data;
@@ -184,6 +184,7 @@ var Checkout1Page = (function () {
                 }
             });
             console.log(this.response);
+            //   this.toast.show("hiiiiiiii");
         }
         else {
             this.toast.show("All field required");
