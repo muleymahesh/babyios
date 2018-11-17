@@ -205,6 +205,7 @@ this.	goTo('ProductPage',data);
 			this.restProvider.getAgeGroup(this.offer)
 			.then(data => {
 				this.offers = data;
+				console.log(this.offers );
 			 
 			});
 			this.loader.dismiss();
