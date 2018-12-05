@@ -31,7 +31,7 @@ export class RecentProvider {
       });
     }
     post(product1: any, no_of_time = 1){
-      
+      console.log(product1);
       this.tohistory(product1, no_of_time);
     }
     tohistory(product1: any, qty: number){
@@ -50,6 +50,7 @@ export class RecentProvider {
         if(!exist){
           product1.no_of_time = qty;
           this.add(product1);
+          console.log(product1);
         }
     
         this.save();

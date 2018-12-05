@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-
+import { Platform } from 'ionic-angular';
 @Injectable()
 export class AddressProvider {
   private ADDRESS_KEY: string = 'address';
 
   address: any[] = [];
   _readyPromise: Promise<any>;
+adressprimary:any;
+  constructor(public storage: Storage,private platform: Platform) {
 
-  constructor(public storage: Storage) {
+    this.platform.ready().then(() => {
+    this.adressprimary=this.getPrimary;
+    })
     this.load();
   }
 

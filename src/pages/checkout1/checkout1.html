@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>checkout</ion-title>
+    <ion-title>Checkout</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -27,7 +27,7 @@
       <p>{{billing.pincode}}</p>
   </ion-item>
     <div padding-horizontal>
-      <button ion-button outline block icon-start tappable (click)="addAddress(4)">
+      <button ion-button outline block icon-start tappable (click)="goTo('SavedAddressPage')">
           {{ 'ADD'}} {{ 'NEW_ADDRESS'}}
       </button>
       <button ion-button outline block icon-start  tappable (click)="selectAddress(4)">
@@ -46,24 +46,21 @@
 </ion-item>
 <ion-item>
     <ion-label>Date</ion-label>
-    <ion-datetime displayFormat="YYYY/MM/DD"    max="2020-10-31" [(ngModel)]="details.deliverydate">
+    <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="details.deliverydate">
     </ion-datetime>
   </ion-item>
   <ion-item>
       <ion-label>Time Slot</ion-label>
       <ion-select [(ngModel)]="details.timesloat">
-        <ion-option>9-11 AM</ion-option>
-        <ion-option>11-1 PM</ion-option>
-        <ion-option>1-3 PM</ion-option>
-        <ion-option>5-7 PM</ion-option>
-            </ion-select>
+        <ion-option *ngFor="let time of timing" [value]="time" >{{time}}</ion-option>
+     </ion-select>
     </ion-item>
 
     <ion-item>
         <ion-label>Mode of Payment</ion-label>
         <ion-select [(ngModel)]="placeorderreq.shipping_type">
           <ion-option> Cash On Delivery</ion-option>
-          <ion-option>COD Paytm @9891850708</ion-option>
+         
           <ion-option>COD BHIM 9891850708@UPI</ion-option>
        
          </ion-select>

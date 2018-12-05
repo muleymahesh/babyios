@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicPage, NavController, ModalController } from 'ionic-angular';
-import { WooCommerceProvider,RecentProvider, ToastProvider, LoadingProvider, WishlistProvider,HistoryProvider } from '../../providers/providers';
+import { WooCommerceProvider,RecentProvider, ToastProvider,AddressProvider, LoadingProvider, WishlistProvider,HistoryProvider } from '../../providers/providers';
 import { TranslateService } from '@ngx-translate/core';
 import { App } from '../../app/app.global';
 import { RestProvider } from '../../providers/rest/rest';
@@ -20,7 +20,7 @@ export class HomePage {
 	data: any[] = new Array();
 	app: any;
   result:any;
-	
+	add:any;
 	showList: boolean = false;
 	searchQuery: string = '';
 	item:any;
@@ -76,31 +76,29 @@ allproducts:any;
 his:any;
 
 			
-		constructor(public history: RecentProvider,public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
+		constructor(private address:AddressProvider,public history: RecentProvider,public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
 		this.App = App;
 
-		// this.woo.getAllCategories().then( (tmp) => {
-		// 	this.categories = tmp;
-		// 	this.woo.loadSetting().then( x=> {
-		// 		if(x.currency){
-		// 			this.app = x;
-		// 			for(let i in tmp){
-		// 				if(tmp[i].count > 4 && tmp[i].parent !=0){
-		// 					this.woo.getAllProducts(null, tmp[i].id, null, null, null, 9, null, null).then( (val) => {
-		// 						this.data.push(val);
-		// 					})
-		// 				}
-		// 			}
-		// 			this.loader.dismiss();
-		// 		}		
-		// 	});
-
-		// });
-		this.getAllproduct();
-console.log(this.history.all);
-this.his= this.history.all;
-	console.log(this.his);
 		this.getBanner();
+	this.loader.present();	
+	this.getBrands();
+	this.getCategory(); 
+	this.newArrival();
+	this.getAllproduct();
+	this.getAdBanner();
+	this.wishlist1();
+	this.getOffer();
+	this.loader.dismiss();
+	this.getAgeGruops();
+console.log(this.history.all);
+//this.address.remove(0);
+//this.address.remove(1);
+this.his= this.history.all;
+this.his.sort(function(obj1, obj2) {
+	return obj2.no_of_time - obj1.no_of_time;
+	
+});
+	console.log(this.his);
 	
 	}
 
@@ -119,6 +117,9 @@ this.his= this.history.all;
 		this.showList = false;
 	console.log("hiii");
 	this.his= this.history.all;
+	this.his.sort(function(obj1, obj2) {
+		return obj2.no_of_time - obj1.no_of_time;
+	});
 		this.goHome(); 
 		console.log(this.his);
 
@@ -148,7 +149,7 @@ this.	goTo('ProductPage',data);
     this.restProvider.getRecommendations(this.request)
     .then(data => {
       this.rlist = data;
-			this.newArrival();
+		
     });
 
 	}
@@ -158,30 +159,29 @@ this.	goTo('ProductPage',data);
     .then(data => {
 		console.log(data);
 			      this.nlist = data;
-			this.getCategory(); 
+		
     });
 
   }
 
 	getBanner() {
 		
-		this.loader.present();	
+	
 		
 		this.restProvider.getBanner(this.slideRequest)
 		.then(data => {
 		
 			this.slides = data;
-			this.getAdBanner();
-			this.wishlist1();
+		
 		
 		});
-		this.loader.dismiss();
+	//	this.loader.dismiss();
 	  }
 	  getCategory() {
 		this.restProvider.getAgeGroup(this.cateogry)
 		.then(data => {
 		this.categories = data;
-		this.getAgeGruops();
+	
 		});
 		}
 		
@@ -208,14 +208,14 @@ this.	goTo('ProductPage',data);
 				console.log(this.offers );
 			 
 			});
-			this.loader.dismiss();
+		
 		}
 	
 		getBrands() {
 			this.restProvider.getAgeGroup(this.myBraands)
 			.then(data => {
 				this.Brands = data;
-				this.getOffer();
+			
 			});
 		}
 
@@ -223,7 +223,7 @@ this.	goTo('ProductPage',data);
 			this.restProvider.getAgeGroup(this.agegroup)
 			.then(data => {
 				this.agegroups = data;
-				this.getBrands();
+			
 			});
 		}
 
@@ -258,6 +258,10 @@ this.	goTo('ProductPage',data);
 	 }
 
 	goTo(page, params){
+		if(this.showList==true)
+		{
+			this.showList=false;
+		}
 		this.nav.push(page,{params: params});
 	}
 	initializeItems() {

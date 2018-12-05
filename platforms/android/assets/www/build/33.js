@@ -1,15 +1,15 @@
 webpackJsonp([33],{
 
-/***/ 954:
+/***/ 955:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountHelpPageModule", function() { return AccountHelpPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__help__ = __webpack_require__(994);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(544);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__help__ = __webpack_require__(995);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(545);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ AccountHelpPageModule = __decorate([
 
 /***/ }),
 
-/***/ 994:
+/***/ 995:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76,7 +76,7 @@ var AccountHelpPage = (function () {
 }());
 AccountHelpPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-account-help',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/help/help.html"*/'<ion-header no-border no-lines>\n    <ion-navbar></ion-navbar>\n</ion-header>\n\n<ion-content>\n    <h1 margin-left margin-bottom>{{ \'FAQ\' | translate}}</h1>\n    <ion-list no-padding class="accordion-list">\n        <div *ngFor="let item of faqs; let i = index">\n          <ion-item mode="ios" (click)="toggleSection(i)" [ngClass]="{\'active\':item.open, \'section\': item.open}">\n              {{ item.title }}\n              <ion-icon name="add" item-end></ion-icon>\n          </ion-item>\n          <div padding margin-left class="sub-accordion" *ngIf="item.answer && item.open">\n            {{item.answer}}\n          </div>\n        </div>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/help/help.html"*/,
+        selector: 'page-account-help',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/account/help/help.html"*/'<ion-header no-border no-lines>\n    <ion-navbar></ion-navbar>\n</ion-header>\n\n<ion-content>\n    <h1 margin-left margin-bottom>{{ \'FAQ\' | translate}}</h1>\n    <ion-list no-padding class="accordion-list">\n        <div *ngFor="let item of faqs; let i = index">\n          <ion-item mode="ios" (click)="toggleSection(i)" [ngClass]="{\'active\':item.open, \'section\': item.open}">\n              {{ item.title }}\n              <ion-icon name="add" item-end></ion-icon>\n          </ion-item>\n          <div padding margin-left class="sub-accordion" *ngIf="item.answer && item.open">\n            {{item.answer}}\n          </div>\n        </div>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/account/help/help.html"*/,
     }),
     __metadata("design:paramtypes", [])
 ], AccountHelpPage);

@@ -1,15 +1,15 @@
 webpackJsonp([34],{
 
-/***/ 953:
+/***/ 954:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountChatsMessagePageModule", function() { return AccountChatsMessagePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__message__ = __webpack_require__(993);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(544);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__message__ = __webpack_require__(994);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(545);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,14 +41,14 @@ AccountChatsMessagePageModule = __decorate([
 
 /***/ }),
 
-/***/ 993:
+/***/ 994:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountChatsMessagePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_forms__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(20);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -184,7 +184,7 @@ __decorate([
 ], AccountChatsMessagePage.prototype, "content", void 0);
 AccountChatsMessagePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
-        selector: 'page-account-chats-message',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/message/message.html"*/'<ion-header>\n	<ion-navbar>\n    <ion-title>Customer Service</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div *ngFor="let message of messages" class="message-wrapper" on-hold="onMessageHold($event, $index, message)">\n      <div *ngIf="user._id !== message.userId">\n        <img (click)="viewProfile(message)" class="profile-pic left" [src]="toUser.pic" onerror="onProfilePicError(this)" />\n        <!--  wave-->\n        <div class="chat-bubble left slide-left">\n  \n          <div class="message" [innerHTML]="message.text" autolinker>\n          </div>\n  \n          <div class="message-detail">\n            <span (click)="viewProfile(message)" class="bold">{{toUser.username}}</span>,\n            <span>{{message.date | moment:"ago" | lowercase}}</span>\n          </div>\n  \n        </div>\n      </div>\n  \n      <div *ngIf="user._id === message.userId">\n  \n        <img (click)="viewProfile(message)" class="profile-pic right" [src]="user.pic" onerror="onProfilePicError(this)" />\n  \n        <div class="chat-bubble right slide-right">\n  \n          <div class="message" [innerHTML]="message.text" autolinker>\n          </div>\n  \n          <div class="message-detail">\n            <span (click)="viewProfile(message)" class="bold">{{user.username}}</span>,\n            <span>{{message.date | moment:"ago" | lowercase}}</span>\n          </div>\n  \n        </div>\n  \n      </div>\n  \n      <div class="cf"></div>\n  \n    </div>\n  </ion-content>\n  <ion-footer>\n    <form [formGroup]="messageForm" (submit)="send(chatBox)" novalidate>\n      <ion-item>\n        <ion-input formControlName="message" [(ngModel)]="chatBox" placeholder="Send {{toUser.username}} a message..."></ion-input>\n        <button ion-button clear (click)="send(chatBox)" item-end><ion-icon class="footer-btn" name="send"></ion-icon></button>\n      </ion-item>\n    </form>\n  </ion-footer>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/message/message.html"*/
+        selector: 'page-account-chats-message',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/account/chats/message/message.html"*/'<ion-header>\n	<ion-navbar>\n    <ion-title>Customer Service</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div *ngFor="let message of messages" class="message-wrapper" on-hold="onMessageHold($event, $index, message)">\n      <div *ngIf="user._id !== message.userId">\n        <img (click)="viewProfile(message)" class="profile-pic left" [src]="toUser.pic" onerror="onProfilePicError(this)" />\n        <!--  wave-->\n        <div class="chat-bubble left slide-left">\n  \n          <div class="message" [innerHTML]="message.text" autolinker>\n          </div>\n  \n          <div class="message-detail">\n            <span (click)="viewProfile(message)" class="bold">{{toUser.username}}</span>,\n            <span>{{message.date | moment:"ago" | lowercase}}</span>\n          </div>\n  \n        </div>\n      </div>\n  \n      <div *ngIf="user._id === message.userId">\n  \n        <img (click)="viewProfile(message)" class="profile-pic right" [src]="user.pic" onerror="onProfilePicError(this)" />\n  \n        <div class="chat-bubble right slide-right">\n  \n          <div class="message" [innerHTML]="message.text" autolinker>\n          </div>\n  \n          <div class="message-detail">\n            <span (click)="viewProfile(message)" class="bold">{{user.username}}</span>,\n            <span>{{message.date | moment:"ago" | lowercase}}</span>\n          </div>\n  \n        </div>\n  \n      </div>\n  \n      <div class="cf"></div>\n  \n    </div>\n  </ion-content>\n  <ion-footer>\n    <form [formGroup]="messageForm" (submit)="send(chatBox)" novalidate>\n      <ion-item>\n        <ion-input formControlName="message" [(ngModel)]="chatBox" placeholder="Send {{toUser.username}} a message..."></ion-input>\n        <button ion-button clear (click)="send(chatBox)" item-end><ion-icon class="footer-btn" name="send"></ion-icon></button>\n      </ion-item>\n    </form>\n  </ion-footer>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/account/chats/message/message.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_0__angular_forms__["a" /* FormBuilder */]])
 ], AccountChatsMessagePage);

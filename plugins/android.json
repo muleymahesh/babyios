@@ -22,6 +22,9 @@
     "cordova-plugin-email-composer": {
       "PACKAGE_NAME": "com.maks.babyneeds"
     },
+    "cordova-plugin-fcm": {
+      "PACKAGE_NAME": "com.maks.babyneeds"
+    },
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.maks.babyneeds"
     },

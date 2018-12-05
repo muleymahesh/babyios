@@ -1,15 +1,15 @@
 webpackJsonp([32],{
 
-/***/ 955:
+/***/ 956:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountNotificationPageModule", function() { return AccountNotificationPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(544);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(545);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__notification__ = __webpack_require__(995);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__notification__ = __webpack_require__(996);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,13 +41,13 @@ AccountNotificationPageModule = __decorate([
 
 /***/ }),
 
-/***/ 995:
+/***/ 996:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountNotificationPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -86,7 +86,7 @@ var AccountNotificationPage = (function () {
 }());
 AccountNotificationPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-account-notification',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/notification/notification.html"*/'<ion-header no-border no-lines>\n	<ion-navbar></ion-navbar>\n</ion-header>\n \n <ion-content> \n   <ion-list>\n    <h1 margin-left margin-bottom>{{ \'NOTIF\' | translate}}</h1>\n    <ion-grid class="empty" *ngIf="notif.length == 0">\n			<ion-row align-items-center>\n				<ion-col align-self-center text-center>\n					<ion-icon name="notifications-off" color="secondary"></ion-icon>\n					<h4 margin-bottom>{{ \'EMPTY_NOTIF\' | translate}}</h4>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n    <ion-item-sliding *ngFor="let x of notif">\n      <ion-item (click)="showAlert(x)">\n        <ion-avatar item-start *ngIf="x.img">\n          <img [src]="x.img" />\n        </ion-avatar>\n        <h3>{{x.title}}</h3>\n        <p>{{x.body}}</p>\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button small color="assertive" tappable (click)="remove(x)">\n					<ion-icon name="trash"></ion-icon>\n					{{\'REMOVE\' | translate}}\n				</button>\n      </ion-item-options>\n    </ion-item-sliding>\n   </ion-list>\n </ion-content>\n '/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/notification/notification.html"*/,
+        selector: 'page-account-notification',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/account/notification/notification.html"*/'<ion-header no-border no-lines>\n	<ion-navbar></ion-navbar>\n</ion-header>\n \n <ion-content> \n   <ion-list>\n    <h1 margin-left margin-bottom>{{ \'NOTIF\' | translate}}</h1>\n    <ion-grid class="empty" *ngIf="notif.length == 0">\n			<ion-row align-items-center>\n				<ion-col align-self-center text-center>\n					<ion-icon name="notifications-off" color="secondary"></ion-icon>\n					<h4 margin-bottom>{{ \'EMPTY_NOTIF\' | translate}}</h4>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n    <ion-item-sliding *ngFor="let x of notif">\n      <ion-item (click)="showAlert(x)">\n        <ion-avatar item-start *ngIf="x.img">\n          <img [src]="x.img" />\n        </ion-avatar>\n        <h3>{{x.title}}</h3>\n        <p>{{x.body}}</p>\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button small color="assertive" tappable (click)="remove(x)">\n					<ion-icon name="trash"></ion-icon>\n					{{\'REMOVE\' | translate}}\n				</button>\n      </ion-item-options>\n    </ion-item-sliding>\n   </ion-list>\n </ion-content>\n '/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/account/notification/notification.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["e" /* NotifProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
 ], AccountNotificationPage);

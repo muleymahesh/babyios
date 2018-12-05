@@ -1,15 +1,15 @@
 webpackJsonp([35],{
 
-/***/ 952:
+/***/ 953:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountChatsPageModule", function() { return AccountChatsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chats__ = __webpack_require__(992);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(544);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chats__ = __webpack_require__(993);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(545);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,13 +41,13 @@ AccountChatsPageModule = __decorate([
 
 /***/ }),
 
-/***/ 992:
+/***/ 993:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountChatsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -92,7 +92,7 @@ var AccountChatsPage = (function () {
 }());
 AccountChatsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-account-chats',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/chats.html"*/'<ion-header no-border no-lines>\n	<ion-navbar></ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <h1 margin-left margin-bottom>Chats</h1>\n    <ion-list-header margin-left no-padding>Today</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-list-header margin-left no-padding>Yesterday</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-list-header margin-left no-padding>Las Week</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/account/chats/chats.html"*/,
+        selector: 'page-account-chats',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/account/chats/chats.html"*/'<ion-header no-border no-lines>\n	<ion-navbar></ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <h1 margin-left margin-bottom>Chats</h1>\n    <ion-list-header margin-left no-padding>Today</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-list-header margin-left no-padding>Yesterday</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-list-header margin-left no-padding>Las Week</ion-list-header>\n    <ion-item *ngFor="let chat of chats" (click)="goTo(chat)">\n      <ion-avatar item-start>\n        <img [src]="chat.imageUrl">\n      </ion-avatar>\n      <h3>{{chat.title}}</h3>\n      <p>{{chat.lastMessage}}</p>\n      <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/account/chats/chats.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])
 ], AccountChatsPage);

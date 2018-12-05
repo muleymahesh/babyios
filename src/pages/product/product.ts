@@ -51,7 +51,7 @@ export class ProductPage {
 
    this.product = this.navParam.data.params;
    
-    this.history.post(this.product);
+    
     console.log(this.history.all);
 
     // // if(this.product.variations){
@@ -98,6 +98,7 @@ export class ProductPage {
     this.restProvider.getProduct(this.getproduct)
     .then(data => {
       this.products = data;
+     //this.history.post(this.products);
       console.log(this.products);
     });
    this. getReviwe();
@@ -115,6 +116,7 @@ else
       this.restProvider.getProduct(this.getproduct)
       .then(data => {
         this.products = data;
+       // this.history.post(this.products);
         console.log(this.products);
       });
      this.getReviwe();

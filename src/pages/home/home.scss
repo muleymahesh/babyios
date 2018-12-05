@@ -12,7 +12,18 @@ page-home {
 		height: 250px;
 	}
 
-
+	ion-card{
+        
+                
+                width:110px;
+                min-height: calc(100% - 10px);
+                
+              box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+               border-radius: 4px;
+               
+            
+        
+          }
 
 	ion-navbar .toolbar-background, .toolbar-background{
 		background: color($colors, primary) !important;

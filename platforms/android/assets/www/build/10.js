@@ -1,12 +1,12 @@
 webpackJsonp([10],{
 
-/***/ 1017:
+/***/ 1018:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModalCategoriesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -45,7 +45,7 @@ var ModalCategoriesPage = (function () {
 }());
 ModalCategoriesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-modal-categories',template:/*ion-inline-start:"/home/maks/abhilash/application/ionstore2/app/src/pages/product/modal-categories/modal-categories.html"*/'<ion-header no-border no-lines>\n  <ion-navbar>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-list class="accordion-list">\n        <h3 margin-left margin-bottom>{{ \'SELECT\' | translate}} {{ \'CATEGORIES\' | translate}}</h3>\n        <div *ngFor="let item of categories; let i = index">\n          <ion-item tappable (click)="toggleSection(i)" [ngClass]="{\'active\':item.open, \'section\': item.open}">\n              <h2>{{ item.name }}</h2>\n              <ion-icon name="add" item-end></ion-icon>\n          </ion-item>\n\n          <ion-list [class.active]="item.open" class="sub-accordion" no-margin no-padding padding-left no-lines *ngIf="item.child && item.open">\n              <button ion-item no-lines *ngFor="let child of item.child; let j = index" tappable (click)="goTo(\'ProductGridPage\', child)"> \n                <h3>{{child.name}}</h3>\n                <ion-badge item-end color="secondary">{{child.count}}</ion-badge>\n              </button>\n          </ion-list>\n        </div>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/ionstore2/app/src/pages/product/modal-categories/modal-categories.html"*/,
+        selector: 'page-modal-categories',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/product/modal-categories/modal-categories.html"*/'<ion-header no-border no-lines>\n  <ion-navbar>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-list class="accordion-list">\n        <h3 margin-left margin-bottom>{{ \'SELECT\' | translate}} {{ \'CATEGORIES\' | translate}}</h3>\n        <div *ngFor="let item of categories; let i = index">\n          <ion-item tappable (click)="toggleSection(i)" [ngClass]="{\'active\':item.open, \'section\': item.open}">\n              <h2>{{ item.name }}</h2>\n              <ion-icon name="add" item-end></ion-icon>\n          </ion-item>\n\n          <ion-list [class.active]="item.open" class="sub-accordion" no-margin no-padding padding-left no-lines *ngIf="item.child && item.open">\n              <button ion-item no-lines *ngFor="let child of item.child; let j = index" tappable (click)="goTo(\'ProductGridPage\', child)"> \n                <h3>{{child.name}}</h3>\n                <ion-badge item-end color="secondary">{{child.count}}</ion-badge>\n              </button>\n          </ion-list>\n        </div>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/product/modal-categories/modal-categories.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */]])
 ], ModalCategoriesPage);
@@ -54,16 +54,16 @@ ModalCategoriesPage = __decorate([
 
 /***/ }),
 
-/***/ 979:
+/***/ 980:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalCategoriesPageModule", function() { return ModalCategoriesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modal_categories__ = __webpack_require__(1017);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(544);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modal_categories__ = __webpack_require__(1018);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(545);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

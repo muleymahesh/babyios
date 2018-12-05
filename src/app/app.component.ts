@@ -9,7 +9,7 @@ import { WooCommerceProvider, NotifProvider, SettingsProvider ,UserProvider} fro
 import { App } from './app.global';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-
+import { FCM } from '@ionic-native/fcm';
 @Component({
   templateUrl: 'app.html'
 })
@@ -26,7 +26,7 @@ user:any;
 
   app: any = {};
 
-  constructor( private _user: UserProvider,private oneSignal: OneSignal, private notif: NotifProvider, private platform: Platform, /*private config: Config,*/ public settings: SettingsProvider, private translate: TranslateService, private woo: WooCommerceProvider, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(private fcm: FCM, private _user: UserProvider,private oneSignal: OneSignal, private notif: NotifProvider, private platform: Platform, /*private config: Config,*/ public settings: SettingsProvider, private translate: TranslateService, private woo: WooCommerceProvider, private statusBar: StatusBar, private splashScreen: SplashScreen) {
     // this.settings.load().then((x) => {
     //   this.woo.loadZones();
     //   this.app = x;
@@ -62,8 +62,12 @@ user:any;
   ionViewDidLoad() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      // this.statusBar.overlaysWebView(false);
-      // this.statusBar.backgroundColorByHexString('#FF1654');
+     //
+
+
+
+
+     //
       this.splashScreen.hide();
     });
   }

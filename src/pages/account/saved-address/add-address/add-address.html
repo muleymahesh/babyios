@@ -27,9 +27,30 @@
         </ion-item>
     
         <ion-item>
-          <ion-input formControlName="phone" type="number" inputmode="numeric" pattern="[0-9]*"placeholder="{{ 'PHONE' | translate}}" required></ion-input>
+          <ion-input type="tel" maxlength="10"   formControlName="phone" placeholder="{{ 'PHONE' | translate}}"></ion-input>
         </ion-item>
+
+        <div *ngFor="let validation of validation_msg.phone">
+          <div *ngIf="phone.hasError(validation.type) && (phone.dirty || phone.touched)">
+       <p padding style="text-align:left; color:red;"> *{{validation.message }}</p>
+        </div>
+      </div>
         
+
+      <ion-item>
+        
+        <ion-label>City</ion-label>
+        <ion-select formControlName="city">
+            <ion-option>Noida</ion-option>
+         </ion-select> 
+    
+      </ion-item>
+
+
+
+
+
+
         <ion-item>
             <!-- <ion-label>{{ 'COUNTRY' | translate}}</ion-label>
             <ion-select formControlName="country" [selectOptions]="countryOpts" placeholder="{{ 'SELECT' | translate}} {{ 'COUNTRY' | translate}}" cancelText="{{ 'CANCEL' | translate}}" okText="{{ 'SELECT' | translate}}" required (ionChange)="getStates()">

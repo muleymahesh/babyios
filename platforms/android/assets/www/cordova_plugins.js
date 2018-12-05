@@ -121,6 +121,14 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-fcm.FCMPlugin",
+    "file": "plugins/cordova-plugin-fcm/www/FCMPlugin.js",
+    "pluginId": "cordova-plugin-fcm",
+    "clobbers": [
+      "FCMPlugin"
+    ]
+  },
+  {
     "id": "cordova-plugin-splashscreen.SplashScreen",
     "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
     "pluginId": "cordova-plugin-splashscreen",
@@ -189,6 +197,7 @@ module.exports.metadata =
   "cordova-plugin-apprate": "1.4.0",
   "cordova-plugin-device": "1.1.7",
   "cordova-plugin-email-composer": "0.8.15",
+  "cordova-plugin-fcm": "2.1.2",
   "cordova-plugin-ionic-webview": "1.2.1",
   "cordova-plugin-splashscreen": "4.1.0",
   "cordova-plugin-statusbar": "2.4.3-dev",

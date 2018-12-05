@@ -94,6 +94,7 @@ ext {
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "card.io.cordova.mobilesdk/babyneeds-build.gradle"
 apply from: "com.paypal.cordova.mobilesdk/babyneeds-build.gradle"
+apply from: "cordova-plugin-fcm/babyneeds-FCMPlugin.gradle"
 apply from: "onesignal-cordova-plugin/babyneeds-build-extras-onesignal.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
@@ -256,6 +257,8 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: "CordovaLib"))
     compile "com.android.support:support-v4:24.1.1+"
+    compile "com.google.firebase:firebase-core:+"
+    compile "com.google.firebase:firebase-messaging:+"
     compile "com.stripe:stripe-android:4.1.2"
     compile "com.onesignal:OneSignal:3.10.1"
     // SUB-PROJECT DEPENDENCIES END
