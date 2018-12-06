@@ -159,8 +159,13 @@ var Checkout1Page = (function () {
     };
     Checkout1Page.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad Checkout1Page');
+        if (this.address.getPrimary) {
+            this.billing = this.address.getPrimary;
+            console.log(this.billing);
+        }
     };
     Checkout1Page.prototype.onChange = function () {
+        this.timing = [];
         //  console.log(this.details.deliverydate);
         var latest_date = this.datepipe.transform(this.details.deliverydate, 'M/d/yyyy');
         var c_date = this.datepipe.transform(new Date(), 'M/d/yyyy');
@@ -223,67 +228,59 @@ var Checkout1Page = (function () {
     // }
     Checkout1Page.prototype.placeorder = function () {
         var _this = this;
-        this.placeorderreq.last_name = this.billing.last_name;
-        this.placeorderreq.street = this.billing.area;
-        this.placeorderreq.state = this.billing.landmark;
-        this.placeorderreq.zipcode = this.billing.pincode;
-        this.placeorderreq.phone = this.billing.phone;
-        this.placeorderreq.p_id = this.p_id;
-        this.placeorderreq.qty = this.qty;
-        if (this._cart.total < 200) {
-            this.placeorderreq.amount = this._cart.total + 30;
+        if (this.address.getPrimary) {
+            this.placeorderreq.last_name = this.billing.last_name;
+            this.placeorderreq.street = this.billing.area;
+            this.placeorderreq.state = this.billing.landmark;
+            this.placeorderreq.zipcode = this.billing.pincode;
+            this.placeorderreq.phone = this.billing.phone;
+            this.placeorderreq.p_id = this.p_id;
+            this.placeorderreq.qty = this.qty;
+            if (this._cart.total < 200) {
+                this.placeorderreq.amount = this._cart.total + 30;
+            }
+            else {
+                this.placeorderreq.amount = this._cart.total;
+            }
+            this.placeorderreq.order_detail = "Delivery Date " + this.details.deliverydate + ",between " + this.details.timesloat;
+            // String req="{\"method\":\"add_oder\",\"first_name\":\""+addresses.get(0).getFname()+"\",\"last_name\":\""+addresses.get(0).getLname()+"\"," +
+            // "\"gender\":\"Male\",\"email\":\""+new AppPreferences(PlaceOrderActivity.this).getEmail()+"\",\"amount\":\""+amount+
+            // "\",\"shipping_type\":\""+spnPaymentType.getSelectedItem().toString()+"\",\"street\":\""+addresses.get(0).getArea()+"\",\"city\":\""+addresses.get(0).getAddr()+"\",\"state\":\""+addresses.get(0).getLandmark()+"\",\"country\":\"India\",\"zipcode\":\""+addresses.get(0).getZipcode()+
+            // "\",\"phone\":\""+addresses.get(0).getPhone()+"\",\"order_detail\":\"Delivery Date "+txtDate.getText().toString()+", between "+spnTimeSlot.getSelectedItem().toString()+"\",\"user_id\":\"23\",\"p_id\":\""+p_id+"\",\"qty\":\""+qty+"\"}";
+            // {"method":"add_oder","first_name":"mahesh","last_name":"muley","gender":"Male","email":"muley.mahesh@gmail.com","amount":" //148.00","shipping_type":"cod","street":" Sector 21","city":"abc //building","state":"square","country":"India","zipcode":"201307","phone":"9890473764","order_detail":"Delivery Date 10/06/2016, between 3 - //5PM","user_id":"23","p_id":"356,","qty":"1,"}
+            // this.nav.push(ThanksPage);
+            //following is the method for order place
+            if (this.placeorderreq.first_name != '' && this.placeorderreq.email != '' && this.placeorderreq.phone != '' && this.placeorderreq.zipcode != '' && this.details.deliverydate != '' && this.details.timesloat != '' && this.placeorderreq.shipping_type != '') {
+                this.restProvider.feedbackOperation(this.placeorderreq)
+                    .then(function (data) {
+                    _this.response = data;
+                    if (_this.response.result == "success") {
+                        _this.toast.show(_this.response.responseMessage);
+                        // this.toast.show("Order Placed Successfully");
+                        _this._cart.reset();
+                        _this.goTo('ThanksPage', 1);
+                    }
+                    else {
+                        _this.toast.show(_this.response.responseMessage);
+                    }
+                });
+                console.log(this.response);
+                //   this.toast.show("hiiiiiiii");
+            }
+            else {
+                this.toast.show("All field required");
+            }
+            // this.toast.show("place order is commented");
         }
         else {
-            this.placeorderreq.amount = this._cart.total;
+            this.toast.show("Please add address");
         }
-        this.placeorderreq.order_detail = "Delivery Date " + this.details.deliverydate + ",between " + this.details.timesloat;
-        console.log(this.placeorderreq.order_detail);
-        console.log(this.placeorderreq.shipping_type);
-        console.log(this.placeorderreq.email);
-        console.log(this.placeorderreq.amount);
-        console.log(this.placeorderreq.first_name);
-        console.log(this.placeorderreq.p_id);
-        console.log(this.placeorderreq.qty);
-        console.log(this.placeorderreq.last_name);
-        console.log(this.placeorderreq.state);
-        console.log(this.placeorderreq.street);
-        console.log(this.placeorderreq.phone);
-        console.log(this.placeorderreq.user_id);
-        console.log(this.placeorderreq.zipcode);
-        // String req="{\"method\":\"add_oder\",\"first_name\":\""+addresses.get(0).getFname()+"\",\"last_name\":\""+addresses.get(0).getLname()+"\"," +
-        // "\"gender\":\"Male\",\"email\":\""+new AppPreferences(PlaceOrderActivity.this).getEmail()+"\",\"amount\":\""+amount+
-        // "\",\"shipping_type\":\""+spnPaymentType.getSelectedItem().toString()+"\",\"street\":\""+addresses.get(0).getArea()+"\",\"city\":\""+addresses.get(0).getAddr()+"\",\"state\":\""+addresses.get(0).getLandmark()+"\",\"country\":\"India\",\"zipcode\":\""+addresses.get(0).getZipcode()+
-        // "\",\"phone\":\""+addresses.get(0).getPhone()+"\",\"order_detail\":\"Delivery Date "+txtDate.getText().toString()+", between "+spnTimeSlot.getSelectedItem().toString()+"\",\"user_id\":\"23\",\"p_id\":\""+p_id+"\",\"qty\":\""+qty+"\"}";
-        // {"method":"add_oder","first_name":"mahesh","last_name":"muley","gender":"Male","email":"muley.mahesh@gmail.com","amount":" //148.00","shipping_type":"cod","street":" Sector 21","city":"abc //building","state":"square","country":"India","zipcode":"201307","phone":"9890473764","order_detail":"Delivery Date 10/06/2016, between 3 - //5PM","user_id":"23","p_id":"356,","qty":"1,"}
-        // this.nav.push(ThanksPage);
-        //following is the method for order place
-        if (this.placeorderreq.first_name != '' && this.placeorderreq.email != '' && this.placeorderreq.phone != '' && this.placeorderreq.zipcode != '' && this.details.deliverydate != '' && this.details.timesloat != '' && this.placeorderreq.shipping_type != '') {
-            this.restProvider.feedbackOperation(this.placeorderreq)
-                .then(function (data) {
-                _this.response = data;
-                if (_this.response.result == "success") {
-                    _this.toast.show(_this.response.responseMessage);
-                    // this.toast.show("Order Placed Successfully");
-                    _this._cart.reset();
-                    _this.goTo('ThanksPage', 1);
-                }
-                else {
-                    _this.toast.show(_this.response.responseMessage);
-                }
-            });
-            console.log(this.response);
-            //   this.toast.show("hiiiiiiii");
-        }
-        else {
-            this.toast.show("All field required");
-        }
-        // this.toast.show("place order is commented");
     };
     return Checkout1Page;
 }());
 Checkout1Page = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-checkout1',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/checkout1/checkout1.html"*/'<!--\n  Generated template for the Checkout1Page page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Checkout</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-card>\n  <ion-list margin-top padding-top > \n    <div>\n      <h3>{{ \'SHIPPING ADDRESS\' }}</h3>\n      \n    </div>\n    <ion-item no-lines *ngIf="billing">\n      <p>{{billing.first_name}} • {{billing.phone}}</p>\n      <p>{{billing.address_1}}</p>\n      <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>\n      <p>{{billing.pincode}}</p>\n  </ion-item>\n    <div padding-horizontal>\n      <button ion-button outline block icon-start tappable (click)="addAddress(4)">\n          {{ \'ADD\'}} {{ \'NEW_ADDRESS\'}}\n      </button>\n      <button ion-button outline block icon-start  tappable (click)="selectAddress(4)">\n          {{ \'SELECT\' }} {{ \'OTHER_ADDRESS\'}}\n      </button>\n    </div>\n  </ion-list>\n</ion-card>\n\n<ion-item>\n   \n    <h6 >Amount :{{_cart.total}}Rs.</h6>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total<200" >Delivery charge 30 Rs.</p>\n    <h6  *ngIf="_cart.total<200" >Total :{{_cart.total+30}}Rs.</h6>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total<200">*Orde above 200Rs for free delivery</p>\n</ion-item>\n<ion-item>\n    <ion-label>Date</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="details.deliverydate">\n    </ion-datetime>\n  </ion-item>\n  <ion-item>\n      <ion-label>Time Slot</ion-label>\n      <ion-select [(ngModel)]="details.timesloat">\n        <ion-option *ngFor="let time of timing" [value]="time" >{{time}}</ion-option>\n     </ion-select>\n    </ion-item>\n\n    <ion-item>\n        <ion-label>Mode of Payment</ion-label>\n        <ion-select [(ngModel)]="placeorderreq.shipping_type">\n          <ion-option> Cash On Delivery</ion-option>\n         \n          <ion-option>COD BHIM 9891850708@UPI</ion-option>\n       \n         </ion-select>\n      </ion-item>\n    \n  \n      <div padding>\n        <button ion-button block icon-start tappable (click)="placeorder()">\n           Place Order\n        </button>\n      </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/checkout1/checkout1.html"*/,
+        selector: 'page-checkout1',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/checkout1/checkout1.html"*/'<!--\n  Generated template for the Checkout1Page page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Checkout</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-card>\n  <ion-list margin-top padding-top > \n    <div>\n      <h3>{{ \'SHIPPING ADDRESS\' }}</h3>\n      \n    </div>\n    <ion-item no-lines *ngIf="billing">\n      <p>{{billing.first_name}} • {{billing.phone}}</p>\n      <p>{{billing.address_1}}</p>\n      <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>\n      <p>{{billing.pincode}}</p>\n  </ion-item>\n    <div padding-horizontal>\n      <button ion-button outline block icon-start tappable (click)="goTo(\'SavedAddressPage\')">\n          {{ \'ADD\'}} {{ \'NEW_ADDRESS\'}}\n      </button>\n      <button ion-button outline block icon-start  tappable (click)="selectAddress(4)">\n          {{ \'SELECT\' }} {{ \'OTHER_ADDRESS\'}}\n      </button>\n    </div>\n  </ion-list>\n</ion-card>\n\n<ion-item>\n   \n    <h6 >Amount :{{_cart.total}}Rs.</h6>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total<200" >Delivery charge 30 Rs.</p>\n    <h6  *ngIf="_cart.total<200" >Total :{{_cart.total+30}}Rs.</h6>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total<200">*Orde above 200Rs for free delivery</p>\n</ion-item>\n<ion-item>\n    <ion-label>Date</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="details.deliverydate">\n    </ion-datetime>\n  </ion-item>\n  <ion-item>\n      <ion-label>Time Slot</ion-label>\n      <ion-select [(ngModel)]="details.timesloat">\n        <ion-option *ngFor="let time of timing" [value]="time" >{{time}}</ion-option>\n     </ion-select>\n    </ion-item>\n\n    <ion-item>\n        <ion-label>Mode of Payment</ion-label>\n        <ion-select [(ngModel)]="placeorderreq.shipping_type">\n          <ion-option> Cash On Delivery</ion-option>\n         \n          <ion-option>COD BHIM 9891850708@UPI</ion-option>\n       \n         </ion-select>\n      </ion-item>\n    \n  \n      <div padding>\n        <button ion-button block icon-start tappable (click)="placeorder()">\n           Place Order\n        </button>\n      </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/checkout1/checkout1.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
 ], Checkout1Page);

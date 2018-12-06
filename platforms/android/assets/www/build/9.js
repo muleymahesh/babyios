@@ -107,7 +107,7 @@ var ProductPage = (function () {
             this.restProvider.getProduct(this.getproduct)
                 .then(function (data) {
                 _this.products = data;
-                _this.history.post(_this.products);
+                //this.history.post(this.products);
                 console.log(_this.products);
             });
             this.getReviwe();
@@ -123,7 +123,7 @@ var ProductPage = (function () {
             this.restProvider.getProduct(this.getproduct)
                 .then(function (data) {
                 _this.products = data;
-                _this.history.post(_this.products);
+                // this.history.post(this.products);
                 console.log(_this.products);
             });
             this.getReviwe();
