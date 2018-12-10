@@ -17,7 +17,7 @@
     <ion-card>
   <ion-list margin-top padding-top > 
     <div>
-      <h3>{{ 'SHIPPING ADDRESS' }}</h3>
+      <h3 padding>{{ 'SHIPPING ADDRESS' }}</h3>
       
     </div>
     <ion-item no-lines *ngIf="billing">
@@ -26,15 +26,24 @@
       <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>
       <p>{{billing.pincode}}</p>
   </ion-item>
-    <div padding-horizontal>
-      <button ion-button outline block icon-start tappable (click)="goTo('SavedAddressPage')">
-          {{ 'ADD'}} {{ 'NEW_ADDRESS'}}
+</ion-list>
+<ion-col col-6> 
+		<!-- <button ion-button color="secondary" class="my-width" large >
+			<b>Save</b>
+    </button> -->
+    <button ion-button  width="600px" tappable (click)="goTo('SavedAddressPage')">
+        {{'ADD NEW'}}
+    </button>
+	</ion-col>
+
+	<ion-col col-6>
+      <button ion-button   width="600px"  tappable (click)="goTo('SavedAddressPage')">
+          {{'SELECT OTHER'}}
       </button>
-      <button ion-button outline block icon-start  tappable (click)="selectAddress(4)">
-          {{ 'SELECT' }} {{ 'OTHER_ADDRESS'}}
-      </button>
-    </div>
-  </ion-list>
+	</ion-col>
+      
+   
+
 </ion-card>
 
 <ion-item>

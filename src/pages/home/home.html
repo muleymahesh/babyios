@@ -10,9 +10,13 @@
     <!-- <ion-searchbar no-padding (ionInput)="getItems($event)"></ion-searchbar> -->
     <ion-searchbar [(ngModel)]="searchQuery" color="primary" placeholder="{{ 'BABYNEEDS' | translate }}" (ionInput)="getItems($event)"></ion-searchbar>
     <div *ngIf="showList" padding>
+        <ion-scroll style="width:100%;height:100vh" scrollY="true">
+            <ion-list scroll="true">
       <ion-item *ngFor="let i of item"  (click)="goTo('ProductPage',i)"><hr>
        <p style="font-size:12px;"> {{ i.product_name }}</p>
       </ion-item>
+            </ion-list>
+        </ion-scroll>
     </div>
     
         <!-- <div class="newsearch">

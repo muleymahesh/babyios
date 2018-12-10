@@ -188,7 +188,7 @@ ionViewWillEnter()
 
   onChange()
   {
-    this.timing=[];
+    this.timing=[];0
   //  console.log(this.details.deliverydate);
     let latest_date =this.datepipe.transform(this.details.deliverydate,'M/d/yyyy');
     let c_date =this.datepipe.transform(new Date(),'M/d/yyyy');
