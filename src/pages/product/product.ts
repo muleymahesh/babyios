@@ -98,7 +98,7 @@ export class ProductPage {
     this.restProvider.getProduct(this.getproduct)
     .then(data => {
       this.products = data;
-     //this.history.post(this.products);
+     this.history.post(this.products);
       console.log(this.products);
     });
    this. getReviwe();
@@ -116,7 +116,7 @@ else
       this.restProvider.getProduct(this.getproduct)
       .then(data => {
         this.products = data;
-       // this.history.post(this.products);
+        this.history.post(this.products);
         console.log(this.products);
       });
      this.getReviwe();

@@ -39,33 +39,37 @@ export class RecentProvider {
         let exist = false;
         for(let i in this.history){
          
-           if(this.history[i].p_id == product1.p_id){
+           if(this.history[i].p_id == product1[0].p_id){
               this.history[i].no_of_time += qty;
               exist = true;
+              console.log("recent",product1);
              // console.log(this.cart);
               break;
           }
         }
      
         if(!exist){
-          product1.no_of_time = qty;
+          product1[0].no_of_time = qty;
+        //  console.log("recent",product1.imgs[0].img_url);
+          console.log("recent exist",product1[0].imgs[0]);
           this.add(product1);
-          console.log(product1);
+          console.log("recent",product1);
         }
     
         this.save();
       }
       add(product1: any){
+        console.log("recent add",product1[0].imgs[0]);
         let tmp = {
-          no_of_time: product1.no_of_time,
-          name: product1.product_name,
-          images: product1.imgs[0].img_url,
-          p_id: product1.p_id,
-          price: product1.mrp,
-          discount:product1.per_discount,
+          no_of_time: product1[0].no_of_time,
+          name: product1[0].product_name,
+          images: product1[0].imgs[0].img_url,
+          p_id: product1[0].p_id,
+          price: product1[0].mrp,
+          discount:product1[0].per_discount,
          // regular_price: product1.regular_price,
-          on_sale: product1.offer_name,
-          in_stock: product1.status,
+          on_sale: product1[0].offer_name,
+          in_stock: product1[0].status,
           // attributes: product.attributes,
           // variation_id: product.variation_id
         }

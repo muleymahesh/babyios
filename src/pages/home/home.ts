@@ -121,7 +121,7 @@ this.his.sort(function(obj1, obj2) {
 		return obj2.no_of_time - obj1.no_of_time;
 	});
 		this.goHome(); 
-		console.log(this.his);
+		console.log( "his",this.his);
 
 	
 	}
