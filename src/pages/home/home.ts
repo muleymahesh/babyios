@@ -90,6 +90,7 @@ his:any;
 	this.getOffer();
 	this.loader.dismiss();
 	this.getAgeGruops();
+//	this.address.remove(0);
 console.log(this.history.all);
 //this.address.remove(0);
 //this.address.remove(1);
@@ -122,6 +123,7 @@ this.his.sort(function(obj1, obj2) {
 	});
 		this.goHome(); 
 		console.log( "his",this.his);
+		
 
 	
 	}

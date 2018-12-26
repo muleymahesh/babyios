@@ -45,10 +45,31 @@
    
 
 </ion-card>
+<ion-card>
+  <ion-item *ngFor="let x of products">
+    <ion-item>
+    <ion-thumbnail item-start>
+    <div class="img" [ngStyle]="{'background-image': 'url(http://www.babyneeds.co.in/babyneeds/product_image/' +x.images +')'}"></div>
+     
+    </ion-thumbnail>
+    <h3 [innerHTML]="x.name"></h3>
+     <p>
+       <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->
+        <!-- <span class="price">{{x.finalprice | money}}</span> -->
+      <!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->
+      <span> x {{x.quantity}}</span>
+    </p>
+  
+  </ion-item>
+
+  </ion-item>
+
+</ion-card>
 
 <ion-item>
    
     <h6 >Amount :{{_cart.total}}Rs.</h6>
+    <p style="font-size:9px" color="primary" *ngIf="_cart.total>200" >Free Delivery</p>
     <p style="font-size:9px" color="primary" *ngIf="_cart.total<200" >Delivery charge 30 Rs.</p>
     <h6  *ngIf="_cart.total<200" >Total :{{_cart.total+30}}Rs.</h6>
     <p style="font-size:9px" color="primary" *ngIf="_cart.total<200">*Orde above 200Rs for free delivery</p>

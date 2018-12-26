@@ -1,4 +1,4 @@
-webpackJsonp([40],{
+webpackJsonp([39],{
 
 /***/ 134:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -30,8 +30,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var RestProvider = (function () {
     function RestProvider(http) {
         this.http = http;
-        this.url1 = "http://babyneeds.co.in/babyneeds/send_invoice.php?o_id=";
-        this.url = "http://babyneeds.co.in/babyneeds/ws/v2/api1.php";
+        this.url1 = "http://makslab.com/babyneeds/send_invoice.php?o_id=";
+        this.url = "http://makslab.com/babyneeds/ws/v2/api1.php";
         console.log('Hello RestProvider Provider');
     }
     RestProvider.prototype.login = function (data) {
@@ -331,13 +331,27 @@ var RestProvider = (function () {
             return err;
         });
     };
+    RestProvider.prototype.updateOrderDetail = function (data) {
+        console.log("request sending");
+        return this.http.post(this.url, JSON.stringify(data))
+            .toPromise()
+            .then(function (data) {
+            console.log('Success', data);
+            return data;
+        })
+            .catch(function (err) {
+            console.log('Error', err);
+            return err;
+        });
+    };
     return RestProvider;
 }());
 RestProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
 ], RestProvider);
 
+var _a;
 //# sourceMappingURL=rest.js.map
 
 /***/ }),
@@ -484,162 +498,158 @@ var DIRECTIVES = [
 var map = {
 	"../pages/aboutus/aboutus.module": [
 		951,
-		37
+		36
 	],
 	"../pages/account/account.module": [
 		952,
-		36
+		35
 	],
 	"../pages/account/chats/chats.module": [
 		953,
-		35
+		34
 	],
 	"../pages/account/chats/message/message.module": [
 		954,
-		34
+		33
 	],
 	"../pages/account/help/help.module": [
 		955,
-		33
+		32
 	],
 	"../pages/account/notification/notification.module": [
 		956,
-		32
+		31
 	],
 	"../pages/account/profile/profile.module": [
 		957,
-		31
+		30
 	],
 	"../pages/account/saved-address/add-address/add-address.module": [
 		958,
-		30
+		29
 	],
 	"../pages/account/saved-address/saved-address.module": [
 		959,
-		29
+		28
 	],
 	"../pages/account/settings/languages/languages.module": [
 		960,
-		28
+		27
 	],
 	"../pages/account/settings/notifications/notifications.module": [
 		961,
-		27
+		26
 	],
 	"../pages/account/settings/settings.module": [
 		962,
-		26
+		25
 	],
 	"../pages/account/settings/tos/tos.module": [
 		963,
-		25
+		24
 	],
 	"../pages/cart1/cart1.module": [
 		964,
-		24
+		23
 	],
 	"../pages/categories/categories.module": [
 		965,
-		23
+		22
 	],
 	"../pages/change/change.module": [
 		966,
-		22
-	],
-	"../pages/checkout/checkout.module": [
-		967,
 		21
 	],
 	"../pages/checkout1/checkout1.module": [
-		968,
+		967,
 		20
 	],
 	"../pages/feedback/feedback.module": [
-		969,
+		968,
 		19
 	],
 	"../pages/forgotpassword/forgotpassword.module": [
-		970,
+		969,
 		18
 	],
 	"../pages/home/home.module": [
-		971,
-		39
+		970,
+		38
 	],
 	"../pages/list/list.module": [
-		972,
+		971,
 		17
 	],
 	"../pages/login/login.module": [
-		973,
-		38
+		972,
+		37
 	],
 	"../pages/menu/menu.module": [
-		974,
+		973,
 		16
 	],
 	"../pages/myorder/myorder.module": [
-		975,
+		974,
 		15
 	],
-	"../pages/orders/detail/detail.module": [
-		976,
+	"../pages/orders/orders.module": [
+		975,
 		14
 	],
-	"../pages/orders/orders.module": [
-		977,
+	"../pages/product/grid/grid.module": [
+		976,
 		13
 	],
-	"../pages/product/grid/grid.module": [
-		978,
+	"../pages/product/mini-cart/mini-cart.module": [
+		977,
 		12
 	],
-	"../pages/product/mini-cart/mini-cart.module": [
-		979,
+	"../pages/product/modal-categories/modal-categories.module": [
+		978,
 		11
 	],
-	"../pages/product/modal-categories/modal-categories.module": [
-		980,
+	"../pages/product/product.module": [
+		979,
 		10
 	],
-	"../pages/product/product.module": [
-		981,
+	"../pages/register/register.module": [
+		980,
 		9
 	],
-	"../pages/register/register.module": [
-		982,
+	"../pages/returnorder/returnorder.module": [
+		981,
 		8
 	],
 	"../pages/search/search.module": [
-		983,
+		982,
 		7
 	],
 	"../pages/servicecategory/servicecategory.module": [
-		984,
+		983,
 		6
 	],
 	"../pages/servicedetail/servicedetail.module": [
-		985,
+		984,
 		5
 	],
 	"../pages/services/services.module": [
-		986,
+		985,
 		4
 	],
 	"../pages/tabs/tabs.module": [
-		987,
+		986,
 		3
 	],
 	"../pages/thanks/thanks.module": [
-		988,
+		987,
 		2
 	],
 	"../pages/wishlist/wishlist.module": [
-		989,
+		988,
 		1
 	],
 	"../pages/writereview/writereview.module": [
-		990,
+		989,
 		0
 	]
 };
@@ -772,10 +782,9 @@ var RecentProvider = (function () {
 }());
 RecentProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
 ], RecentProvider);
 
-var _a, _b;
 //# sourceMappingURL=recent.js.map
 
 /***/ }),
@@ -915,6 +924,7 @@ var HomePage = (function () {
         this.getOffer();
         this.loader.dismiss();
         this.getAgeGruops();
+        //	this.address.remove(0);
         console.log(this.history.all);
         //this.address.remove(0);
         //this.address.remove(1);
@@ -1383,7 +1393,6 @@ AppModule = __decorate([
                     { loadChildren: '../pages/cart1/cart1.module#Cart1PageModule', name: 'Cart1Page', segment: 'cart1', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/categories/categories.module#CategoriesPageModule', name: 'CategoriesPage', segment: 'categories', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/change/change.module#ChangePageModule', name: 'ChangePage', segment: 'change', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'CheckoutPage', segment: 'checkout', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/checkout1/checkout1.module#Checkout1PageModule', name: 'Checkout1Page', segment: 'checkout1', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/feedback/feedback.module#FeedbackPageModule', name: 'FeedbackPage', segment: 'feedback', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/forgotpassword/forgotpassword.module#ForgotpasswordPageModule', name: 'ForgotpasswordPage', segment: 'forgotpassword', priority: 'low', defaultHistory: [] },
@@ -1392,13 +1401,13 @@ AppModule = __decorate([
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/myorder/myorder.module#MyorderPageModule', name: 'MyorderPage', segment: 'myorder', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/orders/detail/detail.module#OrderDetailPageModule', name: 'OrderDetailPage', segment: 'detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/grid/grid.module#ProductGridPageModule', name: 'ProductGridPage', segment: 'grid', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/mini-cart/mini-cart.module#MiniCartPageModule', name: 'MiniCartPage', segment: 'mini-cart', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/modal-categories/modal-categories.module#ModalCategoriesPageModule', name: 'ModalCategoriesPage', segment: 'modal-categories', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/product.module#ProductPageModule', name: 'ProductPage', segment: 'product', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/returnorder/returnorder.module#ReturnorderPageModule', name: 'ReturnorderPage', segment: 'returnorder', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/servicecategory/servicecategory.module#ServicecategoryPageModule', name: 'ServicecategoryPage', segment: 'servicecategory', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/servicedetail/servicedetail.module#ServicedetailPageModule', name: 'ServicedetailPage', segment: 'servicedetail', priority: 'low', defaultHistory: [] },

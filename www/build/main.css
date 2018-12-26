@@ -29669,88 +29669,6 @@ page-change .logo {
   padding-bottom: 10%;
 }
 
-page-checkout h3 {
-  color: #484848;
-}
-
-page-checkout ion-note {
-  display: block;
-  margin-top: 10px;
-}
-
-page-checkout p {
-  color: #484848 !important;
-}
-
-page-checkout .address-list button {
-  font-size: 1.4rem !important;
-}
-
-page-checkout .address-list ion-label p {
-  color: #333;
-}
-
-page-checkout i {
-  font-style: normal;
-}
-
-page-checkout i:after {
-  content: ' • ';
-}
-
-page-checkout i:last-child:after {
-  content: '';
-}
-
-page-checkout .item-radio-checked.item-ios ion-label {
-  white-space: normal;
-  margin-right: 20px;
-}
-
-page-checkout .item-block.item-radio ion-label img {
-  margin-left: 3px;
-  vertical-align: middle;
-}
-
-page-checkout .item-block.item-radio ion-label img:first-child {
-  margin-left: 10px;
-}
-
-page-checkout .accord ion-item.item-block {
-  white-space: normal;
-  font-size: 1.3rem !important;
-  min-height: auto;
-  display: block;
-}
-
-page-checkout .section {
-  background: #f2f2f2;
-}
-
-page-checkout .section .item-inner {
-  border-bottom: 1px solid #dedede !important;
-}
-
-page-checkout .section-active {
-  border-left: 3px solid #381c76 !important;
-}
-
-page-checkout .stripe-form {
-  padding: 0px;
-}
-
-page-checkout .stripe-form ion-col {
-  padding: 0px;
-}
-
-page-checkout .stripe-form ion-input, page-checkout .stripe-form ion-select {
-  border-bottom: 1px solid #dedede;
-}
-
-page-checkout .stripe-form .invalid {
-  border-bottom: 1px solid red;
-}
-
 page-forgotpassword .logo {
   width: 100%;
   height: auto;
@@ -29813,14 +29731,6 @@ page-login .logo {
   margin-top: 20px;
   margin-bottom: 20px;
   padding-top: 10%;
-}
-
-page-order-detail .segment-ios {
-  padding: 0 16px;
-}
-
-page-order-detail .toolbar-md {
-  min-height: 42px;
 }
 
 page-product ion-content, page-product .scroll-content {

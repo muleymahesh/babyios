@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ReturnorderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  
+  <ion-navbar color="primary">
+    <ion-title>Return request</ion-title>
+</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+<ion-card>
+    <ion-label padding floting>Reason for Return</ion-label>
+  <ion-item>
+   
+    <ion-textarea placeholder="Enter your reason..." [(ngModel)]="reason" ></ion-textarea>
+    
+  </ion-item>
+  <ion-item>
+    <ion-label>Return Date</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="returndate">
+    </ion-datetime>
+  </ion-item>
+  <ion-item>
+      <ion-label>Time Slot</ion-label>
+      <ion-select [(ngModel)]="returntime" >
+        <ion-option *ngFor="let time of timing" [value]="time" >{{time}}</ion-option>
+     </ion-select>
+    </ion-item>
+</ion-card>
+<button  full ion-button round tappable (click)="returnOrder()">Request Return</button><br>
+
+</ion-content>

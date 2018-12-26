@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, Refresher, Events, ModalController, NavController,NavParams } from 'ionic-angular';
 import { UserProvider, LoadingProvider, WooCommerceProvider ,RestProvider,ToastProvider} from '../../providers/providers';
-
+import { DatePipe } from '@angular/common'
 @IonicPage()
 @Component({
   selector: 'page-orders',
@@ -10,6 +10,44 @@ import { UserProvider, LoadingProvider, WooCommerceProvider ,RestProvider,ToastP
 export class OrdersPage {
   // status: string = "paid";
   orders: any ;
+
+  times=[
+    {
+        "stime": 8,
+        "etime":11,
+        "slots": ["11-1PM","1-3PM","3-5PM","5-7PM"]
+         
+    },
+    {
+      "stime": 10,
+      "etime":13,
+      "slots": ["1-3PM","3-5PM","5-7PM"]
+       
+  },
+  {
+    "stime": 12,
+    "etime":15,
+    "slots": ["3-5PM","5-7PM"]
+     
+  },
+  {
+    "stime": 14,
+    "etime":17,
+  
+    "slots": ["5-7PM"]
+     
+  },
+  
+  ]
+
+udatereq={
+  method:'updateTimeSlot',
+  order_id:'' ,
+ order_detail: ''
+}
+
+  timing:any[]=[];
+  
   res: any;
   status:any;
   returnrequest = {
@@ -24,35 +62,29 @@ export class OrdersPage {
   };
  str:any;
  str1;any;
-
-
-  constructor(public restProvider: RestProvider, private toast: ToastProvider,public navParams: NavParams,public nav: NavController, private events: Events, private modal: ModalController, private loader: LoadingProvider, private user: UserProvider, private woo: WooCommerceProvider) {
-    // this.setRootForGuest();
-    // this.listenIsLoggedIn();
-    // this.listenIsLoggedOut();
+deliverydate:any;
+c_date:any;
+ctime:any;
+newdeliverydate:any;
+newtimeslot:any;
+minDate:any;
+maxDate:any;
+  constructor(public restProvider: RestProvider,public datepipe: DatePipe, private toast: ToastProvider,public navParams: NavParams,public nav: NavController, private events: Events, private modal: ModalController, private loader: LoadingProvider, private user: UserProvider, private woo: WooCommerceProvider) {
+    this.minDate = new Date().toISOString();
+    this.maxDate =  new Date(new Date().setFullYear(new Date().getFullYear() + 2)).toISOString();
+    this. c_date =this.datepipe.transform(new Date(),'yyyy-M-d');
     this.orders = this.navParams.data.params;
-     
-    
-  // this.returnrequest.order_id=this.navParams.data.params.o_id;
- //  this.canclerequest.order_id=this.navParams.data.params.o_id;
+     this.deliverydate=this.orders.order_detail.substring(14,24);
+     console.log(this.deliverydate);
+     console.log(this.c_date);
    this.returnrequest.user_email=this.user.user.user_email;
     console.log(this.orders);
     this.str=this.navParams.data.params.o_id;
-    // this.setForUser();
+   
   }
+  
 
-  // listenIsLoggedIn(){
-  //   this.events.subscribe('user:login', (res) => {
-  //     this.setForUser();
-  //   });
-  // }
-
-  // listenIsLoggedOut(){
-  //   this.events.subscribe('user:logout', () => {
-  //     this.setRootForGuest();
-  //   });
-  // }
-
+  
  
 
   setForUser(status: string = ''){
@@ -118,7 +150,8 @@ this.restProvider.Inovice(this.str1)
 }
 
 
-returnOrder(){
+
+returnOrder1(){
   this.returnrequest.order_id=this.str.substring(2);
   this.restProvider.orderOperation(this.returnrequest)
   .then(data => {
@@ -141,13 +174,97 @@ returnOrder(){
 
 }
 
+onChange()
+{
+  this.timing=[];
+//  console.log(this.details.deliverydate);
+  let latest_date =this.datepipe.transform(this.newdeliverydate,'M/d/yyyy');
+  let c_date =this.datepipe.transform(new Date(),'M/d/yyyy');
+  console.log(latest_date);
+  console.log( c_date);
+  if(latest_date==c_date)
+  {
+    this.ctime=new Date().getHours();
+    console.log("ctime is="+this.ctime)
+    if(parseInt(this.ctime)>7&&parseInt(this.ctime)<17)
+    {
+    for(let s of this.times)
+    {
+
+      console.log("ctime="+this.ctime);
+      console.log("stime="+s.stime)
+      console.log("int ctime="+parseInt(this.ctime))
+     
+        
+      if(s.stime<parseInt(this.ctime)&&s.etime>parseInt(this.ctime))
+      {
+        console.log("I am in if stime="+s.stime)
+        for(let s1 of s.slots)
+        {
+        this.timing.push(s1);
+        }
+        console.log(this.timing);
+      }
+      
+    }
+  }
+  else if(parseInt(this.ctime)>17)
+  {
+    this.toast.show("Time sloats are over please select next date");
+    this.newdeliverydate='';
+  }
+  else{
+    this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+  }
+}
+else
+{
+  this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+}
+}
+
 pop() {
   this.nav.pop();
 }
 
 
-  goTo(params){
-    this.nav.push('OrderDetailPage', {params: params});
+  goTo(page,params){
+    this.nav.push(page, {params: params});
   }
+
+updateOrderDetails()
+{
+  if(this.newdeliverydate!=''&&this.newtimeslot!='')
+  {
+  this.udatereq.order_id=this.str.substring(2);
+  this.udatereq.order_detail="Delivery Date"+this.datepipe.transform(this.newdeliverydate,'yyyy-M-d')+"between"+this.newtimeslot;
+  this.restProvider.updateOrderDetail(this.udatereq)
+  .then(data => {
+  console.log(data);
+ this.res = data;
+ if(this.res.result=="success")
+ {
+   this.orders.order_detail=this.udatereq.order_detail
+  this.toast.show(this.res.responseMessage);
+  this.newdeliverydate='';
+  this.newtimeslot='';
+ }
+ else if(this.res.result=="failure")
+ {
+  this.toast.show(this.res.responseMessage);
+
+ }
+  else{
+    this.toast.show("Something is wrong please contact Us");
+    
+  }
+  });
+}
+else
+{
+  this.toast.show("All Field Required ");
+}
+
+}
 
 }
