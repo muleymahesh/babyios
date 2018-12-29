@@ -127,7 +127,7 @@ res:any;
   returnOrder(){
     if(this.reason!=''&&this.returndate!=''&&this.returntime!='')
     {
-    this.returnrequest.order_detail="Reason for return: "+this.reason+" return date: "+this.returndate+"return time: "+this.returntime+"";
+    this.returnrequest.order_detail="Reason for return: "+this.reason+"\n return date: "+this.returndate+"\n return time: "+this.returntime+"";
     this.returnrequest.order_id=this.str.substring(2);
     this.restProvider.orderOperation(this.returnrequest)
     .then(data => {

@@ -47,6 +47,7 @@
      <div  *ngIf="orders.order_status!='out for delivery'">
 <button   full ion-button round  tppable (click)="cancleOrder()" >Cancel</button>
 <ion-item>
+  <p>You can change your order delivery timing befor its out for delivery by editing fields below</p>
   <ion-label>Date</ion-label>
   <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="newdeliverydate">
   </ion-datetime>
@@ -57,7 +58,7 @@
   <ion-option *ngFor="let time of timing" [value]="time"  >{{time}}</ion-option>
 </ion-select>
 </ion-item>
-<button   full ion-button round  tppable (click)="updateOrderDetails()" >Edit</button>
+<button   full ion-button round  tppable (click)="updateOrderDetails()" >Update order</button>
 </div>
 </div>
 </div>

@@ -182,6 +182,14 @@ module.exports = [
     "clobbers": [
       "OneSignal"
     ]
+  },
+  {
+    "id": "phonegap-plugin-push.PushNotification",
+    "file": "plugins/phonegap-plugin-push/www/push.js",
+    "pluginId": "phonegap-plugin-push",
+    "clobbers": [
+      "PushNotification"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -206,7 +214,8 @@ module.exports.metadata =
   "es6-promise-plugin": "4.2.2",
   "cordova-plugin-x-socialsharing": "5.4.1",
   "ionic-plugin-keyboard": "2.2.1",
-  "onesignal-cordova-plugin": "2.4.3"
+  "onesignal-cordova-plugin": "2.4.3",
+  "phonegap-plugin-push": "2.1.3"
 };
 // BOTTOM OF METADATA
 });

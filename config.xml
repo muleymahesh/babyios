@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.maks.babyneeds1" version="2.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.maks.babyneeds" version="2.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Baby Needs</name>
     <description />
     <author email="info@makslab.com" href="http://makslab.com/">makslab Team</author>
@@ -99,6 +99,9 @@
     <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
     <plugin name="onesignal-cordova-plugin" spec="^2.4.4" />
     <plugin name="cordova-plugin-statusbar" spec="git+https://github.com/apache/cordova-plugin-statusbar.git" />
+    <plugin name="phonegap-plugin-push" spec="^2.1.3">
+        <variable name="SENDER_ID" value="1063542947486" />
+    </plugin>
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="6.4.0" />
 </widget>

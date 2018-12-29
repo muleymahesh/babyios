@@ -314,24 +314,25 @@ if(this._cart.total<200)
 
         if(this.placeorderreq.first_name!='' && this.placeorderreq.email!=''&&this.placeorderreq.phone!='' && this.placeorderreq.zipcode!='' && this.details.deliverydate!=''&&this.details.timesloat!=''&&this.placeorderreq.shipping_type!='')
         {
-      this.restProvider.feedbackOperation(this.placeorderreq)
-      .then(data => {
-      this.response = data;
-      if(this.response.result=="success")
-      {
-        this.toast.show(this.response.responseMessage);
-       // this.toast.show("Order Placed Successfully");
-       this._cart.reset();
-        this.goTo('ThanksPage',1);
-      }
-      else
-      {
-        this.toast.show(this.response.responseMessage);
-      }
-      });
-      console.log(this.response);
-   //   this.toast.show("hiiiiiiii");
-    }
+  //     this.restProvider.feedbackOperation(this.placeorderreq)
+  //     .then(data => {
+  //     this.response = data;
+  //     if(this.response.result=="success")
+  //     {
+  //       this.toast.show(this.response.responseMessage);
+  //      // this.toast.show("Order Placed Successfully");
+  //      this._cart.reset();
+  //       this.goTo('ThanksPage',1);
+  //     }
+  //     else
+  //     {
+  //       this.toast.show(this.response.responseMessage);
+  //     }
+  //     });
+  //     console.log(this.response);
+  //  //   this.toast.show("hiiiiiiii");
+   this.goTo('ConfirmPage',this.placeorderreq);
+}
     else
     {
       this.toast.show("All field required");

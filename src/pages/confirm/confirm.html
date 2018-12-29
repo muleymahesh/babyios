@@ -1,0 +1,80 @@
+<!--
+  Generated template for the ConfirmPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Confirm Order</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+<ion-card>
+  <p padding><b>Products in cart</b></p>
+  <ion-item *ngFor="let x of products">
+    <ion-item>
+    <ion-thumbnail item-start>
+    <div class="img" [ngStyle]="{'background-image': 'url(http://www.babyneeds.co.in/babyneeds/product_image/' +x.images +')'}"></div>
+     
+    </ion-thumbnail>
+    <h3 [innerHTML]="x.name"></h3>
+     <p>
+       <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->
+        <!-- <span class="price">{{x.finalprice | money}}</span> -->
+      <!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->
+      <span> x {{x.quantity}}</span>
+    </p>
+    <p padding><b>Items:{{items}}</b></p>
+  </ion-item>
+
+  </ion-item>
+
+</ion-card>
+<ion-card>
+<ion-item>
+    
+     <h6 ><b>Amount :{{_cart.total}}Rs.</b></h6>
+     <p style="font-size:10px" color="primary" *ngIf="_cart.total>200" >Free Delivery</p>
+     <p style="font-size:10px" color="primary" *ngIf="_cart.total<200" >Delivery charge 30 Rs.</p>
+     <h6  *ngIf="_cart.total<200" ><b>Total :{{_cart.total+30}}Rs.</b></h6>
+     <p style="font-size:10px" color="primary" *ngIf="_cart.total<200">*Orde above 200Rs for free delivery</p>
+ </ion-item>
+
+
+
+</ion-card>
+<ion-card>
+    <p padding><b>Delivery Details</b></p>
+
+    <ion-list >
+      <p padding ><b>Delivery Address</b></p>
+         <ion-item no-lines *ngIf="billing">
+          <p>{{billing.first_name}} • {{billing.phone}}</p>
+          <p>{{billing.address_1}}</p>
+          <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>
+          <p>{{billing.pincode}}</p>
+      </ion-item>
+      <ion-item>
+          <p padding><b>Date and Time</b></p>
+          <p padding>{{placeorderreq.order_detail}} </p>
+      </ion-item>
+    </ion-list>
+
+</ion-card>
+
+  <div padding>
+    <button width="50px" ion-button round icon-start tappable (click)="placeorder()">
+      Confirm Order
+    </button>
+
+    <button ion-button width="50px" round icon-start tappable (click)="cancel()">
+      Cancel
+    </button>
+  </div>
+
+</ion-content>

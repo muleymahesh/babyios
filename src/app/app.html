@@ -76,8 +76,10 @@
       <button  *ngIf="_user.user.fname" menuClose ion-item (click)="logout()">
         <ion-label>Log out</ion-label>
       </button>
-    </ion-list>
 
+     
+    </ion-list>
+    <button menuClose ion-item (click)="rateMe()">Rate Me</button>
     </ion-content>
     </ion-menu>
     <ion-nav [root]="rootPage" type="overlay"  #content swipeBackEnabled="false"></ion-nav> 

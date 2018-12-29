@@ -1,0 +1,14 @@
+{
+    "FirebaseMessaging": {
+        "name": "FirebaseMessaging",
+        "type": "podspec",
+        "spec": "~> 2.0.0",
+        "count": 1
+    },
+    "OneSignal": {
+        "name": "OneSignal",
+        "type": "podspec",
+        "spec": "2.8.8",
+        "count": 1
+    }
+}

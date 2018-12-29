@@ -45,7 +45,7 @@
    
 
 </ion-card>
-<ion-card>
+<!-- <ion-card>
   <ion-item *ngFor="let x of products">
     <ion-item>
     <ion-thumbnail item-start>
@@ -57,23 +57,23 @@
        <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->
         <!-- <span class="price">{{x.finalprice | money}}</span> -->
       <!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->
-      <span> x {{x.quantity}}</span>
+      <!-- <span> x {{x.quantity}}</span>
     </p>
   
   </ion-item>
 
   </ion-item>
 
-</ion-card>
+</ion-card> --> 
 
-<ion-item>
+<!-- <ion-item>
    
     <h6 >Amount :{{_cart.total}}Rs.</h6>
     <p style="font-size:9px" color="primary" *ngIf="_cart.total>200" >Free Delivery</p>
     <p style="font-size:9px" color="primary" *ngIf="_cart.total<200" >Delivery charge 30 Rs.</p>
     <h6  *ngIf="_cart.total<200" >Total :{{_cart.total+30}}Rs.</h6>
     <p style="font-size:9px" color="primary" *ngIf="_cart.total<200">*Orde above 200Rs for free delivery</p>
-</ion-item>
+</ion-item> -->
 <ion-item>
     <ion-label>Date</ion-label>
     <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="details.deliverydate">
@@ -99,7 +99,7 @@
   
       <div padding>
         <button ion-button block icon-start tappable (click)="placeorder()">
-           Place Order
+          proceed
         </button>
       </div>
   

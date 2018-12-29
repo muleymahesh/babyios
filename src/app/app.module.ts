@@ -6,7 +6,7 @@ import { MyApp } from './app.component';
 
 import { MODULES, PROVIDERS } from './app.imports';
 import { RestProvider } from '../providers/rest/rest';
-
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { HttpModule } from '@angular/http'
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +14,7 @@ import { DatePipe } from '@angular/common'
 import { Ionic2RatingModule } from 'ionic2-rating';
 import { RecentProvider } from '../providers/recent/recent';
 import { FCM } from '@ionic-native/fcm';
+import { AppRate } from '@ionic-native/app-rate';
 @NgModule({
   declarations: [
     MyApp
@@ -34,6 +35,8 @@ import { FCM } from '@ionic-native/fcm';
   ],
   providers: [ 
     PROVIDERS, 
+    AppRate,
+    Push,
     // Keep this to enable Ionic's runtime error handling during development
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,

@@ -1,14 +1,15 @@
 webpackJsonp([21],{
 
-/***/ 1007:
+/***/ 1006:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CheckoutPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Checkout1Page; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(57);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,10 +23,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var CheckoutPage = (function () {
-    function CheckoutPage(setting, alert, platform, nav, translate, toast, user, loader, woo, _cart, events, _order, address, navParams, modal) {
-        // this.woo.loadPayments().then( x=> {
-        //   this.payments = x;
+
+/**
+ * Generated class for the Checkout1Page page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var Checkout1Page = (function () {
+    function Checkout1Page(_cart1, datepipe, restProvider, setting, alert, platform, nav, translate, toast, user, loader, woo, _cart, events, _order, address, navParams, modal) {
+        var _this = this;
+        this._cart1 = _cart1;
+        this.datepipe = datepipe;
+        this.restProvider = restProvider;
         this.setting = setting;
         this.alert = alert;
         this.platform = platform;
@@ -41,289 +51,258 @@ var CheckoutPage = (function () {
         this.address = address;
         this.navParams = navParams;
         this.modal = modal;
+        // String req="{\"method\":\"add_oder\",\"first_name\":\""+addresses.get(0).getFname()+"\",\"last_name\":\""+addresses.get(0).getLname()+"\"," +
+        // "\"gender\":\"Male\",\"email\":\""+new AppPreferences(PlaceOrderActivity.this).getEmail()+"\",\"amount\":\""+amount+
+        // "\",\"shipping_type\":\""+spnPaymentType.getSelectedItem().toString()+"\",\"street\":\""+addresses.get(0).getArea()+"\",\"city\":\""+addresses.get(0).getAddr()+"\",\"state\":\""+addresses.get(0).getLandmark()+"\",\"country\":\"India\",\"zipcode\":\""+addresses.get(0).getZipcode()+
+        // "\",\"phone\":\""+addresses.get(0).getPhone()+"\",\"order_detail\":\"Delivery Date "+txtDate.getText().toString()+", between "+spnTimeSlot.getSelectedItem().toString()+"\",\"user_id\":\"23\",\"p_id\":\""+p_id+"\",\"qty\":\""+qty+"\"}";
+        this.times = [
+            {
+                "stime": 8,
+                "etime": 11,
+                "slots": ["11-1PM", "1-3PM", "3-5PM", "5-7PM"]
+            },
+            {
+                "stime": 10,
+                "etime": 13,
+                "slots": ["1-3PM", "3-5PM", "5-7PM"]
+            },
+            {
+                "stime": 12,
+                "etime": 15,
+                "slots": ["3-5PM", "5-7PM"]
+            },
+            {
+                "stime": 14,
+                "etime": 17,
+                "slots": ["5-7PM"]
+            },
+        ];
+        this.timing = [];
+        this.details = {
+            deliverydate: '',
+            timesloat: ''
+        };
+        this.p_id = '';
+        this.qty = '';
+        this.placeorderreq = {
+            method: 'add_oder',
+            first_name: this.user.user.fname,
+            last_name: '',
+            gender: 'male',
+            email: this.user.user.user_email,
+            amount: 0,
+            // amount:this._cart.total,
+            shipping_type: '',
+            street: '',
+            city: 'Noida',
+            state: '',
+            country: 'India',
+            zipcode: '',
+            phone: '',
+            //order_detail:"Delivery Date"+this.details.deliverydate+",between"+ this.details.timesloat,
+            order_detail: '',
+            user_id: this.user.user.user_id,
+            p_id: '',
+            qty: '',
+        };
         this.checkout = "shipping";
-        this.shipping_lines = [];
-        this.shipping_method = [];
-        this.payments = [];
-        this.order = {};
-        this.stripe = {
-            no: '',
-            month: '',
-            year: ''
-        };
-        this.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        this.years = [];
-        this.img = {
-            stripe: [
-                'assets/img/logo/visa.svg',
-                'assets/img/logo/mastercard.svg',
-                'assets/img/logo/amex.svg',
-                'assets/img/logo/diners.svg',
-                'assets/img/logo/discover.svg',
-                'assets/img/logo/jcb.svg'
-            ],
-            paypal: [
-                'assets/img/logo/visa.svg',
-                'assets/img/logo/mastercard.svg',
-                'assets/img/logo/amex.svg',
-                'assets/img/logo/discover.svg'
-            ]
-        };
-        // });
-        this.cart = this._cart;
-        // if(this.setting.all.zones.length <= 0){
-        //   this.loader.present();
-        //   this.woo.loadZones();  
-        //   this.setting.load().then(x=>{
-        //     this.zones = x.zones;
-        //     this.loader.dismiss();
-        //   })
-        // }else
-        //   this.zones = this.setting.all.zones;
-        // // this.woo.getTaxes().then( x=> {
-        // //   this.tax = x;
-        // //   console.log(x);
-        // // })
-        // this.listenOrder();
-    }
-    CheckoutPage.prototype.ionViewDidEnter = function () {
-        this.setOrder();
-    };
-    CheckoutPage.prototype.setOrder = function () {
+        this.products = this._cart1.all;
+        if (this.address.getPrimary) {
+            console.log(this.address.getPrimary);
+        }
+        console.log(this.times);
+        this.minDate = new Date().toISOString();
+        this.maxDate = new Date(new Date().setFullYear(new Date().getFullYear() + 2)).toISOString();
         if (this.address.getPrimary) {
             this.billing = this.address.getPrimary;
-            this.shipping = this.address.getPrimary;
+            console.log(this.billing);
         }
-        if (this._order.billing)
-            this.billing = this._order.billing;
-        if (this._order.shipping)
-            this.shipping = this._order.shipping;
-        //let tmp = (this.settings.value == 'shipping') ? this.shipping : this.billing;
-        // if(this.shipping){
-        //   let id = this.woo.getSingleZone(this.setting.all.zones, this.shipping);
-        //   if(id){
-        //     this.loader.present();
-        //     this.woo.getShippingZoneMethod(id).then( x=> {
-        //       this.shipping_method = x;
-        //       this.loader.dismiss();
-        //     }, e=> {
-        //       console.log(e);
-        //     });
-        //   }else{
-        //     this.shipping_method = [];
-        //     this.translate.get(['NO_SHIPPING']).subscribe( x=> {
-        //       this.toast.showWithClose(x.NO_SHIPPING);
-        //     });
-        //   }
-        // }else{
-        //   this.translate.get(['SELECT_SHIPPING']).subscribe( x=> {
-        //     this.toast.showWithClose(x.SELECT_SHIPPING);
-        //   });
-        // }
-    };
-    CheckoutPage.prototype.viewCart = function () {
-        this.modal.create('MiniCartPage', { isCheckout: true }, { cssClass: 'inset-modal' }).present();
-    };
-    CheckoutPage.prototype.setShipping = function (param) {
-        this.shipping_lines = [];
-        var e = JSON.parse(param);
-        this.shipping_lines.push({
-            method_id: e.method_id,
-            method_title: e.title,
-            total: (e.settings.cost ? e.settings.cost.value : 0)
+        this.platform.ready().then(function () {
+            if (_this.address.getPrimary) {
+                _this.billing = _this.address.getPrimary;
+            }
         });
-        this.total = this.cart.total + parseInt(this.shipping_lines[0].total);
+        //this.setOrder();
+        this.product = this._cart.all;
+        console.log(this.address.getPrimary);
+        //  this.placeorderreq={
+        //     method:'add_oder' ,
+        //     first_name:this.user.user.fname,
+        //     last_name:this.billing.last_name,
+        //     gender:'male',
+        //     email:this.user.user.user_email,
+        //     amount:this._cart.total,
+        //     shipping_type:'',
+        //     street:this.billing.sector,
+        //     city:'Noida',
+        //     state:this.billing.landmark,
+        //     country:'India',
+        //     zipcode:this.billing.pincode,
+        //     phone:this.billing.phone,
+        //     order_detail:'Delivery Date{{deliverydate}},between{{timesloat}}',
+        //     user_id:this.user.user.user_id,
+        //     p_id:'',
+        //     qty:'',
+        //    }
+        for (var i in this.product) {
+            this.p_id += this.product[i].p_id + ",";
+            this.qty += this.product[i].quantity + ",";
+        }
+        console.log(this.p_id);
+        console.log(this.qty);
+    }
+    Checkout1Page.prototype.ionViewWillEnter = function () {
+        this.minDate = new Date().toISOString();
+        this.maxDate = new Date(new Date().setFullYear(new Date().getFullYear() + 2)).toISOString();
+        if (this.address.getPrimary) {
+            this.billing = this.address.getPrimary;
+            console.log(this.billing);
+        }
     };
-    CheckoutPage.prototype.setPayment = function (param) {
-        this.years = [];
-        var e = JSON.parse(param);
-        this.order.payment_method = e.id;
-        this.order.payment_method_title = e.method_title;
-        this.order.payment_method_description = e.description;
-        if (e.id == 'paypal' || e.id == 'stripe')
-            this.order.set_paid = true;
-        for (var i in this.payments)
-            this.payments[i].open = false;
-        this.payments[e.order].open = true || !this.payments[e.order].open;
-        if (e.id == 'stripe') {
-            if (e.settings.testmode.value == 'yes') {
-                this.stripe.publishable_key = e.settings.test_publishable_key.value;
-                this.stripe.secret_key = e.settings.test_secret_key.value;
+    Checkout1Page.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad Checkout1Page');
+        if (this.address.getPrimary) {
+            this.billing = this.address.getPrimary;
+            console.log(this.billing);
+        }
+    };
+    Checkout1Page.prototype.onChange = function () {
+        this.timing = [];
+        0;
+        //  console.log(this.details.deliverydate);
+        var latest_date = this.datepipe.transform(this.details.deliverydate, 'M/d/yyyy');
+        var c_date = this.datepipe.transform(new Date(), 'M/d/yyyy');
+        console.log(latest_date);
+        console.log(c_date);
+        if (latest_date == c_date) {
+            this.ctime = new Date().getHours();
+            console.log("ctime is=" + this.ctime);
+            if (parseInt(this.ctime) > 7 && parseInt(this.ctime) < 17) {
+                for (var _i = 0, _a = this.times; _i < _a.length; _i++) {
+                    var s = _a[_i];
+                    console.log("ctime=" + this.ctime);
+                    console.log("stime=" + s.stime);
+                    console.log("int ctime=" + parseInt(this.ctime));
+                    if (s.stime < parseInt(this.ctime) && s.etime > parseInt(this.ctime)) {
+                        console.log("I am in if stime=" + s.stime);
+                        for (var _b = 0, _c = s.slots; _b < _c.length; _b++) {
+                            var s1 = _c[_b];
+                            this.timing.push(s1);
+                        }
+                        console.log(this.timing);
+                    }
+                }
+            }
+            else if (parseInt(this.ctime) > 17) {
+                this.toast.show("Time sloats are over please select next date");
+                this.details.deliverydate = '';
             }
             else {
-                this.stripe.publishable_key = e.settings.publishable_key.value;
-                this.stripe.secret_key = e.settings.secret_key.value;
+                this.timing = ["9-11AM", "11-1PM", "1-3PM", "3-5PM", "5-7PM"];
             }
-            for (var i = 0; i < 10; i++)
-                this.years.push(new Date().getFullYear() + i);
+        }
+        else {
+            this.timing = ["9-11AM", "11-1PM", "1-3PM", "3-5PM", "5-7PM"];
         }
     };
-    CheckoutPage.prototype.listenOrder = function () {
-        var _this = this;
-        this.events.subscribe('order:go', function (res) {
-            _this.setOrder();
-        });
+    Checkout1Page.prototype.setOrder = function () {
+        console.log(this.address.getPrimary);
+        // if(this._order.shipping)
+        //   this.shipping = this._order.shipping;
     };
-    CheckoutPage.prototype.selectAddress = function (action) {
+    Checkout1Page.prototype.selectAddress = function (action) {
         var params = {
             action: action
         };
         this.modal.create('SavedAddressPage', { params: params }).present();
     };
-    CheckoutPage.prototype.addAddress = function (action) {
+    Checkout1Page.prototype.addAddress = function (action) {
         var params = {
             action: action
         };
         this.modal.create('AddAddressPage', { params: params }).present();
     };
-    CheckoutPage.prototype.next = function () {
-        this.checkout = 'payment';
-    };
-    CheckoutPage.prototype.confirm = function () {
-        var _this = this;
-        this.loader.present();
-        this.order.billing = this.billing;
-        this.order.shipping = this.shipping;
-        this.order.line_items = this.cart.lineItems;
-        this.order.shipping_lines = this.shipping_lines;
-        if (this.user.all)
-            this.order.customer_id = this.user.id;
-        // console.log(this.stripe);
-        // console.log(this.order);
-        //this.loader.dismiss();
-        // CHECKOUT WITH PAYPAL
-        if (this.order.payment_method == 'paypal') {
-            if (!this.platform.is('cordova')) {
-                this.translate.get(['OK', 'ONLY_DEVICE', 'ONLY_DEVICE_DESC']).subscribe(function (x) {
-                    _this.alert.create({
-                        title: x.ONLY_DEVICE,
-                        message: x.ONLY_DEVICE_DESC,
-                        buttons: [{
-                                text: x.OK
-                            }]
-                    }).present();
-                    _this.loader.dismiss();
-                    return false;
-                });
-            }
-            else {
-                var opt = {
-                    total: this.total,
-                    currency: this.setting.all.settings.currency,
-                    desc: this.order.payment_method_description,
-                    detail: {
-                        subtotal: this.cart.total,
-                        shipping: parseInt(this.shipping_lines[0].total)
-                    }
-                };
-                this._order.checkoutPaypal(this.order, opt).then(function (res) {
-                    if (res) {
-                        _this.createOrder(_this.order);
-                    }
-                    else {
-                        _this.loader.dismiss();
-                        _this.toast.show(res);
-                    }
-                }, function (err) {
-                    _this.loader.dismiss();
-                    _this.toast.show(err);
-                });
-            }
-            // CHECKOUT WITH STRIPE
-        }
-        else if (this.order.payment_method == 'stripe') {
-            if (!this.platform.is('cordova')) {
-                this.translate.get(['OK', 'ONLY_DEVICE', 'ONLY_DEVICE_DESC']).subscribe(function (x) {
-                    _this.alert.create({
-                        title: x.ONLY_DEVICE,
-                        message: x.ONLY_DEVICE_DESC,
-                        buttons: [{
-                                text: x.OK
-                            }]
-                    }).present();
-                    _this.loader.dismiss();
-                    return false;
-                });
-            }
-            else {
-                this.stripe.total = this.total * 100;
-                this.stripe.carrier = this.order.shipping_lines[0].method_title;
-                this.stripe.shipping = this.order.shipping;
-                if (this.user.all)
-                    this.stripe.customer_id = this.user.id;
-                this.stripe.billing = this.order.billing;
-                this.stripe.device = this.platform.platforms();
-                this.stripe.currency = this.setting.all.settings.currency;
-                this._order.getToken(this.stripe).then(function (token) {
-                    if (token.id) {
-                        _this._order.stripeCharge(_this.stripe, token)
-                            .subscribe(function (res) {
-                            console.log(res);
-                            _this.createOrder(_this.order);
-                        }, function (err) {
-                            _this.loader.dismiss();
-                            _this.toast.showWithClose(err.json().error.message);
-                        });
-                    }
-                    else {
-                        console.log(token);
-                        _this.loader.dismiss();
-                        _this.toast.showWithClose(token);
-                    }
-                }, function (err) {
-                    console.log(err);
-                    _this.loader.dismiss();
-                    _this.toast.showWithClose(err);
-                });
-            }
-        }
-        else
-            // OTHERWISE PAYPAL OR STRIPE
-            this.createOrder(this.order);
-    };
-    CheckoutPage.prototype.createOrder = function (order) {
-        var _this = this;
-        this.woo.createOrder(order).then(function (x) {
-            if (x) {
-                _this._order.reset().then(function () { });
-                _this.cart.reset().then(function () { });
-                _this.goTo('ThanksPage', x);
-            }
-            else {
-                _this.toast.showWithClose('Error 401');
-            }
-            _this.loader.dismiss();
-        }, function (err) {
-            _this.loader.dismiss();
-            _this.toast.show(err);
-        });
-    };
-    CheckoutPage.prototype.goTo = function (page, params) {
+    Checkout1Page.prototype.goTo = function (page, params) {
         this.nav.push(page, { params: params });
     };
-    return CheckoutPage;
+    // placeorder()
+    // {
+    //   console.log(this._cart.total);
+    // }
+    Checkout1Page.prototype.placeorder = function () {
+        if (this.address.getPrimary) {
+            this.placeorderreq.last_name = this.billing.last_name;
+            this.placeorderreq.street = this.billing.area;
+            this.placeorderreq.state = this.billing.landmark;
+            this.placeorderreq.zipcode = this.billing.pincode;
+            this.placeorderreq.phone = this.billing.phone;
+            this.placeorderreq.p_id = this.p_id;
+            this.placeorderreq.qty = this.qty;
+            if (this._cart.total < 200) {
+                this.placeorderreq.amount = this._cart.total + 30;
+            }
+            else {
+                this.placeorderreq.amount = this._cart.total;
+            }
+            this.placeorderreq.order_detail = "Delivery Date " + this.details.deliverydate + ",between " + this.details.timesloat;
+            // String req="{\"method\":\"add_oder\",\"first_name\":\""+addresses.get(0).getFname()+"\",\"last_name\":\""+addresses.get(0).getLname()+"\"," +
+            // "\"gender\":\"Male\",\"email\":\""+new AppPreferences(PlaceOrderActivity.this).getEmail()+"\",\"amount\":\""+amount+
+            // "\",\"shipping_type\":\""+spnPaymentType.getSelectedItem().toString()+"\",\"street\":\""+addresses.get(0).getArea()+"\",\"city\":\""+addresses.get(0).getAddr()+"\",\"state\":\""+addresses.get(0).getLandmark()+"\",\"country\":\"India\",\"zipcode\":\""+addresses.get(0).getZipcode()+
+            // "\",\"phone\":\""+addresses.get(0).getPhone()+"\",\"order_detail\":\"Delivery Date "+txtDate.getText().toString()+", between "+spnTimeSlot.getSelectedItem().toString()+"\",\"user_id\":\"23\",\"p_id\":\""+p_id+"\",\"qty\":\""+qty+"\"}";
+            // {"method":"add_oder","first_name":"mahesh","last_name":"muley","gender":"Male","email":"muley.mahesh@gmail.com","amount":" //148.00","shipping_type":"cod","street":" Sector 21","city":"abc //building","state":"square","country":"India","zipcode":"201307","phone":"9890473764","order_detail":"Delivery Date 10/06/2016, between 3 - //5PM","user_id":"23","p_id":"356,","qty":"1,"}
+            // this.nav.push(ThanksPage);
+            //following is the method for order place
+            if (this.placeorderreq.first_name != '' && this.placeorderreq.email != '' && this.placeorderreq.phone != '' && this.placeorderreq.zipcode != '' && this.details.deliverydate != '' && this.details.timesloat != '' && this.placeorderreq.shipping_type != '') {
+                //     this.restProvider.feedbackOperation(this.placeorderreq)
+                //     .then(data => {
+                //     this.response = data;
+                //     if(this.response.result=="success")
+                //     {
+                //       this.toast.show(this.response.responseMessage);
+                //      // this.toast.show("Order Placed Successfully");
+                //      this._cart.reset();
+                //       this.goTo('ThanksPage',1);
+                //     }
+                //     else
+                //     {
+                //       this.toast.show(this.response.responseMessage);
+                //     }
+                //     });
+                //     console.log(this.response);
+                //  //   this.toast.show("hiiiiiiii");
+                this.goTo('ConfirmPage', this.placeorderreq);
+            }
+            else {
+                this.toast.show("All field required");
+            }
+            // this.toast.show("place order is commented");
+        }
+        else {
+            this.toast.show("Please add address");
+        }
+    };
+    return Checkout1Page;
 }());
-CheckoutPage = __decorate([
+Checkout1Page = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-checkout',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/checkout/checkout.html"*/'<ion-header>\n    <ion-navbar color="primary" no-border-bottom>\n        <!-- <ion-segment [(ngModel)]="checkout" padding-left padding-right>\n          <ion-segment-button value="shipping">\n            {{ \'SHIPPING\' | translate}}\n          </ion-segment-button>\n          <ion-segment-button value="payment" [disabled]="shipping_lines.length==0"> \n            {{ \'PAYMENT\' | translate}}\n          </ion-segment-button>\n        </ion-segment>\n        <ion-buttons end>\n          <button ion-button icon-only tappable (click)="viewCart()">\n            <ion-icon name="basket"></ion-icon>\n          </button>\n        </ion-buttons> -->\n   </ion-navbar>\n </ion-header>\n\n<ion-content padding-top>\n <div>\n     <div>\n      <!-- <ion-list margin-bottom>\n        <div padding-horizontal>\n          <h3>{{ \'BILLING_ADDRESS\' | translate}}</h3>\n          <ion-note padding-bottom>{{ \'BILLING_DESC\' | translate}}</ion-note>\n        </div>\n        <ion-item no-lines *ngIf="billing">\n            <p>{{billing.first_name}} • {{billing.phone}}</p>\n            <p>{{billing.address_1}}</p>\n            <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>\n            <p>{{billing.pincode}}</p>\n        </ion-item>\n        <div padding-horizontal>\n          <button ion-button outline block icon-start *ngIf="!billing" tappable (click)="addAddress(3)">\n              {{ \'ADD\' | translate}} {{ \'NEW_ADDRESS\' | translate}}\n          </button>\n          <button ion-button outline block icon-start *ngIf="billing" tappable (click)="selectAddress(3)">\n              {{ \'SELECT\' | translate}} {{ \'OTHER_ADDRESS\' | translate}}\n          </button>\n        </div>\n      </ion-list> -->\n\n      <ion-list margin-top padding-top > \n        <div>\n          <h3>{{ \'SHIPPING ADDRESS\' | translate}}</h3>\n          <ion-note padding-bottom>{{ \'SHIPPING_DESC\' | translate}}</ion-note>\n        </div>\n        <ion-item no-lines *ngIf="billing">\n          <p>{{billing.first_name}} • {{billing.phone}}</p>\n          <p>{{billing.address_1}}</p>\n          <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>\n          <p>{{billing.pincode}}</p>\n      </ion-item>\n        <div padding-horizontal>\n          <button ion-button outline block icon-start *ngIf="!shipping" tappable (click)="addAddress(4)">\n              {{ \'ADD\' | translate}} {{ \'NEW_ADDRESS\' | translate}}\n          </button>\n          <button ion-button outline block icon-start *ngIf="shipping" tappable (click)="selectAddress(4)">\n              {{ \'SELECT\' | translate}} {{ \'OTHER_ADDRESS\' | translate}}\n          </button>\n        </div>\n      </ion-list>\n\n      <ion-list no-margin margin-top padding-top>\n        <div padding-horizontal>\n          <h3>{{ \'SHIPPING_METHOD\' | translate}}</h3>\n          <ion-note>{{ \'SHIPPING_METHOD_DESC\' | translate}}</ion-note>\n        </div>\n      </ion-list>\n      <ion-list radio-group no-margin margin-vertical (ionChange)="setShipping($event)">\n        <ng-container *ngFor="let x of shipping_method">\n          <ion-item mode="ios" *ngIf="x.enabled">\n            <ion-label>{{x.title}} <span *ngIf="x.settings.cost">({{x.settings.cost.value | money}})</span></ion-label>\n            <ion-radio mode="ios" [value]="x | json"></ion-radio>\n          </ion-item>\n        </ng-container>\n      </ion-list>\n\n      <div padding>\n        <button ion-button block icon-start tappable (click)="next()" [disabled]="shipping_lines.length == 0">\n            {{ \'NEXT\' | translate}}\n        </button>\n      </div>\n    </div>\n<!-- \n    <div *ngSwitchCase="\'payment\'">\n      <ion-list margin-bottom>\n        <div padding-horizontal>\n          <h3>{{ \'PAYMENT_METHOD\' | translate}}</h3>\n          <ion-note>{{ \'PAYMENT_METHOD_DESC\' | translate}}</ion-note>\n        </div>\n      </ion-list>\n      <ion-list radio-group no-margin margin-top (ionChange)="setPayment($event)">\n        <ng-container *ngFor="let x of payments; let i = index">\n          <ion-item mode="ios" *ngIf="x.enabled" [ngClass]="{\'section-active\': x.open, \'section\': !x.open}">\n            <ion-label>\n              {{x.title}} \n              <img *ngFor="let x of img[x.id]" [src]="x" width="25" />\n            </ion-label>\n            <ion-radio mode="ios" [value]="x | json"></ion-radio>\n          </ion-item>\n          <ion-list class="accord" no-lines padding no-margin *ngIf="x.open && x.description" [ngClass]="{\'section-active\': x.open, \'section\': !x.open}">\n              <ion-item [innerHTML]="x.description" no-padding></ion-item>\n              <ion-grid class="stripe-form" *ngIf="x.id == \'stripe\'">\n                <ion-row>\n                  <ion-col>\n                    <ion-item no-padding>\n                        <ion-label floating>Card No</ion-label>\n                        <ion-input [(ngModel)]="stripe.no" [class.invalid]="!stripe.no" type="number" min="16" inputmode="numeric" pattern="[0-9]*"></ion-input>\n                    </ion-item>\n                  </ion-col>\n                </ion-row>\n                <ion-row>\n                  <ion-col>\n                    <ion-item no-padding> \n                        <ion-label floating>Month</ion-label>\n                        <ion-select [(ngModel)]="stripe.month" [class.invalid]="!stripe.month">\n                            <ion-option *ngFor="let x of months; let i = index" [value]="i+1">{{x}}</ion-option>\n                        </ion-select>\n                    </ion-item>\n                  </ion-col>\n                  <ion-col>\n                    <ion-item no-padding>\n                        <ion-label floating>Year</ion-label>\n                        <ion-select [(ngModel)]="stripe.year" [class.invalid]="!stripe.year">\n                            <ion-option *ngFor="let x of years; let i = index" [value]="x">{{x}}</ion-option>\n                        </ion-select>\n                    </ion-item>\n                  </ion-col>\n                  <ion-col>\n                    <ion-item no-padding>\n                        <ion-label floating>CVC</ion-label>\n                        <ion-input [(ngModel)]="stripe.cvc" type="number" min="3" [class.invalid]="!stripe.cvc" type="number" min="3" inputmode="numeric" pattern="[0-9]*"></ion-input>\n                    </ion-item>\n                  </ion-col>\n                </ion-row>\n              </ion-grid>\n          </ion-list>\n        </ng-container>\n      </ion-list>\n\n      <ion-list no-margin margin-top padding-top>\n        <div padding-horizontal>\n          <h3>{{ \'REVIEW_PURCHASE\' | translate}}</h3>\n          <ion-note>{{ \'REVIEW_DESC\' | translate}}</ion-note>\n        </div>\n      </ion-list>\n      <ion-list no-margin margin-top *ngIf="cart.all.length > 0">\n        <ion-item *ngFor="let x of cart.all">\n          <ion-thumbnail item-start>\n            <div class="img" [ngStyle]="{\'background-image\': \'url(\' + x.images[0].src +\')\'}"></div>\n          </ion-thumbnail>\n          <h3 [innerHTML]="x.name"></h3>\n          <p>\n            <span class="disc" *ngIf="x.on_sale">{{x.regular_price | money}} •</span> \n            <span class="price">{{x.price | money}}</span>\n            <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container>\n            <span>• {{x.quantity}}x</span>\n          </p>\n        </ion-item>\n      </ion-list>\n\n      <ion-list no-margin margin-top class="total">\n        <ion-item>\n          {{ \'SUBTOTAL\' | translate}} ({{cart.totalQtyDetail}} items)\n          <span item-end>{{cart.total | money}}</span>\n        </ion-item>\n        <ion-item *ngIf="shipping_lines[0]">\n          {{ \'SHIPPING\' | translate}} ({{shipping_lines[0].method_title}}) \n          <span item-end>{{shipping_lines[0].total | money}}</span>\n        </ion-item>\n        <ion-item>\n          Total <span item-end>{{total | money}}</span>\n        </ion-item>\n      </ion-list>\n\n      <div padding>\n        <button ion-button block icon-start tappable (click)="confirm()" [disabled]="!order.payment_method || ((order.payment_method == \'stripe\') && (!stripe.no || !stripe.month || !stripe.year || !stripe.cvc))">\n            {{ \'BUY_NOW\' | translate}} {{total | money}}\n        </button>\n      </div>\n    </div> -->\n\n  </div>\n\n  \n\n</ion-content>'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/checkout/checkout.html"*/,
+        selector: 'page-checkout1',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/checkout1/checkout1.html"*/'<!--\n  Generated template for the Checkout1Page page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Checkout</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-card>\n  <ion-list margin-top padding-top > \n    <div>\n      <h3 padding>{{ \'SHIPPING ADDRESS\' }}</h3>\n      \n    </div>\n    <ion-item no-lines *ngIf="billing">\n      <p>{{billing.first_name}} • {{billing.phone}}</p>\n      <p>{{billing.address_1}}</p>\n      <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>\n      <p>{{billing.pincode}}</p>\n  </ion-item>\n</ion-list>\n<ion-col col-6> \n		<!-- <button ion-button color="secondary" class="my-width" large >\n			<b>Save</b>\n    </button> -->\n    <button ion-button  width="600px" tappable (click)="goTo(\'SavedAddressPage\')">\n        {{\'ADD NEW\'}}\n    </button>\n	</ion-col>\n\n	<ion-col col-6>\n      <button ion-button   width="600px"  tappable (click)="goTo(\'SavedAddressPage\')">\n          {{\'SELECT OTHER\'}}\n      </button>\n	</ion-col>\n      \n   \n\n</ion-card>\n<!-- <ion-card>\n  <ion-item *ngFor="let x of products">\n    <ion-item>\n    <ion-thumbnail item-start>\n    <div class="img" [ngStyle]="{\'background-image\': \'url(http://www.babyneeds.co.in/babyneeds/product_image/\' +x.images +\')\'}"></div>\n     \n    </ion-thumbnail>\n    <h3 [innerHTML]="x.name"></h3>\n     <p>\n       <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->\n        <!-- <span class="price">{{x.finalprice | money}}</span> -->\n      <!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->\n      <!-- <span> x {{x.quantity}}</span>\n    </p>\n  \n  </ion-item>\n\n  </ion-item>\n\n</ion-card> --> \n\n<!-- <ion-item>\n   \n    <h6 >Amount :{{_cart.total}}Rs.</h6>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total>200" >Free Delivery</p>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total<200" >Delivery charge 30 Rs.</p>\n    <h6  *ngIf="_cart.total<200" >Total :{{_cart.total+30}}Rs.</h6>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total<200">*Orde above 200Rs for free delivery</p>\n</ion-item> -->\n<ion-item>\n    <ion-label>Date</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="details.deliverydate">\n    </ion-datetime>\n  </ion-item>\n  <ion-item>\n      <ion-label>Time Slot</ion-label>\n      <ion-select [(ngModel)]="details.timesloat">\n        <ion-option *ngFor="let time of timing" [value]="time" >{{time}}</ion-option>\n     </ion-select>\n    </ion-item>\n\n    <ion-item>\n        <ion-label>Mode of Payment</ion-label>\n        <ion-select [(ngModel)]="placeorderreq.shipping_type">\n          <ion-option> Cash On Delivery</ion-option>\n         \n          <ion-option>COD BHIM 9891850708@UPI</ion-option>\n       \n         </ion-select>\n      </ion-item>\n    \n  \n      <div padding>\n        <button ion-button block icon-start tappable (click)="placeorder()">\n          proceed\n        </button>\n      </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/checkout1/checkout1.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
-], CheckoutPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
+], Checkout1Page);
 
-//# sourceMappingURL=checkout.js.map
+//# sourceMappingURL=checkout1.js.map
 
 /***/ }),
 
-/***/ 967:
+/***/ 966:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckoutPageModule", function() { return CheckoutPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(545);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__checkout__ = __webpack_require__(1007);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Checkout1PageModule", function() { return Checkout1PageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__checkout1__ = __webpack_require__(1006);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -333,25 +312,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var CheckoutPageModule = (function () {
-    function CheckoutPageModule() {
+var Checkout1PageModule = (function () {
+    function Checkout1PageModule() {
     }
-    return CheckoutPageModule;
+    return Checkout1PageModule;
 }());
-CheckoutPageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
+Checkout1PageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__checkout__["a" /* CheckoutPage */]
+            __WEBPACK_IMPORTED_MODULE_2__checkout1__["a" /* Checkout1Page */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__checkout__["a" /* CheckoutPage */]),
-            __WEBPACK_IMPORTED_MODULE_0__app_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__checkout1__["a" /* Checkout1Page */]),
         ],
     })
-], CheckoutPageModule);
+], Checkout1PageModule);
 
-//# sourceMappingURL=checkout.module.js.map
+//# sourceMappingURL=checkout1.module.js.map
 
 /***/ })
 

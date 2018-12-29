@@ -1,6 +1,6 @@
 webpackJsonp([8],{
 
-/***/ 1018:
+/***/ 1019:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -129,7 +129,7 @@ var ReturnorderPage = (function () {
     ReturnorderPage.prototype.returnOrder = function () {
         var _this = this;
         if (this.reason != '' && this.returndate != '' && this.returntime != '') {
-            this.returnrequest.order_detail = "Reason of returning: " + this.reason + " retuen date: " + this.returndate + "return time: " + this.returntime + "";
+            this.returnrequest.order_detail = "Reason for return: " + this.reason + "\n return date: " + this.returndate + "\n return time: " + this.returntime + "";
             this.returnrequest.order_id = this.str.substring(2);
             this.restProvider.orderOperation(this.returnrequest)
                 .then(function (data) {
@@ -158,7 +158,7 @@ var ReturnorderPage = (function () {
 }());
 ReturnorderPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-returnorder',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/returnorder/returnorder.html"*/'<!--\n  Generated template for the ReturnorderPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  \n  <ion-navbar color="primary">\n    <ion-title>Return request</ion-title>\n</ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n<ion-card>\n    <ion-label padding floting>Reason for Return</ion-label>\n  <ion-item>\n   \n    <ion-textarea placeholder="Enter your reason..." [(ngModel)]="reason" ></ion-textarea>\n    \n  </ion-item>\n  <ion-item>\n    <ion-label>Return Date</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="returndate">\n    </ion-datetime>\n  </ion-item>\n  <ion-item>\n      <ion-label>Time Slot</ion-label>\n      <ion-select [(ngModel)]="returntime" >\n        <ion-option *ngFor="let time of timing" [value]="time" >{{time}}</ion-option>\n     </ion-select>\n    </ion-item>\n</ion-card>\n<button  full ion-button round tappable (click)="returnOrder()">Request Return</button><br>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/returnorder/returnorder.html"*/,
+        selector: 'page-returnorder',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/returnorder/returnorder.html"*/'<!--\n  Generated template for the ReturnorderPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  \n  <ion-navbar color="primary">\n    <ion-title>Return request</ion-title>\n</ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n<ion-card>\n    <ion-label padding floting><P><b>Reason for Return</b></P></ion-label>\n  <ion-item>\n   \n    <ion-textarea placeholder="Enter your reason..." [(ngModel)]="reason" ></ion-textarea>\n    \n  </ion-item>\n  <ion-item>\n    <ion-label>Return Date</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="returndate">\n    </ion-datetime>\n  </ion-item>\n  <ion-item>\n      <ion-label>Time Slot</ion-label>\n      <ion-select [(ngModel)]="returntime" >\n        <ion-option *ngFor="let time of timing" [value]="time" >{{time}}</ion-option>\n     </ion-select>\n    </ion-item>\n</ion-card>\n<button  full ion-button round tappable (click)="returnOrder()">Request Return</button><br>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/returnorder/returnorder.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
 ], ReturnorderPage);
@@ -175,7 +175,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReturnorderPageModule", function() { return ReturnorderPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__returnorder__ = __webpack_require__(1018);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__returnorder__ = __webpack_require__(1019);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

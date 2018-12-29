@@ -45,6 +45,12 @@
     },
     "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "ionstore.ionicpremium.tabs"
+    },
+    "cordova-plugin-fcm": {
+      "PACKAGE_NAME": "com.maks.babyneeds"
+    },
+    "phonegap-plugin-push": {
+      "PACKAGE_NAME": "com.maks.babyneeds"
     }
   },
   "dependent_plugins": {

@@ -1,16 +1,15 @@
 webpackJsonp([8],{
 
-/***/ 1020:
+/***/ 1019:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReturnorderPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__ = __webpack_require__(546);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(57);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -25,104 +24,158 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 /**
- * Generated class for the RegisterPage page.
+ * Generated class for the ReturnorderPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var RegisterPage = (function () {
-    function RegisterPage(history, cart, http, restProvider, alert, platform, socialSharing, translate, toast, wishlist, navCtrl, loader, modal, navParam, woo) {
-        this.history = history;
-        this.cart = cart;
-        this.http = http;
+var ReturnorderPage = (function () {
+    function ReturnorderPage(_cart1, datepipe, restProvider, setting, alert, platform, nav, translate, toast, user, loader, woo, _cart, events, _order, address, navParams, modal) {
+        this._cart1 = _cart1;
+        this.datepipe = datepipe;
         this.restProvider = restProvider;
+        this.setting = setting;
         this.alert = alert;
         this.platform = platform;
-        this.socialSharing = socialSharing;
+        this.nav = nav;
         this.translate = translate;
         this.toast = toast;
-        this.wishlist = wishlist;
-        this.navCtrl = navCtrl;
+        this.user = user;
         this.loader = loader;
-        this.modal = modal;
-        this.navParam = navParam;
         this.woo = woo;
-        this.todo = {
-            method: 'signup',
-            fname: '',
-            lname: '',
-            email: '',
-            divice_token: '12aacc',
-            password: '',
-            mobile: ''
+        this._cart = _cart;
+        this.events = events;
+        this._order = _order;
+        this.address = address;
+        this.navParams = navParams;
+        this.modal = modal;
+        this.times = [
+            {
+                "stime": 8,
+                "etime": 11,
+                "slots": ["11-1PM", "1-3PM", "3-5PM", "5-7PM"]
+            },
+            {
+                "stime": 10,
+                "etime": 13,
+                "slots": ["1-3PM", "3-5PM", "5-7PM"]
+            },
+            {
+                "stime": 12,
+                "etime": 15,
+                "slots": ["3-5PM", "5-7PM"]
+            },
+            {
+                "stime": 14,
+                "etime": 17,
+                "slots": ["5-7PM"]
+            },
+        ];
+        this.returnrequest = {
+            method: 'request_return',
+            order_id: '',
+            user_email: '',
+            order_detail: '',
         };
+        this.timing = [];
+        this.returnrequest.user_email = this.user.user.user_email;
+        this.orders = this.navParams.data.params;
+        this.minDate = new Date().toISOString();
+        this.maxDate = new Date(new Date().setFullYear(new Date().getFullYear() + 2)).toISOString();
+        this.str = this.navParams.data.params.o_id;
     }
-    RegisterPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad RegisterPage');
+    ReturnorderPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ReturnorderPage');
     };
-    RegisterPage.prototype.getReegister = function () {
-        var _this = this;
-        if (this.todo.email != "" && this.todo.fname != "" && this.todo.lname != '' && this.todo.mobile != "" && this.todo.password != '') {
-            if (this.todo.password.length > 3) {
-                if (this.todo.password == this.cfrmpass) {
-                    this.restProvider.register(this.todo)
-                        .then(function (data) {
-                        _this.cust = data;
-                        console.log(_this.cust);
-                        if (_this.cust.result == "success") {
-                            _this.toast.show(_this.cust.responseMessage);
-                            _this.todo = {
-                                method: 'signup',
-                                fname: '',
-                                lname: '',
-                                email: '',
-                                divice_token: '12aacc',
-                                password: '',
-                                mobile: ''
-                            };
-                            _this.navCtrl.push('LoginPage');
+    ReturnorderPage.prototype.onChange = function () {
+        this.timing = [];
+        //  console.log(this.details.deliverydate);
+        var latest_date = this.datepipe.transform(this.returndate, 'M/d/yyyy');
+        var c_date = this.datepipe.transform(new Date(), 'M/d/yyyy');
+        console.log(latest_date);
+        console.log(c_date);
+        if (latest_date == c_date) {
+            this.ctime = new Date().getHours();
+            console.log("ctime is=" + this.ctime);
+            if (parseInt(this.ctime) > 7 && parseInt(this.ctime) < 17) {
+                for (var _i = 0, _a = this.times; _i < _a.length; _i++) {
+                    var s = _a[_i];
+                    console.log("ctime=" + this.ctime);
+                    console.log("stime=" + s.stime);
+                    console.log("int ctime=" + parseInt(this.ctime));
+                    if (s.stime < parseInt(this.ctime) && s.etime > parseInt(this.ctime)) {
+                        console.log("I am in if stime=" + s.stime);
+                        for (var _b = 0, _c = s.slots; _b < _c.length; _b++) {
+                            var s1 = _c[_b];
+                            this.timing.push(s1);
                         }
-                        else if (_this.cust.result == "failure") {
-                            _this.toast.show(_this.cust.responseMessage);
-                        }
-                    });
-                }
-                else {
-                    this.toast.show("new password and confirm password are not same");
+                        console.log(this.timing);
+                    }
                 }
             }
+            else if (parseInt(this.ctime) > 17) {
+                this.toast.show("Time sloats are over please select next date");
+                this.returndate = '';
+            }
             else {
-                this.toast.show("Password should be more than 3 character");
+                this.timing = ["9-11AM", "11-1PM", "1-3PM", "3-5PM", "5-7PM"];
             }
         }
         else {
-            this.toast.show("All field required");
+            this.timing = ["9-11AM", "11-1PM", "1-3PM", "3-5PM", "5-7PM"];
         }
     };
-    return RegisterPage;
+    ReturnorderPage.prototype.returnOrder = function () {
+        var _this = this;
+        if (this.reason != '' && this.returndate != '' && this.returntime != '') {
+            this.returnrequest.order_detail = "Reason for return: " + this.reason + "\n return date: " + this.returndate + "\n return time: " + this.returntime + "";
+            this.returnrequest.order_id = this.str.substring(2);
+            this.restProvider.orderOperation(this.returnrequest)
+                .then(function (data) {
+                console.log(data);
+                _this.res = data;
+                if (_this.res.result == "success") {
+                    _this.toast.show(_this.res.responseMessage);
+                    _this.returnrequest.order_detail = '';
+                    _this.returnrequest.order_id = '';
+                    _this.returnrequest.user_email = '';
+                    _this.nav.popTo(_this.nav.getByIndex(1));
+                }
+                else if (_this.res.result == "failure") {
+                    _this.toast.show(_this.res.responseMessage);
+                }
+                else {
+                    _this.toast.show("Something is wrong please contact Us");
+                }
+            });
+        }
+        else {
+            this.toast.show("All Field required");
+        }
+    };
+    return ReturnorderPage;
 }());
-RegisterPage = __decorate([
+ReturnorderPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-register',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/register/register.html"*/'<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    \n      <ion-navbar color="primary">\n          <ion-title>Register</ion-title>\n      </ion-navbar>\n    \n    </ion-header>\n    \n    \n    <ion-content padding>\n    \n        <ion-list>\n           \n            <ion-item>\n                <ion-label floating>First Name</ion-label>\n                <ion-input type="text"  [(ngModel)]="todo.fname" ngControl="description"></ion-input>\n            \n            </ion-item>\n            <ion-item>\n                <ion-label floating>Last Name</ion-label>\n                <ion-input type="text"  [(ngModel)]="todo.lname" ngControl="description"></ion-input>\n                \n            </ion-item>\n            <ion-item>\n                <ion-label floating>Email</ion-label>\n                <ion-input type="email" [(ngModel)]="todo.email" ngControl="title"></ion-input>\n                \n              </ion-item>\n            <ion-item>\n                <ion-label floating>Password</ion-label>\n                <ion-input type="password"   minlength="3" [(ngModel)]="todo.password" ngControl="description"></ion-input>\n                \n            </ion-item>\n            <ion-item>\n                <ion-label floating>Confirm Password</ion-label>\n                <ion-input type="password"   minlength="3"  [(ngModel)]="cfrmpass" ngControl="description"></ion-input>\n                \n            </ion-item>\n            \n              <ion-item>\n                  <ion-label floating>Mobile no</ion-label>\n                  <ion-input type="number" maxlength="10" minlength="10" [(ngModel)]="todo.mobile" ngControl="description"></ion-input>\n                  \n              </ion-item>\n    \n          </ion-list>\n             \n              <button ion-button full round  color="app_primary" (click)="getReegister()" >Register</button>\n    \n    </ion-content>\n    '/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/register/register.html"*/,
+        selector: 'page-returnorder',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/returnorder/returnorder.html"*/'<!--\n  Generated template for the ReturnorderPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  \n  <ion-navbar color="primary">\n    <ion-title>Return request</ion-title>\n</ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n<ion-card>\n    <ion-label padding floting><P><b>Reason for Return</b></P></ion-label>\n  <ion-item>\n   \n    <ion-textarea placeholder="Enter your reason..." [(ngModel)]="reason" ></ion-textarea>\n    \n  </ion-item>\n  <ion-item>\n    <ion-label>Return Date</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="returndate">\n    </ion-datetime>\n  </ion-item>\n  <ion-item>\n      <ion-label>Time Slot</ion-label>\n      <ion-select [(ngModel)]="returntime" >\n        <ion-option *ngFor="let time of timing" [value]="time" >{{time}}</ion-option>\n     </ion-select>\n    </ion-item>\n</ion-card>\n<button  full ion-button round tappable (click)="returnOrder()">Request Return</button><br>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/returnorder/returnorder.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["c" /* HistoryProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__["a" /* SocialSharing */], __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["l" /* WishlistProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */]])
-], RegisterPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
+], ReturnorderPage);
 
-//# sourceMappingURL=register.js.map
+//# sourceMappingURL=returnorder.js.map
 
 /***/ }),
 
-/***/ 982:
+/***/ 981:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReturnorderPageModule", function() { return ReturnorderPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register__ = __webpack_require__(1020);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__returnorder__ = __webpack_require__(1019);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -132,23 +185,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var RegisterPageModule = (function () {
-    function RegisterPageModule() {
+var ReturnorderPageModule = (function () {
+    function ReturnorderPageModule() {
     }
-    return RegisterPageModule;
+    return ReturnorderPageModule;
 }());
-RegisterPageModule = __decorate([
+ReturnorderPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */],
+            __WEBPACK_IMPORTED_MODULE_2__returnorder__["a" /* ReturnorderPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__returnorder__["a" /* ReturnorderPage */]),
         ],
     })
-], RegisterPageModule);
+], ReturnorderPageModule);
 
-//# sourceMappingURL=register.module.js.map
+//# sourceMappingURL=returnorder.module.js.map
 
 /***/ })
 
