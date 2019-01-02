@@ -496,11 +496,11 @@ var DIRECTIVES = [
 
 var map = {
 	"../pages/aboutus/aboutus.module": [
-		954,
+		955,
 		37
 	],
 	"../pages/account/account.module": [
-		955,
+		954,
 		36
 	],
 	"../pages/account/chats/chats.module": [
@@ -1464,6 +1464,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+//import { LocalNotifications } from '@ionic-native/local-notifications';
 
 var AppModule = (function () {
     function AppModule() {
@@ -1484,8 +1485,8 @@ AppModule = __decorate([
                 backButtonText: '',
             }, {
                 links: [
-                    { loadChildren: '../pages/aboutus/aboutus.module#AboutusPageModule', name: 'AboutusPage', segment: 'aboutus', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/account.module#AccountPageModule', name: 'AccountPage', segment: 'account', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/aboutus/aboutus.module#AboutusPageModule', name: 'AboutusPage', segment: 'aboutus', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/chats/chats.module#AccountChatsPageModule', name: 'AccountChatsPage', segment: 'chats', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/chats/message/message.module#AccountChatsMessagePageModule', name: 'AccountChatsMessagePage', segment: 'message', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/help/help.module#AccountHelpPageModule', name: 'AccountHelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
@@ -1541,7 +1542,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_10__ionic_native_fcm__["a" /* FCM */],
             __WEBPACK_IMPORTED_MODULE_12__ionic_native_sqlite__["a" /* SQLite */],
             __WEBPACK_IMPORTED_MODULE_9__providers_recent_recent__["a" /* RecentProvider */], __WEBPACK_IMPORTED_MODULE_7__angular_common__["e" /* DatePipe */],
-            __WEBPACK_IMPORTED_MODULE_13__providers_rate_rate__["a" /* RateProvider */]
+            __WEBPACK_IMPORTED_MODULE_13__providers_rate_rate__["a" /* RateProvider */],
         ]
     })
 ], AppModule);
@@ -3730,9 +3731,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+//import { LocalNotifications } from '@ionic-native/local-notifications';
 var MyApp = (function () {
-    function MyApp(storage, rate, push, appRate, fcm, _user, oneSignal, notif, platform, /*private config: Config,*/ settings, translate, woo, statusBar, splashScreen) {
+    function MyApp(alertCtrl, storage, rate, push, appRate, fcm, _user, oneSignal, notif, platform, /*private config: Config,*/ settings, translate, woo, statusBar, splashScreen) {
         var _this = this;
+        this.alertCtrl = alertCtrl;
         this.storage = storage;
         this.rate = rate;
         this.push = push;
@@ -3755,6 +3758,22 @@ var MyApp = (function () {
             _this.statusBar.styleDefault();
             // this.storage1=this.storage;
             _this.splashScreen.hide();
+            _this.fcm.onNotification().subscribe(function (data) {
+                console.log("", data);
+                if (data.wasTapped == false) {
+                    // if application open, show popup
+                    var confirmAlert = _this.alertCtrl.create({
+                        title: data.title,
+                        message: data.body,
+                        buttons: [{
+                                text: 'Ignore',
+                                role: 'cancel'
+                            },
+                        ]
+                    });
+                    confirmAlert.present();
+                }
+            });
             _this.pushSetup();
             _this.rate.load();
             _this.appRate.preferences.storeAppURL = {
@@ -3878,6 +3897,7 @@ var MyApp = (function () {
         console.log('apprate1', rate);
     };
     MyApp.prototype.pushSetup = function () {
+        var _this = this;
         var options = {
             android: {
                 senderID: '1063542947486'
@@ -3893,7 +3913,6 @@ var MyApp = (function () {
             }
         };
         var pushObject = this.push.init(options);
-        pushObject.on('notification').subscribe(function (notification) { return console.log('Received a notification', notification); });
         pushObject.on('registration').subscribe(function (registration) { return console.log('Device registered', registration); });
         pushObject.on('registration').subscribe(function (data) {
             console.log("device registered -> ", data);
@@ -3902,6 +3921,30 @@ var MyApp = (function () {
             pushObject.subscribe(topic).then(function (res) {
                 console.log("subscribed to topic: ", res);
             });
+        });
+        pushObject.on('notification').subscribe(function (data) {
+            console.log('Received a notification', data);
+            console.log('message -> ' + data.message);
+            //if user using app and push notification comes
+            if (data.additionalData.foreground) {
+                // if application open, show popup
+                var confirmAlert = _this.alertCtrl.create({
+                    title: 'New Notification',
+                    message: data.message,
+                    buttons: [{
+                            text: 'Ignore',
+                            role: 'cancel'
+                        },
+                    ]
+                });
+                confirmAlert.present();
+            }
+            else {
+                //if user NOT using app and push notification comes
+                //TODO: Your logic on click of push notification directly
+                // this.nav.push(DetailsPage, { message: data.message });
+                console.log('Push notification clicked');
+            }
         });
         pushObject.on('error').subscribe(function (error) { return console.error('Error with Push plugin', error); });
     };
@@ -3931,7 +3974,7 @@ __decorate([
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/app/app.html"*/'\n<ion-menu [content]="content">\n    <ion-header>\n    \n      <ion-navbar color="primary" >\n        <ion-title>Menu</ion-title>\n      \n            \n       \n       \n\n      </ion-navbar>\n    \n    </ion-header>\n    \n    \n    <ion-content >\n\n        <ion-item no-padding color="primary" *ngIf="_user.user.fname" >\n            \n              <div align="center">	\n            <img align-items="center" src="assets/img/logo/ic_launcher.png"></div>\n              \n            <h3 style="font-size:14px; text-align:center; color:#ffff">{{user.fname}}</h3>\n            <h3 style="font-size:14px; text-align:center ; color:#ffff" >{{user.user_email}}</h3>\n            <!-- <p style="font-size:10px; text-align:center">{{ \'EDIT PROFILE\' | translate}}</p> -->\n            <!-- <ion-avatar item-end>\n              <img src="assets/img/miscellaneous/user.png">\n            </ion-avatar> -->\n          </ion-item>\n      \n      \n          <ion-item no-padding  color="primary" *ngIf="!_user.user.fname">\n            \n              <div align="center">		<img align-items="center" src="assets/img/logo/ic_launcher.png"></div>\n              \n            <h3 style="font-size:14px; text-align:center; color:#ffff"></h3>\n            <h3 style="font-size:14px; text-align:center ; color:#ffff" >Welcome Guest</h3>\n          </ion-item>\n      \n      \n\n    <ion-list>\n        <button menuClose ion-item (click)="OnHomeClicked()">\n        <ion-label>Home</ion-label>\n      </button>\n      <button menuClose ion-item (click)="goTo(\'ProductGridPage\',\'New Arrival\')">\n          \n          <ion-label>New Arrivals </ion-label>\n      </button>\n      <button menuClose ion-item  (click)="goTo(\'CategoriesPage\',\'0\')">\n         \n          <ion-label>Shop by Brand</ion-label>\n      </button>\n\n      <!--<button ion-item (click)="goTo()">\n          \n           <ion-label>Categories</ion-label>\n       </button>-->\n       <button menuClose ion-item  (click)="goTo(\'MyorderPage\',\'0\')"> \n        <ion-label>My Orders</ion-label>\n       </button>\n    \n    </ion-list>\n    <hr>\n    <ion-list>\n        <button menuClose ion-item (click)="goTo(\'ServicesPage\',\'0\')">\n        <ion-label>Services</ion-label>\n      </button>\n      <button menuClose ion-item (click)="goTo(\'AboutusPage\',\'0\')">\n          <ion-label>About Us</ion-label>\n      </button>\n      <button menuClose ion-item (click)="goTo(\'FeedbackPage\',\'0\')">\n          <ion-label>Feedback</ion-label>\n      </button>\n      <button  *ngIf="_user.user.fname" menuClose ion-item (click)="logout()">\n        <ion-label>Log out</ion-label>\n      </button>\n\n     \n    </ion-list>\n    <!-- <button menuClose ion-item (click)="rateMe()">Rate Me</button> -->\n    </ion-content>\n    </ion-menu>\n    <ion-nav [root]="rootPage" type="overlay"  #content swipeBackEnabled="false"></ion-nav> \n\n\n\n\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/app/app.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_12__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_14__providers_rate_rate__["a" /* RateProvider */], __WEBPACK_IMPORTED_MODULE_11__ionic_native_push__["a" /* Push */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_app_rate__["a" /* AppRate */], __WEBPACK_IMPORTED_MODULE_10__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_6__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_onesignal__["a" /* OneSignal */], __WEBPACK_IMPORTED_MODULE_6__providers_providers__["e" /* NotifProvider */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_6__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_6__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_12__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_14__providers_rate_rate__["a" /* RateProvider */], __WEBPACK_IMPORTED_MODULE_11__ionic_native_push__["a" /* Push */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_app_rate__["a" /* AppRate */], __WEBPACK_IMPORTED_MODULE_10__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_6__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_onesignal__["a" /* OneSignal */], __WEBPACK_IMPORTED_MODULE_6__providers_providers__["e" /* NotifProvider */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_6__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_6__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */]])
 ], MyApp);
 
 //# sourceMappingURL=app.component.js.map

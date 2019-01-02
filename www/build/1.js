@@ -137,7 +137,7 @@ var WishlistPage = (function () {
             });
         }
         else {
-            console.log("You are not Loged in");
+            console.log("You are not Logged in....");
         }
         this.loader.dismiss();
     };

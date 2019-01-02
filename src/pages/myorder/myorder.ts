@@ -50,7 +50,7 @@ export class MyorderPage {
      this.myOrder();
     }
     else{
-      this.toast.show("You are not login..");
+      this.toast.show("You are not Logged in....");
     }
 	}
 

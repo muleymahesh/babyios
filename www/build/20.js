@@ -31,7 +31,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var ConfirmPage = (function () {
-    function ConfirmPage(_cart1, datepipe, restProvider, setting, alert, platform, nav, translate, toast, user, loader, woo, _cart, events, _order, address, navParams, modal) {
+    function ConfirmPage(alertCtrl, _cart1, datepipe, restProvider, setting, alert, platform, nav, translate, toast, user, loader, woo, _cart, events, _order, address, navParams, modal) {
+        this.alertCtrl = alertCtrl;
         this._cart1 = _cart1;
         this.datepipe = datepipe;
         this.restProvider = restProvider;
@@ -64,6 +65,32 @@ var ConfirmPage = (function () {
     };
     ConfirmPage.prototype.placeorder = function () {
         var _this = this;
+        console.log(this._cart.total);
+        if (this._cart.total < 250) {
+            var confirm_1 = this.alertCtrl.create({
+                title: 'Alert',
+                message: 'Are you sure you want to proceed?, Order above 250 for Free Delivery',
+                buttons: [{
+                        text: 'cancel'
+                    }, {
+                        text: 'place order',
+                        handler: function () {
+                            _this.confirmPlace();
+                        }
+                    }]
+            });
+            confirm_1.present();
+        }
+        else {
+            this.confirmPlace();
+        }
+        //   this.toast.show("hiiiiiiii")
+    };
+    ConfirmPage.prototype.goTo = function (page, params) {
+        this.nav.push(page, { params: params });
+    };
+    ConfirmPage.prototype.confirmPlace = function () {
+        var _this = this;
         this.restProvider.feedbackOperation(this.placeorderreq)
             .then(function (data) {
             _this.response = data;
@@ -78,10 +105,6 @@ var ConfirmPage = (function () {
             }
         });
         console.log(this.response);
-        //   this.toast.show("hiiiiiiii")
-    };
-    ConfirmPage.prototype.goTo = function (page, params) {
-        this.nav.push(page, { params: params });
     };
     ConfirmPage.prototype.cancel = function () {
         this.nav.pop();
@@ -90,9 +113,9 @@ var ConfirmPage = (function () {
 }());
 ConfirmPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-confirm',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/confirm/confirm.html"*/'<!--\n  Generated template for the ConfirmPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Confirm Order</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n<ion-card>\n  <p padding><b>Products in cart</b></p>\n  <ion-item *ngFor="let x of products">\n    <ion-item>\n    <ion-thumbnail item-start>\n    <div class="img" [ngStyle]="{\'background-image\': \'url(http://www.babyneeds.co.in/babyneeds/product_image/\' +x.images +\')\'}"></div>\n     \n    </ion-thumbnail>\n    <h3 [innerHTML]="x.name"></h3>\n     <p>\n       <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->\n        <!-- <span class="price">{{x.finalprice | money}}</span> -->\n      <!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->\n      <span> x {{x.quantity}}</span>\n    </p>\n    <p padding><b>Items:{{items}}</b></p>\n  </ion-item>\n\n  </ion-item>\n\n</ion-card>\n<ion-card>\n<ion-item>\n    \n     <h6 ><b>Amount :{{_cart.total}}Rs.</b></h6>\n     <p style="font-size:10px" color="primary" *ngIf="_cart.total>200" >Free Delivery</p>\n     <p style="font-size:10px" color="primary" *ngIf="_cart.total<200" >Delivery charge 30 Rs.</p>\n     <h6  *ngIf="_cart.total<200" ><b>Total :{{_cart.total+30}}Rs.</b></h6>\n     <p style="font-size:10px" color="primary" *ngIf="_cart.total<200">*Order above 200Rs for free delivery</p>\n </ion-item>\n\n\n\n</ion-card>\n<ion-card>\n    <p padding><b>Delivery Details</b></p>\n\n    <ion-list >\n      <p padding ><b>Delivery Address</b></p>\n         <ion-item no-lines *ngIf="billing">\n          <p>{{billing.first_name}} • {{billing.phone}}</p>\n          <p>{{billing.address_1}}</p>\n          <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>\n          <p>{{billing.pincode}}</p>\n      </ion-item>\n      <ion-item>\n          <p padding><b>Date and Time</b></p>\n          <p padding>{{placeorderreq.order_detail}} </p>\n      </ion-item>\n    </ion-list>\n\n</ion-card>\n\n  <div padding>\n    <button width="50px" ion-button round icon-start tappable (click)="placeorder()">\n      Confirm Order\n    </button>\n\n    <button ion-button width="50px" round icon-start tappable (click)="cancel()">\n      Cancel\n    </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/confirm/confirm.html"*/,
+        selector: 'page-confirm',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/confirm/confirm.html"*/'<!--\n  Generated template for the ConfirmPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Confirm Order</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n<ion-card>\n  <p padding><b>Products in cart</b></p>\n  <ion-item *ngFor="let x of products">\n    <ion-item>\n    <ion-thumbnail item-start>\n    <div class="img" [ngStyle]="{\'background-image\': \'url(http://www.babyneeds.co.in/babyneeds/product_image/\' +x.images +\')\'}"></div>\n     \n    </ion-thumbnail>\n    <h3 [innerHTML]="x.name"></h3>\n     <p>\n       <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->\n        <!-- <span class="price">{{x.finalprice | money}}</span> -->\n      <!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->\n      <span> x {{x.quantity}}</span>\n    </p>\n    <p padding><b>Items:{{items}}</b></p>\n  </ion-item>\n\n  </ion-item>\n\n</ion-card>\n<ion-card>\n<ion-item>\n    \n     <h6 ><b>Amount :{{_cart.total}}Rs.</b></h6>\n     <p style="font-size:10px" color="primary" *ngIf="_cart.total>250" >Free Delivery</p>\n     <p style="font-size:10px" color="primary" *ngIf="_cart.total<250" >Delivery charge 30 Rs.</p>\n     <h6  *ngIf="_cart.total<250" ><b>Total :{{_cart.total+30}}Rs.</b></h6>\n     <p style="font-size:10px" color="primary" *ngIf="_cart.total<250">*Order above 250Rs for free delivery</p>\n </ion-item>\n\n\n\n</ion-card>\n<ion-card>\n    <p padding><b>Delivery Details</b></p>\n\n    <ion-list >\n      <p padding ><b>Delivery Address</b></p>\n         <ion-item no-lines *ngIf="billing">\n          <p>{{billing.first_name}} • {{billing.phone}}</p>\n          <p>{{billing.address_1}}</p>\n          <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>\n          <p>{{billing.pincode}}</p>\n      </ion-item>\n      <ion-item>\n          <p padding><b>Date and Time</b></p>\n          <p padding>{{placeorderreq.order_detail}} </p>\n      </ion-item>\n    </ion-list>\n\n</ion-card>\n\n  <div padding>\n    <button width="50px" ion-button round icon-start tappable (click)="placeorder()">\n      Confirm Order\n    </button>\n\n    <button ion-button width="50px" round icon-start tappable (click)="cancel()">\n      Cancel\n    </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/confirm/confirm.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
 ], ConfirmPage);
 
 //# sourceMappingURL=confirm.js.map

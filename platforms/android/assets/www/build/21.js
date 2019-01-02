@@ -238,7 +238,7 @@ var Checkout1Page = (function () {
             this.placeorderreq.phone = this.billing.phone;
             this.placeorderreq.p_id = this.p_id;
             this.placeorderreq.qty = this.qty;
-            if (this._cart.total < 200) {
+            if (this._cart.total < 250) {
                 this.placeorderreq.amount = this._cart.total + 30;
             }
             else {

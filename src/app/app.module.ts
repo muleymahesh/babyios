@@ -16,6 +16,7 @@ import { RecentProvider } from '../providers/recent/recent';
 import { FCM } from '@ionic-native/fcm';
 import { AppRate } from '@ionic-native/app-rate';
 import { SQLite } from '@ionic-native/sqlite';
+//import { LocalNotifications } from '@ionic-native/local-notifications';
 import { RateProvider } from '../providers/rate/rate';
 @NgModule({
   declarations: [
@@ -45,8 +46,8 @@ import { RateProvider } from '../providers/rate/rate';
     FCM,
     SQLite,
     RecentProvider,DatePipe,
-    RateProvider
-    
+    RateProvider,
+  //  LocalNotifications
   ]
 })
 export class AppModule {

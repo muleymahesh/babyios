@@ -21,7 +21,7 @@ items:any;
 billing:any;
 response:any;
 placeorderreq:any;
-  constructor(public _cart1:CartProvider,public datepipe: DatePipe,public restProvider: RestProvider,private setting: SettingsProvider, private alert: AlertController, private platform: Platform, private nav: NavController, private translate: TranslateService, private toast: ToastProvider, private user: UserProvider, private loader: LoadingProvider, private woo: WooCommerceProvider, private _cart: CartProvider, private events: Events, private _order: OrderProvider, private address: AddressProvider, public navParams: NavParams, public modal: ModalController) {
+  constructor( private alertCtrl: AlertController,public _cart1:CartProvider,public datepipe: DatePipe,public restProvider: RestProvider,private setting: SettingsProvider, private alert: AlertController, private platform: Platform, private nav: NavController, private translate: TranslateService, private toast: ToastProvider, private user: UserProvider, private loader: LoadingProvider, private woo: WooCommerceProvider, private _cart: CartProvider, private events: Events, private _order: OrderProvider, private address: AddressProvider, public navParams: NavParams, public modal: ModalController) {
    this.placeorderreq = this.navParams.data.params;
     console.log(this.placeorderreq);
     this.products=this._cart.all;
@@ -39,6 +39,40 @@ placeorderreq:any;
 
   placeorder()
   {
+console.log(this._cart.total);
+
+   if(this._cart.total<250)
+   {
+    let confirm = this.alertCtrl.create({
+      title:'Alert',
+      message:'Are you sure you want to proceed?, Order above 250 for Free Delivery' ,
+      buttons: [{
+          text: 'cancel'
+        },{
+          text:'place order',
+          handler: () => {
+            this.confirmPlace();
+            
+          }
+        }]
+    });
+    confirm.present();
+
+
+   }
+   else{
+     this.confirmPlace();
+   }
+ //   this.toast.show("hiiiiiiii")
+  }
+  goTo(page, params){
+    this.nav.push(page, {params: params});
+  }
+
+
+  confirmPlace()
+  {
+
     this.restProvider.feedbackOperation(this.placeorderreq)
     .then(data => {
     this.response = data;
@@ -55,12 +89,7 @@ placeorderreq:any;
     }
     });
     console.log(this.response);
- //   this.toast.show("hiiiiiiii")
   }
-  goTo(page, params){
-    this.nav.push(page, {params: params});
-  }
-
   cancel()
   {
     this.nav.pop();

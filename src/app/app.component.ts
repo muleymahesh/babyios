@@ -2,7 +2,7 @@
 import { Component,ViewChild } from '@angular/core';
 import { OneSignal } from '@ionic-native/onesignal';
 import { TranslateService } from '@ngx-translate/core';
-import { Platform /*,Config*/,Nav ,NavController, NavParams  } from 'ionic-angular';
+import { Platform /*,Config*/,Nav ,NavController, NavParams,AlertController  } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { WooCommerceProvider, NotifProvider, SettingsProvider ,UserProvider, OrderProvider} from '../providers/providers';
@@ -15,6 +15,7 @@ import { Storage } from '@ionic/storage';
 import { AppRate } from '@ionic-native/app-rate';
 import { RateProvider } from '../providers/rate/rate';
 import { Config } from 'ionic-angular/config/config';
+//import { LocalNotifications } from '@ionic-native/local-notifications';
 @Component({
   templateUrl: 'app.html'
 })
@@ -32,7 +33,7 @@ flag:any;
 rate1:any=0;
   app: any = {};
     storage1:any;
-  constructor(public storage: Storage,public rate:RateProvider,private push: Push, private appRate: AppRate,private fcm: FCM, private _user: UserProvider,private oneSignal: OneSignal, private notif: NotifProvider, private platform: Platform, /*private config: Config,*/ public settings: SettingsProvider, private translate: TranslateService, private woo: WooCommerceProvider, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor( public alertCtrl: AlertController,public storage: Storage,public rate:RateProvider,private push: Push, private appRate: AppRate,private fcm: FCM, private _user: UserProvider,private oneSignal: OneSignal, private notif: NotifProvider, private platform: Platform, /*private config: Config,*/ public settings: SettingsProvider, private translate: TranslateService, private woo: WooCommerceProvider, private statusBar: StatusBar, private splashScreen: SplashScreen) {
    
 
 
@@ -40,7 +41,24 @@ rate1:any=0;
       this.statusBar.styleDefault();
      // this.storage1=this.storage;
       this.splashScreen.hide();
+  this.fcm.onNotification().subscribe(data => {
+    console.log("",data);
+    if (data.wasTapped==false) {
+      // if application open, show popup
+      let confirmAlert = this.alertCtrl.create({
+        title: data.title,
+        message: data.body,
+        buttons: [{
+          text: 'Ignore',
+          role: 'cancel'
+        },
+        ]
+      });
+     confirmAlert.present();
+    }  
    
+    
+    }); 
 this.pushSetup();
 this.rate.load();
 
@@ -236,9 +254,6 @@ pushSetup()
  
  const pushObject: PushObject = this.push.init(options);
  
- 
- pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
- 
  pushObject.on('registration').subscribe((registration: any) => console.log('Device registered', 
  registration));
  pushObject.on('registration').subscribe((data:any) => {
@@ -249,6 +264,38 @@ pushSetup()
       console.log("subscribed to topic: ", res);
   });
 });
+
+
+
+
+ 
+ pushObject.on('notification').subscribe((data: any) => 
+ {console.log('Received a notification', data)
+ console.log('message -> ' + data.message);
+ //if user using app and push notification comes
+ if (data.additionalData.foreground) {
+   // if application open, show popup
+   let confirmAlert = this.alertCtrl.create({
+     title: 'New Notification',
+     message: data.message,
+     buttons: [{
+       text: 'Ignore',
+       role: 'cancel'
+     },
+     ]
+   });
+  confirmAlert.present();
+ }
+ else {
+  //if user NOT using app and push notification comes
+  //TODO: Your logic on click of push notification directly
+ // this.nav.push(DetailsPage, { message: data.message });
+  console.log('Push notification clicked');
+}
+
+});
+
+
  pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
  
 }
@@ -278,4 +325,8 @@ rateMe(){
 // }
 
 }
+
+
+
+
 }
