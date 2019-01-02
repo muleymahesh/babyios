@@ -168,5 +168,13 @@
     "variables": {
       "SENDER_ID": "1063542947486"
     }
+  },
+  "cordova-sqlite-storage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-sqlite-storage"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

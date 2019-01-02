@@ -5,14 +5,16 @@ import { TranslateService } from '@ngx-translate/core';
 import { Platform /*,Config*/,Nav ,NavController, NavParams  } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { WooCommerceProvider, NotifProvider, SettingsProvider ,UserProvider} from '../providers/providers';
+import { WooCommerceProvider, NotifProvider, SettingsProvider ,UserProvider, OrderProvider} from '../providers/providers';
 import { App } from './app.global';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { FCM } from '@ionic-native/fcm';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-
+import { Storage } from '@ionic/storage';
 import { AppRate } from '@ionic-native/app-rate';
+import { RateProvider } from '../providers/rate/rate';
+import { Config } from 'ionic-angular/config/config';
 @Component({
   templateUrl: 'app.html'
 })
@@ -21,30 +23,102 @@ export class MyApp {
   rootPage: any = 'TabsPage';
   
 @ViewChild(Nav) nav: Nav;
-
+flagrate=0;
 pages : Array<{
 title: string,
 Component:any}>;
 user:any;
-
+flag:any;
+rate1:any=0;
   app: any = {};
+    storage1:any;
+  constructor(public storage: Storage,public rate:RateProvider,private push: Push, private appRate: AppRate,private fcm: FCM, private _user: UserProvider,private oneSignal: OneSignal, private notif: NotifProvider, private platform: Platform, /*private config: Config,*/ public settings: SettingsProvider, private translate: TranslateService, private woo: WooCommerceProvider, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+   
 
-  constructor(private push: Push, private appRate: AppRate,private fcm: FCM, private _user: UserProvider,private oneSignal: OneSignal, private notif: NotifProvider, private platform: Platform, /*private config: Config,*/ public settings: SettingsProvider, private translate: TranslateService, private woo: WooCommerceProvider, private statusBar: StatusBar, private splashScreen: SplashScreen) {
-    // this.settings.load().then((x) => {
-    //   this.woo.loadZones();
-    //   this.app = x;
-    //   this.initTranslate();
-    // });
+
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-     //
-
-
-
-
-     //
+     // this.storage1=this.storage;
       this.splashScreen.hide();
+   
 this.pushSetup();
+this.rate.load();
+
+this.appRate.preferences.storeAppURL = {
+  ios: '1130791321',
+  android: 'market://details?id=com.maks.babyneeds',
+  
+  windows: 'ms-windows-store://review/?ProductId=< Store_ID >',
+
+  
+  };
+this.storage1=storage;
+  this.appRate.preferences.callbacks= {
+        onRateDialogShow: function(callback){
+          console.log('rate dialog shown!');
+        },
+        onButtonClicked: function(buttonIndex){
+          console.log('Selected index: -> ' + buttonIndex);
+      
+          if(buttonIndex==3)
+          {
+            this.flagrate=1;
+    //  this.storage1.set('yourKey',this.flagrate);
+     // this.storage.Set();
+    
+     // ts.rate.rate=this.flagrate;
+        //  console.log('111111Selected index: -> ' +   this.rate.rate);
+           // this.apprate1(this.flagrate);
+          }
+
+        
+        }
+      }
+
+
+
+
+this.storage.get('yourStorageKey')
+.then(data => {
+  console.log('your data => ', data);
+  if(data>0)
+  {
+    console.log('your data if => ', data);
+    //this.storage.set('yourStorageKey',this.rate1);
+    this.rate1=data+1;
+    this.storage.set('yourStorageKey',this.rate1);
+  }
+  else
+  {
+    this.rate1=1;
+    this.storage.set('yourStorageKey',this.rate1);
+  }
+});
+
+
+this.storage.get('yourStorageKey')
+.then(data => {
+  console.log('your data abhi => ', data);
+this.flag=data;
+
+  
+  if(this.flag==3)
+  {
+    
+      this.flagrate =this.rate.all;
+      console.log('flagrate',this.flagrate);
+     
+  this.appRate.promptForRating(true);
+
+  
+  }
+});
+
+
+
+
+
+
       // this.appRate.preferences = {
       //     displayAppName: 'Babyneeds',
       //   usesUntilPrompt: 2,
@@ -111,48 +185,11 @@ this.pushSetup();
               }
 
   ionViewDidLoad() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-     //
-
-
-
-
-     //
-      this.splashScreen.hide();
-
-      // this.appRate.preferences = {
-      //     displayAppName: 'Babyneeds',
-      //   usesUntilPrompt: 2,
-      //   promptAgainForEachNewVersion: false,
-      //   storeAppURL: {
-      //     ios:'',
-      //     android: 'market://details?id=com.maks.babyneeds1'
-      //   },
-      //   customLocale: {
-      //     title: 'Do you enjoy %@?',
-      //     message: 'If you enjoy using %@, would you mind taking a moment to rate it? Thanks so much!',
-      //     cancelButtonLabel: 'No, Thanks',
-      //     laterButtonLabel: 'Remind Me Later',
-      //     rateButtonLabel: 'Rate It Now'
-      //   },
-      //   callbacks: {
-      //     onRateDialogShow: function(callback){
-      //       console.log('rate dialog shown!');
-      //     },
-      //     onButtonClicked: function(buttonIndex){
-      //       console.log('Selected index: -> ' + buttonIndex);
-      //     }
-      //   }
-      // };
- 
-      // // Opens the rating immediately no matter what preferences you set
-      // this.appRate.promptForRating(true);
-    
-    });
+     
   }
 
   ionViewDidEnter(){
+    
     
   }
 
@@ -176,6 +213,10 @@ this.pushSetup();
 // public goTo(page,params):void{
 // 	this.nav.setRoot(page, {params: params});
 // }
+apprate1(rate:any)
+{
+console.log('apprate1',rate);
+}
 pushSetup()
 {
   const options: PushOptions = {
@@ -224,14 +265,17 @@ logout()
   this.ionViewDidEnter();
 }
 rateMe(){
-  this.appRate.preferences.storeAppURL = {
-  ios: '< my_app_id >',
-  android: 'market://details?id=com.maks.babyneeds',
-  windows: 'ms-windows-store://review/?ProductId=< Store_ID >'
-  };
+//   this.appRate.preferences.storeAppURL = {
+//   ios: '< my_app_id >',
+//   android: 'market://details?id=com.maks.babyneeds',
+  
+//   windows: 'ms-windows-store://review/?ProductId=< Store_ID >'
 
-  this.appRate.promptForRating(true); 
+  
+//   };
+
+//   this.appRate.promptForRating(true); 
+// }
+
 }
-
-
 }

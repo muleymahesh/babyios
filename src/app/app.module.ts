@@ -15,6 +15,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 import { RecentProvider } from '../providers/recent/recent';
 import { FCM } from '@ionic-native/fcm';
 import { AppRate } from '@ionic-native/app-rate';
+import { SQLite } from '@ionic-native/sqlite';
+import { RateProvider } from '../providers/rate/rate';
 @NgModule({
   declarations: [
     MyApp
@@ -41,7 +43,9 @@ import { AppRate } from '@ionic-native/app-rate';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
     FCM,
-    RecentProvider,DatePipe
+    SQLite,
+    RecentProvider,DatePipe,
+    RateProvider
     
   ]
 })

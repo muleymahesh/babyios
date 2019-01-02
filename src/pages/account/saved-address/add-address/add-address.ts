@@ -20,9 +20,25 @@ export class AddAddressPage {
   stateOpts: any;
 validation_msg:any;
 
+fname:any='';
+lname:any='';
+mob:any='';
+email:any='';
+address1:any='';
+landmark:any='';
+sector:any='';
+city:any='';
+pincode:any='';
+
+
+
   
   constructor(private setting: SettingsProvider, public viewCtrl: ViewController, private loader: LoadingProvider, private toast: ToastProvider, private translate: TranslateService, private user: UserProvider, private order: OrderProvider, private navParams: NavParams, private address: AddressProvider, private fb: FormBuilder, private woo: WooCommerceProvider) {
 
+
+    this.fname= this.user.user.fname;
+    this.lname=this.user.user.lname;
+    this.email=this.user.user.email;
    this.validation_msg={
       'phone':[
         { type:'required', message:'You must enter a phone no.'},
@@ -53,6 +69,8 @@ this.phone=this.form.controls['phone'];
 
   
   submit(){
+    if(this.address1!=''&&this.city!=''&&this.sector!=''&&this.mob!=''&&this.email!=''&&this.landmark!=''&&this.lname!=''&&this.fname!=''&&this.pincode!='')
+{
     if(this.address.all.length == 0)
       this.form.value.primary = true;
     
@@ -83,7 +101,23 @@ this.phone=this.form.controls['phone'];
       this.order.setShipping(this.form.value);
     }
 
+   this.fname='';
+    this.lname='';
+    this.mob='';
+    this. email='';
+    this.address1='';
+    this.landmark='';
+    this.sector='';
+    this.city='';
+    this.pincode='';
+
     this.dismiss();
+  }
+  else
+  {
+    this.toast.show("All field required...")
+   //this.dismiss();
+  }
   }
 
   dismiss() {

@@ -15,19 +15,19 @@
   <ion-list>
       <h1 margin-left margin-bottom>{{data.action==2 ? ('EDIT' | translate) : ('ADD' | translate)}} {{ 'ADDRESS' | translate}}</h1>
       <ion-item>
-          <ion-input formControlName="first_name" type="text" placeholder="{{ 'FIRST NAME' | translate}}" required></ion-input>
+          <ion-input [(ngModel)]="fname" formControlName="first_name" type="text" placeholder="{{ 'FIRST NAME' | translate}}" required></ion-input>
         </ion-item>
     
         <ion-item>
-          <ion-input formControlName="last_name" type="text" placeholder="{{ 'LAST NAME' | translate}}"></ion-input>
+          <ion-input [(ngModel)]="lname" formControlName="last_name" type="text" placeholder="{{ 'LAST NAME' | translate}}"></ion-input>
         </ion-item>
 
         <ion-item *ngIf="!user.user.all">
-          <ion-input formControlName="email" type="email" placeholder="{{ 'EMAIL' | translate}}"></ion-input>
+          <ion-input [(ngModel)]="email" formControlName="email" type="email" placeholder="{{ 'EMAIL' | translate}}"></ion-input>
         </ion-item>
     
         <ion-item>
-          <ion-input type="tel" maxlength="10"   formControlName="phone" placeholder="{{ 'PHONE' | translate}}"></ion-input>
+          <ion-input [(ngModel)]="mob" type="tel" maxlength="10"   formControlName="phone" placeholder="{{ 'PHONE' | translate}}"></ion-input>
         </ion-item>
 
         <div *ngFor="let validation of validation_msg.phone">
@@ -40,7 +40,7 @@
       <ion-item>
         
         <ion-label>City</ion-label>
-        <ion-select formControlName="city">
+        <ion-select [(ngModel)]="city" formControlName="city">
             <ion-option>Noida</ion-option>
          </ion-select> 
     
@@ -59,7 +59,7 @@
 <!-- 
             <ion-input  type="text" placeholder="{{ 'pincode' | translate}}"></ion-input> -->
             <ion-label>PINCODE</ion-label>
-            <ion-select formControlName="pincode">
+            <ion-select [(ngModel)]="pincode" formControlName="pincode">
                 <ion-option>201301</ion-option>
                 <ion-option>201303</ion-option>
                 <ion-option>201304</ion-option>
@@ -77,7 +77,7 @@
               <ion-option *ngFor="let x of states" [value]="x.id" [innerHTML]="x.name"></ion-option>
             </ion-select> -->
             <ion-label>AREA</ion-label>
-            <ion-select formControlName="area">
+            <ion-select [(ngModel)]="sector" formControlName="area">
                 <ion-option>Sector 12</ion-option>
                 <ion-option>Sector 15</ion-option>
                 <ion-option>Sector 16</ion-option>
@@ -182,7 +182,7 @@
         </ion-item> -->
 
         <ion-item>
-          <ion-input formControlName="landmark" type="text" placeholder="{{ 'LANDMARK' | translate}}" required></ion-input>
+          <ion-input [(ngModel)]="landmark" formControlName="landmark" type="text" placeholder="{{ 'LANDMARK' | translate}}" required></ion-input>
         </ion-item>
     
         <!-- <ion-item>
@@ -190,7 +190,7 @@
         </ion-item> -->
     
         <ion-item>
-          <ion-textarea formControlName="address_1" name="description" placeholder="{{ 'ADDRESS' | translate}}" required></ion-textarea>
+          <ion-textarea [(ngModel)]="address1" formControlName="address_1" name="description" placeholder="{{ 'ADDRESS' | translate}}" required></ion-textarea>
         </ion-item>
 
         <div padding>

@@ -5,83 +5,104 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5893d28f-a642-4f4e-bbc8-bf1ad6d5bef0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/com_android_support_animated_vector_drawable_27_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/com_android_support_appcompat_v7_27_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/com_android_support_support_vector_drawable_27_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maks/babyneeds1/MainActivity.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileContent/fileContent.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileContent/fileContent.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/jarAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/jarAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/20.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/20.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/21.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/21.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/22.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/22.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/23.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/23.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/24.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/24.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/25.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/25.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/26.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/26.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/27.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/27.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/28.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/28.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/29.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/29.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-land-hdpi/screen.png" afterPath="$PROJECT_DIR$/res/drawable-land-hdpi/screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-land-ldpi/screen.png" afterPath="$PROJECT_DIR$/res/drawable-land-ldpi/screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-land-mdpi/screen.png" afterPath="$PROJECT_DIR$/res/drawable-land-mdpi/screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-land-xhdpi/screen.png" afterPath="$PROJECT_DIR$/res/drawable-land-xhdpi/screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-land-xxhdpi/screen.png" afterPath="$PROJECT_DIR$/res/drawable-land-xxhdpi/screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-land-xxxhdpi/screen.png" afterPath="$PROJECT_DIR$/res/drawable-land-xxxhdpi/screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-port-hdpi/screen.png" afterPath="$PROJECT_DIR$/res/drawable-port-hdpi/screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-port-ldpi/screen.png" afterPath="$PROJECT_DIR$/res/drawable-port-ldpi/screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-port-mdpi/screen.png" afterPath="$PROJECT_DIR$/res/drawable-port-mdpi/screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-port-xhdpi/screen.png" afterPath="$PROJECT_DIR$/res/drawable-port-xhdpi/screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-port-xxhdpi/screen.png" afterPath="$PROJECT_DIR$/res/drawable-port-xxhdpi/screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-port-xxxhdpi/screen.png" afterPath="$PROJECT_DIR$/res/drawable-port-xxxhdpi/screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/mipmap-hdpi/icon.png" afterPath="$PROJECT_DIR$/res/mipmap-hdpi/icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/mipmap-ldpi/icon.png" afterPath="$PROJECT_DIR$/res/mipmap-ldpi/icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/mipmap-mdpi/icon.png" afterPath="$PROJECT_DIR$/res/mipmap-mdpi/icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/mipmap-xhdpi/icon.png" afterPath="$PROJECT_DIR$/res/mipmap-xhdpi/icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/mipmap-xxhdpi/icon.png" afterPath="$PROJECT_DIR$/res/mipmap-xxhdpi/icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/mipmap-xxxhdpi/icon.png" afterPath="$PROJECT_DIR$/res/mipmap-xxxhdpi/icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/icon/drawable-hdpi-icon.png" afterPath="$PROJECT_DIR$/../../resources/android/icon/drawable-hdpi-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/icon/drawable-ldpi-icon.png" afterPath="$PROJECT_DIR$/../../resources/android/icon/drawable-ldpi-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/icon/drawable-mdpi-icon.png" afterPath="$PROJECT_DIR$/../../resources/android/icon/drawable-mdpi-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/icon/drawable-xhdpi-icon.png" afterPath="$PROJECT_DIR$/../../resources/android/icon/drawable-xhdpi-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/icon/drawable-xxhdpi-icon.png" afterPath="$PROJECT_DIR$/../../resources/android/icon/drawable-xxhdpi-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/icon/drawable-xxxhdpi-icon.png" afterPath="$PROJECT_DIR$/../../resources/android/icon/drawable-xxxhdpi-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/splash/drawable-land-hdpi-screen.png" afterPath="$PROJECT_DIR$/../../resources/android/splash/drawable-land-hdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/splash/drawable-land-ldpi-screen.png" afterPath="$PROJECT_DIR$/../../resources/android/splash/drawable-land-ldpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/splash/drawable-land-mdpi-screen.png" afterPath="$PROJECT_DIR$/../../resources/android/splash/drawable-land-mdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/splash/drawable-land-xhdpi-screen.png" afterPath="$PROJECT_DIR$/../../resources/android/splash/drawable-land-xhdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/splash/drawable-land-xxhdpi-screen.png" afterPath="$PROJECT_DIR$/../../resources/android/splash/drawable-land-xxhdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/splash/drawable-land-xxxhdpi-screen.png" afterPath="$PROJECT_DIR$/../../resources/android/splash/drawable-land-xxxhdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/splash/drawable-port-hdpi-screen.png" afterPath="$PROJECT_DIR$/../../resources/android/splash/drawable-port-hdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/splash/drawable-port-ldpi-screen.png" afterPath="$PROJECT_DIR$/../../resources/android/splash/drawable-port-ldpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/splash/drawable-port-mdpi-screen.png" afterPath="$PROJECT_DIR$/../../resources/android/splash/drawable-port-mdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/splash/drawable-port-xhdpi-screen.png" afterPath="$PROJECT_DIR$/../../resources/android/splash/drawable-port-xhdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/splash/drawable-port-xxhdpi-screen.png" afterPath="$PROJECT_DIR$/../../resources/android/splash/drawable-port-xxhdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/android/splash/drawable-port-xxxhdpi-screen.png" afterPath="$PROJECT_DIR$/../../resources/android/splash/drawable-port-xxxhdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-1024.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-1024.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-40.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-40.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-40@2x.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-40@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-40@3x.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-40@3x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-50.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-50.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-50@2x.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-50@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-60.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-60.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-60@2x.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-60@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-60@3x.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-60@3x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-72.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-72.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-72@2x.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-72@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-76.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-76.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-76@2x.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-76@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-83.5@2x.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-83.5@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-small.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-small.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-small@2x.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-small@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon-small@3x.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon-small@3x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/icon/icon@2x.png" afterPath="$PROJECT_DIR$/../../resources/ios/icon/icon@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default-568h@2x~iphone.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default-568h@2x~iphone.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default-667h.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default-667h.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default-736h.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default-736h.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default-Landscape-736h.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default-Landscape-736h.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default-Landscape@2x~ipad.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default-Landscape@2x~ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default-Landscape@~ipadpro.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default-Landscape@~ipadpro.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default-Landscape~ipad.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default-Landscape~ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default-Portrait@2x~ipad.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default-Portrait@2x~ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default-Portrait@~ipadpro.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default-Portrait@~ipadpro.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default-Portrait~ipad.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default-Portrait~ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default@2x~iphone.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default@2x~iphone.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default@2x~universal~anyany.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default@2x~universal~anyany.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/ios/splash/Default~iphone.png" afterPath="$PROJECT_DIR$/../../resources/ios/splash/Default~iphone.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/splash.png" afterPath="$PROJECT_DIR$/../../resources/splash.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/30.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/30.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/31.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/31.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/32.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/32.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/33.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/33.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/34.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/34.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/35.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/35.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/36.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/36.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/37.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/37.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/38.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/38.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/8.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/8.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/main.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/main.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../config.xml" afterPath="$PROJECT_DIR$/../../config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../google-services.json" afterPath="$PROJECT_DIR$/../../google-services.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../node_modules/@ionic-native/app-rate/index.d.ts" afterPath="$PROJECT_DIR$/../../node_modules/@ionic-native/app-rate/index.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../node_modules/@ionic-native/app-rate/index.js" afterPath="$PROJECT_DIR$/../../node_modules/@ionic-native/app-rate/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../node_modules/@ionic-native/app-rate/index.js.map" afterPath="$PROJECT_DIR$/../../node_modules/@ionic-native/app-rate/index.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../node_modules/@ionic-native/app-rate/index.metadata.json" afterPath="$PROJECT_DIR$/../../node_modules/@ionic-native/app-rate/index.metadata.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../node_modules/@ionic-native/app-rate/package.json" afterPath="$PROJECT_DIR$/../../node_modules/@ionic-native/app-rate/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../node_modules/cordova-ios/package.json" afterPath="$PROJECT_DIR$/../../node_modules/cordova-ios/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../package-lock.json" afterPath="$PROJECT_DIR$/../../package-lock.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../package.json" afterPath="$PROJECT_DIR$/../../package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android.json" afterPath="$PROJECT_DIR$/android.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/0.js" afterPath="$PROJECT_DIR$/assets/www/build/0.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/1.js" afterPath="$PROJECT_DIR$/assets/www/build/1.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/10.js" afterPath="$PROJECT_DIR$/assets/www/build/10.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/10.js.map" afterPath="$PROJECT_DIR$/assets/www/build/10.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/11.js" afterPath="$PROJECT_DIR$/assets/www/build/11.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/11.js.map" afterPath="$PROJECT_DIR$/assets/www/build/11.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/12.js" afterPath="$PROJECT_DIR$/assets/www/build/12.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/12.js.map" afterPath="$PROJECT_DIR$/assets/www/build/12.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/13.js" afterPath="$PROJECT_DIR$/assets/www/build/13.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/13.js.map" afterPath="$PROJECT_DIR$/assets/www/build/13.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/14.js" afterPath="$PROJECT_DIR$/assets/www/build/14.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/14.js.map" afterPath="$PROJECT_DIR$/assets/www/build/14.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/15.js" afterPath="$PROJECT_DIR$/assets/www/build/15.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/16.js" afterPath="$PROJECT_DIR$/assets/www/build/16.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/17.js" afterPath="$PROJECT_DIR$/assets/www/build/17.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/18.js" afterPath="$PROJECT_DIR$/assets/www/build/18.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/19.js" afterPath="$PROJECT_DIR$/assets/www/build/19.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/2.js" afterPath="$PROJECT_DIR$/assets/www/build/2.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/20.js" afterPath="$PROJECT_DIR$/assets/www/build/20.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/20.js.map" afterPath="$PROJECT_DIR$/assets/www/build/20.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/21.js" afterPath="$PROJECT_DIR$/assets/www/build/21.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/21.js.map" afterPath="$PROJECT_DIR$/assets/www/build/21.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/22.js" afterPath="$PROJECT_DIR$/assets/www/build/22.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/23.js" afterPath="$PROJECT_DIR$/assets/www/build/23.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/24.js" afterPath="$PROJECT_DIR$/assets/www/build/24.js" />
@@ -90,10 +111,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/27.js" afterPath="$PROJECT_DIR$/assets/www/build/27.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/28.js" afterPath="$PROJECT_DIR$/assets/www/build/28.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/29.js" afterPath="$PROJECT_DIR$/assets/www/build/29.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/29.js.map" afterPath="$PROJECT_DIR$/assets/www/build/29.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/3.js" afterPath="$PROJECT_DIR$/assets/www/build/3.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/30.js" afterPath="$PROJECT_DIR$/assets/www/build/30.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/30.js.map" afterPath="$PROJECT_DIR$/assets/www/build/30.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/31.js" afterPath="$PROJECT_DIR$/assets/www/build/31.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/31.js.map" afterPath="$PROJECT_DIR$/assets/www/build/31.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/32.js" afterPath="$PROJECT_DIR$/assets/www/build/32.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/33.js" afterPath="$PROJECT_DIR$/assets/www/build/33.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/34.js" afterPath="$PROJECT_DIR$/assets/www/build/34.js" />
@@ -102,35 +124,24 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/37.js" afterPath="$PROJECT_DIR$/assets/www/build/37.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/38.js" afterPath="$PROJECT_DIR$/assets/www/build/38.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/39.js" afterPath="$PROJECT_DIR$/assets/www/build/39.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/4.js" afterPath="$PROJECT_DIR$/assets/www/build/4.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/5.js" afterPath="$PROJECT_DIR$/assets/www/build/5.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/6.js" afterPath="$PROJECT_DIR$/assets/www/build/6.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/7.js" afterPath="$PROJECT_DIR$/assets/www/build/7.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/8.js" afterPath="$PROJECT_DIR$/assets/www/build/8.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/8.js.map" afterPath="$PROJECT_DIR$/assets/www/build/8.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/9.js" afterPath="$PROJECT_DIR$/assets/www/build/9.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/9.js.map" afterPath="$PROJECT_DIR$/assets/www/build/9.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/main.css" afterPath="$PROJECT_DIR$/assets/www/build/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/main.js" afterPath="$PROJECT_DIR$/assets/www/build/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/main.js.map" afterPath="$PROJECT_DIR$/assets/www/build/main.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/vendor.js" afterPath="$PROJECT_DIR$/assets/www/build/vendor.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/vendor.js.map" afterPath="$PROJECT_DIR$/assets/www/build/vendor.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/cordova_plugins.js" afterPath="$PROJECT_DIR$/assets/www/cordova_plugins.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/google-services.json" afterPath="$PROJECT_DIR$/google-services.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platform_www/cordova_plugins.js" afterPath="$PROJECT_DIR$/platform_www/cordova_plugins.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/xml/config.xml" afterPath="$PROJECT_DIR$/res/xml/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../plugins/android.json" afterPath="$PROJECT_DIR$/../../plugins/android.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../plugins/fetch.json" afterPath="$PROJECT_DIR$/../../plugins/fetch.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../plugins/ios.json" afterPath="$PROJECT_DIR$/../../plugins/ios.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../resources/splash.png.md5" afterPath="$PROJECT_DIR$/../../resources/splash.png.md5" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/app/app.component.ts" afterPath="$PROJECT_DIR$/../../src/app/app.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/app/app.html" afterPath="$PROJECT_DIR$/../../src/app/app.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/app/app.module.ts" afterPath="$PROJECT_DIR$/../../src/app/app.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/checkout1/checkout1.html" afterPath="$PROJECT_DIR$/../../src/pages/checkout1/checkout1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/checkout1/checkout1.ts" afterPath="$PROJECT_DIR$/../../src/pages/checkout1/checkout1.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/orders/orders.html" afterPath="$PROJECT_DIR$/../../src/pages/orders/orders.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/returnorder/returnorder.html" afterPath="$PROJECT_DIR$/../../src/pages/returnorder/returnorder.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/returnorder/returnorder.ts" afterPath="$PROJECT_DIR$/../../src/pages/returnorder/returnorder.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/account/saved-address/add-address/add-address.html" afterPath="$PROJECT_DIR$/../../src/pages/account/saved-address/add-address/add-address.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/account/saved-address/add-address/add-address.ts" afterPath="$PROJECT_DIR$/../../src/pages/account/saved-address/add-address/add-address.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/confirm/confirm.html" afterPath="$PROJECT_DIR$/../../src/pages/confirm/confirm.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/0.js" afterPath="$PROJECT_DIR$/../../www/build/0.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/1.js" afterPath="$PROJECT_DIR$/../../www/build/1.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/10.js" afterPath="$PROJECT_DIR$/../../www/build/10.js" />
@@ -145,50 +156,33 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/19.js" afterPath="$PROJECT_DIR$/../../www/build/19.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/2.js" afterPath="$PROJECT_DIR$/../../www/build/2.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/20.js" afterPath="$PROJECT_DIR$/../../www/build/20.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/20.js.map" afterPath="$PROJECT_DIR$/../../www/build/20.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/21.js" afterPath="$PROJECT_DIR$/../../www/build/21.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/21.js.map" afterPath="$PROJECT_DIR$/../../www/build/21.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/22.js" afterPath="$PROJECT_DIR$/../../www/build/22.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/22.js.map" afterPath="$PROJECT_DIR$/../../www/build/22.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/23.js" afterPath="$PROJECT_DIR$/../../www/build/23.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/23.js.map" afterPath="$PROJECT_DIR$/../../www/build/23.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/24.js" afterPath="$PROJECT_DIR$/../../www/build/24.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/24.js.map" afterPath="$PROJECT_DIR$/../../www/build/24.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/25.js" afterPath="$PROJECT_DIR$/../../www/build/25.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/25.js.map" afterPath="$PROJECT_DIR$/../../www/build/25.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/26.js" afterPath="$PROJECT_DIR$/../../www/build/26.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/26.js.map" afterPath="$PROJECT_DIR$/../../www/build/26.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/27.js" afterPath="$PROJECT_DIR$/../../www/build/27.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/27.js.map" afterPath="$PROJECT_DIR$/../../www/build/27.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/28.js" afterPath="$PROJECT_DIR$/../../www/build/28.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/28.js.map" afterPath="$PROJECT_DIR$/../../www/build/28.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/29.js" afterPath="$PROJECT_DIR$/../../www/build/29.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/29.js.map" afterPath="$PROJECT_DIR$/../../www/build/29.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/3.js" afterPath="$PROJECT_DIR$/../../www/build/3.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/30.js" afterPath="$PROJECT_DIR$/../../www/build/30.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/30.js.map" afterPath="$PROJECT_DIR$/../../www/build/30.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/31.js" afterPath="$PROJECT_DIR$/../../www/build/31.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/31.js.map" afterPath="$PROJECT_DIR$/../../www/build/31.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/32.js" afterPath="$PROJECT_DIR$/../../www/build/32.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/32.js.map" afterPath="$PROJECT_DIR$/../../www/build/32.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/33.js" afterPath="$PROJECT_DIR$/../../www/build/33.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/33.js.map" afterPath="$PROJECT_DIR$/../../www/build/33.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/34.js" afterPath="$PROJECT_DIR$/../../www/build/34.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/34.js.map" afterPath="$PROJECT_DIR$/../../www/build/34.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/35.js" afterPath="$PROJECT_DIR$/../../www/build/35.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/35.js.map" afterPath="$PROJECT_DIR$/../../www/build/35.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/36.js" afterPath="$PROJECT_DIR$/../../www/build/36.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/36.js.map" afterPath="$PROJECT_DIR$/../../www/build/36.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/37.js" afterPath="$PROJECT_DIR$/../../www/build/37.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/37.js.map" afterPath="$PROJECT_DIR$/../../www/build/37.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/38.js" afterPath="$PROJECT_DIR$/../../www/build/38.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/38.js.map" afterPath="$PROJECT_DIR$/../../www/build/38.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/39.js" afterPath="$PROJECT_DIR$/../../www/build/39.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/4.js" afterPath="$PROJECT_DIR$/../../www/build/4.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/5.js" afterPath="$PROJECT_DIR$/../../www/build/5.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/6.js" afterPath="$PROJECT_DIR$/../../www/build/6.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/7.js" afterPath="$PROJECT_DIR$/../../www/build/7.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/8.js" afterPath="$PROJECT_DIR$/../../www/build/8.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/8.js.map" afterPath="$PROJECT_DIR$/../../www/build/8.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/9.js" afterPath="$PROJECT_DIR$/../../www/build/9.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/main.js" afterPath="$PROJECT_DIR$/../../www/build/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/main.js.map" afterPath="$PROJECT_DIR$/../../www/build/main.js.map" />
@@ -2281,7 +2275,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2297,13 +2291,13 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
-    <property name="sync.plugin.last.upgrade.timestamp" value="1546005647547" />
+    <property name="sync.plugin.last.upgrade.timestamp" value="1546331032431" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="device.picker.selection" value="NJ9T49Z5NRMVKVJZ" />
   </component>
@@ -2390,7 +2384,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546085096166" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546406518642" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2438,7 +2432,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546085096167" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546406518643" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2600,7 +2594,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546085096170" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546406518646" />
       </method>
     </configuration>
     <list size="1">
@@ -2639,7 +2633,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1303" height="780" extended-state="7" />
+    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2649,7 +2643,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
