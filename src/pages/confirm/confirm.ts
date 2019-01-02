@@ -41,29 +41,30 @@ placeorderreq:any;
   {
 console.log(this._cart.total);
 
-   if(this._cart.total<250)
-   {
-    let confirm = this.alertCtrl.create({
-      title:'Alert',
-      message:'Are you sure you want to proceed?, Order above 250 for Free Delivery' ,
-      buttons: [{
-          text: 'cancel'
-        },{
-          text:'place order',
-          handler: () => {
-            this.confirmPlace();
+  //  if(this._cart.total<250)
+  //  {
+  //   let confirm = this.alertCtrl.create({
+  //     title:'Alert',
+  //     message:'Are you sure to proceed?, Order above 250 for Free Delivery' ,
+  //     buttons: [{
+  //         text: 'cancel'
+  //       },{
+  //         text:'place order',
+  //         handler: () => {
+  //           this.confirmPlace();
             
-          }
-        }]
-    });
-    confirm.present();
+  //         }
+  //       }]
+  //   });
+  //   confirm.present();
 
 
-   }
-   else{
-     this.confirmPlace();
-   }
+  //  }
+  //  else{
+  //    this.confirmPlace();
+  //  }
  //   this.toast.show("hiiiiiiii")
+ this.confirmPlace();
   }
   goTo(page, params){
     this.nav.push(page, {params: params});

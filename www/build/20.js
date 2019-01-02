@@ -64,27 +64,28 @@ var ConfirmPage = (function () {
         console.log('ionViewDidLoad ConfirmPage');
     };
     ConfirmPage.prototype.placeorder = function () {
-        var _this = this;
         console.log(this._cart.total);
-        if (this._cart.total < 250) {
-            var confirm_1 = this.alertCtrl.create({
-                title: 'Alert',
-                message: 'Are you sure you want to proceed?, Order above 250 for Free Delivery',
-                buttons: [{
-                        text: 'cancel'
-                    }, {
-                        text: 'place order',
-                        handler: function () {
-                            _this.confirmPlace();
-                        }
-                    }]
-            });
-            confirm_1.present();
-        }
-        else {
-            this.confirmPlace();
-        }
+        //  if(this._cart.total<250)
+        //  {
+        //   let confirm = this.alertCtrl.create({
+        //     title:'Alert',
+        //     message:'Are you sure to proceed?, Order above 250 for Free Delivery' ,
+        //     buttons: [{
+        //         text: 'cancel'
+        //       },{
+        //         text:'place order',
+        //         handler: () => {
+        //           this.confirmPlace();
+        //         }
+        //       }]
+        //   });
+        //   confirm.present();
+        //  }
+        //  else{
+        //    this.confirmPlace();
+        //  }
         //   this.toast.show("hiiiiiiii")
+        this.confirmPlace();
     };
     ConfirmPage.prototype.goTo = function (page, params) {
         this.nav.push(page, { params: params });
@@ -113,7 +114,7 @@ var ConfirmPage = (function () {
 }());
 ConfirmPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-confirm',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/confirm/confirm.html"*/'<!--\n  Generated template for the ConfirmPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Confirm Order</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n<ion-card>\n  <p padding><b>Products in cart</b></p>\n  <ion-item *ngFor="let x of products">\n    <ion-item>\n    <ion-thumbnail item-start>\n    <div class="img" [ngStyle]="{\'background-image\': \'url(http://www.babyneeds.co.in/babyneeds/product_image/\' +x.images +\')\'}"></div>\n     \n    </ion-thumbnail>\n    <h3 [innerHTML]="x.name"></h3>\n     <p>\n       <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->\n        <!-- <span class="price">{{x.finalprice | money}}</span> -->\n      <!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->\n      <span> x {{x.quantity}}</span>\n    </p>\n    <p padding><b>Items:{{items}}</b></p>\n  </ion-item>\n\n  </ion-item>\n\n</ion-card>\n<ion-card>\n<ion-item>\n    \n     <h6 ><b>Amount :{{_cart.total}}Rs.</b></h6>\n     <p style="font-size:10px" color="primary" *ngIf="_cart.total>250" >Free Delivery</p>\n     <p style="font-size:10px" color="primary" *ngIf="_cart.total<250" >Delivery charge 30 Rs.</p>\n     <h6  *ngIf="_cart.total<250" ><b>Total :{{_cart.total+30}}Rs.</b></h6>\n     <p style="font-size:10px" color="primary" *ngIf="_cart.total<250">*Order above 250Rs for free delivery</p>\n </ion-item>\n\n\n\n</ion-card>\n<ion-card>\n    <p padding><b>Delivery Details</b></p>\n\n    <ion-list >\n      <p padding ><b>Delivery Address</b></p>\n         <ion-item no-lines *ngIf="billing">\n          <p>{{billing.first_name}} • {{billing.phone}}</p>\n          <p>{{billing.address_1}}</p>\n          <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>\n          <p>{{billing.pincode}}</p>\n      </ion-item>\n      <ion-item>\n          <p padding><b>Date and Time</b></p>\n          <p padding>{{placeorderreq.order_detail}} </p>\n      </ion-item>\n    </ion-list>\n\n</ion-card>\n\n  <div padding>\n    <button width="50px" ion-button round icon-start tappable (click)="placeorder()">\n      Confirm Order\n    </button>\n\n    <button ion-button width="50px" round icon-start tappable (click)="cancel()">\n      Cancel\n    </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/confirm/confirm.html"*/,
+        selector: 'page-confirm',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/confirm/confirm.html"*/'<!--\n  Generated template for the ConfirmPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Confirm Order</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n<ion-card>\n  <p padding><b>Products in cart</b></p>\n  <ion-item *ngFor="let x of products">\n    <ion-item>\n    <ion-thumbnail item-start>\n    <div class="img" [ngStyle]="{\'background-image\': \'url(http://www.babyneeds.co.in/babyneeds/product_image/\' +x.images +\')\'}"></div>\n     \n    </ion-thumbnail>\n    <h3 [innerHTML]="x.name"></h3>\n     <p>\n       <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->\n        <!-- <span class="price">{{x.finalprice | money}}</span> -->\n      <!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->\n      <span> x {{x.quantity}}</span>\n    </p>\n    <p padding><b>Items:{{items}}</b></p>\n  </ion-item>\n\n  </ion-item>\n\n</ion-card>\n<ion-card>\n<!-- <ion-item>\n    \n     <h6  ><b>Amount      :{{_cart.total}} Rs.</b></h6>\n     <h6 *ngIf="_cart.total<250" ><b>Delivery charge :30 Rs.</b></h6><br>\n     <h6 *ngIf="_cart.total>250" ><b>Delivery charge :00 Rs.</b></h6><br>\n     <h6 *ngIf="_cart.total>250" ><b>Total Amount   :{{_cart.total}}Rs.</b></h6><br>\n     <h6 *ngIf="_cart.total<250" ><b>Total Amount  :{{_cart.total+30}}Rs.</b></h6><br>\n    \n</ion-item> -->\n\n<ion-row no-padding>\n    <ion-col col-4 no-padding><b>Amount</b></ion-col>\n    <ion-col col-8 no-padding>\n        : {{_cart.total}} Rs.\n    <!-- :{{p1.stock===\'0\'?\'out of stock\':\'Available\'}}  -->\n    </ion-col>\n    </ion-row>\n\n    <ion-row no-padding>\n        <ion-col col-4 no-padding><b>Delivery charge</b></ion-col>\n        <ion-col col-8 no-padding>\n           \n        : {{_cart.total<\'250\'?\'30\':\'00\'}} Rs. \n        </ion-col>\n        </ion-row>\n\n\n        <ion-row no-padding>\n            <ion-col col-4 no-padding><b>Total Amount</b></ion-col>\n            <ion-col *ngIf="_cart.total>250" col-8 no-padding>\n             : {{_cart.total}} Rs.\n           \n            </ion-col>\n            <ion-col *ngIf="_cart.total<=250" col-8 no-padding>\n                : {{_cart.total+30}} Rs.\n               </ion-col>\n            </ion-row>\n\n            <p style="font-size:12px" color="primary" *ngIf="_cart.total>250" >Your order is eligible for Free Delivery</p>\n            <p style="font-size:12px" color="primary" *ngIf="_cart.total<250">*Order above 250Rs for free delivery</p>\n\n\n\n</ion-card>\n<ion-card>\n    <p padding><b>Delivery Details</b></p>\n\n    <ion-list >\n      <p padding ><b>Delivery Address</b></p>\n         <ion-item no-lines *ngIf="billing">\n          <p>{{billing.first_name}} • {{billing.phone}}</p>\n          <p>{{billing.address_1}}</p>\n          <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>\n          <p>{{billing.pincode}}</p>\n      </ion-item>\n      <ion-item>\n          <p padding><b>Date and Time</b></p>\n          <p padding>{{placeorderreq.order_detail}} </p>\n      </ion-item>\n    </ion-list>\n\n</ion-card>\n\n  <div padding>\n    <button width="50px" ion-button round icon-start tappable (click)="placeorder()">\n      Confirm Order\n    </button>\n\n    <button ion-button width="50px" round icon-start tappable (click)="cancel()">\n      Cancel\n    </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/confirm/confirm.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
 ], ConfirmPage);

@@ -36,14 +36,46 @@
 
 </ion-card>
 <ion-card>
-<ion-item>
+<!-- <ion-item>
     
-     <h6 ><b>Amount :{{_cart.total}}Rs.</b></h6>
-     <p style="font-size:10px" color="primary" *ngIf="_cart.total>250" >Free Delivery</p>
-     <p style="font-size:10px" color="primary" *ngIf="_cart.total<250" >Delivery charge 30 Rs.</p>
-     <h6  *ngIf="_cart.total<250" ><b>Total :{{_cart.total+30}}Rs.</b></h6>
-     <p style="font-size:10px" color="primary" *ngIf="_cart.total<250">*Order above 250Rs for free delivery</p>
- </ion-item>
+     <h6  ><b>Amount      :{{_cart.total}} Rs.</b></h6>
+     <h6 *ngIf="_cart.total<250" ><b>Delivery charge :30 Rs.</b></h6><br>
+     <h6 *ngIf="_cart.total>250" ><b>Delivery charge :00 Rs.</b></h6><br>
+     <h6 *ngIf="_cart.total>250" ><b>Total Amount   :{{_cart.total}}Rs.</b></h6><br>
+     <h6 *ngIf="_cart.total<250" ><b>Total Amount  :{{_cart.total+30}}Rs.</b></h6><br>
+    
+</ion-item> -->
+
+<ion-row no-padding>
+    <ion-col col-4 no-padding><b>Amount</b></ion-col>
+    <ion-col col-8 no-padding>
+        : {{_cart.total}} Rs.
+    <!-- :{{p1.stock==='0'?'out of stock':'Available'}}  -->
+    </ion-col>
+    </ion-row>
+
+    <ion-row no-padding>
+        <ion-col col-4 no-padding><b>Delivery charge</b></ion-col>
+        <ion-col col-8 no-padding>
+           
+        : {{_cart.total<'250'?'30':'00'}} Rs. 
+        </ion-col>
+        </ion-row>
+
+
+        <ion-row no-padding>
+            <ion-col col-4 no-padding><b>Total Amount</b></ion-col>
+            <ion-col *ngIf="_cart.total>250" col-8 no-padding>
+             : {{_cart.total}} Rs.
+           
+            </ion-col>
+            <ion-col *ngIf="_cart.total<=250" col-8 no-padding>
+                : {{_cart.total+30}} Rs.
+               </ion-col>
+            </ion-row>
+
+            <p style="font-size:12px" color="primary" *ngIf="_cart.total>250" >Your order is eligible for Free Delivery</p>
+            <p style="font-size:12px" color="primary" *ngIf="_cart.total<250">*Order above 250Rs for free delivery</p>
 
 
 
