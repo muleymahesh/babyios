@@ -30,8 +30,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var RestProvider = (function () {
     function RestProvider(http) {
         this.http = http;
-        this.url1 = "http://makslab.com/babyneeds/send_invoice.php?o_id=";
-        this.url = "http://makslab.com/babyneeds/ws/v2/api1.php";
+        this.url1 = "http://babyneeds.co.in/babyneeds/send_invoice.php?o_id=";
+        this.url = "http://babyneeds.co.in/babyneeds/ws/v2/api1.php";
         console.log('Hello RestProvider Provider');
     }
     RestProvider.prototype.login = function (data) {
@@ -612,11 +612,11 @@ var map = {
 		11
 	],
 	"../pages/product/product.module": [
-		984,
+		983,
 		10
 	],
 	"../pages/register/register.module": [
-		983,
+		984,
 		9
 	],
 	"../pages/returnorder/returnorder.module": [
@@ -1514,8 +1514,8 @@ AppModule = __decorate([
                     { loadChildren: '../pages/product/grid/grid.module#ProductGridPageModule', name: 'ProductGridPage', segment: 'grid', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/mini-cart/mini-cart.module#MiniCartPageModule', name: 'MiniCartPage', segment: 'mini-cart', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/modal-categories/modal-categories.module#ModalCategoriesPageModule', name: 'ModalCategoriesPage', segment: 'modal-categories', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/product.module#ProductPageModule', name: 'ProductPage', segment: 'product', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/returnorder/returnorder.module#ReturnorderPageModule', name: 'ReturnorderPage', segment: 'returnorder', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/servicecategory/servicecategory.module#ServicecategoryPageModule', name: 'ServicecategoryPage', segment: 'servicecategory', priority: 'low', defaultHistory: [] },

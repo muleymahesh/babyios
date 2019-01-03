@@ -12,8 +12,8 @@ import 'rxjs/add/operator/toPromise';
 
 
 export class RestProvider {
-url1="http://makslab.com/babyneeds/send_invoice.php?o_id=";
-  url="http://makslab.com/babyneeds/ws/v2/api1.php";
+url1="http://babyneeds.co.in/babyneeds/send_invoice.php?o_id=";
+  url="http://babyneeds.co.in/babyneeds/ws/v2/api1.php";
 mydata:any;
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');

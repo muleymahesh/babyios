@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="5893d28f-a642-4f4e-bbc8-bf1ad6d5bef0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
@@ -13,26 +10,56 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/20.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/20.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/main.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/main.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../config/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../config/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/android.iml" afterPath="$PROJECT_DIR$/.idea/android.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/10.js" afterPath="$PROJECT_DIR$/assets/www/build/10.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/20.js" afterPath="$PROJECT_DIR$/assets/www/build/20.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/20.js.map" afterPath="$PROJECT_DIR$/assets/www/build/20.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/36.js" afterPath="$PROJECT_DIR$/assets/www/build/36.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/37.js" afterPath="$PROJECT_DIR$/assets/www/build/37.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/9.js" afterPath="$PROJECT_DIR$/assets/www/build/9.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/main.js" afterPath="$PROJECT_DIR$/assets/www/build/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/main.js.map" afterPath="$PROJECT_DIR$/assets/www/build/main.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/vendor.js.map" afterPath="$PROJECT_DIR$/assets/www/build/vendor.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/confirm/confirm.html" afterPath="$PROJECT_DIR$/../../src/pages/confirm/confirm.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/confirm/confirm.ts" afterPath="$PROJECT_DIR$/../../src/pages/confirm/confirm.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/providers/rest/rest.ts" afterPath="$PROJECT_DIR$/../../src/providers/rest/rest.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/10.js" afterPath="$PROJECT_DIR$/../../www/build/10.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/20.js" afterPath="$PROJECT_DIR$/../../www/build/20.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/20.js.map" afterPath="$PROJECT_DIR$/../../www/build/20.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/36.js" afterPath="$PROJECT_DIR$/../../www/build/36.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/37.js" afterPath="$PROJECT_DIR$/../../www/build/37.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/9.js" afterPath="$PROJECT_DIR$/../../www/build/9.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/main.js" afterPath="$PROJECT_DIR$/../../www/build/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/main.js.map" afterPath="$PROJECT_DIR$/../../www/build/main.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/vendor.js.map" afterPath="$PROJECT_DIR$/../../www/build/vendor.js.map" />
     </list>
+    <ignored path="$PROJECT_DIR$/build/android-profile/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/blame/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/check-manifest/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/incremental/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/manifests/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/multi-dex/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/prebuild/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/res/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/rs/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/splits-support/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/symbols/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/tmp/" />
+    <ignored path="$PROJECT_DIR$/build/outputs/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/classes/debug/" />
+    <ignored path="$PROJECT_DIR$/build/intermediates/classes/test/debug/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/intermediates/attr/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/intermediates/blame/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/intermediates/bundles/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/intermediates/check-manifest/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/intermediates/manifests/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/intermediates/res/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/intermediates/rs/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/intermediates/symbols/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/intermediates/tmp/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/outputs/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/intermediates/classes/debug/" />
+    <ignored path="$PROJECT_DIR$/CordovaLib/build/intermediates/classes/test/debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -2097,10 +2124,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="64" />
-    <option name="y" value="-11" />
-    <option name="width" value="1303" />
-    <option name="height" value="780" />
+    <option name="x" value="65" />
+    <option name="y" value="-4" />
+    <option name="width" value="1301" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -2118,10 +2145,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2136,13 +2159,15 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
-    <property name="sync.plugin.last.upgrade.timestamp" value="1546439069161" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="sync.plugin.last.upgrade.timestamp" value="1546492740965" />
     <property name="device.picker.selection" value="NJ9T49Z5NRMVKVJZ" />
   </component>
   <component name="RunDashboard">
@@ -2228,55 +2253,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546441210345" />
-      </method>
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <Auto>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Auto>
-      <Hybrid>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Hybrid>
-      <Java />
-      <Native>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Native>
-      <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-      </Profilers>
-      <method>
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546441210346" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546499881821" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2291,68 +2268,6 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SCRATCH_FILE_ID" value="0" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="android" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
       <envs />
       <method />
     </configuration>
@@ -2438,7 +2353,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546441210352" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546499881824" />
       </method>
     </configuration>
     <list size="1">
@@ -2469,15 +2384,15 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5893d28f-a642-4f4e-bbc8-bf1ad6d5bef0" name="Default" comment="" />
-      <created>1546005386746</created>
+      <created>1546492715243</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1546005386746</updated>
+      <updated>1546492715243</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2495,7 +2410,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24940239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24940239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />

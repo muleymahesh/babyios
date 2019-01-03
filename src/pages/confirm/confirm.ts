@@ -73,6 +73,7 @@ console.log(this._cart.total);
 
   confirmPlace()
   {
+    console.log(this.placeorderreq);
 
     this.restProvider.feedbackOperation(this.placeorderreq)
     .then(data => {

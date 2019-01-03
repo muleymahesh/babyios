@@ -71,7 +71,7 @@ product:any;
    gender:'male',
    email:this.user.user.user_email,
    amount:0,
-  // amount:this._cart.total,
+  
    shipping_type:'',
    street:'',
    city:'Noida',
@@ -79,8 +79,7 @@ product:any;
    country:'India',
    zipcode:'',
    phone:'',
-  //order_detail:"Delivery Date"+this.details.deliverydate+",between"+ this.details.timesloat,
-  order_detail:'',
+   order_detail:'',
    user_id:this.user.user.user_id,
    p_id:'',
    qty:'',

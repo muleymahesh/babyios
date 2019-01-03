@@ -92,6 +92,7 @@ var ConfirmPage = (function () {
     };
     ConfirmPage.prototype.confirmPlace = function () {
         var _this = this;
+        console.log(this.placeorderreq);
         this.restProvider.feedbackOperation(this.placeorderreq)
             .then(function (data) {
             _this.response = data;
