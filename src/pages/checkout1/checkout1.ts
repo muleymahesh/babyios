@@ -20,34 +20,8 @@ export class Checkout1Page {
         // "\"gender\":\"Male\",\"email\":\""+new AppPreferences(PlaceOrderActivity.this).getEmail()+"\",\"amount\":\""+amount+
         // "\",\"shipping_type\":\""+spnPaymentType.getSelectedItem().toString()+"\",\"street\":\""+addresses.get(0).getArea()+"\",\"city\":\""+addresses.get(0).getAddr()+"\",\"state\":\""+addresses.get(0).getLandmark()+"\",\"country\":\"India\",\"zipcode\":\""+addresses.get(0).getZipcode()+
         // "\",\"phone\":\""+addresses.get(0).getPhone()+"\",\"order_detail\":\"Delivery Date "+txtDate.getText().toString()+", between "+spnTimeSlot.getSelectedItem().toString()+"\",\"user_id\":\"23\",\"p_id\":\""+p_id+"\",\"qty\":\""+qty+"\"}";
-times=[
-  {
-      "stime": 8,
-      "etime":11,
-      "slots": ["11-1PM","1-3PM","3-5PM","5-7PM"]
-       
-  },
-  {
-    "stime": 10,
-    "etime":13,
-    "slots": ["1-3PM","3-5PM","5-7PM"]
-     
-},
-{
-  "stime": 12,
-  "etime":15,
-  "slots": ["3-5PM","5-7PM"]
-   
-},
-{
-  "stime": 14,
-  "etime":17,
-
-  "slots": ["5-7PM"]
-   
-},
-
-]
+// 
+times:any;
 timing:any[]=[];
 
 
@@ -85,7 +59,9 @@ product:any;
    qty:'',
 
   }
-  
+  time_slot={
+    method:'time_slot'
+  }
 
 
 
@@ -190,7 +166,13 @@ ionViewWillEnter()
 
   onChange()
   {
-    this.timing=[];0
+    this.restProvider.getTimeslot(this.time_slot)
+    .then(data => {
+    this.response = data;
+    if(this.response.result=="success")
+    {
+    this.timing=[];
+    this.times=this.response.data;
   //  console.log(this.details.deliverydate);
     let latest_date =this.datepipe.transform(this.details.deliverydate,'M/d/yyyy');
     let c_date =this.datepipe.transform(new Date(),'M/d/yyyy');
@@ -228,14 +210,52 @@ ionViewWillEnter()
       this.details.deliverydate='';
     }
     else{
-      this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+     // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+     for(let s of this.times)
+     {
+    
+      
+       if(s.stime==0&&s.etime==0)
+       {
+         console.log("I am in if stime="+s.stime)
+         for(let s1 of s.slots)
+         {
+         this.timing.push(s1);
+         }
+         console.log(this.timing);
+       }
+       
+     }
     }
   }
   else
   {
-    this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+   // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+   for(let s of this.times)
+   {
+  
+    
+     if(s.stime==0&&s.etime==0)
+     {
+       console.log("I am in if stime="+s.stime)
+       for(let s1 of s.slots)
+       {
+       this.timing.push(s1);
+       }
+       console.log(this.timing);
+     }
+     
+   }
   }
   }
+
+else
+{
+  this.toast.show(this.response.responseMessage);
+}
+});
+  }
+
   setOrder(){
    
     console.log(this.address.getPrimary);
@@ -282,6 +302,8 @@ ionViewWillEnter()
         
         this.placeorderreq. zipcode=this.billing.pincode;
         this.placeorderreq.phone=this.billing.phone;
+        this. p_id+="0";
+        this. qty+="0";
         this.placeorderreq.p_id=this.p_id;
         this.placeorderreq.qty=this.qty;
 if(this._cart.total<250)

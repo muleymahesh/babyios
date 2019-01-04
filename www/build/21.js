@@ -51,32 +51,6 @@ var Checkout1Page = (function () {
         this.address = address;
         this.navParams = navParams;
         this.modal = modal;
-        // String req="{\"method\":\"add_oder\",\"first_name\":\""+addresses.get(0).getFname()+"\",\"last_name\":\""+addresses.get(0).getLname()+"\"," +
-        // "\"gender\":\"Male\",\"email\":\""+new AppPreferences(PlaceOrderActivity.this).getEmail()+"\",\"amount\":\""+amount+
-        // "\",\"shipping_type\":\""+spnPaymentType.getSelectedItem().toString()+"\",\"street\":\""+addresses.get(0).getArea()+"\",\"city\":\""+addresses.get(0).getAddr()+"\",\"state\":\""+addresses.get(0).getLandmark()+"\",\"country\":\"India\",\"zipcode\":\""+addresses.get(0).getZipcode()+
-        // "\",\"phone\":\""+addresses.get(0).getPhone()+"\",\"order_detail\":\"Delivery Date "+txtDate.getText().toString()+", between "+spnTimeSlot.getSelectedItem().toString()+"\",\"user_id\":\"23\",\"p_id\":\""+p_id+"\",\"qty\":\""+qty+"\"}";
-        this.times = [
-            {
-                "stime": 8,
-                "etime": 11,
-                "slots": ["11-1PM", "1-3PM", "3-5PM", "5-7PM"]
-            },
-            {
-                "stime": 10,
-                "etime": 13,
-                "slots": ["1-3PM", "3-5PM", "5-7PM"]
-            },
-            {
-                "stime": 12,
-                "etime": 15,
-                "slots": ["3-5PM", "5-7PM"]
-            },
-            {
-                "stime": 14,
-                "etime": 17,
-                "slots": ["5-7PM"]
-            },
-        ];
         this.timing = [];
         this.details = {
             deliverydate: '',
@@ -91,7 +65,6 @@ var Checkout1Page = (function () {
             gender: 'male',
             email: this.user.user.user_email,
             amount: 0,
-            // amount:this._cart.total,
             shipping_type: '',
             street: '',
             city: 'Noida',
@@ -99,11 +72,13 @@ var Checkout1Page = (function () {
             country: 'India',
             zipcode: '',
             phone: '',
-            //order_detail:"Delivery Date"+this.details.deliverydate+",between"+ this.details.timesloat,
             order_detail: '',
             user_id: this.user.user.user_id,
             p_id: '',
             qty: '',
+        };
+        this.time_slot = {
+            method: 'time_slot'
         };
         this.checkout = "shipping";
         this.products = this._cart1.all;
@@ -167,43 +142,75 @@ var Checkout1Page = (function () {
         }
     };
     Checkout1Page.prototype.onChange = function () {
-        this.timing = [];
-        0;
-        //  console.log(this.details.deliverydate);
-        var latest_date = this.datepipe.transform(this.details.deliverydate, 'M/d/yyyy');
-        var c_date = this.datepipe.transform(new Date(), 'M/d/yyyy');
-        console.log(latest_date);
-        console.log(c_date);
-        if (latest_date == c_date) {
-            this.ctime = new Date().getHours();
-            console.log("ctime is=" + this.ctime);
-            if (parseInt(this.ctime) > 7 && parseInt(this.ctime) < 17) {
-                for (var _i = 0, _a = this.times; _i < _a.length; _i++) {
-                    var s = _a[_i];
-                    console.log("ctime=" + this.ctime);
-                    console.log("stime=" + s.stime);
-                    console.log("int ctime=" + parseInt(this.ctime));
-                    if (s.stime < parseInt(this.ctime) && s.etime > parseInt(this.ctime)) {
-                        console.log("I am in if stime=" + s.stime);
-                        for (var _b = 0, _c = s.slots; _b < _c.length; _b++) {
-                            var s1 = _c[_b];
-                            this.timing.push(s1);
+        var _this = this;
+        this.restProvider.getTimeslot(this.time_slot)
+            .then(function (data) {
+            _this.response = data;
+            if (_this.response.result == "success") {
+                _this.timing = [];
+                _this.times = _this.response.data;
+                //  console.log(this.details.deliverydate);
+                var latest_date = _this.datepipe.transform(_this.details.deliverydate, 'M/d/yyyy');
+                var c_date = _this.datepipe.transform(new Date(), 'M/d/yyyy');
+                console.log(latest_date);
+                console.log(c_date);
+                if (latest_date == c_date) {
+                    _this.ctime = new Date().getHours();
+                    console.log("ctime is=" + _this.ctime);
+                    if (parseInt(_this.ctime) > 7 && parseInt(_this.ctime) < 17) {
+                        for (var _i = 0, _a = _this.times; _i < _a.length; _i++) {
+                            var s = _a[_i];
+                            console.log("ctime=" + _this.ctime);
+                            console.log("stime=" + s.stime);
+                            console.log("int ctime=" + parseInt(_this.ctime));
+                            if (s.stime < parseInt(_this.ctime) && s.etime > parseInt(_this.ctime)) {
+                                console.log("I am in if stime=" + s.stime);
+                                for (var _b = 0, _c = s.slots; _b < _c.length; _b++) {
+                                    var s1 = _c[_b];
+                                    _this.timing.push(s1);
+                                }
+                                console.log(_this.timing);
+                            }
                         }
-                        console.log(this.timing);
+                    }
+                    else if (parseInt(_this.ctime) > 17) {
+                        _this.toast.show("Time sloats are over please select next date");
+                        _this.details.deliverydate = '';
+                    }
+                    else {
+                        // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+                        for (var _d = 0, _e = _this.times; _d < _e.length; _d++) {
+                            var s = _e[_d];
+                            if (s.stime == 0 && s.etime == 0) {
+                                console.log("I am in if stime=" + s.stime);
+                                for (var _f = 0, _g = s.slots; _f < _g.length; _f++) {
+                                    var s1 = _g[_f];
+                                    _this.timing.push(s1);
+                                }
+                                console.log(_this.timing);
+                            }
+                        }
+                    }
+                }
+                else {
+                    // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+                    for (var _h = 0, _j = _this.times; _h < _j.length; _h++) {
+                        var s = _j[_h];
+                        if (s.stime == 0 && s.etime == 0) {
+                            console.log("I am in if stime=" + s.stime);
+                            for (var _k = 0, _l = s.slots; _k < _l.length; _k++) {
+                                var s1 = _l[_k];
+                                _this.timing.push(s1);
+                            }
+                            console.log(_this.timing);
+                        }
                     }
                 }
             }
-            else if (parseInt(this.ctime) > 17) {
-                this.toast.show("Time sloats are over please select next date");
-                this.details.deliverydate = '';
-            }
             else {
-                this.timing = ["9-11AM", "11-1PM", "1-3PM", "3-5PM", "5-7PM"];
+                _this.toast.show(_this.response.responseMessage);
             }
-        }
-        else {
-            this.timing = ["9-11AM", "11-1PM", "1-3PM", "3-5PM", "5-7PM"];
-        }
+        });
     };
     Checkout1Page.prototype.setOrder = function () {
         console.log(this.address.getPrimary);
@@ -236,6 +243,8 @@ var Checkout1Page = (function () {
             this.placeorderreq.state = this.billing.landmark;
             this.placeorderreq.zipcode = this.billing.pincode;
             this.placeorderreq.phone = this.billing.phone;
+            this.p_id += "0";
+            this.qty += "0";
             this.placeorderreq.p_id = this.p_id;
             this.placeorderreq.qty = this.qty;
             if (this._cart.total < 250) {
@@ -287,9 +296,10 @@ Checkout1Page = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-checkout1',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/checkout1/checkout1.html"*/'<!--\n  Generated template for the Checkout1Page page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Checkout</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-card>\n  <ion-list margin-top padding-top > \n    <div>\n      <h3 padding>{{ \'SHIPPING ADDRESS\' }}</h3>\n      \n    </div>\n    <ion-item no-lines *ngIf="billing">\n      <p>{{billing.first_name}} • {{billing.phone}}</p>\n      <p>{{billing.address_1}}</p>\n      <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>\n      <p>{{billing.pincode}}</p>\n  </ion-item>\n</ion-list>\n<ion-col col-6> \n		<!-- <button ion-button color="secondary" class="my-width" large >\n			<b>Save</b>\n    </button> -->\n    <button ion-button  width="600px" tappable (click)="goTo(\'SavedAddressPage\')">\n        {{\'ADD NEW\'}}\n    </button>\n	</ion-col>\n\n	<ion-col col-6>\n      <button ion-button   width="600px"  tappable (click)="goTo(\'SavedAddressPage\')">\n          {{\'SELECT OTHER\'}}\n      </button>\n	</ion-col>\n      \n   \n\n</ion-card>\n<!-- <ion-card>\n  <ion-item *ngFor="let x of products">\n    <ion-item>\n    <ion-thumbnail item-start>\n    <div class="img" [ngStyle]="{\'background-image\': \'url(http://www.babyneeds.co.in/babyneeds/product_image/\' +x.images +\')\'}"></div>\n     \n    </ion-thumbnail>\n    <h3 [innerHTML]="x.name"></h3>\n     <p>\n       <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->\n        <!-- <span class="price">{{x.finalprice | money}}</span> -->\n      <!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->\n      <!-- <span> x {{x.quantity}}</span>\n    </p>\n  \n  </ion-item>\n\n  </ion-item>\n\n</ion-card> --> \n\n<!-- <ion-item>\n   \n    <h6 >Amount :{{_cart.total}}Rs.</h6>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total>200" >Free Delivery</p>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total<200" >Delivery charge 30 Rs.</p>\n    <h6  *ngIf="_cart.total<200" >Total :{{_cart.total+30}}Rs.</h6>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total<200">*Orde above 200Rs for free delivery</p>\n</ion-item> -->\n<ion-item>\n    <ion-label>Date</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="details.deliverydate">\n    </ion-datetime>\n  </ion-item>\n  <ion-item>\n      <ion-label>Time Slot</ion-label>\n      <ion-select [(ngModel)]="details.timesloat">\n        <ion-option *ngFor="let time of timing" [value]="time" >{{time}}</ion-option>\n     </ion-select>\n    </ion-item>\n\n    <ion-item>\n        <ion-label>Mode of Payment</ion-label>\n        <ion-select [(ngModel)]="placeorderreq.shipping_type">\n          <ion-option> Cash On Delivery</ion-option>\n         \n          <ion-option>COD BHIM 9891850708@UPI</ion-option>\n       \n         </ion-select>\n      </ion-item>\n    \n  \n      <div padding>\n        <button ion-button block icon-start tappable (click)="placeorder()">\n          proceed\n        </button>\n      </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/checkout1/checkout1.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */]) === "function" && _m || Object, typeof (_o = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */]) === "function" && _o || Object, typeof (_p = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */]) === "function" && _p || Object, typeof (_q = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */]) === "function" && _q || Object, typeof (_r = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */]) === "function" && _r || Object, typeof (_s = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]) === "function" && _s || Object, typeof (_t = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]) === "function" && _t || Object])
 ], Checkout1Page);
 
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t;
 //# sourceMappingURL=checkout1.js.map
 
 /***/ }),

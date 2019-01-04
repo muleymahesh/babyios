@@ -1,37 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5893d28f-a642-4f4e-bbc8-bf1ad6d5bef0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/20.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/20.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/main.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/main.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../config/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../config/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/android.iml" afterPath="$PROJECT_DIR$/.idea/android.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/10.js" afterPath="$PROJECT_DIR$/assets/www/build/10.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/20.js" afterPath="$PROJECT_DIR$/assets/www/build/20.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/20.js.map" afterPath="$PROJECT_DIR$/assets/www/build/20.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/9.js" afterPath="$PROJECT_DIR$/assets/www/build/9.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/main.js" afterPath="$PROJECT_DIR$/assets/www/build/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/main.js.map" afterPath="$PROJECT_DIR$/assets/www/build/main.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/vendor.js.map" afterPath="$PROJECT_DIR$/assets/www/build/vendor.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/confirm/confirm.ts" afterPath="$PROJECT_DIR$/../../src/pages/confirm/confirm.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/providers/rest/rest.ts" afterPath="$PROJECT_DIR$/../../src/providers/rest/rest.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/10.js" afterPath="$PROJECT_DIR$/../../www/build/10.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/20.js" afterPath="$PROJECT_DIR$/../../www/build/20.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/20.js.map" afterPath="$PROJECT_DIR$/../../www/build/20.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/9.js" afterPath="$PROJECT_DIR$/../../www/build/9.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/main.js" afterPath="$PROJECT_DIR$/../../www/build/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/main.js.map" afterPath="$PROJECT_DIR$/../../www/build/main.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/vendor.js.map" afterPath="$PROJECT_DIR$/../../www/build/vendor.js.map" />
-    </list>
+    <list default="true" id="5893d28f-a642-4f4e-bbc8-bf1ad6d5bef0" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/build/android-profile/" />
     <ignored path="$PROJECT_DIR$/build/intermediates/blame/" />
     <ignored path="$PROJECT_DIR$/build/intermediates/check-manifest/" />
@@ -2253,7 +2223,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546499881821" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546517767128" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2353,7 +2323,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546499881824" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546517767129" />
       </method>
     </configuration>
     <list size="1">

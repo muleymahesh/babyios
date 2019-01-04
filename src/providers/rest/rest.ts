@@ -387,6 +387,21 @@ serviceOperations(data) {
  
  
  }
+ getTimeslot(data)
+ {
+  console.log("request sending");
+  return this.http.post(this.url, JSON.stringify(data))
+  .toPromise()
+  .then((data: any) => {
+     console.log('Success', data);
+     return data;
+  })
+  .catch(err => {
+     console.log('Error', err);
+     return err;
+  })
+
+ }
 
 
 

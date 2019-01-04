@@ -50,28 +50,31 @@ var ReturnorderPage = (function () {
         this.address = address;
         this.navParams = navParams;
         this.modal = modal;
-        this.times = [
-            {
-                "stime": 8,
-                "etime": 11,
-                "slots": ["11-1PM", "1-3PM", "3-5PM", "5-7PM"]
-            },
-            {
-                "stime": 10,
-                "etime": 13,
-                "slots": ["1-3PM", "3-5PM", "5-7PM"]
-            },
-            {
-                "stime": 12,
-                "etime": 15,
-                "slots": ["3-5PM", "5-7PM"]
-            },
-            {
-                "stime": 14,
-                "etime": 17,
-                "slots": ["5-7PM"]
-            },
-        ];
+        // times=[
+        //   {
+        //       "stime": 8,
+        //       "etime":11,
+        //       "slots": ["11-1PM","1-3PM","3-5PM","5-7PM"]
+        //   },
+        //   {
+        //     "stime": 10,
+        //     "etime":13,
+        //     "slots": ["1-3PM","3-5PM","5-7PM"]
+        // },
+        // {
+        //   "stime": 12,
+        //   "etime":15,
+        //   "slots": ["3-5PM","5-7PM"]
+        // },
+        // {
+        //   "stime": 14,
+        //   "etime":17,
+        //   "slots": ["5-7PM"]
+        // },
+        // ]
+        this.time_slot = {
+            method: 'time_slot'
+        };
         this.returnrequest = {
             method: 'request_return',
             order_id: '',
@@ -88,43 +91,120 @@ var ReturnorderPage = (function () {
     ReturnorderPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad ReturnorderPage');
     };
+    // onChange()
+    // {
+    //   this.timing=[];
+    // //  console.log(this.details.deliverydate);
+    //   let latest_date =this.datepipe.transform(this.returndate,'M/d/yyyy');
+    //   let c_date =this.datepipe.transform(new Date(),'M/d/yyyy');
+    //   console.log(latest_date);
+    //   console.log( c_date);
+    //   if(latest_date==c_date)
+    //   {
+    //     this.ctime=new Date().getHours();
+    //     console.log("ctime is="+this.ctime)
+    //     if(parseInt(this.ctime)>7&&parseInt(this.ctime)<17)
+    //     {
+    //     for(let s of this.times)
+    //     {
+    //       console.log("ctime="+this.ctime);
+    //       console.log("stime="+s.stime)
+    //       console.log("int ctime="+parseInt(this.ctime))
+    //       if(s.stime<parseInt(this.ctime)&&s.etime>parseInt(this.ctime))
+    //       {
+    //         console.log("I am in if stime="+s.stime)
+    //         for(let s1 of s.slots)
+    //         {
+    //         this.timing.push(s1);
+    //         }
+    //         console.log(this.timing);
+    //       }
+    //     }
+    //   }
+    //   else if(parseInt(this.ctime)>17)
+    //   {
+    //     this.toast.show("Time sloats are over please select next date");
+    //     this.returndate='';
+    //   }
+    //   else{
+    //     this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+    //   }
+    // }
+    // else
+    // {
+    //   this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+    // }
+    // }
     ReturnorderPage.prototype.onChange = function () {
-        this.timing = [];
-        //  console.log(this.details.deliverydate);
-        var latest_date = this.datepipe.transform(this.returndate, 'M/d/yyyy');
-        var c_date = this.datepipe.transform(new Date(), 'M/d/yyyy');
-        console.log(latest_date);
-        console.log(c_date);
-        if (latest_date == c_date) {
-            this.ctime = new Date().getHours();
-            console.log("ctime is=" + this.ctime);
-            if (parseInt(this.ctime) > 7 && parseInt(this.ctime) < 17) {
-                for (var _i = 0, _a = this.times; _i < _a.length; _i++) {
-                    var s = _a[_i];
-                    console.log("ctime=" + this.ctime);
-                    console.log("stime=" + s.stime);
-                    console.log("int ctime=" + parseInt(this.ctime));
-                    if (s.stime < parseInt(this.ctime) && s.etime > parseInt(this.ctime)) {
-                        console.log("I am in if stime=" + s.stime);
-                        for (var _b = 0, _c = s.slots; _b < _c.length; _b++) {
-                            var s1 = _c[_b];
-                            this.timing.push(s1);
+        var _this = this;
+        this.restProvider.getTimeslot(this.time_slot)
+            .then(function (data) {
+            _this.response = data;
+            if (_this.response.result == "success") {
+                _this.timing = [];
+                _this.times = _this.response.data;
+                //  console.log(this.details.deliverydate);
+                var latest_date = _this.datepipe.transform(_this.returndate, 'M/d/yyyy');
+                var c_date = _this.datepipe.transform(new Date(), 'M/d/yyyy');
+                console.log(latest_date);
+                console.log(c_date);
+                if (latest_date == c_date) {
+                    _this.ctime = new Date().getHours();
+                    console.log("ctime is=" + _this.ctime);
+                    if (parseInt(_this.ctime) > 7 && parseInt(_this.ctime) < 17) {
+                        for (var _i = 0, _a = _this.times; _i < _a.length; _i++) {
+                            var s = _a[_i];
+                            console.log("ctime=" + _this.ctime);
+                            console.log("stime=" + s.stime);
+                            console.log("int ctime=" + parseInt(_this.ctime));
+                            if (s.stime < parseInt(_this.ctime) && s.etime > parseInt(_this.ctime)) {
+                                console.log("I am in if stime=" + s.stime);
+                                for (var _b = 0, _c = s.slots; _b < _c.length; _b++) {
+                                    var s1 = _c[_b];
+                                    _this.timing.push(s1);
+                                }
+                                console.log(_this.timing);
+                            }
                         }
-                        console.log(this.timing);
+                    }
+                    else if (parseInt(_this.ctime) > 17) {
+                        _this.toast.show("Time sloats are over please select next date");
+                        _this.returndate = '';
+                    }
+                    else {
+                        // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+                        for (var _d = 0, _e = _this.times; _d < _e.length; _d++) {
+                            var s = _e[_d];
+                            if (s.stime == 0 && s.etime == 0) {
+                                console.log("I am in if stime=" + s.stime);
+                                for (var _f = 0, _g = s.slots; _f < _g.length; _f++) {
+                                    var s1 = _g[_f];
+                                    _this.timing.push(s1);
+                                }
+                                console.log(_this.timing);
+                            }
+                        }
+                    }
+                }
+                else {
+                    // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+                    for (var _h = 0, _j = _this.times; _h < _j.length; _h++) {
+                        var s = _j[_h];
+                        if (s.stime == 0 && s.etime == 0) {
+                            console.log("I am in if stime=" + s.stime);
+                            for (var _k = 0, _l = s.slots; _k < _l.length; _k++) {
+                                var s1 = _l[_k];
+                                _this.timing.push(s1);
+                            }
+                            console.log(_this.timing);
+                        }
                     }
                 }
             }
-            else if (parseInt(this.ctime) > 17) {
-                this.toast.show("Time sloats are over please select next date");
-                this.returndate = '';
-            }
             else {
-                this.timing = ["9-11AM", "11-1PM", "1-3PM", "3-5PM", "5-7PM"];
+                _this.toast.show(_this.response.responseMessage);
             }
-        }
-        else {
-            this.timing = ["9-11AM", "11-1PM", "1-3PM", "3-5PM", "5-7PM"];
-        }
+        });
     };
     ReturnorderPage.prototype.returnOrder = function () {
         var _this = this;
@@ -160,9 +240,10 @@ ReturnorderPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-returnorder',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/returnorder/returnorder.html"*/'<!--\n  Generated template for the ReturnorderPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  \n  <ion-navbar color="primary">\n    <ion-title>Return request</ion-title>\n</ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n<ion-card>\n    <ion-label padding floting><P><b>Reason for Return</b></P></ion-label>\n  <ion-item>\n   \n    <ion-textarea placeholder="Enter your reason..." [(ngModel)]="reason" ></ion-textarea>\n    \n  </ion-item>\n  <ion-item>\n    <ion-label>Return Date</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="returndate">\n    </ion-datetime>\n  </ion-item>\n  <ion-item>\n      <ion-label>Time Slot</ion-label>\n      <ion-select [(ngModel)]="returntime" >\n        <ion-option *ngFor="let time of timing" [value]="time" >{{time}}</ion-option>\n     </ion-select>\n    </ion-item>\n</ion-card>\n<button  full ion-button round tappable (click)="returnOrder()">Request Return</button><br>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/returnorder/returnorder.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */]) === "function" && _m || Object, typeof (_o = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */]) === "function" && _o || Object, typeof (_p = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */]) === "function" && _p || Object, typeof (_q = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */]) === "function" && _q || Object, typeof (_r = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */]) === "function" && _r || Object, typeof (_s = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]) === "function" && _s || Object, typeof (_t = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]) === "function" && _t || Object])
 ], ReturnorderPage);
 
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t;
 //# sourceMappingURL=returnorder.js.map
 
 /***/ }),
