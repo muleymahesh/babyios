@@ -16,10 +16,10 @@ url1="http://babyneeds.co.in/babyneeds/send_invoice.php?o_id=";
   url="http://babyneeds.co.in/babyneeds/ws/v2/api1.php";
 mydata:any;
   constructor(public http: HttpClient) {
-    console.log('Hello RestProvider Provider');
+   
   }
   login(data) {
-    console.log("request sending");
+ 
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -36,7 +36,7 @@ mydata:any;
     .then((data: any) => {
       if(data.data)
       {
-       console.log('Success', data.data);
+    
        return data.data;
       }
       else if(data.result=='failed')
@@ -57,36 +57,36 @@ mydata:any;
 
 
   register(data) {
-    console.log("request sending");
+  //  console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
-       console.log('Success', data.data);
+    //   console.log('Success', data.data);
        return data;
     })
     .catch(err => {
-       console.log('Error', err);
+      // console.log('Error', err);
        return err;
     })
   }
 
   getWishlist(data) {
-    console.log("request sending");
+   // console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
-console.log(data);
+//console.log(data);
       if(data.result=="failed")
       {
        return data;
       }
       else{
-       console.log('Success', data);
+  //     console.log('Success', data);
        return data;
       }
     })
     .catch(err => {
-       console.log('Error', err);
+    //   console.log('Error', err);
        return err;
     })
   
@@ -94,7 +94,7 @@ console.log(data);
   }
 
   getBanner(data) {
-    console.log("request sending");
+   // console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -107,7 +107,7 @@ console.log(data);
 
 
   getRecommendations(data) {
-    console.log("request sending");
+   // console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -133,7 +133,7 @@ console.log(data);
 
 
   getBrands(data) {
-    console.log("request sending");
+   // console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -145,7 +145,7 @@ console.log(data);
   }
 
   getOffers(data) {
-    console.log("request sending");
+   // console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -158,7 +158,7 @@ console.log(data);
 
 
   getAgeGroup(data) {
-    console.log("request sending");
+   // console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -172,7 +172,7 @@ console.log(data);
 
   
   getCategories(data) {
-    console.log("request sending");
+   // console.log("request sending");
     return new Promise((resolve, reject) => {
       this.http.post(this.url, JSON.stringify(data))
         .subscribe(res => {
@@ -190,7 +190,7 @@ console.log(data);
     .then((data: any) => {
       if(data.data)
       {
-       console.log('Success', data.data);
+   //    console.log('Success', data.data);
        return data.data;
       }
       else if(data.result=='failed')
@@ -204,37 +204,37 @@ console.log(data);
       }
     })
     .catch(err => {
-       console.log('Error', err);
+     //  console.log('Error', err);
        return err;
     })
   }
 
 
   getNewArrivalList(data) {
-    console.log("request sending");
+   // console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
      .toPromise()
      .then((data: any) => {
-        console.log('Success', data.data);
+     //   console.log('Success', data.data);
         return data.data;
      })
      .catch(err => {
-        console.log('Error', err);
+       // console.log('Error', err);
         return err;
      })
    }
 
    getMyOrder(data) {
-    console.log("request sending");
+   // console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
       
-       console.log('Success', data);
+     //  console.log('Success', data);
        return data;
     })
     .catch(err => {
-       console.log('Error', err);
+     //  console.log('Error', err);
        return err;
     })
   
@@ -243,15 +243,15 @@ console.log(data);
   }
   changePassword(data)
   {
-    console.log("request sending");
+    //console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
-       console.log('Success', data);
+      // console.log('Success', data);
        return data;
     })
     .catch(err => {
-       console.log('Error', err);
+      // console.log('Error', err);
        return err;
     })
   
@@ -260,15 +260,15 @@ console.log(data);
   orderOperation(data)
   {
     
-    console.log("request sending");
+ //   console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
-       console.log('Success', data);
+   //    console.log('Success', data);
        return data;
     })
     .catch(err => {
-       console.log('Error', err);
+     //  console.log('Error', err);
        return err;
     })
   
@@ -277,15 +277,15 @@ console.log(data);
   
   favOperation(data)
   {
-    console.log("request sending");
+   // console.log("request sending");
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
     .then((data: any) => {
-       console.log('Success', data);
+     //  console.log('Success', data);
        return data;
     })
     .catch(err => {
-       console.log('Error', err);
+      // console.log('Error', err);
        return err;
     })
   
@@ -293,15 +293,15 @@ console.log(data);
 
 reviweOperation(data)
 {
-  console.log("request sending");
+ // console.log("request sending");
   return this.http.post(this.url, JSON.stringify(data))
   .toPromise()
   .then((data: any) => {
-     console.log('Success', data);
+   //  console.log('Success', data);
      return data;
   })
   .catch(err => {
-     console.log('Error', err);
+     //console.log('Error', err);
      return err;
   })
 
@@ -309,18 +309,18 @@ reviweOperation(data)
 }
 
 serviceOperations(data) {
-  console.log("request sending");
+  //console.log("request sending");
   return this.http.post(this.url, JSON.stringify(data))
    .toPromise()
    .then((data: any) => {
     if(data.data)
     {
-     console.log('Success', data.data);
+    // console.log('Success', data.data);
      return data.data;
     }
     else if(data.result=='failed')
     {
-       console.log("services not present");
+      // console.log("services not present");
      return data;
     }
     else
@@ -329,7 +329,7 @@ serviceOperations(data) {
     }
    })
    .catch(err => {
-      console.log('Error', err);
+     // console.log('Error', err);
       return err;
    })
  }
@@ -340,15 +340,15 @@ serviceOperations(data) {
 
  feedbackOperation(data)
  {
-   console.log("request sending");
+   //console.log("request sending");
    return this.http.post(this.url, JSON.stringify(data))
    .toPromise()
    .then((data: any) => {
-      console.log('Success', data);
+     // console.log('Success', data);
       return data;
    })
    .catch(err => {
-      console.log('Error', err);
+     // console.log('Error', err);
       return err;
    })
  
@@ -356,15 +356,15 @@ serviceOperations(data) {
 
  placeOrderOperation(data)
  {
-   console.log("request sending");
+   //console.log("request sending");
    return this.http.post(this.url, JSON.stringify(data))
    .toPromise()
    .then((data: any) => {
-      console.log('Success', data);
+     // console.log('Success', data);
       return data;
    })
    .catch(err => {
-      console.log('Error', err);
+     // console.log('Error', err);
       return err;
    })
  
@@ -373,15 +373,15 @@ serviceOperations(data) {
 
  updateOrderDetail(data)
  {
-   console.log("request sending");
+  // console.log("request sending");
    return this.http.post(this.url, JSON.stringify(data))
    .toPromise()
    .then((data: any) => {
-      console.log('Success', data);
+   
       return data;
    })
    .catch(err => {
-      console.log('Error', err);
+    //  console.log('Error', err);
       return err;
    })
  
@@ -389,15 +389,15 @@ serviceOperations(data) {
  }
  getTimeslot(data)
  {
-  console.log("request sending");
+ // console.log("request sending");
   return this.http.post(this.url, JSON.stringify(data))
   .toPromise()
   .then((data: any) => {
-     console.log('Success', data);
+  
      return data;
   })
   .catch(err => {
-     console.log('Error', err);
+   //  console.log('Error', err);
      return err;
   })
 

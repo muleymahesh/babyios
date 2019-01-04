@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
-import { IonicPage, NavController, ModalController } from 'ionic-angular';
+import { Platform,IonicPage, NavController, ModalController } from 'ionic-angular';
 import { WooCommerceProvider,RecentProvider, ToastProvider,AddressProvider, LoadingProvider, WishlistProvider,HistoryProvider } from '../../providers/providers';
 import { TranslateService } from '@ngx-translate/core';
 import { App } from '../../app/app.global';
 import { RestProvider } from '../../providers/rest/rest';
 import { HttpClient } from '@angular/common/http';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 @IonicPage()
@@ -76,22 +77,28 @@ allproducts:any;
 his:any;
 
 			
-		constructor(private address:AddressProvider,public history: RecentProvider,public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
+		constructor( private splashScreen: SplashScreen,public platform:Platform,private address:AddressProvider,public history: RecentProvider,public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
 		this.App = App;
-
+		this.platform.ready().then(() => {
+			this.loader.present();
+			this.getAllproduct();
+			this.getBrands();
+			this.getCategory(); 
+			this.newArrival();
+			
+			this.getAdBanner();
+			this.loader.dismiss();
+			this.splashScreen.hide();
+		});
 		this.getBanner();
 	this.loader.present();	
-	this.getBrands();
-	this.getCategory(); 
-	this.newArrival();
-	this.getAllproduct();
-	this.getAdBanner();
+
 	this.wishlist1();
 	this.getOffer();
 	this.loader.dismiss();
 	this.getAgeGruops();
 //	this.address.remove(0);
-console.log(this.history.all);
+//console.log(this.history.all);
 //this.address.remove(0);
 //this.address.remove(1);
 this.his= this.history.all;
@@ -99,7 +106,7 @@ this.his.sort(function(obj1, obj2) {
 	return obj2.no_of_time - obj1.no_of_time;
 	
 });
-	console.log(this.his);
+	//console.log(this.his);
 	
 	}
 
@@ -108,7 +115,7 @@ this.his.sort(function(obj1, obj2) {
 		this.restProvider.getproducts(this.allproduct)
     .then(data => {
       this.aproducts = data;
-		console.log(this.aproducts);
+		//console.log(this.aproducts);
 		this.initializeItems();
 
     });
@@ -116,13 +123,13 @@ this.his.sort(function(obj1, obj2) {
 
 	ionViewDidEnter() {
 		this.showList = false;
-	console.log("hiii");
+//	console.log("hiii");
 	this.his= this.history.all;
 	this.his.sort(function(obj1, obj2) {
 		return obj2.no_of_time - obj1.no_of_time;
 	});
 		this.goHome(); 
-		console.log( "his",this.his);
+	//	console.log( "his",this.his);
 		
 
 	
@@ -159,7 +166,7 @@ this.	goTo('ProductPage',data);
 	newArrival() {
     this.restProvider.getNewArrivalList(this.newarrivalrequest)
     .then(data => {
-		console.log(data);
+		//console.log(data);
 			      this.nlist = data;
 		
     });
@@ -196,8 +203,8 @@ this.	goTo('ProductPage',data);
 			.then(data => {
 			
 				this.ad_banner = data;
-				console.log("adds")
-		console.log(this.ad_banner);
+			//	console.log("adds")
+//		console.log(this.ad_banner);
 				//	this.wishlist1();
 			
 			});
@@ -207,7 +214,7 @@ this.	goTo('ProductPage',data);
 			this.restProvider.getAgeGroup(this.offer)
 			.then(data => {
 				this.offers = data;
-				console.log(this.offers );
+	//			console.log(this.offers );
 			 
 			});
 		

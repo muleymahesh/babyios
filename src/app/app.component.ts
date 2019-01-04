@@ -40,7 +40,7 @@ rate1:any=0;
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
      // this.storage1=this.storage;
-      this.splashScreen.hide();
+   //   this.splashScreen.hide();
   this.fcm.onNotification().subscribe(data => {
     console.log("",data);
     if (data.wasTapped==false) {
