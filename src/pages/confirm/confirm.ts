@@ -74,7 +74,7 @@ console.log(this._cart.total);
   confirmPlace()
   {
     console.log(this.placeorderreq);
-
+this.loader.present();
     this.restProvider.feedbackOperation(this.placeorderreq)
     .then(data => {
     this.response = data;
@@ -83,11 +83,14 @@ console.log(this._cart.total);
       this.toast.show(this.response.responseMessage);
      // this.toast.show("Order Placed Successfully");
      this._cart.reset();
+     this.loader.dismiss();
       this.goTo('ThanksPage',1);
+      
     }
     else
     {
       this.toast.show(this.response.responseMessage);
+      this.loader.dismiss();
     }
     });
     console.log(this.response);

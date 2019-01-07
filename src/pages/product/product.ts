@@ -164,13 +164,13 @@ console.log(this.product.is_fav);
        
         }
          else{
-           this.toast.show("Something is wrong please contact Us");
+           this.toast.show("Something went wrong please contact Us");
            
          }
       });
     }else
     {
-      this.toast.show("You are not Loged in");
+      this.toast.show("You are not Logged in");
     }
 
     }
@@ -196,13 +196,13 @@ console.log(product);
      
       }
        else{
-         this.toast.show("Something is wrong please contact Us");
+         this.toast.show("Something went wrong please contact Us");
          
        }
     });
   }else
   {
-    this.toast.show("You are not Loged in");
+    this.toast.show("You are not Logged in");
   }
 }
   }
@@ -303,7 +303,7 @@ writereview(product)
   }
   else
   {
-    this.toast.show("Please login to write review");
+    this.toast.show("Please login to write a review");
   }
 
 

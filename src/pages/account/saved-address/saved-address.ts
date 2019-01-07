@@ -39,8 +39,8 @@ export class SavedAddressPage {
   remove(index: number, item: ItemSliding) {
     this.translate.get(['Do you want to remove this address?', 'REMOVE_MSG', 'CANCEL', 'YES']).subscribe( x=> {
       let confirm = this.alertCtrl.create({
-        title: x.REMOVE_TTL,
-        message: x.REMOVE_MSG,
+        title:'Remove address',
+        message:'Do you want to remove this address?',
         buttons: [{
             text: x.CANCEL
           },{

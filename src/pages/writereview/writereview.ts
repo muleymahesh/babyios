@@ -79,7 +79,7 @@ constructor(public user:UserProvider,private history: HistoryProvider,private ca
     }
     else
     {
-      this.toast.show("You are not Loged in");
+      this.toast.show("You are not Logged in");
     }
   }
 else

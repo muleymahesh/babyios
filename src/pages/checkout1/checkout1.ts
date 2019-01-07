@@ -3,6 +3,7 @@ import { IonicPage, Platform, AlertController, NavController, Events, ModalContr
 import { AddressProvider,RestProvider, SettingsProvider, ToastProvider, UserProvider, LoadingProvider, CartProvider, WooCommerceProvider, OrderProvider } from '../../providers/providers';
 import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common'
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the Checkout1Page page.
  *
@@ -91,8 +92,13 @@ response:any;
   shipping: any;
   ctime:any;
   products:any;
-  constructor(public _cart1:CartProvider,public datepipe: DatePipe,public restProvider: RestProvider,private setting: SettingsProvider, private alert: AlertController, private platform: Platform, private nav: NavController, private translate: TranslateService, private toast: ToastProvider, private user: UserProvider, private loader: LoadingProvider, private woo: WooCommerceProvider, private _cart: CartProvider, private events: Events, private _order: OrderProvider, private address: AddressProvider, public navParams: NavParams, public modal: ModalController) {
-   
+  constructor(public storage:Storage,public _cart1:CartProvider,public datepipe: DatePipe,public restProvider: RestProvider,private setting: SettingsProvider, private alert: AlertController, private platform: Platform, private nav: NavController, private translate: TranslateService, private toast: ToastProvider, private user: UserProvider, private loader: LoadingProvider, private woo: WooCommerceProvider, private _cart: CartProvider, private events: Events, private _order: OrderProvider, private address: AddressProvider, public navParams: NavParams, public modal: ModalController) {
+    this.restProvider.getTimeslot(this.time_slot)
+    .then(data => {
+    this.response = data;
+    this.storage.set('timejson',this.response);
+  
+    });
     this.products = this._cart1.all;
     if(this.address.getPrimary){
     console.log(this.address.getPrimary);
@@ -166,7 +172,8 @@ ionViewWillEnter()
 
   onChange()
   {
-    this.restProvider.getTimeslot(this.time_slot)
+
+    this.storage.get('timejson')
     .then(data => {
     this.response = data;
     if(this.response.result=="success")
@@ -201,14 +208,19 @@ ionViewWillEnter()
           }
           console.log(this.timing);
         }
-        
+       
       }
+      if(this.timing.length==0)
+      {
+       this.toast.show("Time slots are over please select next date");
+       this.details.deliverydate='';
+      } 
     }
-    else if(parseInt(this.ctime)>17)
-    {
-      this.toast.show("Time sloats are over please select next date");
-      this.details.deliverydate='';
-    }
+    // else if(parseInt(this.ctime)>17)
+    // {
+    //   this.toast.show("Time slots are over please select next date");
+    //   this.details.deliverydate='';
+    // }
     else{
      // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
      for(let s of this.times)

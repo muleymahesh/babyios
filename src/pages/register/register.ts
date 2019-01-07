@@ -26,7 +26,7 @@ export class RegisterPage {
     fname: '',
     lname:'',
     email:'',
-    divice_token:'12aacc',
+    device_token:'12aacc',
     password: '',
     mobile:''
     };
@@ -61,7 +61,7 @@ export class RegisterPage {
         fname: '',
         lname:'',
         email:'',
-        divice_token:'12aacc',
+        device_token:'12aacc',
         password: '',
         mobile:''
         };
@@ -69,8 +69,21 @@ export class RegisterPage {
       }
       else if(this.cust.result=="failure")
       {
+
+      this.todo = {
+        method:'signup',
+        fname: '',
+        lname:'',
+        email:'',
+        device_token:'12aacc',
+        password: '',
+        mobile:''
+        };
        this.toast.show(this.cust.responseMessage);
      
+      }
+      else{
+        this.toast.show("Something went worng please try again");
       }
 
     });

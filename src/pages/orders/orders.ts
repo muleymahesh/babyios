@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, Refresher, Events, ModalController, NavController,NavParams } from 'ionic-angular';
 import { UserProvider, LoadingProvider, WooCommerceProvider ,RestProvider,ToastProvider} from '../../providers/providers';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+import { Storage } from '@ionic/storage';
 @IonicPage()
 @Component({
   selector: 'page-orders',
@@ -10,35 +11,35 @@ import { DatePipe } from '@angular/common'
 export class OrdersPage {
   // status: string = "paid";
   orders: any ;
-
-  times=[
-    {
-        "stime": 8,
-        "etime":11,
-        "slots": ["11-1PM","1-3PM","3-5PM","5-7PM"]
+times:any;
+  // times=[
+  //   {
+  //       "stime": 8,
+  //       "etime":11,
+  //       "slots": ["11-1PM","1-3PM","3-5PM","5-7PM"]
          
-    },
-    {
-      "stime": 10,
-      "etime":13,
-      "slots": ["1-3PM","3-5PM","5-7PM"]
+  //   },
+  //   {
+  //     "stime": 10,
+  //     "etime":13,
+  //     "slots": ["1-3PM","3-5PM","5-7PM"]
        
-  },
-  {
-    "stime": 12,
-    "etime":15,
-    "slots": ["3-5PM","5-7PM"]
+  // },
+  // {
+  //   "stime": 12,
+  //   "etime":15,
+  //   "slots": ["3-5PM","5-7PM"]
      
-  },
-  {
-    "stime": 14,
-    "etime":17,
+  // },
+  // {
+  //   "stime": 14,
+  //   "etime":17,
   
-    "slots": ["5-7PM"]
+  //   "slots": ["5-7PM"]
      
-  },
+  // },
   
-  ]
+  // ]
 
 udatereq={
   method:'updateTimeSlot',
@@ -69,11 +70,21 @@ newdeliverydate:any;
 newtimeslot:any;
 minDate:any;
 maxDate:any;
-  constructor(public restProvider: RestProvider,public datepipe: DatePipe, private toast: ToastProvider,public navParams: NavParams,public nav: NavController, private events: Events, private modal: ModalController, private loader: LoadingProvider, private user: UserProvider, private woo: WooCommerceProvider) {
+time_slot={
+  method:'time_slot' 
+}
+response:any;
+    constructor(public storage:Storage,public restProvider: RestProvider,public datepipe: DatePipe, private toast: ToastProvider,public navParams: NavParams,public nav: NavController, private events: Events, private modal: ModalController, private loader: LoadingProvider, private user: UserProvider, private woo: WooCommerceProvider) {
     this.minDate = new Date().toISOString();
     this.maxDate =  new Date(new Date().setFullYear(new Date().getFullYear() + 2)).toISOString();
     this. c_date =this.datepipe.transform(new Date(),'yyyy-M-d');
     this.orders = this.navParams.data.params;
+    this.restProvider.getTimeslot(this.time_slot)
+    .then(data => {
+    this.response = data;
+    this.storage.set('timejson1',this.response);
+  
+    });
      this.deliverydate=this.orders.order_detail.substring(14,24);
      console.log(this.deliverydate);
      console.log(this.c_date);
@@ -133,7 +144,7 @@ cancleOrder(){
 
  }
   else{
-    this.toast.show("Something is wrong please contact Us");
+    this.toast.show("Something went wrong please contact Us");
     
   }
   });
@@ -167,16 +178,77 @@ returnOrder1(){
 
  }
   else{
-    this.toast.show("Something is wrong please contact Us");
+    this.toast.show("Something went wrong please contact Us");
     
   }
   });
 
 }
 
+// onChange()
+// {
+  
+//   this.timing=[];
+// //  console.log(this.details.deliverydate);
+//   let latest_date =this.datepipe.transform(this.newdeliverydate,'M/d/yyyy');
+//   let c_date =this.datepipe.transform(new Date(),'M/d/yyyy');
+//   console.log(latest_date);
+//   console.log( c_date);
+//   if(latest_date==c_date)
+//   {
+//     this.ctime=new Date().getHours();
+//     console.log("ctime is="+this.ctime)
+//     if(parseInt(this.ctime)>7&&parseInt(this.ctime)<17)
+//     {
+//     for(let s of this.times)
+//     {
+
+//       console.log("ctime="+this.ctime);
+//       console.log("stime="+s.stime)
+//       console.log("int ctime="+parseInt(this.ctime))
+     
+        
+//       if(s.stime<parseInt(this.ctime)&&s.etime>parseInt(this.ctime))
+//       {
+//         console.log("I am in if stime="+s.stime)
+//         for(let s1 of s.slots)
+//         {
+//         this.timing.push(s1);
+//         }
+//         console.log(this.timing);
+//       }
+      
+//     }
+//   }
+//   else if(parseInt(this.ctime)>17)
+//   {
+//     this.toast.show("Time slots are over please select next date");
+//     this.newdeliverydate='';
+//   }
+//   else{
+//     this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+//   }
+// }
+// else
+// {
+//   this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+// }
+// }
+
+
+
+
+
+
 onChange()
 {
+  this.storage.get('timejson1')
+  .then(data => {
+  this.response = data;
+  if(this.response.result=="success")
+  {
   this.timing=[];
+  this.times=this.response.data;
 //  console.log(this.details.deliverydate);
   let latest_date =this.datepipe.transform(this.newdeliverydate,'M/d/yyyy');
   let c_date =this.datepipe.transform(new Date(),'M/d/yyyy');
@@ -206,22 +278,83 @@ onChange()
         console.log(this.timing);
       }
       
+
     }
+
+    if(this.timing.length==0)
+    {
+     this.toast.show("Time slots are over please select next date");
+     this.newdeliverydate='';
+    }  
   }
-  else if(parseInt(this.ctime)>17)
-  {
-    this.toast.show("Time sloats are over please select next date");
-    this.newdeliverydate='';
-  }
+ 
   else{
-    this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+   // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+   for(let s of this.times)
+   {
+  
+    
+     if(s.stime==0&&s.etime==0)
+     {
+       console.log("I am in if stime="+s.stime)
+       for(let s1 of s.slots)
+       {
+       this.timing.push(s1);
+       }
+       console.log(this.timing);
+     }
+     
+   }
   }
 }
 else
 {
-  this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+ // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+ for(let s of this.times)
+ {
+
+  
+   if(s.stime==0&&s.etime==0)
+   {
+     console.log("I am in if stime="+s.stime)
+     for(let s1 of s.slots)
+     {
+     this.timing.push(s1);
+     }
+     console.log(this.timing);
+   }
+   
+ }
 }
 }
+
+else
+{
+this.toast.show(this.response.responseMessage);
+}
+});
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 pop() {
   this.nav.pop();

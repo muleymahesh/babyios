@@ -3,7 +3,7 @@ import { IonicPage, Platform, AlertController, NavController, Events, ModalContr
 import { AddressProvider,RestProvider, SettingsProvider, ToastProvider, UserProvider, LoadingProvider, CartProvider, WooCommerceProvider, OrderProvider } from '../../providers/providers';
 import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common'
-
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the ReturnorderPage page.
  *
@@ -66,10 +66,16 @@ res:any;
   ctime:any;
   orders:any;
   str:any;
-  constructor(public _cart1:CartProvider,public datepipe: DatePipe,public restProvider: RestProvider,private setting: SettingsProvider, private alert: AlertController, private platform: Platform, private nav: NavController, private translate: TranslateService, private toast: ToastProvider, private user: UserProvider, private loader: LoadingProvider, private woo: WooCommerceProvider, private _cart: CartProvider, private events: Events, private _order: OrderProvider, private address: AddressProvider, public navParams: NavParams, public modal: ModalController) {
+  constructor(public storage:Storage,public _cart1:CartProvider,public datepipe: DatePipe,public restProvider: RestProvider,private setting: SettingsProvider, private alert: AlertController, private platform: Platform, private nav: NavController, private translate: TranslateService, private toast: ToastProvider, private user: UserProvider, private loader: LoadingProvider, private woo: WooCommerceProvider, private _cart: CartProvider, private events: Events, private _order: OrderProvider, private address: AddressProvider, public navParams: NavParams, public modal: ModalController) {
     this.returnrequest.user_email=this.user.user.user_email;
     this.orders = this.navParams.data.params;
     this.minDate = new Date().toISOString();
+    this.restProvider.getTimeslot(this.time_slot)
+    .then(data => {
+    this.response = data;
+    this.storage.set('timejson1',this.response);
+  
+    });
     this.maxDate =  new Date(new Date().setFullYear(new Date().getFullYear() + 2)).toISOString();
     this.str=this.navParams.data.params.o_id;
   }
@@ -128,7 +134,7 @@ res:any;
   // }
   onChange()
   {
-    this.restProvider.getTimeslot(this.time_slot)
+    this.storage.get('timejson1')
     .then(data => {
     this.response = data;
     if(this.response.result=="success")
@@ -163,14 +169,20 @@ res:any;
           }
           console.log(this.timing);
         }
-        
+      
+             
       }
+      if(this.timing.length==0)
+      {
+       this.toast.show("Time slots are over please select next date");
+       this.returndate='';
+      }  
     }
-    else if(parseInt(this.ctime)>17)
-    {
-      this.toast.show("Time sloats are over please select next date");
-      this.returndate='';
-    }
+    // else if(parseInt(this.ctime)>17)
+    // {
+    //   this.toast.show("Time slots are over please select next date");
+    //   this.returndate='';
+    // }
     else{
      // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
      for(let s of this.times)
@@ -243,7 +255,7 @@ else
   
    }
     else{
-      this.toast.show("Something is wrong please contact Us");
+      this.toast.show("Something went wrong please contact Us");
       
     }
     });

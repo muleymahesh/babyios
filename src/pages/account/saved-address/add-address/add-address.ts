@@ -80,14 +80,14 @@ this.phone=this.form.controls['phone'];
     if(this.data.action == 1) {
       this.address.add(this.form.value); // FOR NEW ADDRESS
       this.translate.get('New adress added').subscribe( x=> {
-        this.toast.show(x);
+        this.toast.show('New adress added');
       });
     }
 
     if(this.data.action == 2) {
       this.address.update(this.navParams.data.index, this.form.value); // UPDATE ADDRESS
       this.translate.get('Address was updated').subscribe( x=> {
-        this.toast.show(x);
+        this.toast.show('Address was updated');
       });
     }
 

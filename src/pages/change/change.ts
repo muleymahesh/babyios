@@ -50,7 +50,7 @@ changePassword() {
 		this.response = data;
     if(this.response.result=="success")
     {
-      this.toast.show("Your password change successfully...");
+      this.toast.show("Your password changed successfully...");
 
     }
     else
