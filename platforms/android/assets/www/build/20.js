@@ -93,6 +93,7 @@ var ConfirmPage = (function () {
     ConfirmPage.prototype.confirmPlace = function () {
         var _this = this;
         console.log(this.placeorderreq);
+        this.loader.present();
         this.restProvider.feedbackOperation(this.placeorderreq)
             .then(function (data) {
             _this.response = data;
@@ -100,10 +101,12 @@ var ConfirmPage = (function () {
                 _this.toast.show(_this.response.responseMessage);
                 // this.toast.show("Order Placed Successfully");
                 _this._cart.reset();
+                _this.loader.dismiss();
                 _this.goTo('ThanksPage', 1);
             }
             else {
                 _this.toast.show(_this.response.responseMessage);
+                _this.loader.dismiss();
             }
         });
         console.log(this.response);

@@ -336,7 +336,13 @@ serviceOperations(data) {
  }
 
  Inovice(data) {
- this.http.get("http://babyneeds.co.in/babyneeds/send_invoice.php?o_id="+data)
+   console.log("http://babyneeds.co.in/babyneeds/send_invoice.php?o_id="+data);
+return this.http.post("http://babyneeds.co.in/babyneeds/send_invoice.php?o_id="+data,[])
+ .toPromise()
+ .then((data:any)=>{
+console.log(data);
+return data;
+ })
  }
 
  feedbackOperation(data)

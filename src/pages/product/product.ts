@@ -267,7 +267,7 @@ console.log(product);
 
 addTOCart()
 {this.product1=this.products[0];
-  if(this.product1.stock==0)
+  if(this.product1.stock<1)
   {
     this.toast.show("Currently this product is out of stock");
   }else

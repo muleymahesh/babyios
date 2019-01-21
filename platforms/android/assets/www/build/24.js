@@ -157,7 +157,7 @@ var Cart1Page = (function () {
                         if (this.flag != 1)
                             this.flag = 1;
                         console.log("i am in compare  " + this.flag);
-                        this.toast.show(this.products[i].name + " quantity is exiding the stock");
+                        this.toast.show(this.products[i].name + " quantity is exceeding the stock");
                         console.log(this.flag);
                     }
                 }
@@ -174,7 +174,7 @@ var Cart1Page = (function () {
             }
         }
         else {
-            this.toast.show(" product quantity is exding the stock");
+            this.toast.show(" product quantity is exceeding the stock");
         }
     };
     return Cart1Page;

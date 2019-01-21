@@ -10,6 +10,7 @@ webpackJsonp([21],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(34);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -24,6 +25,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the Checkout1Page page.
  *
@@ -31,8 +33,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var Checkout1Page = (function () {
-    function Checkout1Page(_cart1, datepipe, restProvider, setting, alert, platform, nav, translate, toast, user, loader, woo, _cart, events, _order, address, navParams, modal) {
+    function Checkout1Page(storage, _cart1, datepipe, restProvider, setting, alert, platform, nav, translate, toast, user, loader, woo, _cart, events, _order, address, navParams, modal) {
         var _this = this;
+        this.storage = storage;
         this._cart1 = _cart1;
         this.datepipe = datepipe;
         this.restProvider = restProvider;
@@ -81,6 +84,11 @@ var Checkout1Page = (function () {
             method: 'time_slot'
         };
         this.checkout = "shipping";
+        this.restProvider.getTimeslot(this.time_slot)
+            .then(function (data) {
+            _this.response = data;
+            _this.storage.set('timejson', _this.response);
+        });
         this.products = this._cart1.all;
         if (this.address.getPrimary) {
             console.log(this.address.getPrimary);
@@ -143,7 +151,7 @@ var Checkout1Page = (function () {
     };
     Checkout1Page.prototype.onChange = function () {
         var _this = this;
-        this.restProvider.getTimeslot(this.time_slot)
+        this.storage.get('timejson')
             .then(function (data) {
             _this.response = data;
             if (_this.response.result == "success") {
@@ -172,10 +180,10 @@ var Checkout1Page = (function () {
                                 console.log(_this.timing);
                             }
                         }
-                    }
-                    else if (parseInt(_this.ctime) > 17) {
-                        _this.toast.show("Time sloats are over please select next date");
-                        _this.details.deliverydate = '';
+                        if (_this.timing.length == 0) {
+                            _this.toast.show("Time slots are over please select next date");
+                            _this.details.deliverydate = '';
+                        }
                     }
                     else {
                         // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
@@ -296,7 +304,7 @@ Checkout1Page = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-checkout1',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/checkout1/checkout1.html"*/'<!--\n  Generated template for the Checkout1Page page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Checkout</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-card>\n  <ion-list margin-top padding-top > \n    <div>\n      <h3 padding>{{ \'SHIPPING ADDRESS\' }}</h3>\n      \n    </div>\n    <ion-item no-lines *ngIf="billing">\n      <p>{{billing.first_name}} • {{billing.phone}}</p>\n      <p>{{billing.address_1}}</p>\n      <p>{{billing.area}}, {{billing.landmark}}, {{billing.sector}}</p>\n      <p>{{billing.pincode}}</p>\n  </ion-item>\n</ion-list>\n<ion-col col-6> \n		<!-- <button ion-button color="secondary" class="my-width" large >\n			<b>Save</b>\n    </button> -->\n    <button ion-button  width="600px" tappable (click)="goTo(\'SavedAddressPage\')">\n        {{\'ADD NEW\'}}\n    </button>\n	</ion-col>\n\n	<ion-col col-6>\n      <button ion-button   width="600px"  tappable (click)="goTo(\'SavedAddressPage\')">\n          {{\'SELECT OTHER\'}}\n      </button>\n	</ion-col>\n      \n   \n\n</ion-card>\n<!-- <ion-card>\n  <ion-item *ngFor="let x of products">\n    <ion-item>\n    <ion-thumbnail item-start>\n    <div class="img" [ngStyle]="{\'background-image\': \'url(http://www.babyneeds.co.in/babyneeds/product_image/\' +x.images +\')\'}"></div>\n     \n    </ion-thumbnail>\n    <h3 [innerHTML]="x.name"></h3>\n     <p>\n       <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->\n        <!-- <span class="price">{{x.finalprice | money}}</span> -->\n      <!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->\n      <!-- <span> x {{x.quantity}}</span>\n    </p>\n  \n  </ion-item>\n\n  </ion-item>\n\n</ion-card> --> \n\n<!-- <ion-item>\n   \n    <h6 >Amount :{{_cart.total}}Rs.</h6>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total>200" >Free Delivery</p>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total<200" >Delivery charge 30 Rs.</p>\n    <h6  *ngIf="_cart.total<200" >Total :{{_cart.total+30}}Rs.</h6>\n    <p style="font-size:9px" color="primary" *ngIf="_cart.total<200">*Orde above 200Rs for free delivery</p>\n</ion-item> -->\n<ion-item>\n    <ion-label>Date</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="details.deliverydate">\n    </ion-datetime>\n  </ion-item>\n  <ion-item>\n      <ion-label>Time Slot</ion-label>\n      <ion-select [(ngModel)]="details.timesloat">\n        <ion-option *ngFor="let time of timing" [value]="time" >{{time}}</ion-option>\n     </ion-select>\n    </ion-item>\n\n    <ion-item>\n        <ion-label>Mode of Payment</ion-label>\n        <ion-select [(ngModel)]="placeorderreq.shipping_type">\n          <ion-option> Cash On Delivery</ion-option>\n         \n          <ion-option>COD BHIM 9891850708@UPI</ion-option>\n       \n         </ion-select>\n      </ion-item>\n    \n  \n      <div padding>\n        <button ion-button block icon-start tappable (click)="placeorder()">\n          proceed\n        </button>\n      </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/checkout1/checkout1.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
 ], Checkout1Page);
 
 //# sourceMappingURL=checkout1.js.map

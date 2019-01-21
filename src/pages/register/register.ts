@@ -65,6 +65,7 @@ export class RegisterPage {
         password: '',
         mobile:''
         };
+        this.cfrmpass='';
         this.navCtrl.push('LoginPage');
       }
       else if(this.cust.result=="failure")
@@ -79,6 +80,7 @@ export class RegisterPage {
         password: '',
         mobile:''
         };
+        this.cfrmpass='';
        this.toast.show(this.cust.responseMessage);
      
       }

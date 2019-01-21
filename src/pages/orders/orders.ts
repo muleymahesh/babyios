@@ -156,7 +156,9 @@ inovice(){
 this.str1=this.str.substring(2);
 console.log(this.str1);
 this.restProvider.Inovice(this.str1)
-
+.then(data=>{
+  this.toast.show(data.result);
+})
 
 }
 

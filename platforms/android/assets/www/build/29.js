@@ -58,8 +58,8 @@ var SavedAddressPage = (function () {
         var _this = this;
         this.translate.get(['Do you want to remove this address?', 'REMOVE_MSG', 'CANCEL', 'YES']).subscribe(function (x) {
             var confirm = _this.alertCtrl.create({
-                title: x.REMOVE_TTL,
-                message: x.REMOVE_MSG,
+                title: 'Remove address',
+                message: 'Do you want to remove this address?',
                 buttons: [{
                         text: x.CANCEL
                     }, {

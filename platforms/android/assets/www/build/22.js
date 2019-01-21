@@ -65,7 +65,7 @@ var ChangePage = (function () {
                         .then(function (data) {
                         _this.response = data;
                         if (_this.response.result == "success") {
-                            _this.toast.show("Your password change successfully...");
+                            _this.toast.show("Your password changed successfully...");
                         }
                         else {
                             _this.toast.show(_this.response.responseMessage);

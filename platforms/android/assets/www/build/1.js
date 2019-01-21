@@ -128,7 +128,7 @@ var WishlistPage = (function () {
                 if (data.result == "failed") {
                     console.log(data.result);
                     _this.wlist = [];
-                    _this.toast.show("no products in wishlist");
+                    _this.toast.show("No products in wishlist");
                 }
                 else if (data.result == "success") {
                     _this.wlist = data.data;

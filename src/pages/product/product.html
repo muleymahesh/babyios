@@ -234,7 +234,7 @@
                   <ion-row no-padding>
                       <ion-col col-4 no-padding>Stock</ion-col>
                       <ion-col col-8 no-padding>
-                       :{{p1.stock==='0'?'out of stock':'Available'}} 
+                       :{{p1.stock<'1'?'out of stock':'Available'}} 
                       </ion-col>
                       </ion-row>
                     <!-- </ng-container> -->

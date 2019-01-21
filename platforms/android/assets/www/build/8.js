@@ -10,6 +10,7 @@ webpackJsonp([8],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(34);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -24,6 +25,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the ReturnorderPage page.
  *
@@ -31,7 +33,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var ReturnorderPage = (function () {
-    function ReturnorderPage(_cart1, datepipe, restProvider, setting, alert, platform, nav, translate, toast, user, loader, woo, _cart, events, _order, address, navParams, modal) {
+    function ReturnorderPage(storage, _cart1, datepipe, restProvider, setting, alert, platform, nav, translate, toast, user, loader, woo, _cart, events, _order, address, navParams, modal) {
+        var _this = this;
+        this.storage = storage;
         this._cart1 = _cart1;
         this.datepipe = datepipe;
         this.restProvider = restProvider;
@@ -85,6 +89,11 @@ var ReturnorderPage = (function () {
         this.returnrequest.user_email = this.user.user.user_email;
         this.orders = this.navParams.data.params;
         this.minDate = new Date().toISOString();
+        this.restProvider.getTimeslot(this.time_slot)
+            .then(function (data) {
+            _this.response = data;
+            _this.storage.set('timejson1', _this.response);
+        });
         this.maxDate = new Date(new Date().setFullYear(new Date().getFullYear() + 2)).toISOString();
         this.str = this.navParams.data.params.o_id;
     }
@@ -137,7 +146,7 @@ var ReturnorderPage = (function () {
     // }
     ReturnorderPage.prototype.onChange = function () {
         var _this = this;
-        this.restProvider.getTimeslot(this.time_slot)
+        this.storage.get('timejson1')
             .then(function (data) {
             _this.response = data;
             if (_this.response.result == "success") {
@@ -166,10 +175,10 @@ var ReturnorderPage = (function () {
                                 console.log(_this.timing);
                             }
                         }
-                    }
-                    else if (parseInt(_this.ctime) > 17) {
-                        _this.toast.show("Time sloats are over please select next date");
-                        _this.returndate = '';
+                        if (_this.timing.length == 0) {
+                            _this.toast.show("Time slots are over please select next date");
+                            _this.returndate = '';
+                        }
                     }
                     else {
                         // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
@@ -226,7 +235,7 @@ var ReturnorderPage = (function () {
                     _this.toast.show(_this.res.responseMessage);
                 }
                 else {
-                    _this.toast.show("Something is wrong please contact Us");
+                    _this.toast.show("Something went wrong please contact Us");
                 }
             });
         }
@@ -240,7 +249,7 @@ ReturnorderPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-returnorder',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/returnorder/returnorder.html"*/'<!--\n  Generated template for the ReturnorderPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  \n  <ion-navbar color="primary">\n    <ion-title>Return request</ion-title>\n</ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n<ion-card>\n    <ion-label padding floting><P><b>Reason for Return</b></P></ion-label>\n  <ion-item>\n   \n    <ion-textarea placeholder="Enter your reason..." [(ngModel)]="reason" ></ion-textarea>\n    \n  </ion-item>\n  <ion-item>\n    <ion-label>Return Date</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="returndate">\n    </ion-datetime>\n  </ion-item>\n  <ion-item>\n      <ion-label>Time Slot</ion-label>\n      <ion-select [(ngModel)]="returntime" >\n        <ion-option *ngFor="let time of timing" [value]="time" >{{time}}</ion-option>\n     </ion-select>\n    </ion-item>\n</ion-card>\n<button  full ion-button round tappable (click)="returnOrder()">Request Return</button><br>\n\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/returnorder/returnorder.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["f" /* OrderProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["a" /* AddressProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]])
 ], ReturnorderPage);
 
 //# sourceMappingURL=returnorder.js.map

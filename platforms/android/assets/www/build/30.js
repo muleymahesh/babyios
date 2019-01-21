@@ -84,13 +84,13 @@ var AddAddressPage = (function () {
             if (this.data.action == 1) {
                 this.address.add(this.form.value); // FOR NEW ADDRESS
                 this.translate.get('New adress added').subscribe(function (x) {
-                    _this.toast.show(x);
+                    _this.toast.show('New adress added');
                 });
             }
             if (this.data.action == 2) {
                 this.address.update(this.navParams.data.index, this.form.value); // UPDATE ADDRESS
                 this.translate.get('Address was updated').subscribe(function (x) {
-                    _this.toast.show(x);
+                    _this.toast.show('Address was updated');
                 });
             }
             if (this.data.action == 3) {

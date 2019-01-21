@@ -98,7 +98,7 @@ var WritereviewPage = (function () {
                 });
             }
             else {
-                this.toast.show("You are not Loged in");
+                this.toast.show("You are not Logged in");
             }
         }
         else {

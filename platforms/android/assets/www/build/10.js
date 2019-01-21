@@ -163,12 +163,12 @@ var ProductPage = (function () {
                         _this.toast.show(_this.res.responseMessage);
                     }
                     else {
-                        _this.toast.show("Something is wrong please contact Us");
+                        _this.toast.show("Something went wrong please contact Us");
                     }
                 });
             }
             else {
-                this.toast.show("You are not Loged in");
+                this.toast.show("You are not Logged in");
             }
         }
         else {
@@ -188,12 +188,12 @@ var ProductPage = (function () {
                         _this.toast.show(_this.res.responseMessage);
                     }
                     else {
-                        _this.toast.show("Something is wrong please contact Us");
+                        _this.toast.show("Something went wrong please contact Us");
                     }
                 });
             }
             else {
-                this.toast.show("You are not Loged in");
+                this.toast.show("You are not Logged in");
             }
         }
     };
@@ -270,7 +270,7 @@ var ProductPage = (function () {
             this.goTo('WritereviewPage', product);
         }
         else {
-            this.toast.show("Please login to write review");
+            this.toast.show("Please login to write a review");
         }
     };
     ProductPage.prototype.goTo = function (page, params) {

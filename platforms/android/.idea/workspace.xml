@@ -2,10 +2,81 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5893d28f-a642-4f4e-bbc8-bf1ad6d5bef0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/0.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/0.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/1.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/1.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/10.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/10.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/14.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/14.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/20.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/20.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/21.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/21.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/22.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/22.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/24.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/24.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/29.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/29.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/30.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/30.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/8.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/8.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/9.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/9.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.sourcemaps/main.js.map" afterPath="$PROJECT_DIR$/../../.sourcemaps/main.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/0.js" afterPath="$PROJECT_DIR$/assets/www/build/0.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/0.js.map" afterPath="$PROJECT_DIR$/assets/www/build/0.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/1.js" afterPath="$PROJECT_DIR$/assets/www/build/1.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/1.js.map" afterPath="$PROJECT_DIR$/assets/www/build/1.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/10.js" afterPath="$PROJECT_DIR$/assets/www/build/10.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/10.js.map" afterPath="$PROJECT_DIR$/assets/www/build/10.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/14.js" afterPath="$PROJECT_DIR$/assets/www/build/14.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/14.js.map" afterPath="$PROJECT_DIR$/assets/www/build/14.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/20.js" afterPath="$PROJECT_DIR$/assets/www/build/20.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/20.js.map" afterPath="$PROJECT_DIR$/assets/www/build/20.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/21.js" afterPath="$PROJECT_DIR$/assets/www/build/21.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/21.js.map" afterPath="$PROJECT_DIR$/assets/www/build/21.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/22.js" afterPath="$PROJECT_DIR$/assets/www/build/22.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/22.js.map" afterPath="$PROJECT_DIR$/assets/www/build/22.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/24.js" afterPath="$PROJECT_DIR$/assets/www/build/24.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/24.js.map" afterPath="$PROJECT_DIR$/assets/www/build/24.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/29.js" afterPath="$PROJECT_DIR$/assets/www/build/29.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/29.js.map" afterPath="$PROJECT_DIR$/assets/www/build/29.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/30.js" afterPath="$PROJECT_DIR$/assets/www/build/30.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/30.js.map" afterPath="$PROJECT_DIR$/assets/www/build/30.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/8.js" afterPath="$PROJECT_DIR$/assets/www/build/8.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/8.js.map" afterPath="$PROJECT_DIR$/assets/www/build/8.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/9.js" afterPath="$PROJECT_DIR$/assets/www/build/9.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/9.js.map" afterPath="$PROJECT_DIR$/assets/www/build/9.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/main.js" afterPath="$PROJECT_DIR$/assets/www/build/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/main.js.map" afterPath="$PROJECT_DIR$/assets/www/build/main.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/vendor.js" afterPath="$PROJECT_DIR$/assets/www/build/vendor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/build/vendor.js.map" afterPath="$PROJECT_DIR$/assets/www/build/vendor.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/confirm/confirm.html" afterPath="$PROJECT_DIR$/../../src/pages/confirm/confirm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/home/home.html" afterPath="$PROJECT_DIR$/../../src/pages/home/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/product/product.html" afterPath="$PROJECT_DIR$/../../src/pages/product/product.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/product/product.ts" afterPath="$PROJECT_DIR$/../../src/pages/product/product.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/pages/register/register.ts" afterPath="$PROJECT_DIR$/../../src/pages/register/register.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/0.js" afterPath="$PROJECT_DIR$/../../www/build/0.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/0.js.map" afterPath="$PROJECT_DIR$/../../www/build/0.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/1.js" afterPath="$PROJECT_DIR$/../../www/build/1.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/1.js.map" afterPath="$PROJECT_DIR$/../../www/build/1.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/10.js" afterPath="$PROJECT_DIR$/../../www/build/10.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/10.js.map" afterPath="$PROJECT_DIR$/../../www/build/10.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/14.js" afterPath="$PROJECT_DIR$/../../www/build/14.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/14.js.map" afterPath="$PROJECT_DIR$/../../www/build/14.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/20.js" afterPath="$PROJECT_DIR$/../../www/build/20.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/20.js.map" afterPath="$PROJECT_DIR$/../../www/build/20.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/21.js" afterPath="$PROJECT_DIR$/../../www/build/21.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/21.js.map" afterPath="$PROJECT_DIR$/../../www/build/21.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/22.js" afterPath="$PROJECT_DIR$/../../www/build/22.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/22.js.map" afterPath="$PROJECT_DIR$/../../www/build/22.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/24.js" afterPath="$PROJECT_DIR$/../../www/build/24.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/24.js.map" afterPath="$PROJECT_DIR$/../../www/build/24.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/29.js" afterPath="$PROJECT_DIR$/../../www/build/29.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/29.js.map" afterPath="$PROJECT_DIR$/../../www/build/29.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/30.js" afterPath="$PROJECT_DIR$/../../www/build/30.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/30.js.map" afterPath="$PROJECT_DIR$/../../www/build/30.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/8.js" afterPath="$PROJECT_DIR$/../../www/build/8.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/8.js.map" afterPath="$PROJECT_DIR$/../../www/build/8.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/9.js" afterPath="$PROJECT_DIR$/../../www/build/9.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/9.js.map" afterPath="$PROJECT_DIR$/../../www/build/9.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/main.js" afterPath="$PROJECT_DIR$/../../www/build/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/main.js.map" afterPath="$PROJECT_DIR$/../../www/build/main.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/vendor.js" afterPath="$PROJECT_DIR$/../../www/build/vendor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../www/build/vendor.js.map" afterPath="$PROJECT_DIR$/../../www/build/vendor.js.map" />
     </list>
     <ignored path="$PROJECT_DIR$/build/android-profile/" />
     <ignored path="$PROJECT_DIR$/build/intermediates/blame/" />
@@ -2120,9 +2191,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
@@ -2141,7 +2212,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../abhilash/quotation-master/platforms/android" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1546582936084" />
     <property name="device.picker.selection" value="NJ9T49Z5NRMVKVJZ" />
   </component>
@@ -2228,7 +2299,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546688454055" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546931623314" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2328,7 +2399,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546688454055" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1546931623315" />
       </method>
     </configuration>
     <list size="1">
@@ -2369,9 +2440,8 @@
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2397,6 +2467,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>

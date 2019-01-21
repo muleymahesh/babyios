@@ -54,7 +54,7 @@ var RegisterPage = (function () {
             fname: '',
             lname: '',
             email: '',
-            divice_token: '12aacc',
+            device_token: '12aacc',
             password: '',
             mobile: ''
         };
@@ -78,14 +78,26 @@ var RegisterPage = (function () {
                                 fname: '',
                                 lname: '',
                                 email: '',
-                                divice_token: '12aacc',
+                                device_token: '12aacc',
                                 password: '',
                                 mobile: ''
                             };
                             _this.navCtrl.push('LoginPage');
                         }
                         else if (_this.cust.result == "failure") {
+                            _this.todo = {
+                                method: 'signup',
+                                fname: '',
+                                lname: '',
+                                email: '',
+                                device_token: '12aacc',
+                                password: '',
+                                mobile: ''
+                            };
                             _this.toast.show(_this.cust.responseMessage);
+                        }
+                        else {
+                            _this.toast.show("Something went worng please try again");
                         }
                     });
                 }
