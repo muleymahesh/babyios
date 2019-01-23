@@ -244,6 +244,14 @@ returnOrder1(){
 
 onChange()
 {
+  let edate=this.datepipe.transform(this.newdeliverydate,'EEEE');
+  console.log(""+edate);
+  let latest_date =this.datepipe.transform(this.newdeliverydate,'M/d/yyyy');
+  let c_date =this.datepipe.transform(new Date(),'M/d/yyyy');
+  console.log(latest_date);
+  console.log( c_date);
+  if(edate!='Tuesday')
+  {
   this.storage.get('timejson1')
   .then(data => {
   this.response = data;
@@ -252,10 +260,7 @@ onChange()
   this.timing=[];
   this.times=this.response.data;
 //  console.log(this.details.deliverydate);
-  let latest_date =this.datepipe.transform(this.newdeliverydate,'M/d/yyyy');
-  let c_date =this.datepipe.transform(new Date(),'M/d/yyyy');
-  console.log(latest_date);
-  console.log( c_date);
+ 
   if(latest_date==c_date)
   {
     this.ctime=new Date().getHours();
@@ -291,6 +296,10 @@ onChange()
   }
  
   else{
+
+
+    if(parseInt(this.ctime)>7&&parseInt(this.ctime)<17)
+    {
    // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
    for(let s of this.times)
    {
@@ -307,6 +316,16 @@ onChange()
      }
      
    }
+  }
+
+ if(this.timing.length==0)
+    {
+      this.toast.show("Time slots are over please select next date");
+      this.newdeliverydate='';
+    }
+
+
+
   }
 }
 else
@@ -335,6 +354,12 @@ else
 this.toast.show(this.response.responseMessage);
 }
 });
+  }
+  else
+  {
+    this.toast.show('tuesday is holiday select next day');
+    this.newdeliverydate='';
+  }
 }
 
 

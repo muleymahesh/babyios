@@ -217,7 +217,7 @@ mydata:any;
      .toPromise()
      .then((data: any) => {
      //   console.log('Success', data.data);
-        return data.data;
+        return data;
      })
      .catch(err => {
        // console.log('Error', err);

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Platform,IonicPage, NavController, ModalController } from 'ionic-angular';
+import { Platform,IonicPage, NavController, ModalController,AlertController } from 'ionic-angular';
 import { WooCommerceProvider,RecentProvider, ToastProvider,AddressProvider, LoadingProvider, WishlistProvider,HistoryProvider } from '../../providers/providers';
 import { TranslateService } from '@ngx-translate/core';
 import { App } from '../../app/app.global';
@@ -8,7 +8,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { HttpClient } from '@angular/common/http';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-
+import { Network } from '@ionic-native/network';
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -17,6 +17,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 export class HomePage {
 	App: any;
+	flag:any;test:any;
+
 	//categories: any[] = new Array;
 	data: any[] = new Array();
 	app: any;
@@ -37,7 +39,7 @@ allproducts:any;
 
 		ad_banner:any;
 		adRequest = {
-			method:'get_all_ad_banner'
+			method:'home'
 			};
 
 	  cateogry = {
@@ -74,33 +76,72 @@ allproducts:any;
 			newarrivalrequest= {
 		method:'get_new_arrivals',
 			};
-his:any;
+
+			searchrequest={
+				method:"search_product",
+				query:""
+			};
+      his:any;
 
 			
-		constructor( private splashScreen: SplashScreen,public platform:Platform,private address:AddressProvider,public history: RecentProvider,public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
+		constructor( public alert: AlertController, public network:Network,private splashScreen: SplashScreen,public platform:Platform,private address:AddressProvider,public history: RecentProvider,public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
 		this.App = App;
+		this.flag=0;
 		this.platform.ready().then(() => {
 			this.loader.present();
-			this.getAllproduct();
-			this.getBrands();
-			this.getCategory(); 
-			this.newArrival();
-			
-			this.getAdBanner();
-			this.loader.dismiss();
+this.getAllproduct();
+			this.restProvider.getNewArrivalList(this.adRequest)
+			.then(data => {
+				console.log(data);
+				if(data.result=="success")
+				{
+					this.slides=data.banner_data;
+					this.ad_banner=data.adbanner;
+					this.categories=data.category;
+					this.agegroups=data.age_data;
+					this.offers=data.offer_data;
+					this.Brands=data.brand_data;
+					this.rlist=data.rec_data;
+					this.nlist=data.new_data;
+        this.loader.dismiss();
+				}
+				else
+				{
+					this.loader.dismiss();
+				//	this.loader.load();
+				if(this.flag==1)
+				{
+					this.flag=0;
+					
+				}
+			//		this.toast.show("something went wrong please try again");
+					this.flag=1;
+					this.alert.create({
+						title: "Alert",
+						message: "we are having trouble loading content. try again",
+						buttons: [{
+							text: 'Try again',
+							handler: () => {
+							//	this.loader.dismiss();
+								this.ionViewDidEnter();
+               this.flag=0;
+							}
+						}]
+				
+							
+						}).present();
+					
+				}
+			});
+	
 			this.splashScreen.hide();
 		});
-		this.getBanner();
-	this.loader.present();	
+	
+
 
 	this.wishlist1();
-	this.getOffer();
-	this.loader.dismiss();
-	this.getAgeGruops();
-//	this.address.remove(0);
-//console.log(this.history.all);
-//this.address.remove(0);
-//this.address.remove(1);
+
+
 this.his= this.history.all;
 this.his.sort(function(obj1, obj2) {
 	return obj2.no_of_time - obj1.no_of_time;
@@ -123,6 +164,50 @@ this.his.sort(function(obj1, obj2) {
 
 	ionViewDidEnter() {
 		this.showList = false;
+//this.loader.present();
+		this.restProvider.getNewArrivalList(this.adRequest)
+		.then(data => {
+			console.log(data);
+			this.test=data;
+			if(data.result=="success")
+			{
+				this.slides=data.banner_data;
+				this.ad_banner=data.adbanner;
+				this.categories=data.category;
+				this.agegroups=data.age_data;
+				this.offers=data.offer_data;
+				this.Brands=data.brand_data;
+				this.rlist=data.rec_data;
+				this.nlist=data.new_data;
+//this.loader.dismiss();
+			}
+			else
+			{
+
+			//	this.loader.dismiss();
+				if(this.flag!=1)
+				{
+			//	this.loader.load();
+			//	this.toast.show("something went wrong please try again");
+				this.alert.create({
+					title: "Alert",
+					message: "we are having trouble loading content. try again",
+					buttons: [{
+						text: 'Try again',
+						handler: () => {
+						//	this.loader.dismiss();
+							this.ionViewDidEnter();
+							
+						}
+						}]
+			
+						
+					}).present();
+				//this.loader.dismiss();
+			}
+		}
+		});
+	
 //	console.log("hiii");
 	this.his= this.history.all;
 	this.his.sort(function(obj1, obj2) {
@@ -274,7 +359,24 @@ this.	goTo('ProductPage',data);
 		this.nav.push(page,{params: params});
 	}
 	initializeItems() {
-    this.item=this.aproducts; 
+		this.item=this.aproducts; 
+		// this.restProvider.getProduct(this.searchrequest).
+		// then(data=>{
+		// 	if(data.result=="success")
+		// 	{
+		// 		console.log(this.item);
+		// 		this.showList = true;
+		// 		console.log(this.showList);
+		// 		this.item=data.data;
+		// 	console.log(this.item);
+		// 			// return (item.product_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+		// 	}
+		// 	else{
+		// 		this.showList = false;
+		// 	}
+		// }
+
+		// );
   }
 
 
@@ -302,5 +404,25 @@ this.	goTo('ProductPage',data);
       this.showList = false;
     }
   }
+
+	private listenConnection(): void {
+		this.network.onDisconnect()
+		  .subscribe(() => {
+			this.alert.create({
+				title: "Remove product",
+				message: "Do you want to remove from cart?",
+				buttons: [{
+					text: 'OK'
+				  }]
+					
+					
+			  }).present();
+		  });
+	  }
+	  
+	
+		// omitted;
+	  
+	  
 
 }

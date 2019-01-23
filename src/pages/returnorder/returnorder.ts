@@ -83,57 +83,15 @@ res:any;
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReturnorderPage');
   }
-
-  // onChange()
-  // {
-  //   this.timing=[];
-  // //  console.log(this.details.deliverydate);
-  //   let latest_date =this.datepipe.transform(this.returndate,'M/d/yyyy');
-  //   let c_date =this.datepipe.transform(new Date(),'M/d/yyyy');
-  //   console.log(latest_date);
-  //   console.log( c_date);
-  //   if(latest_date==c_date)
-  //   {
-  //     this.ctime=new Date().getHours();
-  //     console.log("ctime is="+this.ctime)
-  //     if(parseInt(this.ctime)>7&&parseInt(this.ctime)<17)
-  //     {
-  //     for(let s of this.times)
-  //     {
-  
-  //       console.log("ctime="+this.ctime);
-  //       console.log("stime="+s.stime)
-  //       console.log("int ctime="+parseInt(this.ctime))
-       
-          
-  //       if(s.stime<parseInt(this.ctime)&&s.etime>parseInt(this.ctime))
-  //       {
-  //         console.log("I am in if stime="+s.stime)
-  //         for(let s1 of s.slots)
-  //         {
-  //         this.timing.push(s1);
-  //         }
-  //         console.log(this.timing);
-  //       }
-        
-  //     }
-  //   }
-  //   else if(parseInt(this.ctime)>17)
-  //   {
-  //     this.toast.show("Time sloats are over please select next date");
-  //     this.returndate='';
-  //   }
-  //   else{
-  //     this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
-  //   }
-  // }
-  // else
-  // {
-  //   this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
-  // }
-  // }
   onChange()
   {
+    let edate=this.datepipe.transform(this.returndate,'EEEE');
+    let latest_date =this.datepipe.transform(this.returndate,'M/d/yyyy');
+    let c_date =this.datepipe.transform(new Date(),'M/d/yyyy');
+    console.log(latest_date);
+    console.log( c_date);
+    if(edate!='Tuesday')
+    {
     this.storage.get('timejson1')
     .then(data => {
     this.response = data;
@@ -142,10 +100,7 @@ res:any;
     this.timing=[];
     this.times=this.response.data;
   //  console.log(this.details.deliverydate);
-    let latest_date =this.datepipe.transform(this.returndate,'M/d/yyyy');
-    let c_date =this.datepipe.transform(new Date(),'M/d/yyyy');
-    console.log(latest_date);
-    console.log( c_date);
+   
     if(latest_date==c_date)
     {
       this.ctime=new Date().getHours();
@@ -185,6 +140,8 @@ res:any;
     // }
     else{
      // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+   if(parseInt(this.ctime)>7&&parseInt(this.ctime)<17)
+   {
      for(let s of this.times)
      {
     
@@ -201,7 +158,13 @@ res:any;
        
      }
     }
+   if(this.timing.length==0)
+    {
+      this.toast.show("Time slots are over please select next date");
+      this.returndate='';
+    }
   }
+}
   else
   {
    // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
@@ -228,6 +191,12 @@ else
   this.toast.show(this.response.responseMessage);
 }
 });
+    }
+else
+{
+  this.toast.show('tuesday is holiday select next day');
+  this.returndate='';
+}
   }
 
 

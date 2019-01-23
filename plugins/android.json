@@ -28,6 +28,12 @@
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.maks.babyneeds"
     },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.maks.babyneeds"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.maks.babyneeds"
+    },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.maks.babyneeds"
     },
@@ -41,6 +47,9 @@
       "PACKAGE_NAME": "com.maks.babyneeds"
     },
     "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.maks.babyneeds"
+    },
+    "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.maks.babyneeds"
     },
     "ionic-plugin-keyboard": {
@@ -68,6 +77,9 @@
       "PACKAGE_NAME": "com.maks.babyneeds"
     },
     "cordova-plugin-nativestorage": {
+      "PACKAGE_NAME": "com.maks.babyneeds"
+    },
+    "cordova-plugin-badge": {
       "PACKAGE_NAME": "com.maks.babyneeds"
     },
     "es6-promise-plugin": {

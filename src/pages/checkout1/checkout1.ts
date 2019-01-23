@@ -33,6 +33,7 @@ timing:any[]=[];
 
 product:any;
         billing: any;
+
         details={
         deliverydate:'',
         timesloat:''
@@ -172,19 +173,27 @@ ionViewWillEnter()
 
   onChange()
   {
-
-    this.storage.get('timejson')
-    .then(data => {
-    this.response = data;
-    if(this.response.result=="success")
-    {
-    this.timing=[];
-    this.times=this.response.data;
-  //  console.log(this.details.deliverydate);
+ console.log(this.details.deliverydate);
+    let edate=this.datepipe.transform(this.details.deliverydate,'EEEE');
+    console.log("delivery date:  "+edate);
     let latest_date =this.datepipe.transform(this.details.deliverydate,'M/d/yyyy');
     let c_date =this.datepipe.transform(new Date(),'M/d/yyyy');
     console.log(latest_date);
     console.log( c_date);
+    if(edate!='Tuesday')
+    {
+    this.storage.get('timejson')
+    .then(data => {
+    this.response = data;
+   
+    if(this.response.result=="success")
+    {
+    this.timing=[];
+    this.times=this.response.data;
+   console.log("delivery date:  "+edate);
+  
+    
+   
     if(latest_date==c_date)
     {
       this.ctime=new Date().getHours();
@@ -216,13 +225,10 @@ ionViewWillEnter()
        this.details.deliverydate='';
       } 
     }
-    // else if(parseInt(this.ctime)>17)
-    // {
-    //   this.toast.show("Time slots are over please select next date");
-    //   this.details.deliverydate='';
-    // }
+    
     else{
-     // this.timing= ["9-11AM","11-1PM","1-3PM","3-5PM","5-7PM"];
+      if(parseInt(this.ctime)>17&&parseInt(this.ctime)<17)
+    {
      for(let s of this.times)
      {
     
@@ -238,6 +244,14 @@ ionViewWillEnter()
        }
        
      }
+
+
+    }
+    if(this.timing.length==0)
+    {
+     this.toast.show("Time slots are over please select next date");
+     this.details.deliverydate='';
+    } 
     }
   }
   else
@@ -260,13 +274,27 @@ ionViewWillEnter()
    }
   }
   }
-
+    
 else
 {
   this.toast.show(this.response.responseMessage);
 }
+
+ 
+   
 });
+    }
+else
+{
+this.details.deliverydate='';
+console.log(this.details.deliverydate);
+ 
+this.toast.show('tuesday is holiday select next day');
+ 
+    }
+
   }
+
 
   setOrder(){
    

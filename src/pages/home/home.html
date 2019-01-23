@@ -8,7 +8,7 @@
          <!-- <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getItems($event)"></ion-searchbar>  -->
     </ion-navbar>
     <!-- <ion-searchbar no-padding (ionInput)="getItems($event)"></ion-searchbar> -->
-    <ion-searchbar [(ngModel)]="searchQuery" color="primary" placeholder="{{ 'BABYNEEDS' | translate }}" (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchrequest.query" color="primary" placeholder="{{ 'BABYNEEDS' | translate }}" (ionInput)="getItems($event)"></ion-searchbar>
     <div *ngIf="showList" padding>
         <ion-scroll style="width:100%;height:100vh" scrollY="true">
             <ion-list scroll="true">
@@ -61,8 +61,8 @@
       <img *ngIf="i==0"src="http://www.babyneeds.co.in/babyneeds/product_image/{{ad.image}}"  style="width:100% ;height: 80px;">
     </div>
       <div class="">
-        <ion-list no-lines no-margin margin-left>
-          <ion-item no-padding no-lines>
+        <ion-list  *ngFor="let w of rlist;  let i=index " no-lines no-margin margin-left>
+          <ion-item   *ngIf="i==0" no-padding no-lines>
             {{ ' Your Recommendations' | translate }}
         </ion-item>
         </ion-list>
@@ -86,8 +86,8 @@
       </div> 
        
        <ion-row>
-          <ion-col text-left>
-            <button item-end ion-button clear icon-end tappable (click)="goTo('ProductGridPage','Recommendations')">
+          <ion-col *ngFor="let w of rlist;  let i=index " text-left>
+            <button   *ngIf="i==0" item-end ion-button clear icon-end tappable (click)="goTo('ProductGridPage','Recommendations')">
               {{ 'SEE ALL' | translate }}
               <ion-icon name="arrow-forward"></ion-icon>
             </button>
@@ -97,7 +97,8 @@
     </div> 
 
 
-
+<div *ngFor="let w of rlist; let i=index ">
+  <div  *ngIf="i==0">
     <div class=""*ngFor="let w of his ;  let i=index " >
       <ion-list no-lines no-margin margin-left>
         <ion-item no-padding no-lines *ngIf="i==0" >
@@ -134,13 +135,13 @@
       </ion-grid>
      
      
-  
- 
+    </div>
+  </div>
 
 
     <div class="">
-      <ion-list no-lines no-margin margin-left>
-        <ion-item no-padding no-lines>
+      <ion-list *ngFor="let w of nlist;  let i=index " no-lines no-margin margin-left>
+        <ion-item *ngIf="i==0" no-padding no-lines>
           {{ 'New Arrival' | translate }}
       </ion-item>
       </ion-list>
@@ -165,8 +166,8 @@
     </div> 
      
     <ion-row>
-        <ion-col text-left>
-          <button item-end ion-button clear icon-end tappable (click)="goTo('ProductGridPage','New Arrival')">
+        <ion-col *ngFor="let w of nlist;  let i=index " text-left>
+          <button *ngIf="i==0" item-end ion-button clear icon-end tappable (click)="goTo('ProductGridPage','New Arrival')">
             {{ 'SEE ALL' | translate }}
             <ion-icon name="arrow-forward"></ion-icon>
           </button>
@@ -181,8 +182,8 @@
 
 
       <div class="">
-        <ion-list no-lines no-margin margin-left>
-          <ion-item no-padding no-lines>
+        <ion-list *ngFor="let x of categories; let i=index" no-lines no-margin margin-left>
+          <ion-item *ngIf="i==0" no-padding no-lines>
             {{ 'CATEGORIES' | translate }}
              <!-- <button item-end ion-button clear icon-end tappable (click)="goTo('CategoriesPage')">
                 {{ 'SEE ALL' | translate }}
@@ -219,8 +220,8 @@
       </div> 
 
       <div class="">
-        <ion-list no-lines no-margin margin-left>
-          <ion-item no-padding no-lines>
+        <ion-list *ngFor="let x of agegroups ; let i=index" no-lines no-margin margin-left>
+          <ion-item *ngIf="i==0" no-padding no-lines>
             {{ 'AGE GROUP' | translate }}
           </ion-item>
         </ion-list>
@@ -256,8 +257,8 @@
       
                    
             <div class="">
-              <ion-list no-lines no-margin margin-left>
-                <ion-item no-padding no-lines>
+              <ion-list   *ngFor="let b of Brands;let i=index" no-lines no-margin margin-left>
+                <ion-item *ngIf="i==0" no-padding no-lines>
                   {{ ' Upto 25% off on top brands' | translate }}
               </ion-item>
               </ion-list>
@@ -274,8 +275,8 @@
                  </ion-row>
         </ion-grid>
         <ion-row>
-          <ion-col text-left>
-            <button item-end ion-button clear icon-end tappable (click)="goTo('CategoriesPage')">
+          <ion-col *ngFor="let b of Brands;let i=index" text-left>
+            <button *ngIf="i==0" item-end ion-button clear icon-end tappable (click)="goTo('CategoriesPage')">
               {{ 'SEE ALL' | translate }}
               <ion-icon name="arrow-forward"></ion-icon>
             </button>
@@ -380,8 +381,8 @@
 
         <div class="">
      
-          <ion-list no-lines no-margin margin-left>
-            <ion-item no-padding no-lines>
+          <ion-list *ngFor="let w of offers; let i=index" no-lines no-margin margin-left>
+            <ion-item *ngIf="i==0" no-padding no-lines>
               {{ '  Offers' | translate }}
           </ion-item>
           </ion-list>

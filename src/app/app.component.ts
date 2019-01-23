@@ -15,6 +15,7 @@ import { Storage } from '@ionic/storage';
 import { AppRate } from '@ionic-native/app-rate';
 import { RateProvider } from '../providers/rate/rate';
 import { Config } from 'ionic-angular/config/config';
+import { Network } from '@ionic-native/network';
 //import { LocalNotifications } from '@ionic-native/local-notifications';
 @Component({
   templateUrl: 'app.html'
@@ -33,11 +34,13 @@ flag:any;
 rate1:any=0;
   app: any = {};
     storage1:any;
-  constructor( public alertCtrl: AlertController,public storage: Storage,public rate:RateProvider,private push: Push, private appRate: AppRate,private fcm: FCM, private _user: UserProvider,private oneSignal: OneSignal, private notif: NotifProvider, private platform: Platform, /*private config: Config,*/ public settings: SettingsProvider, private translate: TranslateService, private woo: WooCommerceProvider, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(public network:Network, public alertCtrl: AlertController,public storage: Storage,public rate:RateProvider,private push: Push, private appRate: AppRate,private fcm: FCM, private _user: UserProvider,private oneSignal: OneSignal, private notif: NotifProvider, private platform: Platform, /*private config: Config,*/ public settings: SettingsProvider, private translate: TranslateService, private woo: WooCommerceProvider, private statusBar: StatusBar, private splashScreen: SplashScreen) {
    
 
 
     this.platform.ready().then(() => {
+
+      this.listenConnection();
       this.statusBar.styleDefault();
      // this.storage1=this.storage;
    //   this.splashScreen.hide();
@@ -137,55 +140,11 @@ this.flag=data;
 
 
 
-      // this.appRate.preferences = {
-      //     displayAppName: 'Babyneeds',
-      //   usesUntilPrompt: 2,
-      //   promptAgainForEachNewVersion: false,
-      //   storeAppURL: {
-      //     ios:'',
-      //     android: 'market://details?id=com.maks.babyneeds1'
-      //   },
-      //   customLocale: {
-      //     title: 'Do you enjoy %@?',
-      //     message: 'If you enjoy using %@, would you mind taking a moment to rate it? Thanks so much!',
-      //     cancelButtonLabel: 'No, Thanks',
-      //     laterButtonLabel: 'Remind Me Later',
-      //     rateButtonLabel: 'Rate It Now'
-      //   },
-      //   callbacks: {
-      //     onRateDialogShow: function(callback){
-      //       console.log('rate dialog shown!');
-      //     },
-      //     onButtonClicked: function(buttonIndex){
-      //       console.log('Selected index: -> ' + buttonIndex);
-      //     }
-      //   }
-      // };
- 
-      // // Opens the rating immediately no matter what preferences you set
-      // this.appRate.promptForRating(true);
     
     });
     
     this.user = this._user.user;
-    // platform.ready().then(() => {
-    //   if (platform.is('cordova')) {
-    //     this.oneSignal.startInit(App.OneSignalAppID, App.GCM);
-    //     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-        
-    //     this.oneSignal.handleNotificationReceived().subscribe((x) => {
-    //     // do something when notification is received
-    //       console.log(x);
-    //       this.notif.post(x.payload);
-    //     });
-        
-    //     this.oneSignal.handleNotificationOpened().subscribe(() => {
-    //       // do something when a notification is opened
-    //     });
-        
-    //     this.oneSignal.endInit();
-    //   }
-    // });
+   
     this.pages=[
                  {title: 'home',
                   Component:HomePage},
@@ -327,6 +286,15 @@ rateMe(){
 }
 
 
+private listenConnection(): void {
+  this.network.onDisconnect()
+    .subscribe(() => {
+      this.showAlert();
+    });
+}
 
+private showAlert(): void {
+  // omitted;
+}
 
 }

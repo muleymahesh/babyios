@@ -10,7 +10,7 @@ export class ToastProvider {
   show(msg: string, pos: string = 'bottom') {
     this._toast.create({
       message: msg,
-      duration: 2000,
+      duration: 4000,
       position: pos
     }).present();
   }

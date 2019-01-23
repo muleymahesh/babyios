@@ -3,7 +3,7 @@ import { SharedModule } from './shared.module';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
+import { Network } from '@ionic-native/network';
 import { MODULES, PROVIDERS } from './app.imports';
 import { RestProvider } from '../providers/rest/rest';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
@@ -25,6 +25,7 @@ import { RateProvider } from '../providers/rate/rate';
   imports: [
     MODULES,
     SharedModule,
+   
     Ionic2RatingModule,
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages:false,
@@ -37,6 +38,7 @@ import { RateProvider } from '../providers/rate/rate';
     MyApp
   ],
   providers: [ 
+    Network,
     PROVIDERS, 
     AppRate,
     Push,
@@ -47,6 +49,7 @@ import { RateProvider } from '../providers/rate/rate';
     SQLite,
     RecentProvider,DatePipe,
     RateProvider,
+    
   //  LocalNotifications
   ]
 })

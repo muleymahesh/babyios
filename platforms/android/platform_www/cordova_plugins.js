@@ -104,6 +104,14 @@ module.exports = [
     "runs": true
   },
   {
+    "id": "cordova-plugin-badge.Badge",
+    "file": "plugins/cordova-plugin-badge/www/badge.js",
+    "pluginId": "cordova-plugin-badge",
+    "clobbers": [
+      "cordova.plugins.notification.badge"
+    ]
+  },
+  {
     "id": "cordova-plugin-device.device",
     "file": "plugins/cordova-plugin-device/www/device.js",
     "pluginId": "cordova-plugin-device",
@@ -126,6 +134,49 @@ module.exports = [
     "pluginId": "cordova-plugin-fcm",
     "clobbers": [
       "FCMPlugin"
+    ]
+  },
+  {
+    "id": "cordova-plugin-local-notification.LocalNotification",
+    "file": "plugins/cordova-plugin-local-notification/www/local-notification.js",
+    "pluginId": "cordova-plugin-local-notification",
+    "clobbers": [
+      "cordova.plugins.notification.local"
+    ]
+  },
+  {
+    "id": "cordova-plugin-local-notification.LocalNotification.Core",
+    "file": "plugins/cordova-plugin-local-notification/www/local-notification-core.js",
+    "pluginId": "cordova-plugin-local-notification",
+    "clobbers": [
+      "cordova.plugins.notification.local.core",
+      "plugin.notification.local.core"
+    ]
+  },
+  {
+    "id": "cordova-plugin-local-notification.LocalNotification.Util",
+    "file": "plugins/cordova-plugin-local-notification/www/local-notification-util.js",
+    "pluginId": "cordova-plugin-local-notification",
+    "merges": [
+      "cordova.plugins.notification.local.core",
+      "plugin.notification.local.core"
+    ]
+  },
+  {
+    "id": "cordova-plugin-network-information.network",
+    "file": "plugins/cordova-plugin-network-information/www/network.js",
+    "pluginId": "cordova-plugin-network-information",
+    "clobbers": [
+      "navigator.connection",
+      "navigator.network.connection"
+    ]
+  },
+  {
+    "id": "cordova-plugin-network-information.Connection",
+    "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+    "pluginId": "cordova-plugin-network-information",
+    "clobbers": [
+      "Connection"
     ]
   },
   {
@@ -167,6 +218,14 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-sqlite-storage.SQLitePlugin",
+    "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+    "pluginId": "cordova-sqlite-storage",
+    "clobbers": [
+      "SQLitePlugin"
+    ]
+  },
+  {
     "id": "ionic-plugin-keyboard.keyboard",
     "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
     "pluginId": "ionic-plugin-keyboard",
@@ -203,16 +262,20 @@ module.exports.metadata =
   "cordova-plugin-inappbrowser": "1.7.2",
   "cordova-plugin-nativestorage": "2.3.2",
   "cordova-plugin-apprate": "1.4.0",
+  "cordova-plugin-badge": "0.8.8",
   "cordova-plugin-device": "1.1.7",
   "cordova-plugin-email-composer": "0.8.15",
   "cordova-plugin-fcm": "2.1.2",
   "cordova-plugin-ionic-webview": "1.2.1",
+  "cordova-plugin-local-notification": "0.9.0-beta.2",
+  "cordova-plugin-network-information": "2.0.1",
   "cordova-plugin-splashscreen": "4.1.0",
   "cordova-plugin-statusbar": "2.4.3-dev",
   "cordova-plugin-stripe": "1.5.3",
   "cordova-plugin-whitelist": "1.3.3",
   "es6-promise-plugin": "4.2.2",
   "cordova-plugin-x-socialsharing": "5.4.1",
+  "cordova-sqlite-storage": "2.6.0",
   "ionic-plugin-keyboard": "2.2.1",
   "onesignal-cordova-plugin": "2.4.3",
   "phonegap-plugin-push": "2.1.3"
