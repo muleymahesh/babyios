@@ -31,7 +31,9 @@ export class RegisterPage {
     mobile:''
     };
     constructor(private history: HistoryProvider,private cart: CartProvider,public http: HttpClient,public restProvider: RestProvider, private alert: AlertController, private platform: Platform, private socialSharing: SocialSharing, private translate: TranslateService, private toast: ToastProvider, private wishlist: WishlistProvider, private navCtrl: NavController, private loader: LoadingProvider, private modal: ModalController, private navParam: NavParams, private woo: WooCommerceProvider) {
-  }
+  
+  
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');

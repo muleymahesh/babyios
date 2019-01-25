@@ -1,4 +1,4 @@
-webpackJsonp([40],{
+webpackJsonp([41],{
 
 /***/ 135:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -512,138 +512,142 @@ var DIRECTIVES = [
 var map = {
 	"../pages/aboutus/aboutus.module": [
 		955,
-		37
+		38
 	],
 	"../pages/account/account.module": [
 		956,
-		36
+		37
 	],
 	"../pages/account/chats/chats.module": [
 		957,
-		35
+		36
 	],
 	"../pages/account/chats/message/message.module": [
 		958,
-		34
+		35
 	],
 	"../pages/account/help/help.module": [
 		959,
-		33
+		34
 	],
 	"../pages/account/notification/notification.module": [
 		960,
-		32
+		33
 	],
 	"../pages/account/profile/profile.module": [
+		963,
+		32
+	],
+	"../pages/account/saved-address/add-address/add-address.module": [
 		961,
 		31
 	],
-	"../pages/account/saved-address/add-address/add-address.module": [
+	"../pages/account/saved-address/saved-address.module": [
 		962,
 		30
 	],
-	"../pages/account/saved-address/saved-address.module": [
-		963,
-		29
-	],
 	"../pages/account/settings/languages/languages.module": [
 		964,
-		28
+		29
 	],
 	"../pages/account/settings/notifications/notifications.module": [
 		965,
-		27
+		28
 	],
 	"../pages/account/settings/settings.module": [
 		966,
-		26
+		27
 	],
 	"../pages/account/settings/tos/tos.module": [
 		967,
-		25
+		26
 	],
 	"../pages/cart1/cart1.module": [
 		968,
-		24
+		25
 	],
 	"../pages/categories/categories.module": [
 		969,
-		23
+		24
 	],
 	"../pages/change/change.module": [
 		970,
-		22
+		23
 	],
 	"../pages/checkout1/checkout1.module": [
 		971,
-		21
+		22
 	],
 	"../pages/confirm/confirm.module": [
 		972,
+		21
+	],
+	"../pages/editprofile/editprofile.module": [
+		973,
 		20
 	],
 	"../pages/feedback/feedback.module": [
-		973,
+		974,
 		19
 	],
 	"../pages/forgotpassword/forgotpassword.module": [
-		974,
+		975,
 		18
 	],
 	"../pages/home/home.module": [
-		975,
-		39
+		976,
+		40
 	],
 	"../pages/list/list.module": [
-		976,
+		977,
 		17
 	],
 	"../pages/login/login.module": [
-		977,
-		38
+		979,
+		39
 	],
 	"../pages/menu/menu.module": [
 		978,
 		16
 	],
 	"../pages/myorder/myorder.module": [
-		979,
+		980,
 		15
 	],
 	"../pages/orders/orders.module": [
-		980,
+		981,
 		14
 	],
 	"../pages/product/grid/grid.module": [
-		981,
+		982,
 		13
 	],
 	"../pages/product/mini-cart/mini-cart.module": [
-		982,
+		983,
 		12
 	],
 	"../pages/product/modal-categories/modal-categories.module": [
-		983,
+		984,
 		11
 	],
 	"../pages/product/product.module": [
-		984,
+		985,
 		10
 	],
 	"../pages/register/register.module": [
-		985,
+		986,
 		9
 	],
 	"../pages/returnorder/returnorder.module": [
-		986,
+		987,
 		8
 	],
 	"../pages/search/search.module": [
-		987,
+		988,
 		7
 	],
 	"../pages/servicecategory/servicecategory.module": [
-		988,
+		990,
 		6
 	],
 	"../pages/servicedetail/servicedetail.module": [
@@ -651,7 +655,7 @@ var map = {
 		5
 	],
 	"../pages/services/services.module": [
-		990,
+		992,
 		4
 	],
 	"../pages/tabs/tabs.module": [
@@ -659,15 +663,15 @@ var map = {
 		3
 	],
 	"../pages/thanks/thanks.module": [
-		992,
+		993,
 		2
 	],
 	"../pages/wishlist/wishlist.module": [
-		993,
+		994,
 		1
 	],
 	"../pages/writereview/writereview.module": [
-		994,
+		995,
 		0
 	]
 };
@@ -1155,6 +1159,9 @@ var HomePage = (function () {
             _this.toast.show(msg);
         });
     };
+    HomePage.prototype.onlyUnique = function (value, index, self) {
+        return self.indexOf(value) === index;
+    };
     HomePage.prototype.go = function (data) {
         if (data.banner_type != 0 && data.banner_type != 4) {
             this.goTo('ProductGridPage', data);
@@ -1252,7 +1259,7 @@ var HomePage = (function () {
         this.nav.push(page, { params: params });
     };
     HomePage.prototype.initializeItems = function () {
-        this.item = this.aproducts;
+        this.item1 = this.aproducts;
         // this.restProvider.getProduct(this.searchrequest).
         // then(data=>{
         // 	if(data.result=="success")
@@ -1271,37 +1278,53 @@ var HomePage = (function () {
         // );
     };
     HomePage.prototype.getItems = function (ev) {
+        var _this = this;
         // Reset items back to all of the items
         this.initializeItems();
         // set val to the value of the searchbar
         var val = ev.target.value;
+        this.splitted = val.split(" ");
+        console.log(this.splitted);
         // if the value is an empty string don't filter the items
         if (val && val.trim() != '') {
             // Filter the items
             //	console.log(this.aproducts[0].product_name); 
-            this.item = this.item.filter(function (item) {
-                return (item.product_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+            this.item = this.item1.filter(function (item) {
+                for (var j = 0; j < _this.splitted.length; j++) {
+                    if (_this.splitted[j] != "" && j >= 0 && _this.splitted[j] != "baby") {
+                        //console.log("out of if : ",item.p_id);
+                        if (item.product_name.toLowerCase().indexOf(_this.splitted[j].toLowerCase()) > -1) {
+                            //  console.log("index: ",j);
+                            //console.log(item.product_name);
+                            //  console.log(item.p_id);
+                            //  console.log(item.product_name.toLowerCase().indexOf(this.splitted[j].toLowerCase()) > -1)
+                            return true;
+                        }
+                    }
+                }
+                return false;
             });
             // Show the results
+            var seenNames = {};
+            console.log(this.item);
+            var array = this.item;
+            array = array.filter(function (currentObject) {
+                if (currentObject.product_name in seenNames) {
+                    return false;
+                }
+                else {
+                    seenNames[currentObject.product_name] = true;
+                    return true;
+                }
+            });
+            this.item = array;
+            console.log(array);
             this.showList = true;
         }
         else {
             // hide the results when the query is empty
             this.showList = false;
         }
-    };
-    HomePage.prototype.listenConnection = function () {
-        var _this = this;
-        this.network.onDisconnect()
-            .subscribe(function () {
-            _this.alert.create({
-                title: "Remove product",
-                message: "Do you want to remove from cart?",
-                buttons: [{
-                        text: 'OK'
-                    }]
-            }).present();
-        });
     };
     return HomePage;
 }());
@@ -1615,9 +1638,9 @@ AppModule = __decorate([
                     { loadChildren: '../pages/account/chats/message/message.module#AccountChatsMessagePageModule', name: 'AccountChatsMessagePage', segment: 'message', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/help/help.module#AccountHelpPageModule', name: 'AccountHelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/notification/notification.module#AccountNotificationPageModule', name: 'AccountNotificationPage', segment: 'notification', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/account/profile/profile.module#AccountProfilePageModule', name: 'AccountProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/saved-address/add-address/add-address.module#AddAddressPageModule', name: 'AddAddressPage', segment: 'add-address', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/saved-address/saved-address.module#SavedAddressPageModule', name: 'SavedAddressPage', segment: 'saved-address', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/account/profile/profile.module#AccountProfilePageModule', name: 'AccountProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/languages/languages.module#AccountSettingsLanguagesPageModule', name: 'AccountSettingsLanguagesPage', segment: 'languages', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/notifications/notifications.module#AccountSettingsNotificationsPageModule', name: 'AccountSettingsNotificationsPage', segment: 'notifications', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/account/settings/settings.module#AccountSettingsPageModule', name: 'AccountSettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
@@ -1627,12 +1650,13 @@ AppModule = __decorate([
                     { loadChildren: '../pages/change/change.module#ChangePageModule', name: 'ChangePage', segment: 'change', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/checkout1/checkout1.module#Checkout1PageModule', name: 'Checkout1Page', segment: 'checkout1', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/confirm/confirm.module#ConfirmPageModule', name: 'ConfirmPage', segment: 'confirm', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/editprofile/editprofile.module#EditprofilePageModule', name: 'EditprofilePage', segment: 'editprofile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/feedback/feedback.module#FeedbackPageModule', name: 'FeedbackPage', segment: 'feedback', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/forgotpassword/forgotpassword.module#ForgotpasswordPageModule', name: 'ForgotpasswordPage', segment: 'forgotpassword', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/list/list.module#ListPageModule', name: 'ListPage', segment: 'list', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/myorder/myorder.module#MyorderPageModule', name: 'MyorderPage', segment: 'myorder', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/product/grid/grid.module#ProductGridPageModule', name: 'ProductGridPage', segment: 'grid', priority: 'low', defaultHistory: [] },
@@ -1642,10 +1666,10 @@ AppModule = __decorate([
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/returnorder/returnorder.module#ReturnorderPageModule', name: 'ReturnorderPage', segment: 'returnorder', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/servicecategory/servicecategory.module#ServicecategoryPageModule', name: 'ServicecategoryPage', segment: 'servicecategory', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/servicedetail/servicedetail.module#ServicedetailPageModule', name: 'ServicedetailPage', segment: 'servicedetail', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/services/services.module#ServicesPageModule', name: 'ServicesPage', segment: 'services', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/servicecategory/servicecategory.module#ServicecategoryPageModule', name: 'ServicecategoryPage', segment: 'servicecategory', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/services/services.module#ServicesPageModule', name: 'ServicesPage', segment: 'services', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/thanks/thanks.module#ThanksPageModule', name: 'ThanksPage', segment: 'thanks', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/wishlist/wishlist.module#WishlistPageModule', name: 'WishlistPage', segment: 'wishlist', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/writereview/writereview.module#WritereviewPageModule', name: 'WritereviewPage', segment: 'writereview', priority: 'low', defaultHistory: [] }

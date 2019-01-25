@@ -22,6 +22,7 @@ export class Checkout1Page {
         // "\",\"shipping_type\":\""+spnPaymentType.getSelectedItem().toString()+"\",\"street\":\""+addresses.get(0).getArea()+"\",\"city\":\""+addresses.get(0).getAddr()+"\",\"state\":\""+addresses.get(0).getLandmark()+"\",\"country\":\"India\",\"zipcode\":\""+addresses.get(0).getZipcode()+
         // "\",\"phone\":\""+addresses.get(0).getPhone()+"\",\"order_detail\":\"Delivery Date "+txtDate.getText().toString()+", between "+spnTimeSlot.getSelectedItem().toString()+"\",\"user_id\":\"23\",\"p_id\":\""+p_id+"\",\"qty\":\""+qty+"\"}";
 // 
+addland:any;
 times:any;
 timing:any[]=[];
 
@@ -338,7 +339,9 @@ this.toast.show('tuesday is holiday select next day');
       
        
         this.placeorderreq.street=this.billing.area;
-        this.placeorderreq.state=this.billing.landmark;
+        this.addland=""+this.billing.address_1+","+this.billing.landmark;
+        console.log("address:",this.addland);
+        this.placeorderreq.state=this.addland;
         
         this.placeorderreq. zipcode=this.billing.pincode;
         this.placeorderreq.phone=this.billing.phone;

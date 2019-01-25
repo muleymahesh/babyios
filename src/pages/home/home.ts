@@ -18,7 +18,9 @@ import { Network } from '@ionic-native/network';
 export class HomePage {
 	App: any;
 	flag:any;test:any;
+splitted:any;
 
+item:any;
 	//categories: any[] = new Array;
 	data: any[] = new Array();
 	app: any;
@@ -26,7 +28,7 @@ export class HomePage {
 	add:any;
 	showList: boolean = false;
 	searchQuery: string = '';
-	item:any;
+	item1:any;
 
 finalprice:any;
 allproducts:any;
@@ -227,6 +229,10 @@ this.his.sort(function(obj1, obj2) {
 			this.toast.show(msg);
 		});
 	}
+
+    onlyUnique(value, index, self) { 
+		return self.indexOf(value) === index;
+	}
 go(data)
 {
 if(data.banner_type!=0 && data.banner_type!=4)
@@ -359,7 +365,7 @@ this.	goTo('ProductPage',data);
 		this.nav.push(page,{params: params});
 	}
 	initializeItems() {
-		this.item=this.aproducts; 
+		this.item1=this.aproducts; 
 		// this.restProvider.getProduct(this.searchrequest).
 		// then(data=>{
 		// 	if(data.result=="success")
@@ -385,18 +391,53 @@ this.	goTo('ProductPage',data);
     this.initializeItems();
 
     // set val to the value of the searchbar
-    let val = ev.target.value;
-
+	let val = ev.target.value;
+   this. splitted = val.split(" "); 
+	console.log(this.splitted);
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       
 			// Filter the items
 		//	console.log(this.aproducts[0].product_name); 
-      this.item = this.item.filter((item) => {
-        return (item.product_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      this.item = this.item1.filter((item) => {
+
+		for(let j=0;j<this.splitted.length;j++)
+	{
+		if(this.splitted[j]!="" && j>=0 && this.splitted[j]!="baby")
+		{
+			//console.log("out of if : ",item.p_id);
+						
+     if(item.product_name.toLowerCase().indexOf(this.splitted[j].toLowerCase()) > -1)
+      {
+		//  console.log("index: ",j);
+	    //console.log(item.product_name);
+		//  console.log(item.p_id);
+		//  console.log(item.product_name.toLowerCase().indexOf(this.splitted[j].toLowerCase()) > -1)
+	      return true;
+      }
+	}
+}
+	return false;
+
+
+
+
       });
       
-      // Show the results
+	  // Show the results
+	  var seenNames = {};
+	  console.log(this.item);
+	  var array = this.item;
+	  array = array.filter(function(currentObject) {
+		if (currentObject.product_name in seenNames) {
+			return false;
+		} else {
+			seenNames[currentObject.product_name] = true;
+			return true;
+		}
+	})
+      this.item=array;
+	  console.log(array);
       this.showList = true;
     } else {
       
@@ -405,20 +446,20 @@ this.	goTo('ProductPage',data);
     }
   }
 
-	private listenConnection(): void {
-		this.network.onDisconnect()
-		  .subscribe(() => {
-			this.alert.create({
-				title: "Remove product",
-				message: "Do you want to remove from cart?",
-				buttons: [{
-					text: 'OK'
-				  }]
+	// private listenConnection(): void {
+	// 	this.network.onDisconnect()
+	// 	  .subscribe(() => {
+	// 		this.alert.create({
+	// 			title: "Remove product",
+	// 			message: "Do you want to remove from cart?",
+	// 			buttons: [{
+	// 				text: 'OK'
+	// 			  }]
 					
 					
-			  }).present();
-		  });
-	  }
+	// 		  }).present();
+	// 	  });
+	 // }
 	  
 	
 		// omitted;
