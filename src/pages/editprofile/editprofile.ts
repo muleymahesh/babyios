@@ -58,9 +58,10 @@ export class EditprofilePage {
       if(this.reply.result=="success")
       {
        this.toast.show(this.reply.responseMessage);
-      this._user.user.fname=this.reply.fname;
-      this._user.user.lname=this.reply.lname;
+      this._user.user.fname=this.reply.first_name;
+      this._user.user.lname=this.reply.last_name;
           this._user.save();
+          this.navCtrl.pop();
       }
       else if(this.reply.result=="failure")
       {

@@ -163,6 +163,10 @@ this.his.sort(function(obj1, obj2) {
 
     });
 	}
+	canclesearch()
+	{
+		this.showList = false;
+	}
 
 	ionViewDidEnter() {
 		this.showList = false;
@@ -361,28 +365,40 @@ this.	goTo('ProductPage',data);
 		if(this.showList==true)
 		{
 			this.showList=false;
+			this.searchrequest.query='';
 		}
 		this.nav.push(page,{params: params});
 	}
-	initializeItems() {
-		this.item1=this.aproducts; 
-		// this.restProvider.getProduct(this.searchrequest).
-		// then(data=>{
-		// 	if(data.result=="success")
-		// 	{
-		// 		console.log(this.item);
-		// 		this.showList = true;
-		// 		console.log(this.showList);
-		// 		this.item=data.data;
-		// 	console.log(this.item);
-		// 			// return (item.product_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
-		// 	}
-		// 	else{
-		// 		this.showList = false;
-		// 	}
-		// }
+	Go(page,params,data)
+	{
+		if(this.showList==true)
+		{
+			this.showList=false;
+			this.searchrequest.query='';
+		}
+		this.nav.push(page,{params: params,data: data});
 
-		// );
+	}
+	initializeItems() {
+		//this.item1=this.aproducts; 
+		this.restProvider.getSearch(this.searchrequest).
+		then(data=>{
+			console.log(data);
+			if(data.result=="success")
+			{
+				console.log(this.item);
+				this.showList = true;
+				console.log(this.showList);
+				this.item=data.data;
+			console.log(this.item);
+					// return (item.product_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+			}
+			else{
+				this.showList = false;
+			}
+		}
+
+		);
   }
 
 
@@ -392,58 +408,58 @@ this.	goTo('ProductPage',data);
 
     // set val to the value of the searchbar
 	let val = ev.target.value;
-   this. splitted = val.split(" "); 
-	console.log(this.splitted);
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
+//    this. splitted = val.split(" "); 
+// 	console.log(this.splitted);
+//     // if the value is an empty string don't filter the items
+//     if (val && val.trim() != '') {
       
-			// Filter the items
-		//	console.log(this.aproducts[0].product_name); 
-      this.item = this.item1.filter((item) => {
+// 			// Filter the items
+// 		//	console.log(this.aproducts[0].product_name); 
+//       this.item = this.item1.filter((item) => {
 
-		for(let j=0;j<this.splitted.length;j++)
-	{
-		if(this.splitted[j]!="" && j>=0 && this.splitted[j]!="baby")
-		{
-			//console.log("out of if : ",item.p_id);
+// 		for(let j=0;j<this.splitted.length;j++)
+// 	{
+// 		if(this.splitted[j]!="" && j>=0 && this.splitted[j]!="baby")
+// 		{
+// 			//console.log("out of if : ",item.p_id);
 						
-     if(item.product_name.toLowerCase().indexOf(this.splitted[j].toLowerCase()) > -1)
-      {
-		//  console.log("index: ",j);
-	    //console.log(item.product_name);
-		//  console.log(item.p_id);
-		//  console.log(item.product_name.toLowerCase().indexOf(this.splitted[j].toLowerCase()) > -1)
-	      return true;
-      }
-	}
-}
-	return false;
+//      if(item.product_name.toLowerCase().indexOf(this.splitted[j].toLowerCase()) > -1)
+//       {
+// 		//  console.log("index: ",j);
+// 	    //console.log(item.product_name);
+// 		//  console.log(item.p_id);
+// 		//  console.log(item.product_name.toLowerCase().indexOf(this.splitted[j].toLowerCase()) > -1)
+// 	      return true;
+//       }
+// 	}
+// }
+// 	return false;
 
 
 
 
-      });
+//       });
       
-	  // Show the results
-	  var seenNames = {};
-	  console.log(this.item);
-	  var array = this.item;
-	  array = array.filter(function(currentObject) {
-		if (currentObject.product_name in seenNames) {
-			return false;
-		} else {
-			seenNames[currentObject.product_name] = true;
-			return true;
-		}
-	})
-      this.item=array;
-	  console.log(array);
-      this.showList = true;
-    } else {
+// 	  // Show the results
+// 	  var seenNames = {};
+// 	  console.log(this.item);
+// 	  var array = this.item;
+// 	  array = array.filter(function(currentObject) {
+// 		if (currentObject.product_name in seenNames) {
+// 			return false;
+// 		} else {
+// 			seenNames[currentObject.product_name] = true;
+// 			return true;
+// 		}
+// 	})
+//       this.item=array;
+// 	  console.log(array);
+//       this.showList = true;
+//     } else {
       
-      // hide the results when the query is empty
-      this.showList = false;
-    }
+//       // hide the results when the query is empty
+//       this.showList = false;
+//     }
   }
 
 	// private listenConnection(): void {

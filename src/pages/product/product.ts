@@ -68,7 +68,7 @@ export class ProductPage {
     // }
    this. getproductdetail();
   // this.product.related = this.woo.getProductRelated(this.product.related_ids);
-    this.loader.dismiss();
+   
   }
 
   // setVariation(e){
@@ -100,6 +100,7 @@ export class ProductPage {
       this.products = data;
      this.history.post(this.products);
       console.log(this.products);
+      this.loader.dismiss();
     });
    this. getReviwe();
   }
@@ -118,6 +119,7 @@ else
         this.products = data;
         this.history.post(this.products);
         console.log(this.products);
+        this.loader.dismiss();
       });
      this.getReviwe();
   }

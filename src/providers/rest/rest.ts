@@ -185,6 +185,19 @@ mydata:any;
   }
  
 
+
+  getsearch(data) {
+    // console.log("request sending");
+     return new Promise((resolve, reject) => {
+       this.http.post(this.url, JSON.stringify(data))
+         .subscribe(res => {
+           resolve(res);
+         }, (err) => {
+           reject(err);
+         });
+     });
+   }
+
   getProduct(data) {
     return this.http.post(this.url, JSON.stringify(data))
     .toPromise()
@@ -224,6 +237,23 @@ mydata:any;
         return err;
      })
    }
+
+
+
+
+   getSearch(data) {
+    // console.log("request sending");
+     return this.http.post(this.url, JSON.stringify(data))
+      .toPromise()
+      .then((data: any) => {
+      //   console.log('Success', data.data);
+         return data;
+      })
+      .catch(err => {
+        // console.log('Error', err);
+         return err;
+      })
+    }
 
    getMyOrder(data) {
    // console.log("request sending");

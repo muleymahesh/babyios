@@ -91,13 +91,14 @@ name:'';
     }
     else if(this.navParams.data.params.offer_id||this.navParams.data.params.banner_type==2)
     {
+      console.log(this.navParams.data.params);
       if(this.navParams.data.params.offer_id){
       this.param.name = this.navParams.data.params.name;
      this.product1.offer_id= this.navParams.data.params.offer_id;
     }
     else
     {
-     this.param.name = this.navParams.data.params.banner_name;
+     this.param.name = this.navParams.data.params.name;
      this.product1.offer_id= this.navParams.data.params.type_id;
     }
      this.productByOfferId();
@@ -126,6 +127,11 @@ name:'';
 
     this.param.name = this.navParams.data.params;
     this.wishlist1();
+   }
+   else if(this.navParams.data.params=='Search')
+   {
+     this.param.name="Search Result"
+     this.products=this.navParams.data.data;
    }
 
    else
@@ -351,13 +357,15 @@ this.product3.cat_id=x.id;
       if(data=='failed')
       {
         this.toast.show("Product not available"); 
+        this.loader.dismiss();
       }
       else{
         this.products = data;
+        this.loader.dismiss();
       }
       console.log(this.products);
     });
-    this.loader.dismiss();
+  
   }
 
   productByBrandId() {
@@ -367,13 +375,15 @@ this.product3.cat_id=x.id;
       if(data=='failed')
       {
         this.toast.show("Product not available"); 
+        this.loader.dismiss();
       }
       else{
         this.products = data;
+        this.loader.dismiss();
       }
       console.log(this.products);
     });
-    this.loader.dismiss();
+   
   }
 
   productByOfferId() {
@@ -383,14 +393,17 @@ this.product3.cat_id=x.id;
       if(data=='failed')
       {
         this.toast.show("Product not available"); 
+        this.loader.dismiss();
       }
       else{
+        this.param.name=data[0].offer_name;
         this.products = data;
+        this.loader.dismiss();
       }
      
       console.log(this.products);
     });
-    this.loader.dismiss();
+  
   }
 
   productByAgeId() {
@@ -399,9 +412,9 @@ this.product3.cat_id=x.id;
     .then(data => {
       this.products = data;
       console.log(this.products);
-      
+      this.loader.dismiss();
     });
-    this.loader.dismiss();
+   
   }
 
   public sortByKey(array, key) {
@@ -436,9 +449,9 @@ this.product3.cat_id=x.id;
     this.restProvider.getRecommendations(this.request)
     .then(data => {
       this.products = data;
-		
+      this.loader.dismiss();
     });
-    this.loader.dismiss();
+   
 	}
 	
 	newArrival() {
@@ -447,9 +460,9 @@ this.product3.cat_id=x.id;
     .then(data => {
 		console.log(data);
 			      this.products = data;
-		
+            this.loader.dismiss();
     });
-    this.loader.dismiss();
+   
   }
 
   sortByProperty = function (property) {

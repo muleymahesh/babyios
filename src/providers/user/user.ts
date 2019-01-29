@@ -95,10 +95,10 @@ export class UserProvider {
 
   setUserUpdate(data: any){
 
-    if(data.first)
-      this.user.user.firstname = data.first;
-    if(data.last)
-      this.user.user.lastname = data.last;
+    if(data.fname)
+      this.user.user.fname = data.fname;
+    if(data.lname)
+      this.user.user.lname = data.lname;
     if(data.bio)
       this.user.user.description = data.bio;
     
