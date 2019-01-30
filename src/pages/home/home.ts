@@ -6,9 +6,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { App } from '../../app/app.global';
 import { RestProvider } from '../../providers/rest/rest';
 import { HttpClient } from '@angular/common/http';
+//import { Keyboard } from '@ionic-native/keyboard';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Network } from '@ionic-native/network';
+import { Keyboard } from 'ionic-angular/platform/keyboard';
+//mport { KeyedRead } from '@angular/compiler';
+
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -19,7 +23,7 @@ export class HomePage {
 	App: any;
 	flag:any;test:any;
 splitted:any;
-
+adurl:any;
 item:any;
 	//categories: any[] = new Array;
 	data: any[] = new Array();
@@ -86,12 +90,12 @@ allproducts:any;
       his:any;
 
 			
-		constructor( public alert: AlertController, public network:Network,private splashScreen: SplashScreen,public platform:Platform,private address:AddressProvider,public history: RecentProvider,public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
+		constructor(public key:Keyboard,public alert: AlertController, public network:Network,private splashScreen: SplashScreen,public platform:Platform,private address:AddressProvider,public history: RecentProvider,public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
 		this.App = App;
 		this.flag=0;
 		this.platform.ready().then(() => {
 			this.loader.present();
-this.getAllproduct();
+//this.getAllproduct();
 			this.restProvider.getNewArrivalList(this.adRequest)
 			.then(data => {
 				console.log(data);
@@ -99,6 +103,8 @@ this.getAllproduct();
 				{
 					this.slides=data.banner_data;
 					this.ad_banner=data.adbanner;
+					this.adurl='http://www.babyneeds.co.in/babyneeds/product_image/'+this.ad_banner[0].image;
+					console.log(this.adurl);
 					this.categories=data.category;
 					this.agegroups=data.age_data;
 					this.offers=data.offer_data;
@@ -298,7 +304,8 @@ this.	goTo('ProductPage',data);
 			.then(data => {
 			
 				this.ad_banner = data;
-			//	console.log("adds")
+				this.adurl='http://www.babyneeds.co.in/babyneeds/product_image/'+this.ad_banner[0].image;
+				console.log(this.adurl);
 //		console.log(this.ad_banner);
 				//	this.wishlist1();
 			
@@ -314,7 +321,11 @@ this.	goTo('ProductPage',data);
 			});
 		
 		}
-	
+		closeKeyboard()
+{
+	this.key.close();
+}
+		
 		getBrands() {
 			this.restProvider.getAgeGroup(this.myBraands)
 			.then(data => {

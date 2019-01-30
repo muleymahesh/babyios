@@ -1,6 +1,6 @@
 webpackJsonp([13],{
 
-/***/ 1019:
+/***/ 1021:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -92,12 +92,13 @@ var ProductGridPage = (function () {
             this.productByBrandId();
         }
         else if (this.navParams.data.params.offer_id || this.navParams.data.params.banner_type == 2) {
+            console.log(this.navParams.data.params);
             if (this.navParams.data.params.offer_id) {
                 this.param.name = this.navParams.data.params.name;
                 this.product1.offer_id = this.navParams.data.params.offer_id;
             }
             else {
-                this.param.name = this.navParams.data.params.banner_name;
+                this.param.name = this.navParams.data.params.name;
                 this.product1.offer_id = this.navParams.data.params.type_id;
             }
             this.productByOfferId();
@@ -120,6 +121,10 @@ var ProductGridPage = (function () {
         else if (this.navParams.data.params == 'Recommendations') {
             this.param.name = this.navParams.data.params;
             this.wishlist1();
+        }
+        else if (this.navParams.data.params == 'Search') {
+            this.param.name = "Search Result";
+            this.products = this.navParams.data.data;
         }
         else {
             this.param.name = this.navParams.data.params.name;
@@ -307,13 +312,14 @@ var ProductGridPage = (function () {
             .then(function (data) {
             if (data == 'failed') {
                 _this.toast.show("Product not available");
+                _this.loader.dismiss();
             }
             else {
                 _this.products = data;
+                _this.loader.dismiss();
             }
             console.log(_this.products);
         });
-        this.loader.dismiss();
     };
     ProductGridPage.prototype.productByBrandId = function () {
         var _this = this;
@@ -322,13 +328,14 @@ var ProductGridPage = (function () {
             .then(function (data) {
             if (data == 'failed') {
                 _this.toast.show("Product not available");
+                _this.loader.dismiss();
             }
             else {
                 _this.products = data;
+                _this.loader.dismiss();
             }
             console.log(_this.products);
         });
-        this.loader.dismiss();
     };
     ProductGridPage.prototype.productByOfferId = function () {
         var _this = this;
@@ -337,13 +344,15 @@ var ProductGridPage = (function () {
             .then(function (data) {
             if (data == 'failed') {
                 _this.toast.show("Product not available");
+                _this.loader.dismiss();
             }
             else {
+                _this.param.name = data[0].offer_name;
                 _this.products = data;
+                _this.loader.dismiss();
             }
             console.log(_this.products);
         });
-        this.loader.dismiss();
     };
     ProductGridPage.prototype.productByAgeId = function () {
         var _this = this;
@@ -352,8 +361,8 @@ var ProductGridPage = (function () {
             .then(function (data) {
             _this.products = data;
             console.log(_this.products);
+            _this.loader.dismiss();
         });
-        this.loader.dismiss();
     };
     ProductGridPage.prototype.sortByKey = function (array, key) {
         return array.sort(function (a, b) {
@@ -378,8 +387,8 @@ var ProductGridPage = (function () {
         this.restProvider.getRecommendations(this.request)
             .then(function (data) {
             _this.products = data;
+            _this.loader.dismiss();
         });
-        this.loader.dismiss();
     };
     ProductGridPage.prototype.newArrival = function () {
         var _this = this;
@@ -388,8 +397,8 @@ var ProductGridPage = (function () {
             .then(function (data) {
             console.log(data);
             _this.products = data;
+            _this.loader.dismiss();
         });
-        this.loader.dismiss();
     };
     return ProductGridPage;
 }());
@@ -404,7 +413,7 @@ ProductGridPage = __decorate([
 
 /***/ }),
 
-/***/ 981:
+/***/ 982:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -413,7 +422,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(549);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__grid__ = __webpack_require__(1019);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__grid__ = __webpack_require__(1021);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

@@ -1,6 +1,6 @@
 webpackJsonp([10],{
 
-/***/ 1022:
+/***/ 1024:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82,7 +82,6 @@ var ProductPage = (function () {
         // }
         this.getproductdetail();
         // this.product.related = this.woo.getProductRelated(this.product.related_ids);
-        this.loader.dismiss();
     }
     // setVariation(e){
     //   let x = JSON.parse(e);
@@ -109,6 +108,7 @@ var ProductPage = (function () {
                 _this.products = data;
                 _this.history.post(_this.products);
                 console.log(_this.products);
+                _this.loader.dismiss();
             });
             this.getReviwe();
         }
@@ -125,6 +125,7 @@ var ProductPage = (function () {
                 _this.products = data;
                 _this.history.post(_this.products);
                 console.log(_this.products);
+                _this.loader.dismiss();
             });
             this.getReviwe();
         }
@@ -289,7 +290,7 @@ ProductPage = __decorate([
 
 /***/ }),
 
-/***/ 984:
+/***/ 985:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -298,7 +299,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(549);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__product__ = __webpack_require__(1022);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__product__ = __webpack_require__(1024);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_img_viewer__ = __webpack_require__(234);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
