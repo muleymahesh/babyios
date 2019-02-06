@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable()
 export class LoadingProvider {
   load: any;
-
+isloading=false;
   constructor(private loader: LoadingController, private translate: TranslateService) {}
 
   present() {
@@ -15,10 +15,16 @@ export class LoadingProvider {
       });
     });
 
-    this.load.present(); 
+    this.load.present();
+    this.isloading=true; 
   }
 
   dismiss(){
     this.load.dismiss();
+    this.isloading=false; 
+  }
+
+  isShowing(){
+    return this.isloading;
   }
 }

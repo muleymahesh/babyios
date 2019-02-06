@@ -172,6 +172,7 @@ this.his.sort(function(obj1, obj2) {
 	canclesearch()
 	{
 		this.showList = false;
+		this.key.close();
 	}
 
 	ionViewDidEnter() {
@@ -324,6 +325,8 @@ this.	goTo('ProductPage',data);
 		closeKeyboard()
 {
 	this.key.close();
+	this.searchrequest.query='';
+	this.Go('ProductGridPage','Search',this.item);
 }
 		
 		getBrands() {
@@ -392,21 +395,36 @@ this.	goTo('ProductPage',data);
 	}
 	initializeItems() {
 		//this.item1=this.aproducts; 
+		if(this.loader.isShowing())
+{
+		}
+		else{
+			this.loader.present();
+		}
+	
 		this.restProvider.getSearch(this.searchrequest).
 		then(data=>{
-			console.log(data);
+			if(this.loader.isShowing())
+			{this.loader.dismiss();
+					}
+				console.log(data);
 			if(data.result=="success")
 			{
+			
 				console.log(this.item);
 				this.showList = true;
 				console.log(this.showList);
 				this.item=data.data;
 			console.log(this.item);
+			
 					// return (item.product_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
 			}
 			else{
+				this.item=null;
 				this.showList = false;
+			
 			}
+		
 		}
 
 		);
@@ -415,10 +433,15 @@ this.	goTo('ProductPage',data);
 
 	getItems(ev: any) {
     // Reset items back to all of the items
-    this.initializeItems();
+   
 
     // set val to the value of the searchbar
 	let val = ev.target.value;
+if(val.length>=3)
+{
+	this.initializeItems();
+}
+	//console.log("val=",val);
 //    this. splitted = val.split(" "); 
 // 	console.log(this.splitted);
 //     // if the value is an empty string don't filter the items

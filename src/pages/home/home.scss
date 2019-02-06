@@ -11,7 +11,9 @@ page-home {
 	.category-slide{
 		height: 250px;
 	}
-
+	.hide {
+		display: none;
+	  }
 	ion-card{
         
                 
@@ -55,5 +57,8 @@ page-home {
 	// 	background-color: grey;
 	//   }
 	  
-
+	.pad {
+		
+        margin-bottom: 500px !important;
+    }
 }

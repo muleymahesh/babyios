@@ -9,24 +9,24 @@
     </ion-navbar>
     <!-- <ion-searchbar no-padding (ionInput)="getItems($event)"></ion-searchbar> -->
     <ion-searchbar (keyup.enter)="closeKeyboard()" cancelButtonText="canclesearch()" [(ngModel)]="searchrequest.query" color="primary" placeholder="{{ 'BABYNEEDS' | translate }}" (ionInput)="getItems($event)"></ion-searchbar>
-    <div *ngIf="showList">
+    <div  *ngIf="showList">
         <ion-scroll style="width:100%;height:100vh" scrollY="true">
-          <div  *ngFor="let i of item ;let j=index">
+          <div *ngFor="let i of item ;let j=index"  scroll="true">
             <!-- <ion-list scroll="true"> -->
-      <ion-item *ngIf="j<7" (click)="goTo('ProductPage',i)"><hr>
+      <ion-item (click)="goTo('ProductPage',i)"><hr>
         <ion-avatar item-start  >
           <img  src="http://www.babyneeds.co.in/babyneeds/product_image/{{i.imgs[0].img_url}}">
         </ion-avatar>
        <p style="font-size:12px;"> {{ i.product_name }}</p>
       </ion-item>
-     <ion-item  *ngIf="j==item.length-1">
+     <!-- <ion-item  *ngIf="j==item.length-1">
       <button   item-end ion-button tappable (click)="Go('ProductGridPage','Search',item)">
         {{ 'SEE ALL' | translate }}
              </button>
-     </ion-item>
-      
+     </ion-item> -->
+   
             <!-- </ion-list> -->
-          </div>
+          </div >
               
                       
                        
@@ -72,7 +72,7 @@
         </ion-slide>
       </ion-slides>
       <div >
-       <img no-padding src="{{adurl}}"  style="width:100% ;height: 100%;"> 
+       <img no-padding src="{{adurl}}"  style="width:100% ;height: 50px;"> 
     </div>
       <div class="">
         <ion-list  *ngFor="let w of rlist;  let i=index " no-lines no-margin margin-left>

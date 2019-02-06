@@ -29690,6 +29690,10 @@ page-home .category-slide {
   height: 250px;
 }
 
+page-home .hide {
+  display: none;
+}
+
 page-home ion-card {
   width: 110px;
   min-height: calc(100% - 10px);
@@ -29722,6 +29726,10 @@ page-home .searchbar-input {
 
 page-home .list .item.item-block .item-inner {
   border: none;
+}
+
+page-home .pad {
+  margin-bottom: 500px !important;
 }
 
 page-login .logo {

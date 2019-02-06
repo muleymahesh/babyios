@@ -124,7 +124,12 @@ var ProductGridPage = (function () {
         }
         else if (this.navParams.data.params == 'Search') {
             this.param.name = "Search Result";
-            this.products = this.navParams.data.data;
+            if (this.navParams.data.data != null) {
+                this.products = this.navParams.data.data;
+            }
+            else {
+                this.toast.show("Unable to find  products... try with  different search keywords");
+            }
         }
         else {
             this.param.name = this.navParams.data.params.name;
