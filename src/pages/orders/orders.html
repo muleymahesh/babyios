@@ -39,13 +39,14 @@
 <button  full ion-button round tappable (click)="goTo('ReturnorderPage',orders)">Request Return</button><br>
 
 <button  full ion-button  tappable round (click)="inovice()">Invoice</button>
+<button  full ion-button  tappable round (click)="reqbyagain()">Buy Again</button>
 
 </ng-container>
 <ng-template #elseTemplate>
  <div *ngIf="orders.order_status!='returned'">
    <div  *ngIf="orders.order_status!='canceled'">
      <div  *ngIf="orders.order_status!='out for delivery'">
-<button   full ion-button round  tppable (click)="cancleOrder()" >Cancel</button>
+<button   full ion-button round  tppable (click)="goTo('CancleorderPage',orders)" >Cancel</button>
 <ion-item>
   <p>You can change your order delivery timing befor its out for delivery by editing fields below</p>
   <ion-label>Date</ion-label>
@@ -61,7 +62,9 @@
 <button   full ion-button round  tppable (click)="updateOrderDetails()" >Update order</button>
 </div>
 </div>
+
 </div>
+<button  full ion-button  tappable round (click)="reqbyagain()">Buy Again</button>
 </ng-template>
 </div>
 </ion-content>

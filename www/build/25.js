@@ -1,6 +1,6 @@
 webpackJsonp([25],{
 
-/***/ 1009:
+/***/ 1011:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36,15 +36,25 @@ var Cart1Page = (function () {
         this.toast = toast;
         this.nav = nav;
         this.alert = alert;
+        this.amountreq = {
+            method: 'request_amount'
+        };
         this.products = [];
         this.total = 0;
-        this.product = [];
         this.p_id = '';
         this.flag = 0;
         this.getproduct = {
             method: 'get_product_cart',
             p_id: '',
         };
+        this.restProvider.getcartitem(this.amountreq)
+            .then(function (data) {
+            // this.loader.present();
+            _this.minamount = data.minamount;
+            _this.delcharge = data.delcharge;
+        });
+        // this.minamount=200;
+        // this.delcharge=20;
         this.products = this.cart.all;
         for (var i in this.products) {
             this.p_id += this.products[i].p_id + ",";
@@ -53,18 +63,25 @@ var Cart1Page = (function () {
         this.getproduct.p_id = this.p_id;
         console.log(this.p_id);
         this.loader.present();
-        this.restProvider.getProduct(this.getproduct)
+        this.restProvider.getcartitem(this.getproduct)
             .then(function (data) {
             // this.loader.present();
-            _this.product = data;
-            // console.log(this.product.data);
-            //console.log(this.product.stock);
+            _this.product = data.data;
+            console.log(data.data);
+            console.log("product:" + _this.product);
         });
         this.loader.dismiss();
         console.log(this.product);
     }
     Cart1Page.prototype.ionViewWillEnter = function () {
         var _this = this;
+        this.restProvider.getcartitem(this.amountreq)
+            .then(function (data) {
+            // this.loader.present();
+            console.log(data);
+            _this.minamount = data.minamount;
+            _this.delcharge = data.delcharge;
+        });
         this.cart.load().then(function () {
             //  console.log(this.cart.all);
             _this.products = _this.cart.all;
@@ -78,10 +95,10 @@ var Cart1Page = (function () {
         this.getproduct.p_id = this.p_id;
         console.log(this.p_id);
         this.loader.present();
-        this.restProvider.getProduct(this.getproduct)
+        this.restProvider.getcartitem(this.getproduct)
             .then(function (data) {
             // this.loader.present();
-            _this.product = data;
+            _this.product = data.data;
             // console.log(this.product.data);
             //console.log(this.product.stock);
         });
@@ -181,16 +198,17 @@ var Cart1Page = (function () {
 }());
 Cart1Page = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-cart1',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/cart1/cart1.html"*/'<ion-header>  \n	\n		<ion-navbar color="primary">\n				<button ion-button menuToggle>\n						<ion-icon name="menu"></ion-icon>\n					  </button>\n					  \n			<ion-title>Cart</ion-title>\n		</ion-navbar>\n		\n	  \n	</ion-header>\n	\n \n \n \n \n \n \n <ion-content padding-top>\n	<div class="subtitle" *ngIf="cart.total > 0">\n		<!-- <h1 margin-top margin-horizontal>{{ \'CART\' | translate}}</h1> -->\n		<p text-color="primary" no-margin margin-horizontal>To remove product from cart swipe product to left side</p>\n	</div>\n	 <ion-list no-padding>\n		<ion-grid class="empty" *ngIf="cart.total == 0">\n			<ion-row align-items-center>\n				<ion-col align-self-center text-center>\n					<ion-icon name="basket" color="primary"></ion-icon>\n					<h4 margin-bottom>{{ \'EMPTY\'}}</h4>\n					<button color="primary" ion-button outline tappable (click)="goHome()">{{ \'START SHOPPING\'}}</button>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n  		 <ion-item-sliding *ngFor="let x of products">\n  			<ion-item>\n				<ion-thumbnail item-start>\n				<div class="img" [ngStyle]="{\'background-image\': \'url(http://www.babyneeds.co.in/babyneeds/product_image/\' +x.images +\')\'}"></div>\n				 \n				</ion-thumbnail>\n				<h3 [innerHTML]="x.name"></h3>\n				 <p>\n					 <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->\n					  <!-- <span class="price">{{x.finalprice | money}}</span> -->\n					<!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->\n					<span> x {{x.quantity}}</span>\n				</p>\n				<div item-end>\n					<ion-row no-padding>\n						<ion-col no-padding text-center>\n							<button clear big ion-button icon-only tappable (click)="cart.post(x, 1); updateTotal()">\n								<ion-icon color="secondary" name="add-circle"></ion-icon>\n							</button>\n						</ion-col>\n					</ion-row>\n					<ion-row no-padding *ngIf="x.quantity > 1">\n						<ion-col no-padding text-center> \n							<button small clear ion-button icon-only tappable (click)="cart.post(x, -1); updateTotal()">\n								<ion-icon color="secondary" name="remove-circle"></ion-icon>\n							</button>\n						</ion-col>\n					</ion-row>\n				</div>\n			</ion-item>\n			<ion-item-options side="right">\n				<button ion-button small color="assertive" tappable (click)="remove(x)">\n					<ion-icon name="trash"></ion-icon>\n					{{\'REMOVE\'}}\n				</button>\n			</ion-item-options>\n  		</ion-item-sliding> \n  	</ion-list>\n</ion-content>\n\n<ion-footer>\n   <ion-toolbar padding-horizontal>\n    <ion-row align-items-center no-padding>\n    	<ion-col class="total" align-self-center no-padding *ngIf="products.length > 0">\n    		<span>Total ({{cart.totalQtyDetail}} items)</span>\n			<h6 >{{total}}Rs.</h6>\n			<!-- <h6  *ngIf="total<200" >+30 Rs.</h6>\n			<h6  *ngIf="total<200" >{{total+30}}Rs.</h6> -->\n			<p style="font-size:9px" *ngIf="total<200">*Dilivery Charges applied 30 RS.</p>\n    	</ion-col>\n    	<ion-col col-33 align-self-center no-padding>\n			<button ion-button block tappable [disabled]="products.length <= 0" (click)="goCheckout()">{{\'CHECKOUT\'}}</button>\n  		</ion-col>\n    </ion-row>\n  </ion-toolbar>\n</ion-footer> '/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/cart1/cart1.html"*/
+        selector: 'page-cart1',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/cart1/cart1.html"*/'<ion-header>  \n	\n		<ion-navbar color="primary">\n				<button ion-button menuToggle>\n						<ion-icon name="menu"></ion-icon>\n					  </button>\n					  \n			<ion-title>Cart</ion-title>\n		</ion-navbar>\n		\n	  \n	</ion-header>\n	\n \n \n \n \n \n \n <ion-content padding-top>\n	<div class="subtitle" *ngIf="cart.total > 0">\n		<!-- <h1 margin-top margin-horizontal>{{ \'CART\' | translate}}</h1> -->\n		<p text-color="primary" no-margin margin-horizontal>To remove product from cart swipe product to left side</p>\n	</div>\n	 <ion-list no-padding>\n		<ion-grid class="empty" *ngIf="cart.total == 0">\n			<ion-row align-items-center>\n				<ion-col align-self-center text-center>\n					<ion-icon name="basket" color="primary"></ion-icon>\n					<h4 margin-bottom>{{ \'EMPTY\'}}</h4>\n					<button color="primary" ion-button outline tappable (click)="goHome()">{{ \'START SHOPPING\'}}</button>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n  		 <ion-item-sliding *ngFor="let x of products">\n  			<ion-item>\n				<ion-thumbnail item-start>\n				<div class="img" [ngStyle]="{\'background-image\': \'url(http://www.babyneeds.co.in/babyneeds/product_image/\' +x.images +\')\'}"></div>\n				 \n				</ion-thumbnail>\n				<h3 [innerHTML]="x.name"></h3>\n				 <p>\n					 <!-- <span ><p>{{x.per_discount}} </p>•</span>  -->\n					  <!-- <span class="price">{{x.finalprice | money}}</span> -->\n					<!-- <ng-container *ngIf="x.attributes.length > 0"><span *ngFor="let y of x.attributes">• <i>{{y.option || y.options[0]}}</i>&nbsp;</span></ng-container> -->\n					<span> x {{x.quantity}}</span>\n				</p>\n				<div item-end>\n					<ion-row no-padding>\n						<ion-col no-padding text-center>\n							<button clear big ion-button icon-only tappable (click)="cart.post(x, 1); updateTotal()">\n								<ion-icon color="secondary" name="add-circle"></ion-icon>\n							</button>\n						</ion-col>\n					</ion-row>\n					<ion-row no-padding *ngIf="x.quantity > 1">\n						<ion-col no-padding text-center> \n							<button small clear ion-button icon-only tappable (click)="cart.post(x, -1); updateTotal()">\n								<ion-icon color="secondary" name="remove-circle"></ion-icon>\n							</button>\n						</ion-col>\n					</ion-row>\n				</div>\n			</ion-item>\n			<ion-item-options side="right">\n				<button ion-button small color="assertive" tappable (click)="remove(x)">\n					<ion-icon name="trash"></ion-icon>\n					{{\'REMOVE\'}}\n				</button>\n			</ion-item-options>\n  		</ion-item-sliding> \n  	</ion-list>\n</ion-content>\n\n<ion-footer>\n   <ion-toolbar padding-horizontal>\n    <ion-row align-items-center no-padding>\n    	<ion-col class="total" align-self-center no-padding *ngIf="products.length > 0">\n    		<span>Total ({{cart.totalQtyDetail}} items)</span>\n			<h6 >{{total}}Rs.</h6>\n			<!-- <h6  *ngIf="total<200" >+30 Rs.</h6>\n			<h6  *ngIf="total<200" >{{total+30}}Rs.</h6> -->\n			<p style="font-size:9px" *ngIf="total< minamount">*Dilivery Charges applied {{delcharge}} RS.</p>\n    	</ion-col>\n    	<ion-col col-33 align-self-center no-padding>\n			<button ion-button block tappable [disabled]="products.length <= 0" (click)="goCheckout()">{{\'CHECKOUT\'}}</button>\n  		</ion-col>\n    </ion-row>\n  </ion-toolbar>\n</ion-footer> '/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/cart1/cart1.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["B" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["i" /* SettingsProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _l || Object])
 ], Cart1Page);
 
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
 //# sourceMappingURL=cart1.js.map
 
 /***/ }),
 
-/***/ 968:
+/***/ 969:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -198,7 +216,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Cart1PageModule", function() { return Cart1PageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cart1__ = __webpack_require__(1009);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cart1__ = __webpack_require__(1011);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

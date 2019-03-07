@@ -10,11 +10,15 @@ import { TranslateService } from '@ngx-translate/core';
 })
 
 export class Cart1Page {
+  amountreq={
+    method:'request_amount'
+  };
+  minamount:any;
   products: any = [];
   app: any;
   total: number = 0;
   result:any;
- public product:any=[];
+ public product:any;
   p_id:any='';
   qty:any;
 flag1:any;
@@ -24,11 +28,22 @@ flag1:any;
     p_id:'',
    
   };
-  
+  delcharge:any;
 name:'';
 finalprice:any;
   constructor( public loader: LoadingProvider,public restProvider:RestProvider,public viewCtrl: ViewController,public cart: CartProvider, public setting: SettingsProvider, private translate: TranslateService, private modal: ModalController, private user: UserProvider, private toast: ToastProvider, public nav: NavController, public alert: AlertController) {
+    
+    this.restProvider.getcartitem(this.amountreq)
+    .then(data => {
+     // this.loader.present();
+    
+     this.minamount=data.minamount;
+     this.delcharge=data.delcharge;
   
+  
+   });
+ // this.minamount=200;
+ // this.delcharge=20;
     this.products = this.cart.all;
     for(let i in this.products){
       this. p_id+=this.products[i].p_id+",";
@@ -37,19 +52,30 @@ finalprice:any;
       this.getproduct.p_id=this.p_id;
    console.log(this.p_id);
       this.loader.present();
-   this.restProvider.getProduct(this.getproduct)
+   this.restProvider.getcartitem(this.getproduct)
    .then(data => {
     // this.loader.present();
-   this.product = data;
-// console.log(this.product.data);
+   this.product = data.data;
+ console.log(data.data);
  
-  //console.log(this.product.stock);
+  console.log("product:" + this.product);
   });
   this.loader.dismiss();
   console.log(this.product);
   }
 
   ionViewWillEnter(){
+    
+    this.restProvider.getcartitem(this.amountreq)
+    .then(data => {
+     // this.loader.present();
+    
+  console.log(data);
+  this.minamount=data.minamount;
+  this.delcharge=data.delcharge;
+  
+   });
+    
     this.cart.load().then(() => {
     //  console.log(this.cart.all);
       this.products = this.cart.all;
@@ -63,10 +89,10 @@ finalprice:any;
       this.getproduct.p_id=this.p_id;
    console.log(this.p_id);
       this.loader.present();
-   this.restProvider.getProduct(this.getproduct)
+   this.restProvider.getcartitem(this.getproduct)
    .then(data => {
     // this.loader.present();
-   this.product = data;
+   this.product = data.data;
 // console.log(this.product.data);
  
   //console.log(this.product.stock);

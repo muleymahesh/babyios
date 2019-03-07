@@ -58,24 +58,24 @@
         <ion-col col-4 no-padding><b>Delivery charge</b></ion-col>
         <ion-col col-8 no-padding>
            
-        : {{_cart.total<'250'?'30':'00'}} Rs. 
+        : {{_cart.total<minamount?delcharge:'00'}} Rs. 
         </ion-col>
         </ion-row>
 
 
         <ion-row no-padding>
             <ion-col col-4 no-padding><b>Total Amount</b></ion-col>
-            <ion-col *ngIf="_cart.total>250" col-8 no-padding>
+            <ion-col *ngIf="_cart.total>minamount" col-8 no-padding>
              : {{_cart.total}} Rs.
            
             </ion-col>
-            <ion-col *ngIf="_cart.total<=250" col-8 no-padding>
-                : {{_cart.total+30}} Rs.
+            <ion-col *ngIf="_cart.total<=minamount" col-8 no-padding>
+                : {{_cart.total+delcharge}} Rs.
                </ion-col>
             </ion-row>
 
-            <p style="font-size:12px" color="primary" *ngIf="_cart.total>250" >Your order is eligible for Free Delivery</p>
-            <p style="font-size:12px" color="primary" *ngIf="_cart.total<250">*Order above 250Rs for free delivery</p>
+            <p style="font-size:12px" color="primary" *ngIf="_cart.total>minamount" >Your order is eligible for Free Delivery</p>
+            <p style="font-size:12px" color="primary" *ngIf="_cart.total<minamount">*Order above {{minamount}}Rs for free delivery</p>
 
 
 

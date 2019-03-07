@@ -25,9 +25,12 @@ export class Checkout1Page {
 addland:any;
 times:any;
 timing:any[]=[];
+amountreq={
+  method:'request_amount'
+};
 
-
- 
+ minamount:any;
+ delcharge:any;
 
 
   
@@ -349,14 +352,31 @@ this.toast.show('tuesday is holiday select next day');
         this. qty+="0";
         this.placeorderreq.p_id=this.p_id;
         this.placeorderreq.qty=this.qty;
-if(this._cart.total<250)
-{
-  this.placeorderreq.amount=this._cart.total+30;
-}
- else
- {
-  this.placeorderreq.amount=this._cart.total;
- }
+
+this.loader.present();
+ this.restProvider.getcartitem(this.amountreq)
+ .then(data => {
+  // this.loader.present();
+ 
+  // this.minamount=data.minamount;
+  // this.delcharge=data.delcharge;
+  if(this._cart.total<=data.minamount)
+  {
+    this.placeorderreq.amount=this._cart.total+data.delcharge;
+  }
+   else
+   {
+    this.placeorderreq.amount=this._cart.total;
+   }
+this.loader.dismiss();
+});
+
+
+
+
+
+
+
         this.placeorderreq.order_detail="Delivery Date "+this.details.deliverydate+",between "+ this.details.timesloat;
        
         

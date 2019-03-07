@@ -14,7 +14,7 @@ import 'rxjs/add/operator/toPromise';
 export class RestProvider {
 url1="http://babyneeds.co.in/babyneeds/send_invoice.php?o_id=";
   url2="http://makslab.com/babyneeds/ws/v2/api1.php";
- url="http://babyneeds.co.in/babyneeds/ws/v2/api1.php";
+url="http://babyneeds.co.in/babyneeds/ws/v2/api1.php";
 mydata:any;
   constructor(public http: HttpClient) {
    
@@ -55,6 +55,22 @@ mydata:any;
        return err;
     })
   }
+
+  getcartitem(data)
+  {
+    return this.http.post(this.url, JSON.stringify(data))
+    .toPromise()
+    .then((data: any) => {
+      return data;
+      })
+    .catch(err => {
+       console.log('Error', err);
+       return err;
+    })
+  }
+
+
+
 
 
   register(data) {

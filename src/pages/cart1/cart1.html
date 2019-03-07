@@ -80,7 +80,7 @@
 			<h6 >{{total}}Rs.</h6>
 			<!-- <h6  *ngIf="total<200" >+30 Rs.</h6>
 			<h6  *ngIf="total<200" >{{total+30}}Rs.</h6> -->
-			<p style="font-size:9px" *ngIf="total<200">*Dilivery Charges applied 30 RS.</p>
+			<p style="font-size:9px" *ngIf="total< minamount">*Dilivery Charges applied {{delcharge}} RS.</p>
     	</ion-col>
     	<ion-col col-33 align-self-center no-padding>
 			<button ion-button block tappable [disabled]="products.length <= 0" (click)="goCheckout()">{{'CHECKOUT'}}</button>

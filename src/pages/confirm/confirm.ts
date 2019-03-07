@@ -16,13 +16,28 @@ import { DatePipe } from '@angular/common'
   templateUrl: 'confirm.html',
 })
 export class ConfirmPage {
+  amountreq={
+    method:'request_amount'
+  };
+  minamount:any;
+  delcharge:any;
 products:any;
 items:any;
 billing:any;
 response:any;
 placeorderreq:any;
   constructor( private alertCtrl: AlertController,public _cart1:CartProvider,public datepipe: DatePipe,public restProvider: RestProvider,private setting: SettingsProvider, private alert: AlertController, private platform: Platform, private nav: NavController, private translate: TranslateService, private toast: ToastProvider, private user: UserProvider, private loader: LoadingProvider, private woo: WooCommerceProvider, private _cart: CartProvider, private events: Events, private _order: OrderProvider, private address: AddressProvider, public navParams: NavParams, public modal: ModalController) {
-   this.placeorderreq = this.navParams.data.params;
+    this.restProvider.getcartitem(this.amountreq)
+    .then(data => {
+     // this.loader.present();
+    
+     this.minamount=data.minamount;
+     this.delcharge=data.delcharge;
+  
+  
+   });
+  
+    this.placeorderreq = this.navParams.data.params;
     console.log(this.placeorderreq);
     this.products=this._cart.all;
  this.items=this._cart.totalQty;

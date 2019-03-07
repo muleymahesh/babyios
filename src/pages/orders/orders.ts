@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, Refresher, Events, ModalController, NavController,NavParams } from 'ionic-angular';
-import { UserProvider, LoadingProvider, WooCommerceProvider ,RestProvider,ToastProvider} from '../../providers/providers';
+import { IonicPage, Refresher, Events, ModalController, NavController,NavParams,AlertController } from 'ionic-angular';
+import { UserProvider, LoadingProvider, WooCommerceProvider ,RestProvider,ToastProvider,CartProvider} from '../../providers/providers';
 import { DatePipe } from '@angular/common';
 import { Storage } from '@ionic/storage';
 @IonicPage()
@@ -9,6 +9,13 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'orders.html',
 })
 export class OrdersPage {
+products:any;
+product1:any;
+  getproduct = {
+    method:'get_product_detail',
+    p_id:0 ,
+    email:'abc.abc@gmail.com'
+  }; 
   // status: string = "paid";
   orders: any ;
 times:any;
@@ -63,6 +70,7 @@ udatereq={
   };
  str:any;
  str1;any;
+ flag=0;
 deliverydate:any;
 c_date:any;
 ctime:any;
@@ -74,7 +82,7 @@ time_slot={
   method:'time_slot' 
 }
 response:any;
-    constructor(public storage:Storage,public restProvider: RestProvider,public datepipe: DatePipe, private toast: ToastProvider,public navParams: NavParams,public nav: NavController, private events: Events, private modal: ModalController, private loader: LoadingProvider, private user: UserProvider, private woo: WooCommerceProvider) {
+    constructor(public alert: AlertController,private cart: CartProvider,public storage:Storage,public restProvider: RestProvider,public datepipe: DatePipe, private toast: ToastProvider,public navParams: NavParams,public nav: NavController, private events: Events, private modal: ModalController, private loader: LoadingProvider, private user: UserProvider, private woo: WooCommerceProvider) {
     this.minDate = new Date().toISOString();
     this.maxDate =  new Date(new Date().setFullYear(new Date().getFullYear() + 2)).toISOString();
     this. c_date =this.datepipe.transform(new Date(),'yyyy-M-d');
@@ -426,5 +434,77 @@ else
 }
 
 }
+
+
+reqbyagain()
+{
+  this.alert.create({
+    title: "Buy again",
+    message: "Do you want to repeat this order",
+    buttons: [{
+      text: 'Yes',
+      handler: () => {
+      //	this.loader.dismiss();
+       this.buyAgain()
+      }
+      },
+      {
+        text: 'No',
+       
+        }
+    ]
+}).present();
+}
+
+buyAgain()
+{
+  this.cart.reset();
+  this.getproduct.email=this. user.user.user_email;
+  console.log(this.orders);
+  for(let p of this.orders.details)
+  {
+    console.log(p);
+    this.getproduct.p_id=p.p_id;
+    this.restProvider.getProduct(this.getproduct)
+    .then(data => {
+      this.products = data;
+     
+      console.log(this.products);
+      this.product1=this.products[0];
+      if(this.product1.stock<1)
+      {
+        //this.toast.show("Currently this product is out of stock");
+       
+       this.flag=1;
+      }else
+      {
+
+      this.cart.post(this.product1);
+     // this.toast.show("Product added to cart");
+      }
+    
+    });
+  
+  }
+  if(this.flag==1)
+  {
+    this.toast.show("Some product(s) are out of stock from this order");
+    this.cart.reset();
+  }else
+  {
+    this.toast.show("product(s) are added to cart ");
+    //this.nav.push('Cart1Page');
+  }
+ 
+}
+
+
+
+
+
+
+
+
+
 
 }
