@@ -12,7 +12,7 @@
     <div *ngIf="orders.details.length>0">
         <p padding style="font-size:12px; text-align:left">Summery: {{orders.order_detail}}  </p>
     <ion-card *ngFor="let o of orders.details" > 
-      <ion-item>
+      <ion-item (click)="writereview(o)">
         
             <!-- <p style="font-size:9px; text-align:left; color:orange">order id-  {{o.o_id}}</p> -->
             <ion-avatar item-start>

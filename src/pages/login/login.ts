@@ -6,7 +6,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { AccountPage } from '../account/account';
 import { TabsPage } from '../tabs/tabs';
-
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+//import { GooglePlus } from '@ionic-native/google-plus';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -19,7 +20,7 @@ export class LoginPage {
   private loginForm : FormGroup;
   private signupForm : FormGroup;
   rootPage: any;
-  
+  userData:any;
   users: any;
   todo = {
     method:'login',
@@ -28,7 +29,7 @@ export class LoginPage {
   };
   private resetForm : FormGroup;
 
-  constructor(private nav: NavController,private fb: FormBuilder, private translate: TranslateService, private navParams: NavParams, private toast: ToastProvider, public user: UserProvider, public loader: LoadingProvider, public alertCtrl: AlertController, public app: App, public viewCtrl: ViewController,public http: HttpClient,public restProvider: RestProvider, public navCtrl: NavController) { 
+  constructor(private nav: NavController,private fb: FormBuilder, private translate: TranslateService, private navParams: NavParams, private toast: ToastProvider, public user: UserProvider, public loader: LoadingProvider, public alertCtrl: AlertController, public app: App, public viewCtrl: ViewController,public http: HttpClient,public restProvider: RestProvider, public navCtrl: NavController, private FB:Facebook) { 
     this.loginForm = this.fb.group({
       user: ['', Validators.required ],
       pass: ['', Validators.required ]
@@ -189,4 +190,57 @@ export class LoginPage {
   goTo(page, params){
     this.navCtrl.push(page, {params: params});
   }
+
+
+  loginwithfb(){
+    
+   
+this.FB.login(['public_profile', 'user_friends', 'email'])
+.then((res: FacebookLoginResponse) => {
+  if(res.status==='connected')
+  {
+this.getdata(res.authResponse.accessToken)
+this.goHome();
+  }else
+  {
+    this.toast.show("Login Failed")
+  }
+console.log('Logged into Facebook!', res)
+})
+.catch(e => console.log('Error logging into Facebook', e));
+
+    
+  }
+
+
+
+  getdata(access_token:string){
+
+let url='https://graph.facebook.com/me?fields=id,name,first_name,last_name,email&access_token='+access_token;
+this.http.get(url).subscribe(data=>{
+console.log(data);
+this.users=data;
+
+this.user._loggedInFB(this.users, this.navParams.data.tabIndex);
+this.translate.get(['LOGIN_SUCCESS'], {value: this.user.user.fname}).subscribe( x=> {
+  this.toast.show("login successfull");
+});
+
+
+
+})
+
+}
+
+
+
+loginwithGoogle(){
+  // this.google.login({})
+  // .then(res => console.log(res))
+  // .catch(err => console.error(err));
+
+}
+
+
+
 }

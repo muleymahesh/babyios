@@ -13,12 +13,17 @@ import { HttpClient } from '@angular/common/http';
 
 export class ProductPage {
   result:any;
+  relproducts:any;
   productfav:any;
   product1:any;
   name:'';
   finalprice:any;
   product:any;
   products: any;
+  getrelatedreq={
+    method:'get_services_by_cat_and_brand',
+    p_id:''
+  }
   reviewreq={
     method:'get_product_rating',
     p_id:''
@@ -51,7 +56,20 @@ export class ProductPage {
 
    this.product = this.navParam.data.params;
    
-    
+    this.getrelatedreq.p_id=this.product.p_id;
+    this.restProvider.getProduct(this.getrelatedreq)
+    .then(data => {
+      console.log("related product: "+data);
+      if(data=='failed')
+      {
+        this.toast.show("Product not available"); 
+       // this.loader.dismiss();
+      }
+      else{
+        this.relproducts = data;
+       // this.loader.dismiss();
+      }
+      });
     console.log(this.history.all);
 
     // // if(this.product.variations){

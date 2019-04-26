@@ -38,6 +38,24 @@ export class UserProvider {
     return this.user;
   }
 
+
+  _loggedInFB(user, index){
+    this.user.fname = user.first_name;
+    this.user.lname=user.last_name;
+    this.user.user_email = user.email;
+    this.user.user_id = user.user_id;
+    console.log(this,user.first_name);
+    this.save();
+    console.log(this,user.first_name);
+    this.events.publish('user:login', {tabIndex: index});
+    return this.user;
+  }
+
+
+
+
+
+
   login(data: any){
     
     let seq = this.http.get(App.url+'/user/generate_auth_cookie/?insecure=cool&username='+data.user+'&password='+data.pass);

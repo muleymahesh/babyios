@@ -8,7 +8,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { HttpClient } from '@angular/common/http';
 //import { Keyboard } from '@ionic-native/keyboard';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { Storage } from '@ionic/storage';
 import { Network } from '@ionic-native/network';
 import { Keyboard } from 'ionic-angular/platform/keyboard';
 //mport { KeyedRead } from '@angular/compiler';
@@ -39,6 +39,14 @@ allproducts:any;
 
 	categories:any;
 	slides:any[25];
+
+	orderRequest = {
+		method:'get_order_detail',
+		o_id:''
+		  };
+
+
+
 	slideRequest = {
 	  method:'get_all_banner'
 		};
@@ -90,9 +98,47 @@ allproducts:any;
       his:any;
 
 			
-		constructor(public key:Keyboard,public alert: AlertController, public network:Network,private splashScreen: SplashScreen,public platform:Platform,private address:AddressProvider,public history: RecentProvider,public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
+		constructor(private storage:Storage, public key:Keyboard,public alert: AlertController, public network:Network,private splashScreen: SplashScreen,public platform:Platform,private address:AddressProvider,public history: RecentProvider,public nav: NavController, statusBar: StatusBar, private translate: TranslateService, private toast: ToastProvider, public wishlist: WishlistProvider, public loader: LoadingProvider, public modalCtrl: ModalController, private woo: WooCommerceProvider,public restProvider: RestProvider,public http: HttpClient) {
 		this.App = App;
 		this.flag=0;
+
+		this.storage.get('O_id')
+		.then(data => {
+					  console.log('your data => ', data);
+					  if(data!=null)
+					  {
+		  this.orderRequest.o_id=data;
+		  this.restProvider.getMyOrder(this.orderRequest)
+		  .then(data => {
+			  console.log(data);
+			  if(data.orders[0].order_status=='delivered')
+			  {
+				this.alert.create({
+					title: "Alert",
+					message: "Do you want to rate the product?",
+					buttons: [{
+						text: 'NO',
+						handler: () => {
+							this.storage.remove('O_id');
+					
+						}
+					  },{
+						text: 'YES',
+						handler: () => {
+							this.storage.remove('O_id');
+						this.goTo('OrdersPage',data.orders[0])
+						}
+					  }]
+			
+						
+					}).present();
+			  }
+			 
+
+		  })
+		}});
+
+
 		this.platform.ready().then(() => {
 			this.loader.present();
 //this.getAllproduct();

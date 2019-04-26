@@ -1,6 +1,6 @@
 webpackJsonp([14],{
 
-/***/ 1020:
+/***/ 1022:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,7 +9,7 @@ webpackJsonp([14],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(35);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -25,8 +25,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var OrdersPage = (function () {
-    function OrdersPage(storage, restProvider, datepipe, toast, navParams, nav, events, modal, loader, user, woo) {
+    function OrdersPage(alert, cart, storage, restProvider, datepipe, toast, navParams, nav, events, modal, loader, user, woo) {
         var _this = this;
+        this.alert = alert;
+        this.cart = cart;
         this.storage = storage;
         this.restProvider = restProvider;
         this.datepipe = datepipe;
@@ -38,6 +40,11 @@ var OrdersPage = (function () {
         this.loader = loader;
         this.user = user;
         this.woo = woo;
+        this.getproduct = {
+            method: 'get_product_detail',
+            p_id: 0,
+            email: 'abc.abc@gmail.com'
+        };
         // times=[
         //   {
         //       "stime": 8,
@@ -75,6 +82,7 @@ var OrdersPage = (function () {
             method: 'cancel_order',
             order_id: '',
         };
+        this.flag = 0;
         this.time_slot = {
             method: 'time_slot'
         };
@@ -329,20 +337,71 @@ var OrdersPage = (function () {
             this.toast.show("All Field Required ");
         }
     };
+    OrdersPage.prototype.reqbyagain = function () {
+        var _this = this;
+        this.alert.create({
+            title: "Buy again",
+            message: "Do you want to repeat this order",
+            buttons: [{
+                    text: 'Yes',
+                    handler: function () {
+                        //	this.loader.dismiss();
+                        _this.buyAgain();
+                    }
+                },
+                {
+                    text: 'No',
+                }
+            ]
+        }).present();
+    };
+    OrdersPage.prototype.buyAgain = function () {
+        var _this = this;
+        this.cart.reset();
+        this.getproduct.email = this.user.user.user_email;
+        console.log(this.orders);
+        for (var _i = 0, _a = this.orders.details; _i < _a.length; _i++) {
+            var p = _a[_i];
+            console.log(p);
+            this.getproduct.p_id = p.p_id;
+            this.restProvider.getProduct(this.getproduct)
+                .then(function (data) {
+                _this.products = data;
+                console.log(_this.products);
+                _this.product1 = _this.products[0];
+                if (_this.product1.stock < 1) {
+                    //this.toast.show("Currently this product is out of stock");
+                    _this.flag = 1;
+                }
+                else {
+                    _this.cart.post(_this.product1);
+                    // this.toast.show("Product added to cart");
+                }
+            });
+        }
+        if (this.flag == 1) {
+            this.toast.show("Some product(s) are out of stock from this order");
+            this.cart.reset();
+        }
+        else {
+            this.toast.show("product(s) are added to cart ");
+            //this.nav.push('Cart1Page');
+        }
+    };
     return OrdersPage;
 }());
 OrdersPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-orders',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/orders/orders.html"*/'<ion-header>\n    \n      <ion-navbar color="primary">\n        <ion-title>Order Detail</ion-title>\n      </ion-navbar>\n    \n    </ion-header>\n\n<ion-content >\n  \n    <button ion-button block >Total :RS. {{orders.amount}}</button>\n    <div *ngIf="orders.details.length>0">\n        <p padding style="font-size:12px; text-align:left">Summery: {{orders.order_detail}}  </p>\n    <ion-card *ngFor="let o of orders.details" > \n      <ion-item>\n        \n            <!-- <p style="font-size:9px; text-align:left; color:orange">order id-  {{o.o_id}}</p> -->\n            <ion-avatar item-start>\n              <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{o.img_url}}">\n            </ion-avatar>\n            <h3   >{{o.product_name}}</h3>\n              \n            <p style="font-size:9px; text-align:left">Quantity :{{o.qty}}  </p>\n          \n         \n            <!-- <p style="font-size:9px; text-align:left; color:orange">Rs.{{o.mrp}} </p> -->\n          \n            <!-- <p style="font-size:9px; text-align:left; color:orange">Status-{{o.order_status}}  </p>  -->\n          \n        \n          </ion-item>\n    \n</ion-card>\n</div>\n\n<div  padding align="center">\n<ng-container *ngIf="orders.order_status==\'delivered\'; else elseTemplate">\n  \n<button  full ion-button round tappable (click)="goTo(\'ReturnorderPage\',orders)">Request Return</button><br>\n\n<button  full ion-button  tappable round (click)="inovice()">Invoice</button>\n\n</ng-container>\n<ng-template #elseTemplate>\n <div *ngIf="orders.order_status!=\'returned\'">\n   <div  *ngIf="orders.order_status!=\'canceled\'">\n     <div  *ngIf="orders.order_status!=\'out for delivery\'">\n<button   full ion-button round  tppable (click)="cancleOrder()" >Cancel</button>\n<ion-item>\n  <p>You can change your order delivery timing befor its out for delivery by editing fields below</p>\n  <ion-label>Date</ion-label>\n  <ion-datetime displayFormat="DDDD DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="newdeliverydate">\n  </ion-datetime>\n</ion-item>\n<ion-item>\n  <ion-label>Edit Time Slot</ion-label>\n<ion-select [(ngModel)]="newtimeslot">\n  <ion-option *ngFor="let time of timing" [value]="time"  >{{time}}</ion-option>\n</ion-select>\n</ion-item>\n<button   full ion-button round  tppable (click)="updateOrderDetails()" >Update order</button>\n</div>\n</div>\n</div>\n</ng-template>\n</div>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/orders/orders.html"*/,
+        selector: 'page-orders',template:/*ion-inline-start:"/home/maks/abhilash/application/Babyneeds/app/src/pages/orders/orders.html"*/'<ion-header>\n    \n      <ion-navbar color="primary">\n        <ion-title>Order Detail</ion-title>\n      </ion-navbar>\n    \n    </ion-header>\n\n<ion-content >\n  \n    <button ion-button block >Total :RS. {{orders.amount}}</button>\n    <div *ngIf="orders.details.length>0">\n        <p padding style="font-size:12px; text-align:left">Summery: {{orders.order_detail}}  </p>\n    <ion-card *ngFor="let o of orders.details" > \n      <ion-item>\n        \n            <!-- <p style="font-size:9px; text-align:left; color:orange">order id-  {{o.o_id}}</p> -->\n            <ion-avatar item-start>\n              <img src="http://www.babyneeds.co.in/babyneeds/product_image/{{o.img_url}}">\n            </ion-avatar>\n            <h3   >{{o.product_name}}</h3>\n              \n            <p style="font-size:9px; text-align:left">Quantity :{{o.qty}}  </p>\n          \n         \n            <!-- <p style="font-size:9px; text-align:left; color:orange">Rs.{{o.mrp}} </p> -->\n          \n            <!-- <p style="font-size:9px; text-align:left; color:orange">Status-{{o.order_status}}  </p>  -->\n          \n        \n          </ion-item>\n    \n</ion-card>\n</div>\n\n<div  padding align="center">\n<ng-container *ngIf="orders.order_status==\'delivered\'; else elseTemplate">\n  \n<button  full ion-button round tappable (click)="goTo(\'ReturnorderPage\',orders)">Request Return</button><br>\n\n<button  full ion-button  tappable round (click)="inovice()">Invoice</button>\n<button  full ion-button  tappable round (click)="reqbyagain()">Buy Again</button>\n\n</ng-container>\n<ng-template #elseTemplate>\n <div *ngIf="orders.order_status!=\'returned\'">\n   <div  *ngIf="orders.order_status!=\'canceled\'">\n     <div  *ngIf="orders.order_status!=\'out for delivery\'">\n<button   full ion-button round  tppable (click)="goTo(\'CancleorderPage\',orders)" >Cancel</button>\n<ion-item>\n  <p>You can change your order delivery timing befor its out for delivery by editing fields below</p>\n  <ion-label>Date</ion-label>\n  <ion-datetime displayFormat="DDDD DD/MM/YYYY" [min]="minDate" (ionChange)="onChange()"  [max]="maxDate" [(ngModel)]="newdeliverydate">\n  </ion-datetime>\n</ion-item>\n<ion-item>\n  <ion-label>Edit Time Slot</ion-label>\n<ion-select [(ngModel)]="newtimeslot">\n  <ion-option *ngFor="let time of timing" [value]="time"  >{{time}}</ion-option>\n</ion-select>\n</ion-item>\n<button   full ion-button round  tppable (click)="updateOrderDetails()" >Update order</button>\n</div>\n</div>\n\n</div>\n<button  full ion-button  tappable round (click)="reqbyagain()">Buy Again</button>\n</ng-template>\n</div>\n</ion-content>\n'/*ion-inline-end:"/home/maks/abhilash/application/Babyneeds/app/src/pages/orders/orders.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CartProvider */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["h" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_common__["e" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["j" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["d" /* LoadingProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["k" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["m" /* WooCommerceProvider */]])
 ], OrdersPage);
 
 //# sourceMappingURL=orders.js.map
 
 /***/ }),
 
-/***/ 981:
+/***/ 982:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -350,8 +409,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrdersPageModule", function() { return OrdersPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__orders__ = __webpack_require__(1020);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(549);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__orders__ = __webpack_require__(1022);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_module__ = __webpack_require__(550);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

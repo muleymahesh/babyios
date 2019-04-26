@@ -249,6 +249,14 @@ module.exports = [
     "clobbers": [
       "PushNotification"
     ]
+  },
+  {
+    "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
+    "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
+    "pluginId": "cordova-plugin-facebook4",
+    "clobbers": [
+      "facebookConnectPlugin"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -278,7 +286,8 @@ module.exports.metadata =
   "cordova-sqlite-storage": "2.6.0",
   "ionic-plugin-keyboard": "2.2.1",
   "onesignal-cordova-plugin": "2.4.3",
-  "phonegap-plugin-push": "2.1.3"
+  "phonegap-plugin-push": "2.1.3",
+  "cordova-plugin-facebook4": "4.2.1"
 };
 // BOTTOM OF METADATA
 });

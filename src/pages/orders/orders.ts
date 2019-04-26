@@ -170,6 +170,19 @@ this.restProvider.Inovice(this.str1)
 
 }
 
+writereview(product)
+{
+  if(this.user.user.user_email)
+  {
+   this.goTo('WritereviewPage',product)
+  }
+  else
+  {
+    this.toast.show("Please login to write a review");
+  }
+
+
+}
 
 
 returnOrder1(){

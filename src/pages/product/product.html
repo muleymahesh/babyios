@@ -388,6 +388,40 @@
             </div> 
 
     </ion-card>
+
+
+
+    <ion-grid >
+      <ion-row >
+          
+       
+            <ion-col col-6 *ngFor="let b of relproducts" no-padding>  
+         
+  
+              <ion-card style="width:160px; min-height: calc(100% - 10px);  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10); border-radius: 4px; "  (click)="goTo('ProductPage',b)">
+                <ion-badge color="primary" *ngIf="b.per_discount>0">{{b.per_discount}}%</ion-badge> 
+               <img *ngIf="b.imgs!=0"  src="http://www.babyneeds.co.in/babyneeds/product_image/{{b.imgs[0].img_url}}"  style="max-width:50%;max-height:200px; margin:auto; margin-top:15px"/>
+              
+              <!-- <div class="img" *ngIf="b.imgs!=0" [ngStyle]="{'background-image': 'url(http://www.babyneeds.co.in/babyneeds/product_image/' + b.imgs[0].img_ur +')'}">
+                <ion-badge *ngIf="b.per_discount">{{b.per_discount}}</ion-badge>
+              </div>                  -->
+               <p style="font-size:10px; text-align:center"> {{b.product_name}}</p>  <br>
+         
+             <ng-container *ngIf="b.per_discount!=0; else elseTemplate">
+                <p style="font-size:9px; text-align:center; color:orange" ><del >Rs.:{{b.mrp}} </del> &nbsp;&nbsp;&nbsp;  Rs.:{{pricestrikt(b.per_discount,b.mrp)}} </p>
+               </ng-container>
+               <ng-template #elseTemplate>
+                  <p style="font-size:9px; text-align:center; color:orange">Rs.:{{b.mrp}}</p>
+               </ng-template>
+               
+             
+            </ion-card>
+            </ion-col>
+           </ion-row>
+    </ion-grid>
+   
+  
+
 </ion-content>
 
 <ion-footer>

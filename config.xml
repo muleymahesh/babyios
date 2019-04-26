@@ -102,6 +102,12 @@
     <plugin name="phonegap-plugin-push" spec="^2.1.3">
         <variable name="SENDER_ID" value="1063542947486" />
     </plugin>
+    <plugin name="cordova-plugin-facebook4" spec="^4.2.1">
+        <variable name="APP_ID" value="810241009337789" />
+        <variable name="APP_NAME" value="Baby Needs" />
+        <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
+        <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
+    </plugin>
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="6.4.0" />
 </widget>

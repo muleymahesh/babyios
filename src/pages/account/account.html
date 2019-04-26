@@ -48,7 +48,7 @@
 	
 		
 
-		<br>	<button  ion-button full round  color="app_primary" tappable (click)="goTo('ChangePage')">
+		<br>	<button  *ngIf="user.user_id" ion-button full round  color="app_primary" tappable (click)="goTo('ChangePage')">
 					{{ 'Change Password' | translate}}
 					<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
 				</button><br>
@@ -64,7 +64,7 @@
 					<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
 				</button><br>
 	
-				<button  ion-button full round  color="app_primary" tappable (click)="goTo('EditprofilePage')">
+				<button  *ngIf="user.user_id"  ion-button full round  color="app_primary" tappable (click)="goTo('EditprofilePage')">
 					{{ 'Edit Profile' | translate}}
 					<!-- <ion-badge item-end *ngIf="_address.all.length > 0">{{_address.all.length}}</ion-badge> -->
 				</button><br><br>

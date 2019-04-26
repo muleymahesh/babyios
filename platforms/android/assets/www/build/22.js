@@ -1,6 +1,6 @@
 webpackJsonp([22],{
 
-/***/ 1012:
+/***/ 1014:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10,7 +10,7 @@ webpackJsonp([22],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(35);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -55,6 +55,9 @@ var Checkout1Page = (function () {
         this.navParams = navParams;
         this.modal = modal;
         this.timing = [];
+        this.amountreq = {
+            method: 'request_amount'
+        };
         this.details = {
             deliverydate: '',
             timesloat: ''
@@ -260,6 +263,7 @@ var Checkout1Page = (function () {
     //   console.log(this._cart.total);
     // }
     Checkout1Page.prototype.placeorder = function () {
+        var _this = this;
         if (this.address.getPrimary) {
             this.placeorderreq.last_name = this.billing.last_name;
             this.placeorderreq.street = this.billing.area;
@@ -272,12 +276,20 @@ var Checkout1Page = (function () {
             this.qty += "0";
             this.placeorderreq.p_id = this.p_id;
             this.placeorderreq.qty = this.qty;
-            if (this._cart.total < 250) {
-                this.placeorderreq.amount = this._cart.total + 30;
-            }
-            else {
-                this.placeorderreq.amount = this._cart.total;
-            }
+            this.loader.present();
+            this.restProvider.getcartitem(this.amountreq)
+                .then(function (data) {
+                // this.loader.present();
+                // this.minamount=data.minamount;
+                // this.delcharge=data.delcharge;
+                if (_this._cart.total <= data.minamount) {
+                    _this.placeorderreq.amount = _this._cart.total + data.delcharge;
+                }
+                else {
+                    _this.placeorderreq.amount = _this._cart.total;
+                }
+                _this.loader.dismiss();
+            });
             this.placeorderreq.order_detail = "Delivery Date " + this.details.deliverydate + ",between " + this.details.timesloat;
             // String req="{\"method\":\"add_oder\",\"first_name\":\""+addresses.get(0).getFname()+"\",\"last_name\":\""+addresses.get(0).getLname()+"\"," +
             // "\"gender\":\"Male\",\"email\":\""+new AppPreferences(PlaceOrderActivity.this).getEmail()+"\",\"amount\":\""+amount+
@@ -328,7 +340,7 @@ Checkout1Page = __decorate([
 
 /***/ }),
 
-/***/ 971:
+/***/ 972:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -336,7 +348,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Checkout1PageModule", function() { return Checkout1PageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__checkout1__ = __webpack_require__(1012);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__checkout1__ = __webpack_require__(1014);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

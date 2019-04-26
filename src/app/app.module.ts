@@ -1,4 +1,5 @@
 import { SharedModule } from './shared.module';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -41,6 +42,7 @@ import { RateProvider } from '../providers/rate/rate';
     Network,
     PROVIDERS, 
     AppRate,
+  
     Push,
     // Keep this to enable Ionic's runtime error handling during development
     {provide: ErrorHandler, useClass: IonicErrorHandler},
@@ -49,7 +51,8 @@ import { RateProvider } from '../providers/rate/rate';
     SQLite,
     RecentProvider,DatePipe,
     RateProvider,
-    
+    Facebook,
+  
   //  LocalNotifications
   ]
 })

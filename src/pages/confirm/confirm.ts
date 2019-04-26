@@ -3,6 +3,7 @@ import { IonicPage, Platform, AlertController, NavController, Events, ModalContr
 import { AddressProvider,RestProvider, SettingsProvider, ToastProvider, UserProvider, LoadingProvider, CartProvider, WooCommerceProvider, OrderProvider } from '../../providers/providers';
 import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common'
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the ConfirmPage page.
  *
@@ -26,7 +27,7 @@ items:any;
 billing:any;
 response:any;
 placeorderreq:any;
-  constructor( private alertCtrl: AlertController,public _cart1:CartProvider,public datepipe: DatePipe,public restProvider: RestProvider,private setting: SettingsProvider, private alert: AlertController, private platform: Platform, private nav: NavController, private translate: TranslateService, private toast: ToastProvider, private user: UserProvider, private loader: LoadingProvider, private woo: WooCommerceProvider, private _cart: CartProvider, private events: Events, private _order: OrderProvider, private address: AddressProvider, public navParams: NavParams, public modal: ModalController) {
+  constructor(private storage:Storage, private alertCtrl: AlertController,public _cart1:CartProvider,public datepipe: DatePipe,public restProvider: RestProvider,private setting: SettingsProvider, private alert: AlertController, private platform: Platform, private nav: NavController, private translate: TranslateService, private toast: ToastProvider, private user: UserProvider, private loader: LoadingProvider, private woo: WooCommerceProvider, private _cart: CartProvider, private events: Events, private _order: OrderProvider, private address: AddressProvider, public navParams: NavParams, public modal: ModalController) {
     this.restProvider.getcartitem(this.amountreq)
     .then(data => {
      // this.loader.present();
@@ -96,8 +97,11 @@ this.loader.present();
     if(this.response.result=="success")
     {
       this.toast.show(this.response.responseMessage);
+      console.log(this.response.o_id);
+      this.storage.set('O_id',this.response.o_id);
      // this.toast.show("Order Placed Successfully");
      this._cart.reset();
+    // console.log(this.storage.get('o_id'));
      this.loader.dismiss();
       this.goTo('ThanksPage',1);
       

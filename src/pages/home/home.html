@@ -393,6 +393,71 @@
         </ion-row> -->
       <!-- </div> -->
 
+      <div *ngFor="let w of rlist; let i=index ">
+        <div  *ngIf="i==0">
+          <div class=""*ngFor="let w of his ;  let i=index " >
+            <ion-list no-lines no-margin margin-left>
+              <ion-item no-padding no-lines *ngIf="i==0" >
+                {{ 'Recently viewed ' | translate }}
+            </ion-item>
+            </ion-list>
+      
+          </div>
+            <ion-grid >
+              <ion-row >
+                  
+               
+                    <ion-col col-6 *ngFor="let b of his; let i=index" no-padding>  
+                 
+          
+                      <ion-card *ngIf="i>=4" (click)="goTo('ProductPage',b)">
+                        <ion-badge color="primary" *ngIf="b.discount>0">{{b.discount}}%</ion-badge> 
+                       <img *ngIf="b.images!=0"  src="http://www.babyneeds.co.in/babyneeds/product_image/{{b.images}}"  style="max-width:50%;max-height:200px; margin:auto; margin-top:15px"/>
+                      
+                     
+                       <p style="font-size:10px; text-align:center"> {{b.name}}</p>  <br>
+                 
+                     <ng-container *ngIf="b.per_discount!=0; else elseTemplate">
+                        <p style="font-size:9px; text-align:center; color:orange" ><del >Rs.:{{b.price}} </del> &nbsp;&nbsp;&nbsp;  Rs.:{{pricestrikt(b.discount,b.price)}} </p>
+                       </ng-container>
+                       <ng-template #elseTemplate>
+                          <p style="font-size:9px; text-align:center; color:orange">Rs.:{{b.price}}</p>
+                       </ng-template>
+                       
+                     
+                    </ion-card>
+                    </ion-col>
+                   </ion-row>
+            </ion-grid>
+           
+           
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="">
      
           <ion-list *ngFor="let w of offers; let i=index" no-lines no-margin margin-left>

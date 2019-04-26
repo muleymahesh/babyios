@@ -58,7 +58,7 @@ var MyorderPage = (function () {
         // }
     }
     MyorderPage.prototype.ionViewDidEnter = function () {
-        if (this.user.user.user_id) {
+        if (this.user.user.user_email) {
             this.myOrder();
         }
         else {
