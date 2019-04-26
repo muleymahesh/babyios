@@ -49,6 +49,34 @@
               "count": 1
             },
             {
+              "xml": "<feature name=\"FacebookConnectPlugin\"><param name=\"android-package\" value=\"org.apache.cordova.facebook.ConnectPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<access origin=\"https://m.facebook.com\" />",
+              "count": 1
+            },
+            {
+              "xml": "<access origin=\"https://graph.facebook.com\" />",
+              "count": 1
+            },
+            {
+              "xml": "<access origin=\"https://api.facebook.com\" />",
+              "count": 1
+            },
+            {
+              "xml": "<access origin=\"https://*.fbcdn.net\" />",
+              "count": 1
+            },
+            {
+              "xml": "<access origin=\"https://*.akamaihd.net\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"android-minSdkVersion\" value=\"15\" />",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"FCMPlugin\"><param name=\"android-package\" value=\"com.gae.scaffolder.plugin.FCMPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             },
@@ -83,46 +111,6 @@
             {
               "xml": "<feature name=\"SQLitePlugin\"><param name=\"android-package\" value=\"io.sqlc.SQLitePlugin\" /></feature>",
               "count": 1
-            },
-            {
-              "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"io.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"OneSignalPush\"><param name=\"android-package\" value=\"com.plugin.gcm.OneSignalPush\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"PushNotification\"><param name=\"android-package\" value=\"com.adobe.phonegap.push.PushPlugin\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"FacebookConnectPlugin\"><param name=\"android-package\" value=\"org.apache.cordova.facebook.ConnectPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<access origin=\"https://m.facebook.com\" />",
-              "count": 1
-            },
-            {
-              "xml": "<access origin=\"https://graph.facebook.com\" />",
-              "count": 1
-            },
-            {
-              "xml": "<access origin=\"https://api.facebook.com\" />",
-              "count": 1
-            },
-            {
-              "xml": "<access origin=\"https://*.fbcdn.net\" />",
-              "count": 1
-            },
-            {
-              "xml": "<access origin=\"https://*.akamaihd.net\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"android-minSdkVersion\" value=\"15\" />",
-              "count": 1
             }
           ]
         }
@@ -132,6 +120,10 @@
           "/*": [
             {
               "xml": "<feature name=\"Badge\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.badge.Badge\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" onload=\"true\" value=\"io.ionic.keyboard.IonicKeyboard\" /></feature>",
               "count": 1
             }
           ]
@@ -146,30 +138,6 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
-              "count": 2
-            },
-            {
-              "xml": "<uses-permission android:name=\"com.amazon.device.messaging.permission.RECEIVE\" />",
-              "count": 1
-            },
-            {
-              "xml": "<permission android:name=\"com.maks.babyneeds.permission.RECEIVE_ADM_MESSAGE\" android:protectionLevel=\"signature\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"com.maks.babyneeds.permission.RECEIVE_ADM_MESSAGE\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
               "count": 1
             }
           ],
@@ -223,38 +191,6 @@
             {
               "xml": "<provider android:authorities=\"${applicationId}.sharing.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"nl.xservices.plugins.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/sharing_paths\" /></provider>",
               "count": 1
-            },
-            {
-              "xml": "<amazon:enable-feature android:name=\"com.amazon.device.messaging\" android:required=\"false\" xmlns:amazon=\"http://schemas.amazon.com/apk/res/android\" />",
-              "count": 1
-            },
-            {
-              "xml": "<service android:exported=\"false\" android:name=\"com.onesignal.ADMMessageHandler\" />",
-              "count": 1
-            },
-            {
-              "xml": "<receiver android:name=\"com.onesignal.ADMMessageHandler$Receiver\" android:permission=\"com.amazon.device.messaging.permission.SEND\"><intent-filter><action android:name=\"com.amazon.device.messaging.intent.REGISTRATION\" /><action android:name=\"com.amazon.device.messaging.intent.RECEIVE\" /><category android:name=\"com.maks.babyneeds\" /></intent-filter></receiver>",
-              "count": 1
-            },
-            {
-              "xml": "<activity android:exported=\"true\" android:name=\"com.adobe.phonegap.push.PushHandlerActivity\" android:permission=\"${applicationId}.permission.PushHandlerActivity\" />",
-              "count": 1
-            },
-            {
-              "xml": "<receiver android:name=\"com.adobe.phonegap.push.BackgroundActionButtonHandler\" />",
-              "count": 1
-            },
-            {
-              "xml": "<receiver android:name=\"com.adobe.phonegap.push.PushDismissedHandler\" />",
-              "count": 1
-            },
-            {
-              "xml": "<service android:name=\"com.adobe.phonegap.push.FCMService\"><intent-filter><action android:name=\"com.google.firebase.MESSAGING_EVENT\" /></intent-filter></service>",
-              "count": 1
-            },
-            {
-              "xml": "<service android:name=\"com.adobe.phonegap.push.PushInstanceIDListenerService\"><intent-filter><action android:name=\"com.google.firebase.INSTANCE_ID_EVENT\" /></intent-filter></service>",
-              "count": 1
             }
           ],
           "/*": [
@@ -279,11 +215,11 @@
         "parents": {
           "/*": [
             {
-              "xml": "<string name=\"fb_app_id\">810241009337789</string>",
+              "xml": "<string name=\"fb_app_id\">645248432304646</string>",
               "count": 1
             },
             {
-              "xml": "<string name=\"fb_app_name\">Baby Needs</string>",
+              "xml": "<string name=\"fb_app_name\">BabyNeeds</string>",
               "count": 1
             },
             {
@@ -297,11 +233,11 @@
         "parents": {
           "/*": [
             {
-              "xml": "<string name=\"fb_app_id\">810241009337789</string>",
+              "xml": "<string name=\"fb_app_id\">645248432304646</string>",
               "count": 1
             },
             {
-              "xml": "<string name=\"fb_app_name\">Baby Needs</string>",
+              "xml": "<string name=\"fb_app_name\">BabyNeeds</string>",
               "count": 1
             },
             {
@@ -347,7 +283,17 @@
     "cordova-plugin-email-composer": {
       "PACKAGE_NAME": "com.maks.babyneeds"
     },
+    "cordova-plugin-facebook4": {
+      "APP_ID": "645248432304646",
+      "APP_NAME": "BabyNeeds",
+      "FACEBOOK_HYBRID_APP_EVENTS": "false",
+      "FACEBOOK_ANDROID_SDK_VERSION": "4.40.0",
+      "PACKAGE_NAME": "com.maks.babyneeds"
+    },
     "cordova-plugin-fcm": {
+      "PACKAGE_NAME": "com.maks.babyneeds"
+    },
+    "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.maks.babyneeds"
     },
     "cordova-plugin-ionic-webview": {
@@ -378,23 +324,6 @@
       "PACKAGE_NAME": "com.maks.babyneeds"
     },
     "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "com.maks.babyneeds"
-    },
-    "ionic-plugin-keyboard": {
-      "PACKAGE_NAME": "com.maks.babyneeds"
-    },
-    "onesignal-cordova-plugin": {
-      "PACKAGE_NAME": "com.maks.babyneeds"
-    },
-    "phonegap-plugin-push": {
-      "FCM_VERSION": "11.6.2",
-      "PACKAGE_NAME": "com.maks.babyneeds"
-    },
-    "cordova-plugin-facebook4": {
-      "APP_ID": "810241009337789",
-      "APP_NAME": "Baby Needs",
-      "FACEBOOK_HYBRID_APP_EVENTS": "false",
-      "FACEBOOK_ANDROID_SDK_VERSION": "4.40.0",
       "PACKAGE_NAME": "com.maks.babyneeds"
     }
   },
@@ -529,11 +458,27 @@
       ]
     },
     {
+      "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
+      "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
+      "pluginId": "cordova-plugin-facebook4",
+      "clobbers": [
+        "facebookConnectPlugin"
+      ]
+    },
+    {
       "id": "cordova-plugin-fcm.FCMPlugin",
       "file": "plugins/cordova-plugin-fcm/www/FCMPlugin.js",
       "pluginId": "cordova-plugin-fcm",
       "clobbers": [
         "FCMPlugin"
+      ]
+    },
+    {
+      "id": "cordova-plugin-ionic-keyboard.keyboard",
+      "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
+      "pluginId": "cordova-plugin-ionic-keyboard",
+      "clobbers": [
+        "window.Keyboard"
       ]
     },
     {
@@ -624,39 +569,6 @@
       "clobbers": [
         "SQLitePlugin"
       ]
-    },
-    {
-      "id": "ionic-plugin-keyboard.keyboard",
-      "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
-      "pluginId": "ionic-plugin-keyboard",
-      "clobbers": [
-        "cordova.plugins.Keyboard"
-      ],
-      "runs": true
-    },
-    {
-      "id": "onesignal-cordova-plugin.OneSignal",
-      "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
-      "pluginId": "onesignal-cordova-plugin",
-      "clobbers": [
-        "OneSignal"
-      ]
-    },
-    {
-      "id": "phonegap-plugin-push.PushNotification",
-      "file": "plugins/phonegap-plugin-push/www/push.js",
-      "pluginId": "phonegap-plugin-push",
-      "clobbers": [
-        "PushNotification"
-      ]
-    },
-    {
-      "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
-      "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
-      "pluginId": "cordova-plugin-facebook4",
-      "clobbers": [
-        "facebookConnectPlugin"
-      ]
     }
   ],
   "plugin_metadata": {
@@ -671,7 +583,9 @@
     "cordova-plugin-badge": "0.8.8",
     "cordova-plugin-device": "1.1.7",
     "cordova-plugin-email-composer": "0.8.15",
+    "cordova-plugin-facebook4": "4.2.1",
     "cordova-plugin-fcm": "2.1.2",
+    "cordova-plugin-ionic-keyboard": "2.1.3",
     "cordova-plugin-ionic-webview": "1.2.1",
     "cordova-plugin-local-notification": "0.9.0-beta.2",
     "cordova-plugin-network-information": "2.0.1",
@@ -681,10 +595,6 @@
     "cordova-plugin-whitelist": "1.3.3",
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-x-socialsharing": "5.4.1",
-    "cordova-sqlite-storage": "2.6.0",
-    "ionic-plugin-keyboard": "2.2.1",
-    "onesignal-cordova-plugin": "2.4.3",
-    "phonegap-plugin-push": "2.1.3",
-    "cordova-plugin-facebook4": "4.2.1"
+    "cordova-sqlite-storage": "2.6.0"
   }
 }

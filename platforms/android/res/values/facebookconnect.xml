@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="fb_app_id">810241009337789</string>
-    <string name="fb_app_name">Baby Needs</string>
+    <string name="fb_app_id">645248432304646</string>
+    <string name="fb_app_name">BabyNeeds</string>
     <bool name="fb_hybrid_app_events">false</bool>
 </resources>

@@ -43,7 +43,7 @@
     "@ngx-translate/http-loader": "^0.1.0",
     "card.io.cordova.mobilesdk": "^2.1.0",
     "com.paypal.cordova.mobilesdk": "^3.5.0",
-    "cordova-android": "6.4.0",
+    "cordova-android": "^6.4.0",
     "cordova-ios": "4.5.5",
     "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-apprate": "^1.4.0",
@@ -107,8 +107,8 @@
         "SENDER_ID": "1063542947486"
       },
       "cordova-plugin-facebook4": {
-        "APP_ID": "810241009337789",
-        "APP_NAME": "Baby Needs",
+        "APP_ID": "645248432304646",
+        "APP_NAME": "BabyNeeds",
         "FACEBOOK_HYBRID_APP_EVENTS": "false",
         "FACEBOOK_ANDROID_SDK_VERSION": "4.40.0"
       }

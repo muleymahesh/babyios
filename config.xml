@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.maks.babyneeds" ios-CFBundleIdentifier="com.shaveta.BabyNeeds" version="2.3.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.maks.babyneeds" ios-CFBundleIdentifier="com.shaveta.BabyNeeds" version="2.4.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Baby Needs</name>
     <description />
     <author email="info@makslab.com" href="http://makslab.com/">makslab Team</author>
@@ -103,11 +103,11 @@
         <variable name="SENDER_ID" value="1063542947486" />
     </plugin>
     <plugin name="cordova-plugin-facebook4" spec="^4.2.1">
-        <variable name="APP_ID" value="810241009337789" />
-        <variable name="APP_NAME" value="Baby Needs" />
+        <variable name="APP_ID" value="645248432304646" />
+        <variable name="APP_NAME" value="BabyNeeds" />
         <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
     </plugin>
     <engine name="ios" spec="4.5.5" />
-    <engine name="android" spec="6.4.0" />
+    <engine name="android" spec="^6.4.0" />
 </widget>

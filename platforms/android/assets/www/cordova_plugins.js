@@ -129,11 +129,27 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
+    "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
+    "pluginId": "cordova-plugin-facebook4",
+    "clobbers": [
+      "facebookConnectPlugin"
+    ]
+  },
+  {
     "id": "cordova-plugin-fcm.FCMPlugin",
     "file": "plugins/cordova-plugin-fcm/www/FCMPlugin.js",
     "pluginId": "cordova-plugin-fcm",
     "clobbers": [
       "FCMPlugin"
+    ]
+  },
+  {
+    "id": "cordova-plugin-ionic-keyboard.keyboard",
+    "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
+    "pluginId": "cordova-plugin-ionic-keyboard",
+    "clobbers": [
+      "window.Keyboard"
     ]
   },
   {
@@ -224,39 +240,6 @@ module.exports = [
     "clobbers": [
       "SQLitePlugin"
     ]
-  },
-  {
-    "id": "ionic-plugin-keyboard.keyboard",
-    "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
-    "pluginId": "ionic-plugin-keyboard",
-    "clobbers": [
-      "cordova.plugins.Keyboard"
-    ],
-    "runs": true
-  },
-  {
-    "id": "onesignal-cordova-plugin.OneSignal",
-    "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
-    "pluginId": "onesignal-cordova-plugin",
-    "clobbers": [
-      "OneSignal"
-    ]
-  },
-  {
-    "id": "phonegap-plugin-push.PushNotification",
-    "file": "plugins/phonegap-plugin-push/www/push.js",
-    "pluginId": "phonegap-plugin-push",
-    "clobbers": [
-      "PushNotification"
-    ]
-  },
-  {
-    "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
-    "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
-    "pluginId": "cordova-plugin-facebook4",
-    "clobbers": [
-      "facebookConnectPlugin"
-    ]
   }
 ];
 module.exports.metadata = 
@@ -273,7 +256,9 @@ module.exports.metadata =
   "cordova-plugin-badge": "0.8.8",
   "cordova-plugin-device": "1.1.7",
   "cordova-plugin-email-composer": "0.8.15",
+  "cordova-plugin-facebook4": "4.2.1",
   "cordova-plugin-fcm": "2.1.2",
+  "cordova-plugin-ionic-keyboard": "2.1.3",
   "cordova-plugin-ionic-webview": "1.2.1",
   "cordova-plugin-local-notification": "0.9.0-beta.2",
   "cordova-plugin-network-information": "2.0.1",
@@ -283,11 +268,7 @@ module.exports.metadata =
   "cordova-plugin-whitelist": "1.3.3",
   "es6-promise-plugin": "4.2.2",
   "cordova-plugin-x-socialsharing": "5.4.1",
-  "cordova-sqlite-storage": "2.6.0",
-  "ionic-plugin-keyboard": "2.2.1",
-  "onesignal-cordova-plugin": "2.4.3",
-  "phonegap-plugin-push": "2.1.3",
-  "cordova-plugin-facebook4": "4.2.1"
+  "cordova-sqlite-storage": "2.6.0"
 };
 // BOTTOM OF METADATA
 });
